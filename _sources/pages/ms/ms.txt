@@ -1,0 +1,28 @@
+.. _ms:
+
+Matching Service
+================
+
+Overview
+--------
+
+How a matching service works
+----------------------------
+
+Build a matching service
+---------------------------
+
+This is just a test to see how to insert images. I'll remove this soon.
+
+This a file created with draw io, exported as png:
+
+.. image:: CathTestDiagram1.png
+
+
+And as svg: 
+
+.. image:: CathTestDiagram1.svg
+
+This is one of George's visio files converted to svg: 
+
+.. image:: test.svg

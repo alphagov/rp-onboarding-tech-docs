@@ -1,0 +1,5 @@
+.. _msa:
+
+Matching Service Adapter
+========================
+

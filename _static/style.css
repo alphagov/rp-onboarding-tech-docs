@@ -1,0 +1,98 @@
+#ida-cookie-message {
+  display: none;
+  padding: 10px;
+  background-color: teal;
+  color: white;
+}
+
+.wy-menu-vertical > ul > li:nth-last-child(16) {
+  border-top: 1px solid white;
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(15) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(14) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(13) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(12) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(11) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(10) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(9) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(8) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(7) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(6) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(5) {
+  border-bottom: 1px solid white;
+}
+.wy-menu-vertical > ul > li:nth-last-child(4) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(3) {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(2) {
+  border-bottom: 1px solid white;
+}
+.wy-menu-vertical > ul > li:nth-last-child(1) {
+  border-bottom: 1px solid white;
+}
+.xref.download.docutils.literal {
+	font-size:16px;
+}
+.wy-menu-vertical,.wy-nav-side {
+	background-color: #06094E;
+}
+.wy-nav-side a.reference {
+	color: white;
+}
+.wy-menu-vertical li.current {
+	color: teal;
+}
+.wy-side-nav-search {
+    background-color: black;
+    text-align: left;
+}
+.wy-menu-vertical li span.toctree-expand {
+    color: #C7E7FF;
+}
+
+.wy-menu-vertical li.toctree-l2.current>a {
+    background: #D7F9F9;
+    padding: 0.4045em 2.427em;
+}
+.wy-nav-content-wrap {
+    background: #fcfcfc;
+    min-height: 100%;
+}
+.wy-nav-content {
+    height: 100%;
+    max-width: 20000px;
+}
+.wy-nav-top {
+    display: ;
+    background: black;
+    color: #fff;
+    padding: 0.4045em 0.809em;
+    position: relative;
+    line-height: 50px;
+    text-align: right;
+    font-size: 100%;
+}

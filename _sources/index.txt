@@ -1,0 +1,23 @@
+.. _index:
+
+:ref:`GOV.UK Verify Technical Guide<atg>`
+=========================================
+
+Please refer to :ref:`About This Guide <atg>`
+
+.. toctree::
+   :hidden:
+
+   pages/atg/atg
+   pages/arch/arch
+   pages/env/env
+   pages/hub/hub
+   pages/ms/ms
+   pages/msa/msa
+   pages/pki/pki
+   pages/saml/saml
+   pages/testing/testing
+   Glossary of terms <http://alphagov.github.io/identity-assurance-documentation/glossary.html>
+   pages/revhis/revhis
+   Contact us <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>
+   Cookies <https://www.signin.service.gov.uk/cookies>

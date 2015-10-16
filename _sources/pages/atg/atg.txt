@@ -1,0 +1,19 @@
+.. _atg:
+
+About This Guide
+================
+
+Purpose
+-------
+
+This is the technical reference guide for GOV.UK Verify.
+
+Any government service that requires assured identities must use GOV.UK Verify for the identity verification element. This guide contains information to help teams building secure digital services integrate with GOV.UK Verify, and should be used together with the `GOV.UK Onboarding Guide <http://alphagov.github.io/identity-assurance-documentation/#>`_.
+
+GOV.UK Verify is currently in beta. This guide will be continually improved as we take the service from beta to live. Check the revision history for the latest changes to the guide.
+
+Audience
+--------
+Technical delivery teams building secure digital services.
+
+
