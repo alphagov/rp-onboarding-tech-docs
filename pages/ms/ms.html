@@ -88,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-a-matching-service-works">How a matching service works</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#confidence-scoring-for-matching">Confidence scoring for matching</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#importance-of-a-matching-service">Importance of a matching service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-matching-request">Example of matching request</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#build-a-matching-service">Build a matching service</a><ul>
@@ -99,13 +99,25 @@
 <li class="toctree-l3"><a class="reference internal" href="#minimum-requirements-for-a-matching-service">Minimum requirements for a matching service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#common-problems">Common problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#further-guidance">Further guidance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cath-testing-stuff">Cath testing stuff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importance-of-a-matching-service">Importance of a matching service</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../msa/msa.html#cath-testing-stuff">Cath testing stuff</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pki/pki.html#elements-of-pki">Elements of PKI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#how-pki-works-with-gov-uk-verify">How PKI works with GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#request-pki-certificates">Request PKI certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#how-does-gov-uk-verify-use-pki">How does GOV.UK Verify use PKI?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">User Research</a></li>
 <li class="toctree-l1"><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html">Glossary of terms</a></li>
@@ -158,10 +170,6 @@
 <p class="last">Identity assurance cannot function without data matching.</p>
 </div>
 <p>It is the responsibility of government services to develop and implement the matching service that carries out this matching. We have provided this guidance for services to consider. We recognise that not all services have experience of matching verified identities to government data sources, and that the process of matching itself is often complex.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The hashed pid is specific to the combination of user, service and LPD. Please refer to <a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a></p>
-</div>
 </div>
 <div class="section" id="how-a-matching-service-works">
 <h2>How a matching service works<a class="headerlink" href="#how-a-matching-service-works" title="Permalink to this headline">¶</a></h2>
@@ -177,69 +185,23 @@
 <p>Matching assured identities to records is likely to be complicated. A service needs to establish the most efficient and effective way of doing this, depending on the quality of data and how it is stored and managed.</p>
 <p>Services have to carry out a risk-based match to find the account against which to match. For example, the matching service must be able to handle the following circumstances:</p>
 <ul class="simple">
-<li>When multiple records are found that could be a match (risk of incorrect matching)</li>
-<li>When no match is found, (whether to create a new record for the user)</li>
+<li>When multiple records are found that could be a match (decide how to minimise risk of incorrect matching)</li>
+<li>When no match is found (decide whether to create a new record for the user)</li>
 </ul>
-<p>The hub sends the matching dataset to the matching service via the Matching Service Adapter. Once matching has taken place, the user is directed to the correct record within the service.</p>
-<p>There are potentially 3 cycles of matching, see <a class="reference internal" href="#matching-cycles">Matching cycles</a> . If, after these 3 cycles, there’s no match, the service can optionally decide to create a new account for the user. See <a class="reference internal" href="#creating-user-accounts">Creating user accounts</a> for more information.</p>
 <div class="section" id="confidence-scoring-for-matching">
 <h3>Confidence scoring for matching<a class="headerlink" href="#confidence-scoring-for-matching" title="Permalink to this headline">¶</a></h3>
 <p>Confidence scoring is the score given to the data that matches; below is a greatly simplified example :</p>
 <ul class="simple">
 <li>100% match confidence means that all elements of data fully match</li>
-<li>80% match confidence might mean that first name, surname and address match, but date of birth is showing a mismatch</li>
+<li>80% match confidence might mean that first name, surname, and date of birth match, but address is showing a mismatch</li>
 </ul>
 <p>Mismatches in data can happen, because, for example, the user typed the asserted information incorrectly or incorrect data is held in the service records. Service data may be incorrect for many reasons, for example if someone has moved house or changed their name but not informed the service.</p>
 <p>Matching may be easier when there’s a unique identifier, eg a passport number, but this should not be used in isolation, and the process should always attempt a match to the matching dataset first.</p>
 <p>It is up to the service to configure the level of match confidence that is needed, as attitudes to risk and matching requirements may be different for each service.</p>
+<p>We recommend that the service analyse its local data sources in light of the matching strategy, so that the service can test and refine the strategy before launching alpha or beta services.</p>
 </div>
-<div class="section" id="importance-of-a-matching-service">
-<h3>Importance of a matching service<a class="headerlink" href="#importance-of-a-matching-service" title="Permalink to this headline">¶</a></h3>
-<p>The Identity Assurance Hub Service SAML 2.0 Profile states that a service must nominate a matching service, even if it doesn&#8217;t need to perform matching. This is because the matching service also performs other key functions. The matching service also:</p>
-<ul class="simple">
-<li>Creates the hashed persistent identifier</li>
-<li>Creates the final assertion as sent to the service</li>
-<li>Acts as the trust anchor for the service (signs the assertion)</li>
-<li>Attempts to find a local identifier that means something to the service (optionally)</li>
-</ul>
-</div>
-</div>
-<div class="section" id="build-a-matching-service">
-<h2>Build a matching service<a class="headerlink" href="#build-a-matching-service" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="matching-strategy">
-<h3>Matching strategy<a class="headerlink" href="#matching-strategy" title="Permalink to this headline">¶</a></h3>
-<p>Take into account the following considerations when defining your matching service:</p>
-<ul class="simple">
-<li>Understand the different types of users</li>
-<li>Prepare for matching with customer data aggregation and data cleansing</li>
-<li>Define the rules for successful matching, for example allow synonyms for first names such as William and Bill</li>
-<li>Specify additional attributes that can be used to match identities reliably and securely, for example; passport number. The matching service can then prompt the hub to request additional attributes from the identity provider</li>
-<li>Understand, from both a business and a technical view, what level of ‘fuzzy matching’ is acceptable and possible. The service can apply fuzzy matching when an exact match is not found; it allows a match that, although not 100%, is above a service-defined threshold matching percentage</li>
-<li>Define the fuzzy matching rules</li>
-</ul>
-<p>The matching strategy should take into account:</p>
-<ul class="simple">
-<li>quality of available data</li>
-<li>completeness of local data sources</li>
-<li>confidence level required in a successful match</li>
-<li>how to score the confidence of a match (based on multiple criteria)</li>
-</ul>
-<p>We also recommend that the service analyse its local data sources in light of the matching strategy, so that the service can test and refine the strategy before launching alpha or beta services.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>The matching strategy has to be shared/agreed/whatever it is with engagement leads</li>
-<li>For more guidance, see <a class="reference internal" href="#matching-strategy-example">Matching strategy example</a>.</li>
-</ul>
-</div>
-<p>You can define your own rules for your matching service, such as the following:</p>
-<ul class="simple">
-<li>matching synonyms, for example matching personal names of <strong>William</strong> and <strong>Bill</strong></li>
-<li>possible transposition of multiple part names, for example <strong>Anna Marie</strong>,  <strong>Jane</strong> and <strong>Anna, Marie Jane</strong></li>
-<li>possible transposition errors of day and month in the date of birth, for example <strong>04/10/78</strong> and <strong>10/04/78</strong></li>
-</ul>
-<p>You also have to manage the risk of incorrect matching and decide what happens if multiple records are found or if there are no matches (user not found). If there are no matches, you can optionally  <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/buildMatchingService.html#creating-user-accounts">create a new account.</a></p>
-<p><strong>Example of matching request</strong></p>
+<div class="section" id="example-of-matching-request">
+<h3>Example of matching request<a class="headerlink" href="#example-of-matching-request" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>John Doe wishes to submit his Self Assessment tax return online to HMRC. He will attempt to sign in to the service using his identity provider.</li>
 <li>HMRC issues a request to the GOV.UK Verify hub to authenticate John Doe.</li>
@@ -247,9 +209,13 @@
 <li>John Doe provides his identity credentials.</li>
 <li>The identity provider confirms these credentials are correct and responds with identity information (matching dataset), which is returned to HMRC through the hub.</li>
 <li>The hub provides the matching service with the user’s persistent identifier and matching dataset.</li>
-<li>The Matching Service Adapter hashes the persistent identifier so that it is meaningless to other services and passes the hashed persistent identifier and the matching dataset to HMRC’S matching service.</li>
+<li>The Matching Service Adapter hashes the persistent identifier so that it is meaningless to other services and passes the hashed persistent identifier (PID) and the matching dataset to HMRC’S matching service.</li>
 <li>HMRC’s matching service tries to locate John Doe’s tax record in their internal dataset, using the hashed persistent identifier and the matching dataset.</li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The hashed pid is specific to the combination of user, service and LPD. Please refer to <a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a></p>
+</div>
 <p>The following diagram gives an overview of the matching process:</p>
 <img alt="../../_images/MatchingProcessDiagram.jpg" id="matchingprocessdiagram" src="../../_images/MatchingProcessDiagram.jpg" />
 <p>Matching is initiated when a user has successfully authenticated at an identity provider in response to a request from you. The hub receives the identity provider’s response, containing:</p>
@@ -259,6 +225,44 @@
 </ul>
 <p>The hub passes this response to the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>. The Matching Service Adapter essentially converts the SAML used by the hub into the JSON used by your matching service.</p>
 <p>The Matching Service Adapter hashes the persistent identifier to create an identifier that is meaningless to other services, and then sends a JSON query to your matching service which tries to find a match for the user’s identity in your service’s records. The matching service attempts 3 cycles of matching as described below.</p>
+<p>NEED TO INTEGRATE THIS (COPIED OVER FROM HOW A MS WORKS IN TECH GUIDE)</p>
+<p>The hub sends the matching dataset to the matching service via the Matching Service Adapter. Once matching has taken place, the user is directed to the correct record within the service.</p>
+<p>There are potentially 3 cycles of matching, see <a class="reference internal" href="#matching-cycles">Matching cycles</a> . If, after these 3 cycles, there’s no match, the service can optionally decide to create a new account for the user. See <a class="reference internal" href="#creating-user-accounts">Creating user accounts</a> for more information.</p>
+</div>
+</div>
+<div class="section" id="build-a-matching-service">
+<h2>Build a matching service<a class="headerlink" href="#build-a-matching-service" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="matching-strategy">
+<h3>Matching strategy<a class="headerlink" href="#matching-strategy" title="Permalink to this headline">¶</a></h3>
+<p>The matching strategy should take into account:</p>
+<ul class="simple">
+<li>quality of available data</li>
+<li>completeness of local data sources</li>
+<li>confidence level required in a successful match</li>
+<li>how to score the confidence of a match (based on multiple criteria)</li>
+</ul>
+<p>Take into account the following considerations when defining your matching service:</p>
+<ul class="simple">
+<li>Understand the different types of users</li>
+<li>Prepare for matching with customer data aggregation and data cleansing</li>
+<li>Define the rules for successful matching, for example:<ul>
+<li>matching synonyms, for example matching personal names of <strong>William</strong> and <strong>Bill</strong></li>
+<li>possible transposition of multiple part names, for example <strong>Anna Marie</strong>,  <strong>Jane</strong> and <strong>Anna, Marie Jane</strong></li>
+<li>possible transposition errors of day and month in the date of birth, for example <strong>04/10/78</strong> and <strong>10/04/78</strong></li>
+</ul>
+</li>
+<li>Specify additional attributes that can be used to match identities reliably and securely, for example; passport number. The matching service can then prompt the hub to request additional attributes from the identity provider</li>
+<li>Understand, from both a business and a technical view, what level of ‘fuzzy matching’ is acceptable and possible. The service can apply fuzzy matching when an exact match is not found; it allows a match that, although not 100%, is above a service-defined threshold matching percentage</li>
+<li>Define the fuzzy matching rules</li>
+<li>Manage the risk of incorrect matching and decide what happens if multiple records are found or if there are no matches (user not found). If there are no matches, you can optionally  <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/buildMatchingService.html#creating-user-accounts">create a new account.</a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>The matching strategy has to be shared/agreed/whatever it is with engagement leads</li>
+<li>For more guidance, see <a class="reference internal" href="#matching-strategy-example">Matching strategy example</a>.</li>
+</ul>
+</div>
 </div>
 <div class="section" id="matching-strategy-example">
 <h3>Matching strategy example<a class="headerlink" href="#matching-strategy-example" title="Permalink to this headline">¶</a></h3>
@@ -493,15 +497,18 @@ The following diagram shows the message flow for user account creation (happy pa
 <div class="section" id="further-guidance">
 <h3>Further guidance<a class="headerlink" href="#further-guidance" title="Permalink to this headline">¶</a></h3>
 <p>Please Contact the <a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">GOV.UK Verify team</a> or your engagement lead if your service needs more help with building a matching service.</p>
+<p>CATH COMMENT : NOT SURE WHERE TO PUT THIS OR WHETHER IT IS NEEDED</p>
 </div>
-<div class="section" id="cath-testing-stuff">
-<h3>Cath testing stuff<a class="headerlink" href="#cath-testing-stuff" title="Permalink to this headline">¶</a></h3>
-<p>This is just a test to see how to insert images. I&#8217;ll remove this soon.</p>
-<p>This a file created with draw io, exported as png:</p>
-<img alt="../../_images/CathTestDiagram1.png" src="../../_images/CathTestDiagram1.png" />
-<p>And as svg:</p>
-<img src="../../_images/CathTestDiagram1.svg" /><p>This is one of George&#8217;s visio files converted to svg:</p>
-<img src="../../_images/test.svg" /></div>
+<div class="section" id="importance-of-a-matching-service">
+<h3>Importance of a matching service<a class="headerlink" href="#importance-of-a-matching-service" title="Permalink to this headline">¶</a></h3>
+<p>The Identity Assurance Hub Service SAML 2.0 Profile states that a service must nominate a matching service, even if it doesn&#8217;t need to perform matching. This is because the matching service also performs other key functions. The matching service also:</p>
+<ul class="simple">
+<li>Creates the hashed persistent identifier</li>
+<li>Creates the final assertion as sent to the service</li>
+<li>Acts as the trust anchor for the service (signs the assertion)</li>
+<li>Attempts to find a local identifier that means something to the service (optionally)</li>
+</ul>
+</div>
 </div>
 </div>
 

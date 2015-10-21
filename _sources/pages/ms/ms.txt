@@ -16,11 +16,6 @@ UK citizens do not have a unique identifier, so the government service needs to 
 
 It is the responsibility of government services to develop and implement the matching service that carries out this matching. We have provided this guidance for services to consider. We recognise that not all services have experience of matching verified identities to government data sources, and that the process of matching itself is often complex. 
 
-.. Cath note - can we remove this? see How a Importance of a matching service below.
-
-.. note:: The hashed pid is specific to the combination of user, service and LPD. Please refer to `Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_
-
-
 
 How a matching service works
 ----------------------------
@@ -40,16 +35,8 @@ Matching assured identities to records is likely to be complicated. A service ne
 
 Services have to carry out a risk-based match to find the account against which to match. For example, the matching service must be able to handle the following circumstances:
 
-* When multiple records are found that could be a match (risk of incorrect matching) 
-* When no match is found, (whether to create a new record for the user) 
-
-
-
-.. Cath comment: Should this go somewhere later? Also, are users themselves directed to the record?? 
-
-The hub sends the matching dataset to the matching service via the Matching Service Adapter. Once matching has taken place, the user is directed to the correct record within the service. 
-
-There are potentially 3 cycles of matching, see `Matching cycles`_ . If, after these 3 cycles, there’s no match, the service can optionally decide to create a new account for the user. See `Creating user accounts`_ for more information. 
+* When multiple records are found that could be a match (decide how to minimise risk of incorrect matching) 
+* When no match is found (decide whether to create a new record for the user) 
 
 
 
@@ -59,7 +46,7 @@ Confidence scoring for matching
 Confidence scoring is the score given to the data that matches; below is a greatly simplified example : 
 
 * 100% match confidence means that all elements of data fully match 
-* 80% match confidence might mean that first name, surname and address match, but date of birth is showing a mismatch 
+* 80% match confidence might mean that first name, surname, and date of birth match, but address is showing a mismatch 
 
 Mismatches in data can happen, because, for example, the user typed the asserted information incorrectly or incorrect data is held in the service records. Service data may be incorrect for many reasons, for example if someone has moved house or changed their name but not informed the service.
 
@@ -69,66 +56,10 @@ Matching may be easier when there’s a unique identifier, eg a passport number,
 
 It is up to the service to configure the level of match confidence that is needed, as attitudes to risk and matching requirements may be different for each service. 
 
+We recommend that the service analyse its local data sources in light of the matching strategy, so that the service can test and refine the strategy before launching alpha or beta services. 
 
-
-
-
-Importance of a matching service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Identity Assurance Hub Service SAML 2.0 Profile states that a service must nominate a matching service, even if it doesn't need to perform matching. This is because the matching service also performs other key functions. The matching service also: 
-
-.. Cath comment - Will the readers of this document know what these mean at this early stage? 
-
-* Creates the hashed persistent identifier 
-* Creates the final assertion as sent to the service 
-* Acts as the trust anchor for the service (signs the assertion) 
-* Attempts to find a local identifier that means something to the service (optionally)
-
-
-
-
-
-Build a matching service
-------------------------
-
-Matching strategy
-~~~~~~~~~~~~~~~~~
-
-.. Cath comment. what is the difference between these lists?
-
-Take into account the following considerations when defining your matching service:
-
-* Understand the different types of users 
-* Prepare for matching with customer data aggregation and data cleansing 
-* Define the rules for successful matching, for example allow synonyms for first names such as William and Bill 
-* Specify additional attributes that can be used to match identities reliably and securely, for example; passport number. The matching service can then prompt the hub to request additional attributes from the identity provider 
-* Understand, from both a business and a technical view, what level of ‘fuzzy matching’ is acceptable and possible. The service can apply fuzzy matching when an exact match is not found; it allows a match that, although not 100%, is above a service-defined threshold matching percentage 
-* Define the fuzzy matching rules 
-
-
-
-The matching strategy should take into account: 
-
-* quality of available data 
-* completeness of local data sources 
-* confidence level required in a successful match 
-* how to score the confidence of a match (based on multiple criteria) 
-
-We also recommend that the service analyse its local data sources in light of the matching strategy, so that the service can test and refine the strategy before launching alpha or beta services. 
-
-.. note:: * The matching strategy has to be shared/agreed/whatever it is with engagement leads
- * For more guidance, see `Matching strategy example`_. 
-
-You can define your own rules for your matching service, such as the following:
-
-* matching synonyms, for example matching personal names of **William** and **Bill**
-* possible transposition of multiple part names, for example **Anna Marie**,  **Jane** and **Anna, Marie Jane**
-* possible transposition errors of day and month in the date of birth, for example **04/10/78** and **10/04/78**
-
-You also have to manage the risk of incorrect matching and decide what happens if multiple records are found or if there are no matches (user not found). If there are no matches, you can optionally  `create a new account. <http://alphagov.github.io/identity-assurance-documentation/stage4/buildMatchingService.html#creating-user-accounts>`_
-
-**Example of matching request**
+Example of matching request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. John Doe wishes to submit his Self Assessment tax return online to HMRC. He will attempt to sign in to the service using his identity provider.
 2. HMRC issues a request to the GOV.UK Verify hub to authenticate John Doe.
@@ -136,14 +67,19 @@ You also have to manage the risk of incorrect matching and decide what happens i
 4. John Doe provides his identity credentials.
 5. The identity provider confirms these credentials are correct and responds with identity information (matching dataset), which is returned to HMRC through the hub. 
 6. The hub provides the matching service with the user’s persistent identifier and matching dataset.
-7. The Matching Service Adapter hashes the persistent identifier so that it is meaningless to other services and passes the hashed persistent identifier and the matching dataset to HMRC’S matching service.
+7. The Matching Service Adapter hashes the persistent identifier so that it is meaningless to other services and passes the hashed persistent identifier (PID) and the matching dataset to HMRC’S matching service.
 8. HMRC’s matching service tries to locate John Doe’s tax record in their internal dataset, using the hashed persistent identifier and the matching dataset.
+
+.. note:: The hashed pid is specific to the combination of user, service and LPD. Please refer to `Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_
+
 
 The following diagram gives an overview of the matching process:
 
 .. _MatchingProcessDiagram:
 
 .. image:: MatchingProcessDiagram.jpg
+
+.. Cath question: who is 'you' in the sentence below?
 
 Matching is initiated when a user has successfully authenticated at an identity provider in response to a request from you. The hub receives the identity provider’s response, containing:
 
@@ -153,6 +89,55 @@ Matching is initiated when a user has successfully authenticated at an identity 
 The hub passes this response to the :ref:`Matching Service Adapter<MSA>`. The Matching Service Adapter essentially converts the SAML used by the hub into the JSON used by your matching service.
 
 The Matching Service Adapter hashes the persistent identifier to create an identifier that is meaningless to other services, and then sends a JSON query to your matching service which tries to find a match for the user’s identity in your service’s records. The matching service attempts 3 cycles of matching as described below.
+
+
+NEED TO INTEGRATE THIS (COPIED OVER FROM HOW A MS WORKS IN TECH GUIDE)
+
+.. Cath comment: Should this go somewhere later? Also, are users themselves directed to the record?? 
+
+The hub sends the matching dataset to the matching service via the Matching Service Adapter. Once matching has taken place, the user is directed to the correct record within the service. 
+
+There are potentially 3 cycles of matching, see `Matching cycles`_ . If, after these 3 cycles, there’s no match, the service can optionally decide to create a new account for the user. See `Creating user accounts`_ for more information. 
+
+
+
+Build a matching service
+------------------------
+
+Matching strategy
+~~~~~~~~~~~~~~~~~
+
+.. Cath comment. Can combine lists or keep separate? I've already combined sublist. Getting too unweildy for one list?
+
+The matching strategy should take into account: 
+
+* quality of available data 
+* completeness of local data sources 
+* confidence level required in a successful match 
+* how to score the confidence of a match (based on multiple criteria) 
+
+
+
+Take into account the following considerations when defining your matching service:
+
+* Understand the different types of users 
+* Prepare for matching with customer data aggregation and data cleansing 
+* Define the rules for successful matching, for example:
+
+  * matching synonyms, for example matching personal names of **William** and **Bill**
+  * possible transposition of multiple part names, for example **Anna Marie**,  **Jane** and **Anna, Marie Jane**
+  * possible transposition errors of day and month in the date of birth, for example **04/10/78** and **10/04/78**
+
+* Specify additional attributes that can be used to match identities reliably and securely, for example; passport number. The matching service can then prompt the hub to request additional attributes from the identity provider 
+* Understand, from both a business and a technical view, what level of ‘fuzzy matching’ is acceptable and possible. The service can apply fuzzy matching when an exact match is not found; it allows a match that, although not 100%, is above a service-defined threshold matching percentage 
+* Define the fuzzy matching rules 
+* Manage the risk of incorrect matching and decide what happens if multiple records are found or if there are no matches (user not found). If there are no matches, you can optionally  `create a new account. <http://alphagov.github.io/identity-assurance-documentation/stage4/buildMatchingService.html#creating-user-accounts>`_
+
+
+.. note:: * The matching strategy has to be shared/agreed/whatever it is with engagement leads
+ * For more guidance, see `Matching strategy example`_. 
+
+
 
 Matching strategy example
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -369,20 +354,19 @@ Please Contact the `GOV.UK Verify team <http://rp-environment-request.ida.digita
 
 
 
-Cath testing stuff
-~~~~~~~~~~~~~~~~~~
-This is just a test to see how to insert images. I'll remove this soon.
+CATH COMMENT : NOT SURE WHERE TO PUT THIS OR WHETHER IT IS NEEDED
 
-This a file created with draw io, exported as png:
+Importance of a matching service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: CathTestDiagram1.png
+The Identity Assurance Hub Service SAML 2.0 Profile states that a service must nominate a matching service, even if it doesn't need to perform matching. This is because the matching service also performs other key functions. The matching service also: 
+
+.. Cath comment - Will the readers of this document know what these mean at this early stage? 
+
+* Creates the hashed persistent identifier 
+* Creates the final assertion as sent to the service 
+* Acts as the trust anchor for the service (signs the assertion) 
+* Attempts to find a local identifier that means something to the service (optionally)
 
 
-And as svg: 
-
-.. image:: CathTestDiagram1.svg
-
-This is one of George's visio files converted to svg: 
-
-.. image:: test.svg
 

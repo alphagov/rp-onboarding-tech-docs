@@ -88,7 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../ms/ms.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ms/ms.html#how-a-matching-service-works">How a matching service works</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#confidence-scoring-for-matching">Confidence scoring for matching</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#importance-of-a-matching-service">Importance of a matching service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#example-of-matching-request">Example of matching request</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../ms/ms.html#build-a-matching-service">Build a matching service</a><ul>
@@ -99,13 +99,25 @@
 <li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#minimum-requirements-for-a-matching-service">Minimum requirements for a matching service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#common-problems">Common problems</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#further-guidance">Further guidance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#cath-testing-stuff">Cath testing stuff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#importance-of-a-matching-service">Importance of a matching service</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../msa/msa.html#cath-testing-stuff">Cath testing stuff</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Public Key Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elements-of-pki">Elements of PKI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-pki-works-with-gov-uk-verify">How PKI works with GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-pki-certificates">Request PKI certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-gov-uk-verify-use-pki">How does GOV.UK Verify use PKI?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">User Research</a></li>
 <li class="toctree-l1"><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html">Glossary of terms</a></li>
@@ -149,6 +161,50 @@
             
       <div class="section" id="public-key-infrastructure">
 <span id="pki"></span><h1>Public Key Infrastructure<a class="headerlink" href="#public-key-infrastructure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>GOV.UK Verify is a secure service reliant on encryption and signing messages. GOV.UK Verify uses a <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html#pki">public key infrastructure</a> (PKI)  to confirm the integrity of data passed between GOV.UK Verify and trusted third parties.</p>
+<p>A PKI facilitates secure communication over insecure public networks, like the internet. A PKI is used to assure the identity of the owner of the public key through a system of digital certificates. It can provide confidence when encrypting or signing data:</p>
+<ul class="simple">
+<li>encrypting data means that it is scrambled in a way that makes it unreadable except to intended recipients</li>
+<li>signing data means proving the source of it, for example an email can be signed with a valid digital signature to prove that it has not been tampered with in transit and that it is from the person that it claims to be from</li>
+</ul>
+<p>A PKI issues digital certificates so that an organisation can establish and maintain a trusted network of individuals and services. The PKI provides mechanisms for revoking certificates if needed, for example; if security has been compromised.</p>
+<div class="section" id="elements-of-pki">
+<h3>Elements of PKI<a class="headerlink" href="#elements-of-pki" title="Permalink to this headline">¶</a></h3>
+<p><strong>Public and private keys</strong></p>
+<p>PKI works on the principle of each user having a pair of keys: a private key and a public key. The user generates the keys by running a mathematical process. The keys themselves consist of very long numbers linked in a particular way the public can be derived from the private but not the other way around. Only the user who generates the keys retains the private key, but their public key can be given to anyone. The certificate authority takes the public key and creates the digital certificate. Any third party can then request confirmation from the certificate authority that the certificate is valid, and the public key it contains is indeed linked to that identity.
+When encrypting data, a user or service uses the public key of the remote party to scramble a message. This means that only the remote party can unscramble the message because only they hold the corresponding private key. When signing data, a user or service seeks to prove that the data being sent comes from them. They scramble a message using their own private key which allows anyone with their public certificate to be confident of the source.</p>
+<p>A certificate is a file that contains a public key. Data encrypted with a public key can only be decrypted with the corresponding private key, and vice versa. You need to generate both private and public keys before you request certificates.</p>
+<img alt="../../_images/PKIInfratructureDiagram.jpg" src="../../_images/PKIInfratructureDiagram.jpg" />
+<p><strong>Certificates</strong></p>
+<p>PKI is based on digital certificates. A digital certificate can verify the identity of many things, such as a person, a computer or software. For example, to ensure the integrity of a transaction between 2 computers, digital certificates can prove the identity of each machine to the other. However, the certificates must also be authenticated, (issued by a source that one computer knows and trusts so that it accepts the other machine&#8217;s certificate as proof of its identity). Digital certificates are authenticated by being issued and signed by a certificate authority.</p>
+</div>
+</div>
+<div class="section" id="how-pki-works-with-gov-uk-verify">
+<h2>How PKI works with GOV.UK Verify<a class="headerlink" href="#how-pki-works-with-gov-uk-verify" title="Permalink to this headline">¶</a></h2>
+<p>The Identity Assurance Programme (IDAP) runs it’s own Public Key Infrastructure (PKI) to enable secure transactions across the GOV.UK Verify federation.  As part of that federation you will need to use certificates generated from the IDAP PKI and are therefore responsible for ensuring that the terms of the PKI’s Certification Policy are upheld.</p>
+<p>The documents you require are explained below.  To receive these documents, please ask your Service Delivery Manager to email <a class="reference external" href="mailto:idappki&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idappki<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
+<ul class="simple">
+<li>The <strong>Certification Practice Statement</strong> for the Interim PKI for the IDAP Ecosystem is  the principal statement of practice governing cryptographic services for the IDAP Ecosystem.</li>
+<li>The <strong>IDAP PKI Subscriber Agreement</strong> sets out the terms of use of PKI for those using certificates received from the IDAP PKI</li>
+<li>The <strong>IDAP PKI Relying Party Agreement</strong> sets out terms for those who do not necessarily hold a certificate, but who, during the course of a transaction, may be a recipient of a certificate and place reliance on a Certificate and/or Digital Signatures created using that Certificate.  Note: this is the PKI definition of a Relying Party rather than that in common use in the IDAP ecosystem that usually refers to HMG service provider. In this context, the term Relying Party relates to the reliance of <strong>any member of the federation</strong> on the certificates issued under this Certification Practice.</li>
+<li>The <strong>GOV.UK Verify Certification Process for (Goverment Services) Subscribers</strong> describes how to acquire certificates from the IDAP PKI.  It should be read in conjunction with the <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/requestTestCertificates.html#requesttestcertificates">Onboarding guide Stage 4, Step 5.</a></li>
+</ul>
+</div>
+<div class="section" id="request-pki-certificates">
+<h2>Request PKI certificates<a class="headerlink" href="#request-pki-certificates" title="Permalink to this headline">¶</a></h2>
+<p>BELOW IS CONTENT FROM TECHNICAL GUIDE TO COPY UP TO TITLES ABOVE</p>
+</div>
+<div class="section" id="how-does-gov-uk-verify-use-pki">
+<h2>How does GOV.UK Verify use PKI?<a class="headerlink" href="#how-does-gov-uk-verify-use-pki" title="Permalink to this headline">¶</a></h2>
+<p>GOV.UK Verify uses a PKI to confirm the integrity of data passed between GOV.UK Verify and trusted third parties. GOV.UK Verify is a secure service based on encryption and signing messages. To interoperate with the GOV.UK Verify hub, you need to obtain signed certificates from a GDS certificate authority for both the integration and production environments. GDS IDAP has 2 certificate authorities from whom you must obtain signed certificates, depending on the environment:</p>
+<ul class="simple">
+<li>IDAP Test certificate authority for the integration environment</li>
+<li>IDAP certificate authority for the production environment</li>
+</ul>
+<p><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/requestTestCertificates.html">Stage 4, step 5</a> of the <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html">Onboarding Guide</a> describes how to apply for these certificates and how to generate the private and public keys. A full description of GDS PKI, the Certification Practice Statement, is also available on request.</p>
+</div>
 </div>
 
 
