@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Build your service: SAML integration &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="SAML" href="saml.html"/>
+        <link rel="next" title="Run SAML compliance tests" href="samlComplianceTool.html"/>
+        <link rel="prev" title="How SAML works" href="samlWorks.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Build your service: SAML integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#access-the-saml-metadata">Access the SAML metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consume-responses-using-saml-metadata">Consume responses using SAML metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="saml.html">SAML</a> &raquo;</li>
+      
+    <li>Build your service: SAML integration</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="build-your-service-saml-integration">
+<span id="samlintegration"></span><h1>Build your service: SAML integration<a class="headerlink" href="#build-your-service-saml-integration" title="Permalink to this headline">¶</a></h1>
+<p>Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
+<p>You can choose from a wide range of libraries and off-the-shelf products to add the SAML functionality to your service, for example, Shibboleth-SP (service provider). Contact your engagement lead if you need further information.</p>
+<p>When you&#8217;ve built your service you must:</p>
+<ul class="simple">
+<li><a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a></li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>run end-to-end testing in the integration environment</span></a></li>
+</ul>
+<div class="section" id="access-the-saml-metadata">
+<span id="saml-access-metadata"></span><h2>Access the SAML metadata<a class="headerlink" href="#access-the-saml-metadata" title="Permalink to this headline">¶</a></h2>
+<p>The SAML metadata contains the <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-signing"><span>SAML encryption and signing certificates</span></a> used within the GOV.UK Verify federation. The preferred way to distribute and access certificates is through the SAML metadata. The IDAP certificate authority issues certificates. See <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
+<p>The GOV.UK Verify federation uses:</p>
+<blockquote>
+<div><p><strong>Federation metadata</strong></p>
+<blockquote>
+<div><p>The federation metadata is located at <a class="reference external" href="https://www.signin.service.gov.uk/SAML2/metadata/federation">https://www.signin.service.gov.uk/SAML2/metadata/federation</a>.</p>
+<p>This metadata is signed. It includes entity descriptors that define the roles of the GOV.UK Verify hub and the identity providers.</p>
+</div></blockquote>
+<p><strong>Matching Service Adapter metadata</strong></p>
+<blockquote>
+<div><p>The Matching Service Adapter metadata is located in your Matching Service Adapter at: /matching-service/SAML2/metadata</p>
+<p>This metadata is generated by your Matching Service Adapter and contains your Matching Service Adapter certificates. It includes an entity descriptor that defines the role of the Matching Service Adapter.</p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="consume-responses-using-saml-metadata">
+<span id="saml-consume-responses"></span><h2>Consume responses using SAML metadata<a class="headerlink" href="#consume-responses-using-saml-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Your service must be able to receive (consume) SAML responses that are issued by the GOV.UK Verify hub.</p>
+<p>We recommend that you use the federation metadata and the Matching Service Adapter metadata to do this. You must first <a class="reference internal" href="#saml-access-metadata"><span>access the metadata</span></a>.</p>
+<ol class="arabic">
+<li><p class="first">Validate the signature on the response. This checks that the response is correctly signed by the GOV.UK Verify hub
+(entityID: <code class="docutils literal"><span class="pre">https://signin.service.gov.uk</span></code>).</p>
+<p>You can use the hub X509 signing certificates contained in the federation metadata to validate this signature.</p>
+</li>
+<li><p class="first">Decrypt the assertion.</p>
+</li>
+<li><p class="first">Validate the signature on the assertion contained in the response. This assertion is generated and signed by your Matching Service Adapter.</p>
+<p>You can use the X509 signing certificate contained in the Matching Service Adapter metadata to validate this signature.</p>
+</li>
+</ol>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">Use this procedure with care. You must trust assertions signed by the Matching Service Adapter only. The GOV.Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s <em>not</em> possible to trust the hub to issue assertions.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="samlComplianceTool.html" class="btn btn-neutral float-right" title="Run SAML compliance tests" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="samlWorks.html" class="btn btn-neutral" title="How SAML works" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

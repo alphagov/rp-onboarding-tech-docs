@@ -1,0 +1,34 @@
+.. _hub:
+
+What does the GOV.UK Verify hub do?
+======================================
+
+The hub is at the centre of GOV.UK Verify, centralising the interactions between users, government services, and identity providers.
+
+.. csv-table:: 
+   :widths: 75, 20
+   :name: flow-diagram
+
+   ".. figure:: ../arch/arch_overview.png
+     :alt: Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter. Communication with the hub is via SAML with PKI. The Matching Service Adapter is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture.
+
+     GOV.UK Verify architecture","For more details, see the diagrams:
+
+   * :ref:`SAML message flow <samlflow_diagram>`
+   * :ref:`matching cycles <ms_matchcyles_diagram>`
+   * :ref:`user account creation <ms_cua_diagram>`"
+
+1. The GOV.UK Verify hub receives a :ref:`SAML <saml>` request from the government service to authenticate a user who is trying to access their service.
+2. The GOV.UK Verify hub helps the user select an identity provider that will authenticate them.
+3. The GOV.UK Verify hub sends a SAML request to the chosen identity provider to authenticate the user.
+4. The chosen identity provider authenticates the user. It then sends two assertions (in a SAML response) to the GOV.UK Verify hub. These assertions contain the:
+
+ * :ref:`matching dataset <gloss_mds>` - name, address, date of birth, and gender (optional), plus historical data where available
+ * :ref:`persistent identifier <gloss_persid>` which identifies the unique combination of the user and identity provider
+ * :ref:`level of assurance <gloss_loa>` to which the identity provider authenticated the user
+
+4. The GOV.UK Verify hub initiates matching of the authenticated user, based on the service’s :ref:`matching strategy <ms_strat>`, by sending a SAML attribute query to the service’s Matching Service Adapter.
+5. If the user is matched, the GOV.UK Verify hub passes an assertion (SAML response) of the user’s authenticated identity to the service.
+
+
+For more information, see the :ref:`diagram showing the SAML message flow <samlWorks>` within the GOV.UK Verify federation.

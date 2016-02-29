@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How a matching service works &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching Service" href="ms.html"/>
+        <link rel="next" title="Build a local matching service" href="msBuild.html"/>
+        <link rel="prev" title="Matching Service" href="ms.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Matching Service</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">How a matching service works</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matching-cycles">Matching cycles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-0-persistent-identifier-match">Cycle 0: persistent identifier match</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-1-matching-dataset-match">Cycle 1: matching dataset match</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-2-not-used">Cycle 2: (not used)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-3-user-asserted-match">Cycle 3: user-asserted match</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#matching-cycles-message-flow">Matching cycles: message flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msCua.html">Create user accounts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="ms.html">Matching Service</a> &raquo;</li>
+      
+    <li>How a matching service works</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="how-a-matching-service-works">
+<span id="msworks"></span><h1>How a matching service works<a class="headerlink" href="#how-a-matching-service-works" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="matching-cycles">
+<span id="ms-matchcycles"></span><h2>Matching cycles<a class="headerlink" href="#matching-cycles" title="Permalink to this headline">¶</a></h2>
+<p>The matching process consists of 3 matching cycles. The cycles are progressive attempts to match the user to the correct record in the government service&#8217;s data sources:</p>
+<ul>
+<li><p class="first">Cycle 0: persistent identifier match</p>
+</li>
+<li><p class="first">Cycle 1: matching dataset match</p>
+</li>
+<li><p class="first">Cycle 3: user-asserted match</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Cycle 2 is not currently implemented.</p>
+</div>
+</li>
+</ul>
+<p>The GOV.UK Verify hub issues a single call for matching cycles 0 and 1, then a subsequent call for matching cycle 3. In your <a class="reference internal" href="msBuild.html#ms-strat"><span>matching strategy</span></a>, you can run cycle 0 first. Then, if there is no match, you can run cycle  1 before returning the response to the Matching Service Adapter.</p>
+<p>If there&#8217;s no match after the 3 cycles, you can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user. Some services may decide to create a new account after only 1 matching cycle. This applies to services where users are creating new digital accounts rather than relying on existing government service data sources.</p>
+<p>When an identity provider verifies a user&#8217;s identity, they send an assertion to the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> via the <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>. This assertion contains information about the user&#8217;s identity used in the different matching cycles. This information includes:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a></li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a></li>
+</ul>
+<div class="section" id="cycle-0-persistent-identifier-match">
+<span id="ms-mc0"></span><h3>Cycle 0: persistent identifier match<a class="headerlink" href="#cycle-0-persistent-identifier-match" title="Permalink to this headline">¶</a></h3>
+<p>This cycle works when a user has previously verified their identity with the same identity provider.</p>
+<p>When an identity provider verifies a user&#8217;s identity, they assign a unique persistent identifier to that user. The identity provider sends the persistent identifier to the Matching Service Adapter, via the hub. The Matching Service Adapter then hashes the persistent identifier.</p>
+<div class="admonition note" id="ms-hashedpid">
+<p class="first admonition-title">Note</p>
+<p>A hashed persistent identifier refers to a combination of:</p>
+<ul class="last simple">
+<li>the user</li>
+<li>the identity provider</li>
+<li>the service the user is trying to access (added when the persistent identifier is hashed)</li>
+</ul>
+</div>
+<p>Cycle 0 matches the user&#8217;s hashed persistent identifier to an existing hashed persistent identifier in the local matching datastore. This succeeds only if the user has previously been matched by your service with the same identity provider. The first time a new user is matched (with cycle 1), the hashed persistent identifier is written to the local matching datastore. It is then used for subsequent cycle 0 matches.</p>
+</div>
+<div class="section" id="cycle-1-matching-dataset-match">
+<span id="ms-mc1"></span><h3>Cycle 1: matching dataset match<a class="headerlink" href="#cycle-1-matching-dataset-match" title="Permalink to this headline">¶</a></h3>
+<p>This cycle uses a limited set of information called the matching dataset to check for a match between the user and the correct record. The identity provider verifies the information in the matching dataset (except gender).</p>
+<p id="ms-mds">The matching dataset contains:</p>
+<ul class="simple">
+<li>name</li>
+<li>address</li>
+<li>date of birth</li>
+<li>gender (optional)</li>
+<li>historical data, if available, eg previous addresses</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It&#8217;s optional for users to provide gender. Where provided, gender is not verified by the identity provider. It&#8217;s used for matching purposes only.</p>
+</div>
+<p>The identity provider supplies the matching dataset. Your local matching service can use any or all the details in the matching dataset to confirm a match between the user and their existing record. Your service&#8217;s <a class="reference internal" href="msBuild.html#ms-strat"><span>matching strategy</span></a> specifies which details to use.</p>
+<p>If the local matching service finds a match, it creates a correlation between the hashed persistent identifier and the existing record. This enables cycle 0 matching to occur during subsequent transactions.</p>
+</div>
+<div class="section" id="cycle-2-not-used">
+<h3>Cycle 2: (not used)<a class="headerlink" href="#cycle-2-not-used" title="Permalink to this headline">¶</a></h3>
+<p>Cycle 2 uses trusted attributes related to identity, for example, being a disabled badge holder, to enhance the matching process.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Cycle 2 is not currently supported by GOV.UK Verify.</p>
+</div>
+</div>
+<div class="section" id="cycle-3-user-asserted-match">
+<span id="ms-mc3"></span><h3>Cycle 3: user-asserted match<a class="headerlink" href="#cycle-3-user-asserted-match" title="Permalink to this headline">¶</a></h3>
+<p>If cycle 1 finds more than 1 potential match, cycle 3 asks the user for some additional information, for example, driving licence number. The hub collects the additional information and sends it to the matching service. The local matching service then uses it to refine the match. When the local matching service finds a match, it saves the hashed persistent identifier in the matching datastore.</p>
+<p>This cycle is defined in the government service policy and may not be required for all matches. The government service defines the information the hub collects and how to use it for matching. For example, you decide how many pieces of additional information to request. If you request 2 pieces of information and the user can only provide 1 of them, your matching rules specify whether to match this user.</p>
+<p>Use this cycle to enhance cycle 1 and not as an alternative to cycle 1.</p>
+</div>
+</div>
+<div class="section" id="matching-cycles-message-flow">
+<h2>Matching cycles: message flow<a class="headerlink" href="#matching-cycles-message-flow" title="Permalink to this headline">¶</a></h2>
+<p>This diagram shows the message flow for matching cycles 0, 1, and 3. The numbers identify each stage in the flow. See below for explanations.</p>
+<table border="1" class="docutils" id="flow-diagram">
+<span id="ms-matchcyles-diagram"></span><colgroup>
+<col width="84%" />
+<col width="16%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last figure" id="id1">
+<img alt="Diagram showing the three matching cycles, 0, 1 and 3. The Matching Service Adapter converts between SAML and JSON. The text below the image describes the steps." src="../../_images/matchingcycles.png" />
+<p class="caption"><span class="caption-text">Matching cycles 0, 1, and 3</span></p>
+</div>
+</td>
+<td><p class="first">For more details, see the diagrams:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this example, an identity provider has already verified a user&#8217;s identity. For more details of this process, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow diagram</span></a>.</p>
+</div>
+<ol class="arabic simple">
+<li>The identity provider sends the following information to the hub:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>the user&#8217;s identity information, known as the <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a></li>
+<li>a unique <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a> for the identity, created by the identity provider</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>The hub forwards the matching dataset and persistent identifier to the Matching Service Adapter.</li>
+<li>The Matching Service Adapter hashes the persistent identifier to make it meaningless to other services.</li>
+<li>The Matching Service Adapter sends the <a class="reference internal" href="#ms-hashedpid"><span>hashed persistent identifier</span></a> and the matching dataset to the local matching service.</li>
+<li>The local matching service runs cycle 0:</li>
+</ol>
+<blockquote>
+<div>The local matching service tries to find a match between the user&#8217;s hashed persistent identifier and a hashed persistent identifier in the local matching datastore. If cycle 0 finds a match, go to step 9.</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>If cycle 0 finds no match, a <code class="docutils literal"><span class="pre">no</span> <span class="pre">match</span></code> response is returned to the Matching Service Adapter (6a) and the local matching service runs cycle 1:</li>
+</ol>
+<blockquote>
+<div>The local matching service tries to find a match between the user&#8217;s matching dataset and a record in government service data sources. If cycle 1 finds a match, go to step 8.</div></blockquote>
+<ol class="arabic simple" start="7">
+<li>If cycle 1 finds no match, a <code class="docutils literal"><span class="pre">no</span> <span class="pre">match</span></code> response is returned to the Matching Service Adapter (7a) and the local matching service runs cycle 3:</li>
+</ol>
+<blockquote>
+<div>The hub asks the user to provide additional information, for example, their driving licence number and sends it to the Matching Service Adapter. If cycle 3 finds no match, the matching service can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a>  for the user, provided your matching service supports this feature and your user journey seeks explicit user consent.</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>If cycle 1 or cycle 3 finds a match, the local matching service saves the hashed persistent identifier in the matching datastore along with the user&#8217;s record. Future matches with cycle 0 will use this data when the same user returns, having been verified by the same identity provider.</li>
+<li>The local matching service returns a JSON response, <code class="docutils literal"><span class="pre">match</span></code>, to the Matching Service Adapter to indicate that a match was found.</li>
+<li>The Matching Service Adapter creates a SAML response based on the JSON response, and forwards it to the government service via the GOV.UK Verify hub. The SAML response contains the hashed persistent identifier.</li>
+<li>The government service recovers the user&#8217;s record from the matching datastore using the the user&#8217;s persistent identifier. This allows the government service to interact with the user.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="msBuild.html" class="btn btn-neutral float-right" title="Build a local matching service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ms.html" class="btn btn-neutral" title="Matching Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,300 @@
+Glossary of terms
+==================
+
+**assertion**
+
+A package of data created by an entity in the GOV.UK federation. Data in an assertion is signed by the creator of the assertion (eg an identity provider or the Matching Service Adapter) and encrypted for the recipient (eg the hub).
+
+**assured identity**
+
+An identity that's been verified to the required level of assurance.
+
+**attributes**
+
+Data that is sent from one entity to another in a SAML assertion, for example, the matching dataset for use by the matching service.
+
+**authentication**
+
+The process by which a system confirms the user is known to that system, usually through the use of one or more credentials.
+
+**authentication request**
+
+The request that a service sends to the hub, or the hub sends to an identity provider, to request identification of an individual trying to access an online digital service.
+
+**certificate**
+
+A file containing a public key. Only certificates that have been approved by a GDS certificate authority can be used with GOV.UK Verify.
+
+	**certificate authority**
+
+	A service that signs and subsequently verifies the authenticity of digital certificates.
+
+.. _csr_file:
+
+	**certificate signing request file**
+
+	A file that contains all the information a certificate authority requires in order to issue a signed certificate.
+
+	**encryption certificate**
+
+	Contains a public key that the sender uses to encrypt a message that the receiver decrypts using their corresponding private key. This provides the sender with assurance that only the receiver can decrypt the message.
+
+	**signing certificate**
+
+	Contains a public key that the receiver uses to decrypt a message encrypted with the sender's private key. This provides the receiver with assurance as to the sender's identity.
+
+**compliance tool**
+
+Enables services to carry out testing of SAML interoperability before testing end to end user journeys in the integration environment. It allows isolated testing of both the connection from the service to the hub and the connection from the hub to the Matching Service Adapter.
+
+**credentials**
+
+An identity provider issues credentials to a user to allow the user to be authenticated when accessing a government service. Examples of credentials are usernames, passwords and security codes.
+
+**data matching**
+
+The process of finding a local identifier through matching that's useful to a government service when completing a transaction, for example confirming a National Insurance number so the user can amend their tax records.
+
+**Data Protection Act 1998**
+
+The Data Protection Act controls how personal information is used by organisations, businesses or the government. Read more about the `Data Protection Act <https://www.gov.uk/data-protection/the-data-protection-act>`_.
+
+**document checking service (DCS)**
+
+A service supplementary to GOV.UK Verify that allows an identity provider to validate user documents against government records.
+
+**Good Practice Guides (GPGs 43, 44, 45, 46 and 56 in relation to identity assurance)**
+
+Documents that have been developed collaboratively with HMG departments, private sector representatives and the UK National Technical Authority for Information Assurance (CESG) to ensure that the business, technical and security demands across the sectors can be met. The guides are intended to ensure that the delivery of trusted online user transactions will take place in accordance with the Identity Assurance Principles.
+
+	**Good Practice Guide 43 (GPG 43)**
+
+	Also known as Requirements for Secure Delivery of Online Public Services (RSDOPS).  This document sets out an approach to determining the components needed to securely deliver public services online to individuals and businesses.
+
+
+.. _gloss_hashpid:
+
+**hashed persistent identifier**
+
+A unique identifier which refers to a combination of a user, the identity provider that verified the user’s identity, and the government service that the user is trying to access.  The Matching Service Adapter generates the hashed persistent identifier from the persistent identifier. This ensures that identifiers for user identity are unique to specific services and can’t be used across multiple services.
+
+.. _gloss_hub:
+
+**hub (hub service, GOV.UK Verify hub)**
+
+The infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service. The hub protects privacy and ensures security during authentication.
+
+
+**identity**
+
+In the case of identity assurance, this is the description of who or what an entity is, defined by a collection of attributes.
+
+**identity assurance**
+
+The ability to determine, with some level of certainty, that an electronic credential representing an entity (human or a machine) with which it interacts to effect a transaction, can be trusted to actually belong to the entity. Proving that a user is who they say they are to a certain level of confidence.
+
+**Identity Assurance Principles**
+
+The principles that set out how the government's identity assurance approach should be configured to meet the privacy and consumer expectations of its users. They are published by the Privacy and Consumer Advisory Group and are amended or replaced from time to time.
+
+.. _identity-provider:
+
+**identity provider**
+
+Private sector organisations, paid by the government, to verify a user is who they say they are and assert verified data that identifies them to a government service.
+
+The organisations are certified as meeting relevant industry security standards and identity assurance standards published by the Cabinet Office and CESG (the UK's national technical authority).
+
+**integration environment**
+
+A production-sized deployment of the entire GOV.UK Verify hub environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.
+
+**knowledge based verification**
+
+A process of testing a user's knowledge about the claimed identity to verify that they are who they claim to be.
+
+	**dynamic knowledge based verification**
+
+	A process where the user is required to provide answers to questions relating to the claimed identity.
+
+	**static knowledge based verification**
+
+	Where a secret has been previously exchanged between 2 parties. One party uses the secret to verify that they are the other party with whom the secret was originally exchanged. Also referred to as a shared secret.
+
+.. _gloss_loa:
+
+**level of assurance (LOA)**
+
+The degree of confidence the government service requires that a user is who they say they are.
+
+	**level of assurance 1 (LOA1)**
+
+	Used when a government service needs to know that it's the same user returning to the service but doesn't need to know who that user is.
+
+	.. _gloss_loa2:
+
+	**level of assurance 2 (LOA2)**
+
+	Used when a government service needs to know on the balance of probabilities who the user is and that that they are a real person.
+
+	**level of assurance 3 (LOA3)**
+
+	Used when a government service needs to know beyond reasonable doubt who the user is and that that they are a real person.
+
+	**level of assurance 4 (LOA4)**
+
+	As level of assurance 3, but with a biometric profile captured at the point of registration.
+
+**local matching datastore**
+
+A datastore that is part of a government service’s local matching service. It stores correlations between hashed persistent identifiers and local identifiers for users.
+
+**local matching service**
+
+The part of a government service's matching service that runs matching cycles to find a match between a user’s assured identity and a record in the government service’s data sources. This allows the government service to interact with the user. Government services build their own local matching service. 
+
+
+**matching cycles**
+
+Matching cycle numbers refer to the sequence of attempts made to find a matching account or local identifier for a particular verified identity as expressed in an assertion of matching data from an identity provider.
+
+	**cycle 0**
+
+	Cycle 0 allows the matching service to match the hashed persistent identifier of a verified user to a hashed persistent identifier held in their local matching datastore. Cycle 0 is used for efficiency. A successful match at cycle 0 can be treated by the matching service as confirmation that the identity being presented is the same identity as previously matched by that service.
+
+	**cycle 1**
+
+	Checks if there’s a match for the user’s identity in the government service’s data sources, using the matching dataset to search for a match.
+
+	**cycle 2**
+
+	Additional matching cycle where trusted attributes are used to enhance the matching process. Cycle 2 is currently not supported by GOV.UK Verify.
+
+
+	**cycle 3**
+
+	Asks the user for some additional information, for example, driving licence number, to complete a match. This cycle enhances cycle 1 and may not be required for all matches.
+
+.. _gloss_mds:
+
+**matching dataset**
+
+The minimum dataset of name, address, date of birth, and (optionally) gender required for matching. The matching dataset is provided by the identity provider. The hub forwards it to the government service's matching service.
+
+.. _matching-service:
+
+**matching service**
+
+The function of finding a local identifier for the individual (eg an id for the user’s account) based on a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the local matching service.  In the SAML profile used by GOV.UK Verify, the matching service is referred to as the service provider matching service (SPMS). 
+
+.. _gloss_msa:
+
+**Matching Service Adapter**
+
+A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the local matching service together comprise the matching service.
+
+**onboarding**
+
+The process through which new government services and identity providers acquire the necessary knowledge, technical skills and integration environment to become part of the identity assurance federation.
+
+.. _gloss_persid:
+
+**persistent identifier**
+
+A unique identifier which refers to a combination of a user and the identity provider that verified the user’s identity. Persistent identifiers are generated by identity providers. They are constructed using pseudo-random values that have no discernible correspondence with the user’s actual identifier, for example, their email address.
+
+**Privacy and Consumer Advisory Group (PCAG)**
+
+Established to help government develop an approach to identity assurance and develop the Identity Assurance Principles.
+
+**private beta**
+
+The first version of the service available to a small number of selected users so we can test and develop it further.
+
+**public beta**
+
+The service is available to users of approved relying party services without the need for pre-approved tokens or a personalised invitation.
+
+.. _gloss_pki:
+
+**public key infrastructure (PKI)**
+
+A set of hardware, software, people, policies and procedures needed to create, manage, distribute, use, store and revoke digital certificates. [#]_ 
+
+.. _private-key:
+
+	**private key**
+
+	A long string of data used in cryptography. Generating a certificate signing request creates a corresponding public key.
+
+.. _public-key:
+
+	**public key**
+
+	A long string of data derived from a private key. Data encrypted with a public key can only be decrypted with the corresponding private key, and vice versa.
+
+**registration**
+
+The process of collecting the required data to enable an identity provider to begin the proofing process.
+
+.. _relying-party:
+
+**relying party**
+
+An entity in a system of federated identity that relies on a response from another entity, such as a successful authentication request. A relying party is also referred to as a service provider when it provides a service that the end user directly interacts with. Relying party is a term used in SAML specifications. In the GOV.UK Verify federation, relying parties are government services.
+
+.. _glossSAML:
+
+**SAML (Security Assertion Markup Language)**
+
+An Extensible Markup Language (XML) open standard for the exchange of authentication and authorisation data between parties such as identity providers and government services. OASIS governs the SAML standards. 
+
+
+**SAML profile**
+
+A profile that specifies how to use SAML within a system of federated identity. The SAML profile for the GOV.UK Verify federation defines the SAML messages that are passed between entities within the federation and the rules for their use. SAML messages take the form of requests and responses, and can contain SAML assertions. The profile is built upon core SAML profiles as defined by OASIS.
+
+
+**service provider matching service (SPMS)**
+
+See :ref:`matching service <matching-service>`.
+
+**Shibboleth**
+
+A standards based, open source software package for web single sign-on.
+
+**Simple Object Access Protocol (SOAP)** 
+
+A messaging protocol that allows programs that run on different operating systems to communicate.
+
+**transaction**
+
+The thing the user wants to do or get from a government service.
+
+An individual online service that a government service offers, for example renew a passport.
+
+**Transport Layer Security (TLS)**
+
+A protocol used to provide secure communications across the internet, to websites or between services. A site using TLS has a URL beginning `https://`
+
+**Uniform Resource Identifier (URI)**
+
+A character string that identifies a resource, for example an electronic document, an image, a source of information or a service. A URI could be a name, a location or both.
+
+**Uniform Resource Locator (URL)**
+
+A character string that identifies a resource by its location. A URL is typically a web address, particularly when used with http. A URL is held to be a subset of a URI, as it provides a way of identifying the resource by describing how to locate it (eg its network location).
+
+**user**
+
+The person accessing the government service on GOV.UK.
+
+**whitelist (for IP addresses)**
+
+A list or register of those permitted access. Whitelisting is the reverse of blacklisting, the practice of identifying those that are denied access, typically used in spam filters in email applications. A whitelist of IP (Internet Protocol) addresses allows data-traffic from / to those IP addresses to access a network by appropriate firewall configuration.
+
+
+
+.. rubric:: Footnotes
+
+.. [#] http://en.wikipedia.org/wiki/Public_key_infrastructure

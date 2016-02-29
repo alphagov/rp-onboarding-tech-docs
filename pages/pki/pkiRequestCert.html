@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Request certificates &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Public Key Infrastructure" href="pki.html"/>
+        <link rel="next" title="Rotate your keys" href="pkiRotate.html"/>
+        <link rel="prev" title="How a PKI works" href="pkiWorks.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pkiWorks.html">How a PKI works</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Request certificates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#name-your-certificate-requesters-and-approvers">Name your certificate requesters and approvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-private-keys">Generate private keys</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#store-private-keys">Store private keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-certificate-signing-requests">Generate certificate signing requests</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#store-certificate-signing-request-files">Store certificate signing request files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submit-certificate-signing-requests">Submit certificate signing requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pkiRotate.html">Rotate your keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
+      
+    <li>Request certificates</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="request-certificates">
+<span id="pkirequestcert"></span><h1>Request certificates<a class="headerlink" href="#request-certificates" title="Permalink to this headline">¶</a></h1>
+<p>To use an integration or production environment, you need to request 4 certificates from the IDAP certificate authority:</p>
+<ul class="simple">
+<li>encryption and signing certificates for your service</li>
+<li>encryption and signing certificates for your Matching Service Adapter</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Only certificates approved by the IDAP certificate authority can be used with GOV.UK Verify</li>
+<li>The procedure to request certificates for your integration and production environments are the same, except for the <a class="reference internal" href="#pki-submit-csr"><span>URL to use for enrolment</span></a></li>
+<li>You must make a separate request for each certificate</li>
+</ul>
+</div>
+<p><strong>To request certificates:</strong></p>
+<ol class="arabic simple">
+<li>Your service manager sends the <a class="reference internal" href="#pki-requesters-approvers"><span>contact details of your certificate requesters</span></a> to the certificate authority.</li>
+<li>Your service manager sends the <a class="reference internal" href="#pki-requesters-approvers"><span>contact details of your approvers</span></a> for the certificate requesters, to the certificate authority.</li>
+</ol>
+<blockquote>
+<div><div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Certificates will not be approved unless your service manager has completed the above steps.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>The technical delivery team <a class="reference internal" href="#pki-gen-private-key"><span>generates a private key</span></a> in the form of a file.</li>
+<li>From the private key, the technical delivery team <a class="reference internal" href="#pki-gen-csr"><span>generates the certificate signing request</span></a> file containing a corresponding public key.</li>
+<li>The technical delivery team <a class="reference internal" href="#pki-submit-csr"><span>submits the certificate signing request</span></a> file to the appropriate certificate authority.</li>
+</ol>
+<div class="section" id="name-your-certificate-requesters-and-approvers">
+<span id="pki-requesters-approvers"></span><h2>Name your certificate requesters and approvers<a class="headerlink" href="#name-your-certificate-requesters-and-approvers" title="Permalink to this headline">¶</a></h2>
+<p>Before requesting certificates, your service manager must name the certificate requesters for your service, and delegate approvers for the requesters. Requesters are the people who actually make the requests. For security reasons, we advise you keep the number of requesters to a minimum. Approvers must be in a senior role within your organisation, for example, a project manager with responsibility for security. Requesters and approvers should be different people.</p>
+<p>The service manager must provide the following details for all requesters and approvers:</p>
+<ul class="simple">
+<li>first name</li>
+<li>last name</li>
+<li>email address</li>
+<li>telephone number</li>
+</ul>
+<p>Send these details to <a class="reference external" href="mailto:idappki&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idappki<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> from the service manager’s email address.</p>
+<p>You may want to set up a group mailbox to make sure you receive your certificates and renewal notices when your requesters or approvers aren’t available. If so, the service manager should provide this email address as well.</p>
+<p>The IDAP certificate authority adds the details to their list of approved requesters and approvers. If the certificate authority receives a certificate signing request from someone who isn’t an approved requester, no certificate will be issued.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Make sure you notify the IDAP certificate authority when you want to remove or add someone to the list.</p>
+</div>
+</div>
+<div class="section" id="generate-private-keys">
+<span id="pki-gen-private-key"></span><h2>Generate private keys<a class="headerlink" href="#generate-private-keys" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command from a Linux (or OSX) command line:</p>
+<div class="highlight-python"><div class="highlight"><pre>openssl genrsa -out &lt;file name&gt;.key 2048
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">2048</span></code> ensures that the private key meets the RSA 2048 standard required by the IDAP certificate authority</li>
+<li><code class="docutils literal"><span class="pre">&lt;file</span> <span class="pre">name&gt;</span></code> is a meaningful name, for example <code class="docutils literal"><span class="pre">MyserviceDevSamlSigning1.key</span></code> or <code class="docutils literal"><span class="pre">MyserviceUatMsaSamlEncryption3.key</span></code></li>
+</ul>
+<p>We advise you to establish a naming convention for all your PKI files. Typically, this includes the name of your service or the Matching Service Adapter and an incremental version number.</p>
+<p>Generate a new private key for each certificate signing request file that you submit. This naturally retires any private keys that have been compromised; you should not re-use existing private keys.</p>
+<div class="section" id="store-private-keys">
+<h3>Store private keys<a class="headerlink" href="#store-private-keys" title="Permalink to this headline">¶</a></h3>
+<p>You must store private key files in a secure environment. Typical controls include:</p>
+<ul class="simple">
+<li>restricting private key access to approved staff</li>
+<li>storing files in encrypted format</li>
+<li>storing files offline, for example, on an encrypted USB memory stick kept in a safe</li>
+<li>never sharing private keys outside the environment where you created them</li>
+</ul>
+<p>For further advice and guidance, contact the government’s <a class="reference external" href="https://www.cesg.gov.uk/">National Technical Authority for Information Assurance (CESG)</a>.</p>
+</div>
+</div>
+<div class="section" id="generate-certificate-signing-requests">
+<span id="pki-gen-csr"></span><h2>Generate certificate signing requests<a class="headerlink" href="#generate-certificate-signing-requests" title="Permalink to this headline">¶</a></h2>
+<p>Use a private key to create a certificate signing request. This request will contain the corresponding public key.</p>
+<p>Run the following command from a Linux (or OSX) command line:</p>
+<div class="highlight-python"><div class="highlight"><pre>openssl req -new -key &lt;file name&gt;.key -out &lt;file name&gt;.csr
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">&lt;file</span> <span class="pre">name&gt;.key</span></code> is the name of the private key file you generated</li>
+<li><code class="docutils literal"><span class="pre">&lt;file</span> <span class="pre">name&gt;.csr</span></code> is a meaningful name, for example <code class="docutils literal"><span class="pre">MyserviceDevSamlSigning3.csr</span></code> or <code class="docutils literal"><span class="pre">MyserviceUatMsaSamlEncryption3.csr</span></code></li>
+</ul>
+<p>We advise you to establish a naming convention for all your PKI files. The private key and certificate signing request files can have the same filename as they have different extensions (.key and .csr).</p>
+<p>Some prompts appear in the terminal. Enter the following information:</p>
+<ul>
+<li><p class="first"><em>Country Name</em>: 2-letter code for your country, for example, GB for Great Britain</p>
+</li>
+<li><p class="first"><em>State</em>: county or city</p>
+</li>
+<li><p class="first"><em>Locality</em>: city or town</p>
+</li>
+<li><p class="first"><em>Organisation Name</em>: this must match your contractual or programme status</p>
+</li>
+<li><p class="first"><em>Organisation Unit</em>: your unit within the organisation, for example, the name of your government service</p>
+</li>
+<li><p class="first"><em>Common Name</em>: one of the following, depending on the type of certificate.</p>
+<blockquote>
+<div><ul class="simple">
+<li>SAML <a class="reference internal" href="pkiWorks.html#pki-encrypt-cert"><span>encryption</span></a> certificate: <code class="docutils literal"><span class="pre">&lt;servicename&gt;</span> <span class="pre">SAML</span> <span class="pre">Encryption</span> <span class="pre">&lt;version&gt;</span></code></li>
+<li>SAML <a class="reference internal" href="pkiWorks.html#pki-sign-cert"><span>signing</span></a> certificate: <code class="docutils literal"><span class="pre">&lt;servicename&gt;</span> <span class="pre">SAML</span> <span class="pre">Signing</span> <span class="pre">&lt;version&gt;</span></code></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>Common Name</em> must not contain underscores.</p>
+</div>
+</li>
+<li><p class="first"><em>Email Address</em>: the requester or group email address (if you&#8217;ve set one up)</p>
+</li>
+<li><p class="first"><em>Extra attributes</em> (optional):</p>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><em>A challenge password</em>: if you provide this, you&#8217;ll need it to inspect the contents of the file</li>
+<li><em>An optional company name</em></li>
+</ul>
+</div></blockquote>
+<div class="section" id="store-certificate-signing-request-files">
+<h3>Store certificate signing request files<a class="headerlink" href="#store-certificate-signing-request-files" title="Permalink to this headline">¶</a></h3>
+<p>Certificate signing request files don’t have the same security issues as private key files. However, it’s advisable to store a copy of them with the corresponding private key files.</p>
+</div>
+</div>
+<div class="section" id="submit-certificate-signing-requests">
+<span id="pki-submit-csr"></span><h2>Submit certificate signing requests<a class="headerlink" href="#submit-certificate-signing-requests" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>Before you submit a certificate signing request, your service manager must:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="#pki-requesters-approvers"><span>send the requester&#8217;s details</span></a> to the IDAP certificate authority</li>
+<li>request the &#8216;GOV.UK Verify Certification Process for (Relying Party) Subscribers&#8217; document containing the certificate authority URLs from <a class="reference external" href="mailto:idappki&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idappki<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a></li>
+</ul>
+</div>
+<ol class="arabic simple">
+<li>Open the URL for the required certificate authority:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>the IDAP test certificate authority issues certificates for non-production environments such as the integration environment; test certificates are valid for 2 years</li>
+<li>the IDAP certificate authority issues certificates for production environments; production certificates are valid for 6 months</li>
+</ul>
+<p>For security reasons, the certificate authority URLs are not publicly available. You can find them in the &#8216;GOV.UK Verify Certification Process for (Relying Party) Subscribers&#8217; document.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Click <em>ENROL</em> to begin the submission.</li>
+<li>Click <em>Choose file</em> and select your certificate signing request file.</li>
+<li>Click <em>Submit</em>. A screen opens, requesting more details. Several fields are pre-populated with information taken from the certificate signing request file.</li>
+<li>Under <em>Applicant Details</em>, enter the details of the approved certificate requester.</li>
+<li>Enter the requester or group email address (if you&#8217;ve set one up). The certificate authority sends signed certificates and renewal notices to this email address.</li>
+<li>Under <em>Certificate Profile</em>, select the appropriate certificate type. This must match the intended use of the certificate, for example, if you’re submitting a signing certificate, you must select <em>SAML Signing</em>. If you select the wrong certificate type, it won’t be valid for GOV.UK Verify.</li>
+<li>Enter a <em>Challenge Phrase</em>, which must be unique and known only to the requester. This will be used during the renewal process to check the authority of the requester.</li>
+<li>Click <em>Submit</em>.</li>
+</ol>
+<p>The IDAP PKI registrar runs checks on the certificate request to ensure that the information it contains complies with the information previously supplied, and that the request is genuine. The certificate authority then generates and signs the certificate, which contains the public key you sent in the certificate signing request file. The certificate authority sends the certificate to the email address that the requester provided.</p>
+<p>You will receive your certificate within 5 working days.</p>
+<p>The email address to contact the registrar is <a class="reference external" href="mailto:idappki&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idappki<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pkiRotate.html" class="btn btn-neutral float-right" title="Rotate your keys" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pkiWorks.html" class="btn btn-neutral" title="How a PKI works" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

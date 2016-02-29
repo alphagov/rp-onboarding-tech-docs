@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Build a local matching service &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching Service" href="ms.html"/>
+        <link rel="next" title="Create user accounts" href="msCua.html"/>
+        <link rel="prev" title="How a matching service works" href="msWorks.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Matching Service</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Build a local matching service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#define-your-matching-strategy">Define your matching strategy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#matching-considerations">Matching considerations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msCua.html">Create user accounts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="ms.html">Matching Service</a> &raquo;</li>
+      
+    <li>Build a local matching service</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="build-a-local-matching-service">
+<span id="msbuild"></span><h1>Build a local matching service<a class="headerlink" href="#build-a-local-matching-service" title="Permalink to this headline">¶</a></h1>
+<p>Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:</p>
+<ul class="simple">
+<li>creates the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+<li>creates and signs the final assertion sent to your service - for more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works</span></a></li>
+<li>acts as the trust anchor for your service because the final assertion is created in your service&#8217;s security domain</li>
+</ul>
+<div class="section" id="define-your-matching-strategy">
+<span id="ms-strat"></span><h2>Define your matching strategy<a class="headerlink" href="#define-your-matching-strategy" title="Permalink to this headline">¶</a></h2>
+<p>A matching strategy defines the most efficient and effective way of matching assured identities to your service records. The strategy depends on the quality and completeness of available data sources and the types of evidence users can provide.</p>
+<p>A local matching service carries out a risk-based match to find the local record. Exact matching of identity data is rarely possible for many reasons:</p>
+<ul class="simple">
+<li>transcription errors</li>
+<li>spelling mistakes</li>
+<li>incorrect data in your service&#8217;s data sources, for example, if someone has moved house but not informed the service</li>
+<li>use of shortened names or nicknames which refer to the same person, for example, William Smith, Bill Smith and David William Smith</li>
+</ul>
+<p>Your local matching service must be able to handle these issues. You may decide to:</p>
+<ul class="simple">
+<li>widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, first search for surname, date of birth, and postcode, then run further matching on the results and apply a confidence score</li>
+<li>try synonym matching against combinations of forename and surname, possibly transposing them to maximise the chances of finding a match</li>
+</ul>
+<div class="section" id="matching-considerations">
+<h3>Matching considerations<a class="headerlink" href="#matching-considerations" title="Permalink to this headline">¶</a></h3>
+<p>When you define your matching strategy you need to:</p>
+<ul class="simple">
+<li>prepare for matching with customer data aggregation and data cleansing</li>
+<li>define the confidence level required for a successful match and how to score the confidence level, for example:<ul>
+<li>100% match confidence means that all elements from the matching dataset fully match the local record</li>
+<li>80% match confidence might mean that the first name, surname, and date of birth match, but the address is showing a mismatch</li>
+</ul>
+</li>
+<li>define the rules for successful matching, which may include what to do with:<ul>
+<li>synonyms for first names, for example, <strong>William</strong> and <strong>Bill</strong></li>
+<li>transpositions of multiple part names, for example, <strong>Anna-Marie</strong>, <strong>Jane</strong> and <strong>Anna, Marie-Jane</strong></li>
+<li>transpositions errors of day and month in the date of birth, for example, <strong>04/10/78</strong> and <strong>10/04/78</strong></li>
+</ul>
+</li>
+<li>define the level of &#8216;fuzzy matching&#8217; that is acceptable when an exact match is not found - this allows a match that, although not 100%, is above a service-defined threshold</li>
+<li>manage the risk of incorrect matching by defining what happens when:<ul>
+<li>there&#8217;s no match - you can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user</li>
+<li>there are multiple matches - you can implement <a class="reference internal" href="msWorks.html#ms-mc3"><span>matching cycle 3</span></a></li>
+</ul>
+</li>
+<li>analyse your data sources in the light of your matching strategy, so you can test and refine your strategy before launching alpha or beta services</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We recommend that you discuss your matching strategy with your engagement lead. They will be able to organise technical support if needed.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="msCua.html" class="btn btn-neutral float-right" title="Create user accounts" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="msWorks.html" class="btn btn-neutral" title="How a matching service works" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -32,9 +32,25 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="index.html"/>
-<link href="_static/style.css" rel="stylesheet" type="text/css">
+  <link href="_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
 
 
   
@@ -44,21 +60,37 @@
 
 <body class="wy-body-for-nav" role="document">
 
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
   <div class="wy-grid-for-nav">
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-        
-          <a href="index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
-        
+          
+            <a href="index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
 
-        
-        </a>
+          
+          </a>
 
-        
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -67,68 +99,30 @@
   </form>
 </div>
 
-        
-      </div>
+          
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-          
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="pages/atg/atg.html">About This Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pages/atg/atg.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages/atg/atg.html#audience">Audience</a></li>
-</ul>
-</li>
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pages/env/env.html">Integrating with Verify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pages/hub/hub.html">GOV.UK Verify Hub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pages/ms/ms.html">Matching Service</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pages/ms/ms.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages/ms/ms.html#how-a-matching-service-works">How a matching service works</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#confidence-scoring-for-matching">Confidence scoring for matching</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#example-of-matching-request">Example of matching request</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pages/ms/ms.html#build-a-matching-service">Build a matching service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#matching-strategy">Matching strategy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#matching-strategy-example">Matching strategy example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#matching-cycles">Matching cycles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#creating-user-accounts">Creating user accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#minimum-requirements-for-a-matching-service">Minimum requirements for a matching service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#common-problems">Common problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#further-guidance">Further guidance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pages/ms/ms.html#importance-of-a-matching-service">Importance of a matching service</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pages/msa/msa.html">Matching Service Adapter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pages/msa/msa.html#cath-testing-stuff">Cath testing stuff</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pages/pki/pki.html">Public Key Infrastructure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pages/pki/pki.html#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pages/pki/pki.html#elements-of-pki">Elements of PKI</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="pages/pki/pki.html#how-pki-works-with-gov-uk-verify">How PKI works with GOV.UK Verify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages/pki/pki.html#request-pki-certificates">Request PKI certificates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pages/pki/pki.html#how-does-gov-uk-verify-use-pki">How does GOV.UK Verify use PKI?</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="pages/saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pages/testing/testing.html">User Research</a></li>
-<li class="toctree-l1"><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html">Glossary of terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pages/revhis/revhis.html">Revision history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/vershis/vershis.html">Version history</a></li>
 <li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.signin.service.gov.uk/cookies">Cookies</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -143,20 +137,27 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
     <li></li>
-      <li class="wy-breadcrumbs-aside">
+    <li class="wy-breadcrumbs-aside">
+      
         
-          
-        
-      </li>
+      
+    </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
 
 <h1 id="index">Index</h1>
@@ -166,6 +167,7 @@
 </div>
 
 
+           </div>
           </div>
           <footer>
   
@@ -174,8 +176,9 @@
 
   <div role="contentinfo">
     <p>
+
     </p>
-  </div>
+  </div> 
 
 </footer>
 
@@ -217,22 +220,7 @@
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
- 
-<!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-54060634-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-<!-- End Google Analytics -->
-
+   
 
 </body>
 </html>

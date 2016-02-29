@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How a PKI works &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Public Key Infrastructure" href="pki.html"/>
+        <link rel="next" title="Request certificates" href="pkiRequestCert.html"/>
+        <link rel="prev" title="Public Key Infrastructure" href="pki.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">How a PKI works</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-keys-private-keys-and-certificates">Public keys, private keys, and certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keys-and-certificates-in-the-gov-uk-verify-federation">Keys and certificates in the GOV.UK Verify federation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-encryption-and-signing">Data encryption and signing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pkiRequestCert.html">Request certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pkiRotate.html">Rotate your keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
+      
+    <li>How a PKI works</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="how-a-pki-works">
+<span id="pkiworks"></span><h1>How a PKI works<a class="headerlink" href="#how-a-pki-works" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="public-keys-private-keys-and-certificates">
+<h2>Public keys, private keys, and certificates<a class="headerlink" href="#public-keys-private-keys-and-certificates" title="Permalink to this headline">¶</a></h2>
+<p>To encrypt and sign data, you need 2 pairs of keys:</p>
+<ul class="simple">
+<li>public and private <strong>encryption</strong> keys</li>
+<li>public and private <strong>signing</strong> keys</li>
+</ul>
+<p>The keys consist of very long numbers linked in a particular way so the public key can be derived from the private key but not the other way around. Entities within a PKI generate their own keys. They always retain their private keys. However, they share their public keys with other entities to allow secure communication through <a class="reference internal" href="#pki-encrypt-cert"><span>encryption</span></a> and <a class="reference internal" href="#pki-sign-cert"><span>signing</span></a>.</p>
+<p>Public keys are shared using certificates. A certificate is a file that contains:</p>
+<ul class="simple">
+<li>a copy of the certificate owner&#8217;s public key</li>
+<li>information about the identity of the certificate owner</li>
+<li>an indication of the purpose of the certificate, for example, encryption or signing</li>
+</ul>
+<p>Certificates are issued and signed by a certificate authority. The certificate authority acts as the root of trust in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party&#8217;s certificate is valid.</p>
+</div>
+<div class="section" id="keys-and-certificates-in-the-gov-uk-verify-federation">
+<h2>Keys and certificates in the GOV.UK Verify federation<a class="headerlink" href="#keys-and-certificates-in-the-gov-uk-verify-federation" title="Permalink to this headline">¶</a></h2>
+<p>The IDAP PKI and GOV.UK Verify federation use the X509 standard for digital certificates.</p>
+<p>In the GOV.UK Verify federation, the IDAP certificate authority issues and signs certificates. As a government service using GOV.UK Verify, you need to request 4 certificates:</p>
+<ul class="simple">
+<li>encryption and signing certificates for your service</li>
+<li>encryption and signing certificates for your Matching Service Adapter</li>
+</ul>
+<p>To obtain a certificate:</p>
+<ol class="arabic simple">
+<li>Generate pair of keys (<a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span>private</span></a> and <a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span>public</span></a>). You must generate a pair of encryption keys for each encryption certificate request and a pair of signing keys for each signing certificate request.</li>
+<li><a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span>Submit a certificate signing request</span></a> to the IDAP certificate authority.</li>
+<li>The certificate authority generates your certificate and sends it to you.</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img src="../../_images/pkiIssueCerts.svg" /><p class="caption"><span class="caption-text">Request certificates</span></p>
+</div>
+<p>The certificate authority also issues certificates for the GOV.UK Verify hub and identity providers.</p>
+</div>
+<div class="section" id="data-encryption-and-signing">
+<span id="pki-encrypt-signing"></span><h2>Data encryption and signing<a class="headerlink" href="#data-encryption-and-signing" title="Permalink to this headline">¶</a></h2>
+<p id="pki-encrypt-cert">Encryption certificates provide the sender with assurance that only the intended receiver can decrypt the message.</p>
+<p>The sender extracts the public encryption key from the receiver&#8217;s encryption certificate and uses it to encrypt a message. The receiver decrypts the message using their corresponding private encryption key.</p>
+<blockquote>
+<div><div class="figure align-center" id="id2">
+<img src="../../_images/pkiEncryption.svg" /><p class="caption"><span class="caption-text">Example of data encryption</span></p>
+</div>
+</div></blockquote>
+<p id="pki-sign-cert">Signing certificates provide the receiver with assurance of who authored the message. They also guarantee that the message hasn&#8217;t been tampered with since the author signed it.</p>
+<p>When signing data, you use your private signing key to create a digital signature, and then send the signed message. The receivers check the digital signature using your public signing key from your signing certificate.</p>
+<blockquote>
+<div><div class="figure align-center" id="id3">
+<img src="../../_images/pkiSigning.svg" /><p class="caption"><span class="caption-text">Example of data signing</span></p>
+</div>
+</div></blockquote>
+<p>You can use encryption and signing together or alone. For example:</p>
+<blockquote>
+<div><p><strong>Signing alone</strong></p>
+<blockquote>
+<div>When a user indicates that they would like to verify their identity, the government service sends a message to the <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>. The message is unencrypted because it contains no personal user information. However, the message is signed because the hub needs assurance that the message originated from the government service.</div></blockquote>
+</div></blockquote>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<blockquote>
+<div><p><strong>Encryption and signing</strong></p>
+<blockquote>
+<div>When a user has verified their identity, the identity provider sends a signed message to the hub containing the user&#8217;s encrypted personal information. This ensures the confidentiality of the message and its origin.</div></blockquote>
+</div></blockquote>
+<p>A message can contain embedded messages which may be encrypted and/or signed by different entities within the GOV.UK Verify federation. For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pkiRequestCert.html" class="btn btn-neutral float-right" title="Request certificates" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pki.html" class="btn btn-neutral" title="Public Key Infrastructure" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

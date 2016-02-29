@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Run SAML compliance tests &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="SAML" href="saml.html"/>
+        <link rel="next" title="Matching Service" href="../ms/ms.html"/>
+        <link rel="prev" title="Build your service: SAML integration" href="samlIntegration.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service: SAML integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Run SAML compliance tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-connections-between-your-service-and-the-gov-uk-verify-hub">Test connections between your service and the GOV.UK Verify hub</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="saml.html">SAML</a> &raquo;</li>
+      
+    <li>Run SAML compliance tests</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="run-saml-compliance-tests">
+<span id="samlcompliancetool"></span><h1>Run SAML compliance tests<a class="headerlink" href="#run-saml-compliance-tests" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of SAML compliance tests is to ensure that the service you&#8217;re building is compliant with the SAML profile. This will guarantee that:</p>
+<ul class="simple">
+<li>your service will work with GOV.UK Verify</li>
+<li>user data will remain secure within the GOV.UK Verify federation</li>
+</ul>
+<p>Use the compliance tool after <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>building your local matching service</span></a> and <a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>installing your Matching Service Adapter</span></a>. After SAML compliance tests, run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
+<p>The SAML compliance tool tests the connections between:</p>
+<ul class="simple">
+<li>your service and the GOV.UK Verify hub (see below)</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-test-msa"><span>the GOV.UK Verify hub and the Matching Service Adapter</span></a></li>
+</ul>
+<p>The compliance tool provides clear error messages. These will help with iterative development of your service.</p>
+<p>We also advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
+<div class="section" id="test-connections-between-your-service-and-the-gov-uk-verify-hub">
+<h2>Test connections between your service and the GOV.UK Verify hub<a class="headerlink" href="#test-connections-between-your-service-and-the-gov-uk-verify-hub" title="Permalink to this headline">¶</a></h2>
+<p>Your GOV.UK Verify engagement lead provides access to the compliance tool on completion of a successful <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3</a> gate review.</p>
+<ol class="arabic simple">
+<li>Generate the metadata for your:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>service</li>
+<li>local matching service</li>
+<li>Matching Service Adapter</li>
+</ul>
+<p>The metadata must include self-signed certificates that you will use only with the compliance tool.</p>
+<p>The metadata contains the:</p>
+<blockquote>
+<div><ul class="simple">
+<li>entity id for your service</li>
+<li>assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub</li>
+<li>signing certificate for your service</li>
+<li>encryption certificate for your service</li>
+<li>expected persistent identifier: this is the user id that the Matching Service Adapter returns in an assertion</li>
+<li>entity id for your Matching Service Adapter</li>
+<li>private signing key for the Matching Service Adapter: you need this because the compliance tool sends a response to your service which contains an assertion signed by the Matching Service Adapter</li>
+<li>list of attributes the government service requires for user account creation (optional)</li>
+</ul>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Provide this list only if you want to test <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>new user account creation</span></a>. The matching service can send the following fields to the assertion consumer service endpoint:</p>
+<ul class="last simple">
+<li><code class="docutils literal"><span class="pre">FIRST_NAME</span></code></li>
+<li><code class="docutils literal"><span class="pre">FIRST_NAME_VERIFIED</span></code></li>
+<li><code class="docutils literal"><span class="pre">MIDDLE_NAME</span></code></li>
+<li><code class="docutils literal"><span class="pre">MIDDLE_NAME_VERIFIED</span></code></li>
+<li><code class="docutils literal"><span class="pre">SURNAME</span></code></li>
+<li><code class="docutils literal"><span class="pre">SURNAME_VERIFIED</span></code></li>
+<li><code class="docutils literal"><span class="pre">DATE_OF_BIRTH</span></code></li>
+<li><code class="docutils literal"><span class="pre">DATE_OF_BIRTH_VERIFIED</span></code></li>
+<li><code class="docutils literal"><span class="pre">CURRENT_ADDRESS</span></code></li>
+<li><code class="docutils literal"><span class="pre">CURRENT_ADDRESS_VERIFIED</span></code></li>
+<li><code class="docutils literal"><span class="pre">CYCLE_3</span></code></li>
+</ul>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">POST the following JSON (via curl, or similar) to the <code class="docutils literal"><span class="pre">URI</span> <span class="pre">compliance-tool.RPPostUri</span></code> provided by your GOV.UK Verify engagement lead:</p>
+<div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
+{
+    &quot;rpEntityId&quot;:&quot;[entity id for your service]&quot;,
+    &quot;assertionConsumerServiceUrl&quot;:&quot;[assertion consumer service URL&quot;,
+    &quot;signingPublicCert&quot;:&quot;[base 64 encoded X509 signing certificate]&quot;,
+    &quot;encryptionPublicCert&quot;:&quot;[base 64 encoded X509 encryption certificate]&quot;,
+    &quot;expectedPID&quot;:&quot;[expected persistent identifier]&quot;,
+    &quot;matchingServiceEntityId&quot;:&quot;[entity id for your matching service]&quot;,
+    &quot;matchingServiceSigningPrivateCert&quot;:&quot;[base 64 private signing key for the Matching Service Adapter]&quot;,
+    &quot;userAccountRequiredAttributes&quot;:&quot;[attributes the government service requires for account creation]&quot;
+}
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>Replace the square brackets and their contents with your metadata.</p>
+<p>The keys in the metadata must be single-line strings of base 64 data without the text &#8216;CERTIFICATE&#8217; and &#8216;END CERTIFICATE&#8217;.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The private signing key for the Matching Service Adapter must be in PKCS#8 PEM format, for example:</p>
+<div class="last highlight-python"><div class="highlight"><pre>cat server.crt server.key &gt; server.pem
+
+openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
+</pre></div>
+</div>
+</div>
+<p>You receive a response similar to the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>Status 200 Created
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Consume the GOV.UK Verify hub&#8217;s metadata from the URL <code class="docutils literal"><span class="pre">compliance-tool.MetadataUri</span></code> provided by your GOV.UK Verify engagement lead. This metadata contains the compliance tool single sign-on (SSO) URI.</li>
+<li>Generate an authentication request and POST it to the compliance tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You may want to use an off-the-shelf tool to generate an authentication request.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</li>
+<li>Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Basic successful match</li>
+<li>Basic no match</li>
+<li>No authentication context (this is when the user cancels the process)</li>
+<li>Authentication failed</li>
+<li>Requester error (this is when the request is invalid)</li>
+<li>Account creation</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The above scenarios are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ms/ms.html" class="btn btn-neutral float-right" title="Matching Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="samlIntegration.html" class="btn btn-neutral" title="Build your service: SAML integration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -31,35 +31,67 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="next" title="SAML" href="../saml/saml.html"/>
-        <link rel="prev" title="Matching Service Adapter" href="../msa/msa.html"/>
-<link href="../../_static/style.css" rel="stylesheet" type="text/css">
+        <link rel="next" title="How a PKI works" href="pkiWorks.html"/>
+        <link rel="prev" title="Install the Matching Service Adapter" href="../msa/msaUse.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
   <div class="wy-grid-for-nav">
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-        
-          <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
-        
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
 
-        
-        </a>
+          
+          </a>
 
-        
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -68,68 +100,35 @@
   </form>
 </div>
 
-        
-      </div>
+          
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-          
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../atg/atg.html">About This Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../atg/atg.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../atg/atg.html#audience">Audience</a></li>
-</ul>
-</li>
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../env/env.html">Integrating with Verify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hub/hub.html">GOV.UK Verify Hub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ms/ms.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ms/ms.html#how-a-matching-service-works">How a matching service works</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#confidence-scoring-for-matching">Confidence scoring for matching</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#example-of-matching-request">Example of matching request</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../ms/ms.html#build-a-matching-service">Build a matching service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#matching-strategy">Matching strategy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#matching-strategy-example">Matching strategy example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#matching-cycles">Matching cycles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#creating-user-accounts">Creating user accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#minimum-requirements-for-a-matching-service">Minimum requirements for a matching service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#common-problems">Common problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#further-guidance">Further guidance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ms/ms.html#importance-of-a-matching-service">Importance of a matching service</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../msa/msa.html#cath-testing-stuff">Cath testing stuff</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Public Key Infrastructure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#elements-of-pki">Elements of PKI</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#how-pki-works-with-gov-uk-verify">How PKI works with GOV.UK Verify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#request-pki-certificates">Request PKI certificates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-does-gov-uk-verify-use-pki">How does GOV.UK Verify use PKI?</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">User Research</a></li>
-<li class="toctree-l1"><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html">Glossary of terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../revhis/revhis.html">Revision history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Public Key Infrastructure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pkiWorks.html">How a PKI works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pkiRequestCert.html">Request certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pkiRotate.html">Rotate your keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
 <li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.signin.service.gov.uk/cookies">Cookies</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -144,79 +143,63 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
     <li>Public Key Infrastructure</li>
-      <li class="wy-breadcrumbs-aside">
+    <li class="wy-breadcrumbs-aside">
+      
         
-          
-        
-      </li>
+      
+    </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
       <div class="section" id="public-key-infrastructure">
 <span id="pki"></span><h1>Public Key Infrastructure<a class="headerlink" href="#public-key-infrastructure" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>GOV.UK Verify is a secure service reliant on encryption and signing messages. GOV.UK Verify uses a <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html#pki">public key infrastructure</a> (PKI)  to confirm the integrity of data passed between GOV.UK Verify and trusted third parties.</p>
-<p>A PKI facilitates secure communication over insecure public networks, like the internet. A PKI is used to assure the identity of the owner of the public key through a system of digital certificates. It can provide confidence when encrypting or signing data:</p>
+<p>The purpose of a <a class="reference internal" href="../../shared/glossary.html#gloss-pki"><span>public key infrastructure</span></a> (PKI) is to implement secure electronic transactions over insecure networks such as the internet. A PKI is used to authenticate identities for the purposes of data encryption and signing:</p>
 <ul class="simple">
-<li>encrypting data means that it is scrambled in a way that makes it unreadable except to intended recipients</li>
-<li>signing data means proving the source of it, for example an email can be signed with a valid digital signature to prove that it has not been tampered with in transit and that it is from the person that it claims to be from</li>
+<li>encryption - scrambles the data in a way that makes it unreadable except to intended recipients</li>
+<li>signing - proves who authored the data and guarantees that it hasn&#8217;t been tampered with since</li>
 </ul>
-<p>A PKI issues digital certificates so that an organisation can establish and maintain a trusted network of individuals and services. The PKI provides mechanisms for revoking certificates if needed, for example; if security has been compromised.</p>
-<div class="section" id="elements-of-pki">
-<h3>Elements of PKI<a class="headerlink" href="#elements-of-pki" title="Permalink to this headline">¶</a></h3>
-<p><strong>Public and private keys</strong></p>
-<p>PKI works on the principle of each user having a pair of keys: a private key and a public key. The user generates the keys by running a mathematical process. The keys themselves consist of very long numbers linked in a particular way the public can be derived from the private but not the other way around. Only the user who generates the keys retains the private key, but their public key can be given to anyone. The certificate authority takes the public key and creates the digital certificate. Any third party can then request confirmation from the certificate authority that the certificate is valid, and the public key it contains is indeed linked to that identity.
-When encrypting data, a user or service uses the public key of the remote party to scramble a message. This means that only the remote party can unscramble the message because only they hold the corresponding private key. When signing data, a user or service seeks to prove that the data being sent comes from them. They scramble a message using their own private key which allows anyone with their public certificate to be confident of the source.</p>
-<p>A certificate is a file that contains a public key. Data encrypted with a public key can only be decrypted with the corresponding private key, and vice versa. You need to generate both private and public keys before you request certificates.</p>
-<img alt="../../_images/PKIInfratructureDiagram.jpg" src="../../_images/PKIInfratructureDiagram.jpg" />
-<p><strong>Certificates</strong></p>
-<p>PKI is based on digital certificates. A digital certificate can verify the identity of many things, such as a person, a computer or software. For example, to ensure the integrity of a transaction between 2 computers, digital certificates can prove the identity of each machine to the other. However, the certificates must also be authenticated, (issued by a source that one computer knows and trusts so that it accepts the other machine&#8217;s certificate as proof of its identity). Digital certificates are authenticated by being issued and signed by a certificate authority.</p>
-</div>
-</div>
-<div class="section" id="how-pki-works-with-gov-uk-verify">
-<h2>How PKI works with GOV.UK Verify<a class="headerlink" href="#how-pki-works-with-gov-uk-verify" title="Permalink to this headline">¶</a></h2>
-<p>The Identity Assurance Programme (IDAP) runs it’s own Public Key Infrastructure (PKI) to enable secure transactions across the GOV.UK Verify federation.  As part of that federation you will need to use certificates generated from the IDAP PKI and are therefore responsible for ensuring that the terms of the PKI’s Certification Policy are upheld.</p>
-<p>The documents you require are explained below.  To receive these documents, please ask your Service Delivery Manager to email <a class="reference external" href="mailto:idappki&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idappki<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
+<p>Encryption and signing are provided by public-key cryptography. A PKI supports public-key cryptography by assuring the identities of the entities that encrypt and sign data. It does this by issuing digital certificates. A PKI is therefore used to set up and maintain a network of trusted entities and services. This means that when you send encrypted data you can be certain that only the intended recipient can decrypt it and that when you receive signed data you can be certain who authored it.</p>
+<p class="rubric"><strong>Why does GOV.UK Verify use a PKI?</strong></p>
+<p>The  Identity Assurance Programme (IDAP) runs a PKI to enable secure communication between the entities in the GOV.UK Verify federation, for example, between government services and the GOV.UK Verify <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>.</p>
+<p>The entities in the GOV.UK Verify federation communicate with each other using <a class="reference internal" href="../saml/saml.html#saml"><span>Security Assertion Markup Language</span></a> (SAML). Public-key cryptography secures the integrity and privacy of SAML messages sent between the different entities.</p>
+<p class="rubric"><strong>What do you need to do?</strong></p>
+<p>As part of the GOV.UK Verify federation you need to <a class="reference internal" href="pkiRequestCert.html#pkirequestcert"><span>request certificates</span></a> from the IDAP PKI certificate authority. When your certificates are due to expire you need to run the <a class="reference internal" href="pkiRotate.html#pkirotate"><span>key rotation process</span></a> to update the keys in your certificates.</p>
+<p>You are responsible for ensuring that the terms of the IDAP PKI Certification Policy are upheld. To do this, you and your service manager need to refer to a set of documents. Your service manager must request these documents from the IDAP PKI:</p>
 <ul class="simple">
-<li>The <strong>Certification Practice Statement</strong> for the Interim PKI for the IDAP Ecosystem is  the principal statement of practice governing cryptographic services for the IDAP Ecosystem.</li>
-<li>The <strong>IDAP PKI Subscriber Agreement</strong> sets out the terms of use of PKI for those using certificates received from the IDAP PKI</li>
-<li>The <strong>IDAP PKI Relying Party Agreement</strong> sets out terms for those who do not necessarily hold a certificate, but who, during the course of a transaction, may be a recipient of a certificate and place reliance on a Certificate and/or Digital Signatures created using that Certificate.  Note: this is the PKI definition of a Relying Party rather than that in common use in the IDAP ecosystem that usually refers to HMG service provider. In this context, the term Relying Party relates to the reliance of <strong>any member of the federation</strong> on the certificates issued under this Certification Practice.</li>
-<li>The <strong>GOV.UK Verify Certification Process for (Goverment Services) Subscribers</strong> describes how to acquire certificates from the IDAP PKI.  It should be read in conjunction with the <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/requestTestCertificates.html#requesttestcertificates">Onboarding guide Stage 4, Step 5.</a></li>
+<li>&#8216;Certification Practice Statement for the Interim PKI for the IDAP Ecosystem&#8217; - sets out the practices governing cryptographic services for the IDAP federation</li>
+<li>&#8216;IDAP PKI Subscriber Agreement&#8217; - sets out the terms of use of PKI for those using certificates received from the IDAP PKI</li>
+<li>&#8216;IDAP PKI Relying Party Agreement&#8217; - sets out the terms for those who do not necessarily hold a certificate, but who, during the course of a transaction, may be a recipient of a certificate and place reliance on a certificate and/or digital signatures created using that certificate</li>
+<li>&#8216;GOV.UK Verify Certification Process for (Relying Party) Subscribers&#8217; - indicates the URLs where you can submit certificate requests to the IDAP certificate authority</li>
 </ul>
-</div>
-<div class="section" id="request-pki-certificates">
-<h2>Request PKI certificates<a class="headerlink" href="#request-pki-certificates" title="Permalink to this headline">¶</a></h2>
-<p>BELOW IS CONTENT FROM TECHNICAL GUIDE TO COPY UP TO TITLES ABOVE</p>
-</div>
-<div class="section" id="how-does-gov-uk-verify-use-pki">
-<h2>How does GOV.UK Verify use PKI?<a class="headerlink" href="#how-does-gov-uk-verify-use-pki" title="Permalink to this headline">¶</a></h2>
-<p>GOV.UK Verify uses a PKI to confirm the integrity of data passed between GOV.UK Verify and trusted third parties. GOV.UK Verify is a secure service based on encryption and signing messages. To interoperate with the GOV.UK Verify hub, you need to obtain signed certificates from a GDS certificate authority for both the integration and production environments. GDS IDAP has 2 certificate authorities from whom you must obtain signed certificates, depending on the environment:</p>
-<ul class="simple">
-<li>IDAP Test certificate authority for the integration environment</li>
-<li>IDAP certificate authority for the production environment</li>
-</ul>
-<p><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/requestTestCertificates.html">Stage 4, step 5</a> of the <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html">Onboarding Guide</a> describes how to apply for these certificates and how to generate the private and public keys. A full description of GDS PKI, the Certification Practice Statement, is also available on request.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../saml/saml.html" class="btn btn-neutral float-right" title="SAML" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pkiWorks.html" class="btn btn-neutral float-right" title="How a PKI works" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../msa/msa.html" class="btn btn-neutral" title="Matching Service Adapter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../msa/msaUse.html" class="btn btn-neutral" title="Install the Matching Service Adapter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -225,8 +208,9 @@ When encrypting data, a user or service uses the public key of the remote party 
 
   <div role="contentinfo">
     <p>
+
     </p>
-  </div>
+  </div> 
 
 </footer>
 
@@ -268,22 +252,7 @@ When encrypting data, a user or service uses the public key of the remote party 
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
- 
-<!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-54060634-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-<!-- End Google Analytics -->
-
+   
 
 </body>
 </html>

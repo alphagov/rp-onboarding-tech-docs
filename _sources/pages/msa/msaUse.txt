@@ -1,0 +1,41 @@
+.. _msaUse:
+
+
+.. _msa_install_msa:
+
+Install the Matching Service Adapter
+======================================
+
+Content being developed.
+
+.. _msa_config_msa:
+
+Configure the Matching Service Adapter
+==============================================
+
+Content being developed.
+ 
+.. _msa_config_environ:
+
+
+Configure for the integration and production environments
+------------------------------------------------------------
+
+Content being developed.
+
+
+.. _msa_config_msa_ct:
+
+Configure for the compliance tool
+------------------------------------
+
+Content being developed.
+
+.. _msa_test_msa:
+
+Test the Matching Service Adapter using the compliance tool
+=====================================================================
+
+Content being developed.
+
+

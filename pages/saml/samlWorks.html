@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How SAML works &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="SAML" href="saml.html"/>
+        <link rel="next" title="Build your service: SAML integration" href="samlIntegration.html"/>
+        <link rel="prev" title="SAML" href="saml.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">How SAML works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service: SAML integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="saml.html">SAML</a> &raquo;</li>
+      
+    <li>How SAML works</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="how-saml-works">
+<span id="samlworks"></span><h1>How SAML works<a class="headerlink" href="#how-saml-works" title="Permalink to this headline">¶</a></h1>
+<p>SAML messages take the form of requests and responses. Messages can contain assertions about the user&#8217;s identity. GOV.UK Verify uses the following types of assertion:</p>
+<ul class="simple">
+<li>identity assertions - contain information about the user</li>
+<li>authentication context assertions - contain information related to how authentication was carried out, for example, the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
+<li>fraud event assertions - contain identifiers related to an identified fraud detected by the identity provider</li>
+</ul>
+<p>The SAML profile defines these assertions. See the <a class="reference internal" href="saml.html#saml-docs"><span>list of documents defining the SAML profile</span></a>.</p>
+<p>All SAML messages that pass between the government service, the hub, and identity providers are sent via the user&#8217;s browser.</p>
+<p>This diagram shows the SAML message flow within the GOV.UK Verify federation. The numbers identify each stage in the flow. See below for explanations.</p>
+<table border="1" class="docutils" id="flow-diagram">
+<span id="samlflow-diagram"></span><colgroup>
+<col width="84%" />
+<col width="16%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last figure" id="id1">
+<img alt="Diagram showing a SAML message flow in GOV.UK Verify architecture. Communication between government service, the hub, and identity providers is via SAML and passes through the user's browser. Communication between the hub and the Matching Service Adapter is via SAML using SOAP. Communication between the Matching Service Adapter, the local matching service, and the local matching data store is not SAML. The text below the image describes the SAML messages sent between entities in the federation." src="../../_images/samlFlow.png" />
+<p class="caption"><span class="caption-text">SAML message flow in the GOV.UK Verify federation</span></p>
+</div>
+</td>
+<td><p class="first">For more details, see the diagrams:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
+<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li>The government service sends a SAML authentication request to the GOV.UK Verify <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>. The request indicates that a user wants to access the service and needs to verify their identity using GOV.UK Verify.</li>
+</ol>
+<blockquote>
+<div><img alt="Diagram showing a SAML authentication request signed by the government service" src="../../_images/step1.svg" /></div></blockquote>
+<ol class="arabic simple" start="2">
+<li>The GOV.UK Verify hub prompts the user to select an identity provider to authenticate them. The GOV.UK Verify hub forwards the SAML authentication request to the chosen identity provider.</li>
+</ol>
+<blockquote>
+<div><img alt="Diagram showing a SAML authentication request signed by the hub" src="../../_images/step2.svg" /></div></blockquote>
+<ol class="arabic simple" start="3">
+<li>The chosen identity provider authenticates the user based on the required <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a>. The identity provider then sends a SAML response to the GOV.UK Verify hub:</li>
+</ol>
+<blockquote>
+<div><img alt="Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub." src="../../_images/step3.svg" /><ul class="simple">
+<li>SAML response <a class="reference internal" href="../pki/pkiWorks.html#pki-sign-cert"><span>signed</span></a> by the identity provider</li>
+<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub - this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
+<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub - this contains the user&#8217;s <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> and the <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For more information on the contents of the assertions, see the diagrams for <a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a>.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>The GOV.UK Verify hub sends a SAML attribute query to the government service’s Matching Service Adapter:</li>
+</ol>
+<blockquote>
+<div><img alt="Diagram showing a SAML attribute query signed by the hub. It contains an identity assertion signed by the identity provider and encrypted for the Matching Service Adapter." src="../../_images/step4.svg" /><ul class="simple">
+<li>SAML attribute query signed by the GOV.UK Verify hub</li>
+<li>identity assertion signed by identity provider and encrypted for the Matching Service Adapter</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching query and forwards it to the service’s local matching service.</li>
+</ol>
+<blockquote>
+<div>The local matching service tries to match the user with a record in the government service’s database.</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>The local matching service returns a JSON response (<code class="docutils literal"><span class="pre">match</span></code> or <code class="docutils literal"><span class="pre">no</span> <span class="pre">match</span></code>) to the Matching Service Adapter.</li>
+<li>In the case of a <code class="docutils literal"><span class="pre">match</span></code> response, the Matching Service Adapter translates the JSON response into a SAML attribute query response and forwards it to the GOV.UK Verify hub:</li>
+</ol>
+<blockquote>
+<div><img alt="Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub." src="../../_images/step7.svg" /><ul class="simple">
+<li>SAML attribute query response signed by the Matching Service Adapter</li>
+<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub - this assertion contains the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>The GOV.UK Verify hub sends a SAML response to the service, authenticating the user:</li>
+</ol>
+<blockquote>
+<div><img alt="Diagram showing a SAML response signed by the hub. It contains an assertion signed by the Matching Service Adapter and encrypted for the government service." src="../../_images/step8.svg" /><ul class="simple">
+<li>SAML response (optionally) signed by the GOV.UK Verify hub</li>
+<li>assertion signed by the Matching Service Adapter and encrypted for the government service</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="9">
+<li>The government service retrieves the user&#8217;s record from the datastore. This allows the government service to interact with the user.</li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="samlIntegration.html" class="btn btn-neutral float-right" title="Build your service: SAML integration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="saml.html" class="btn btn-neutral" title="SAML" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

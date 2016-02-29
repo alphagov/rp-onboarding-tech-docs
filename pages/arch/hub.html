@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>What does the GOV.UK Verify hub do? &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Architecture" href="arch.html"/>
+        <link rel="next" title="SAML" href="../saml/saml.html"/>
+        <link rel="prev" title="Architecture" href="arch.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="arch.html">Architecture</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">What does the GOV.UK Verify hub do?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="arch.html">Architecture</a> &raquo;</li>
+      
+    <li>What does the GOV.UK Verify hub do?</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="what-does-the-gov-uk-verify-hub-do">
+<span id="hub"></span><h1>What does the GOV.UK Verify hub do?<a class="headerlink" href="#what-does-the-gov-uk-verify-hub-do" title="Permalink to this headline">¶</a></h1>
+<p>The hub is at the centre of GOV.UK Verify, centralising the interactions between users, government services, and identity providers.</p>
+<table border="1" class="docutils" id="flow-diagram">
+<colgroup>
+<col width="79%" />
+<col width="21%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last figure" id="id1">
+<img alt="Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter. Communication with the hub is via SAML with PKI. The Matching Service Adapter is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture." src="../../_images/arch_overview.png" />
+<p class="caption"><span class="caption-text">GOV.UK Verify architecture</span></p>
+</div>
+</td>
+<td><p class="first">For more details, see the diagrams:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
+<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li>The GOV.UK Verify hub receives a <a class="reference internal" href="../saml/saml.html#saml"><span>SAML</span></a> request from the government service to authenticate a user who is trying to access their service.</li>
+<li>The GOV.UK Verify hub helps the user select an identity provider that will authenticate them.</li>
+<li>The GOV.UK Verify hub sends a SAML request to the chosen identity provider to authenticate the user.</li>
+<li>The chosen identity provider authenticates the user. It then sends two assertions (in a SAML response) to the GOV.UK Verify hub. These assertions contain the:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> - name, address, date of birth, and gender (optional), plus historical data where available</li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a> which identifies the unique combination of the user and identity provider</li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a> to which the identity provider authenticated the user</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>The GOV.UK Verify hub initiates matching of the authenticated user, based on the service’s <a class="reference internal" href="../ms/msBuild.html#ms-strat"><span>matching strategy</span></a>, by sending a SAML attribute query to the service’s Matching Service Adapter.</li>
+<li>If the user is matched, the GOV.UK Verify hub passes an assertion (SAML response) of the user’s authenticated identity to the service.</li>
+</ol>
+<p>For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../saml/saml.html" class="btn btn-neutral float-right" title="SAML" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="arch.html" class="btn btn-neutral" title="Architecture" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

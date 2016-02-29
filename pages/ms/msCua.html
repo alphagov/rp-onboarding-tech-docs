@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Create user accounts &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching Service" href="ms.html"/>
+        <link rel="next" title="Matching Service Adapter" href="../msa/msa.html"/>
+        <link rel="prev" title="Build a local matching service" href="msBuild.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Matching Service</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Create user accounts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-user-accounts-message-flow">Create user accounts: message flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="ms.html">Matching Service</a> &raquo;</li>
+      
+    <li>Create user accounts</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="create-user-accounts">
+<span id="ms-cua"></span><h1>Create user accounts<a class="headerlink" href="#create-user-accounts" title="Permalink to this headline">¶</a></h1>
+<p>You can create a new account for the user based on the hashed persistent identifier and a subset of attributes from the matching dataset. It&#8217;s optional to set up your matching service to support the creation of new accounts.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Before creating a user account you must request explicit user consent.</p>
+</div>
+<ol class="arabic simple">
+<li>Make sure your Matching Service Adapter exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The Matching Service Adapter then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>[{
+ &quot;hashedPid&quot;: &quot;&lt;some string value&gt;&quot;,
+ &quot;levelOfAssurance&quot;: &quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;
+}]`
+</pre></div>
+</div>
+<p>You must specify the Matching Service Adapter&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>request access to an environment</span></a>. This form is available from your engagement lead.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Make sure the local matching service&#8217;s user account creation URI endpoint returns the following JSON, choosing success or failure as appropriate:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>[{
+ &quot;result&quot;: &quot;&lt;success or failure&gt;&quot;
+}]`
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As shown in the above example, <code class="docutils literal"><span class="pre">success</span></code> and <code class="docutils literal"><span class="pre">failure</span></code> must be in lower case.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#msa-config-msa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
+<li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="n">FIRST_NAME</span>
+<span class="n">FIRST_NAME_VERIFIED</span>
+<span class="n">MIDDLE_NAME</span>
+<span class="n">MIDDLE_NAME_VERIFIED</span>
+<span class="n">SURNAME</span>
+<span class="n">SURNAME_VERIFIED</span>
+<span class="n">DATE_OF_BIRTH</span>
+<span class="n">DATE_OF_BIRTH_VERIFIED</span>
+<span class="n">CURRENT_ADDRESS</span>
+<span class="n">CURRENT_ADDRESS_VERIFIED</span>
+<span class="n">CYCLE_3</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot use historical data to create user accounts.</p>
+</div>
+</div></blockquote>
+<div class="section" id="create-user-accounts-message-flow">
+<span id="ms-cua-diagram"></span><h2>Create user accounts: message flow<a class="headerlink" href="#create-user-accounts-message-flow" title="Permalink to this headline">¶</a></h2>
+<p>This diagram shows the message flow for creating user accounts. The numbers identify each stage in the flow. See below for explanations.</p>
+<table border="1" class="docutils" id="flow-diagram">
+<colgroup>
+<col width="84%" />
+<col width="16%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last figure" id="id1">
+<img alt="Diagram showing user account creation. The Matching Service Adapter converts between SAML and JSON. The Matching Service Adapter contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps." src="../../_images/accountcreation.png" />
+<p class="caption"><span class="caption-text">User account creation</span></p>
+</div>
+</td>
+<td><p class="first">For more details, see the diagrams:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
+</div>
+<ol class="arabic simple">
+<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no</span> <span class="pre">match</span></code> response to the Matching Service Adapter.</li>
+<li>The Matching Service Adapter forwards the no match response to the GOV.UK Verify hub.</li>
+<li>The GOV.UK Verify hub:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>checks that your matching service supports the creation of new user accounts</li>
+<li>identifies the attributes you previously specified as necessary to create a new user account</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>If your service supports the creation of new user accounts, the hub sends an unknown user attribute query to the Matching Service Adapter. It contains the:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>hashed persistent identifier</li>
+<li>matching dataset</li>
+<li>list of attributes to extract from the matching dataset</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>The Matching Service Adapter extracts the required attributes from the matching dataset (if available).</li>
+<li>The Matching Service Adapter sends the extracted attributes and the hashed persistent identifier to your service via the GOV.UK Verify hub.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The Matching Service Adapter must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:</p>
+<ul class="simple">
+<li>user control - the user must give their informed consent to the information being sent</li>
+<li>data minimisation - the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>
+</ul>
+<p class="last">For more information see the <a class="reference external" href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/361496/PCAG_IDA_Principles_3.1__4_.pdf">Identity Assurance Principles</a>.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li>Optionally, the government service creates a correlation between the matching dataset and hashed persistent identifier in its matching datastore. This will be used for matching cycle 0 when the same user returns.</li>
+<li>Optionally, the government service creates a new account based on the attributes extracted from the matching dataset.</li>
+</ol>
+<blockquote>
+<div><div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If you create a new account you must gain consent from the user first.</p>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../msa/msa.html" class="btn btn-neutral float-right" title="Matching Service Adapter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="msBuild.html" class="btn btn-neutral" title="Build a local matching service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

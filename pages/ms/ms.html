@@ -31,35 +31,67 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="next" title="Matching Service Adapter" href="../msa/msa.html"/>
-        <link rel="prev" title="GOV.UK Verify Hub" href="../hub/hub.html"/>
-<link href="../../_static/style.css" rel="stylesheet" type="text/css">
+        <link rel="next" title="How a matching service works" href="msWorks.html"/>
+        <link rel="prev" title="Run SAML compliance tests" href="../saml/samlComplianceTool.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-69990724-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
 
 
   
-  <script src="_static/js/modernizr.min.js"></script>
+  <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
   <div class="wy-grid-for-nav">
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-nav-search">
-        
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-        
-          <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
-        
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
 
-        
-        </a>
+          
+          </a>
 
-        
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -68,68 +100,35 @@
   </form>
 </div>
 
-        
-      </div>
+          
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
-          
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../atg/atg.html">About This Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../atg/atg.html#purpose">Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../atg/atg.html#audience">Audience</a></li>
-</ul>
-</li>
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../env/env.html">Integrating with Verify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hub/hub.html">GOV.UK Verify Hub</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Matching Service</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-a-matching-service-works">How a matching service works</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#confidence-scoring-for-matching">Confidence scoring for matching</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-of-matching-request">Example of matching request</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#build-a-matching-service">Build a matching service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#matching-strategy">Matching strategy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#matching-strategy-example">Matching strategy example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#matching-cycles">Matching cycles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-user-accounts">Creating user accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#minimum-requirements-for-a-matching-service">Minimum requirements for a matching service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#common-problems">Common problems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#further-guidance">Further guidance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#importance-of-a-matching-service">Importance of a matching service</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../msa/msa.html#cath-testing-stuff">Cath testing stuff</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#overview">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pki/pki.html#elements-of-pki">Elements of PKI</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#how-pki-works-with-gov-uk-verify">How PKI works with GOV.UK Verify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#request-pki-certificates">Request PKI certificates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pki/pki.html#how-does-gov-uk-verify-use-pki">How does GOV.UK Verify use PKI?</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/testing.html">User Research</a></li>
-<li class="toctree-l1"><a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/glossary.html">Glossary of terms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../revhis/revhis.html">Revision history</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Matching Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msCua.html">Create user accounts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
 <li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.signin.service.gov.uk/cookies">Cookies</a></li>
 </ul>
 
+            
           
-        
+        </div>
       </div>
-      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -144,384 +143,53 @@
       
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
     <li>Matching Service</li>
-      <li class="wy-breadcrumbs-aside">
+    <li class="wy-breadcrumbs-aside">
+      
         
-          
-        
-      </li>
+      
+    </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document">
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
       <div class="section" id="matching-service">
 <span id="ms"></span><h1>Matching Service<a class="headerlink" href="#matching-service" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>A matching service matches a user’s identity, which has been assured by GOV.UK Verify, to a local identifier in a government service’s records. It enables the government service to say that the John Smith trying to access the service is the same John Smith already held on file locally.</p>
-<p>UK citizens do not have a unique identifier, so the government service needs to match other information about the user, such as address or date of birth, against the service’s records. The local identifier in the service&#8217;s records can be a known identifier such as an NHS number, or it can simply be an identifier that the service allocates to a user.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Identity assurance cannot function without data matching.</p>
-</div>
-<p>It is the responsibility of government services to develop and implement the matching service that carries out this matching. We have provided this guidance for services to consider. We recognise that not all services have experience of matching verified identities to government data sources, and that the process of matching itself is often complex.</p>
-</div>
-<div class="section" id="how-a-matching-service-works">
-<h2>How a matching service works<a class="headerlink" href="#how-a-matching-service-works" title="Permalink to this headline">¶</a></h2>
-<p>A matching service matches the user to the correct record in a service’s database using a limited set of information, called the matching dataset, that has been verified by the identity provider.</p>
-<p>The matching dataset contains:</p>
-<ul class="simple">
-<li>name</li>
-<li>address</li>
-<li>date of birth</li>
-<li>gender (optional)</li>
-</ul>
-<p>It may also contain historical data if available, for example previous addresses.</p>
-<p>Matching assured identities to records is likely to be complicated. A service needs to establish the most efficient and effective way of doing this, depending on the quality of data and how it is stored and managed.</p>
-<p>Services have to carry out a risk-based match to find the account against which to match. For example, the matching service must be able to handle the following circumstances:</p>
-<ul class="simple">
-<li>When multiple records are found that could be a match (decide how to minimise risk of incorrect matching)</li>
-<li>When no match is found (decide whether to create a new record for the user)</li>
-</ul>
-<div class="section" id="confidence-scoring-for-matching">
-<h3>Confidence scoring for matching<a class="headerlink" href="#confidence-scoring-for-matching" title="Permalink to this headline">¶</a></h3>
-<p>Confidence scoring is the score given to the data that matches; below is a greatly simplified example :</p>
-<ul class="simple">
-<li>100% match confidence means that all elements of data fully match</li>
-<li>80% match confidence might mean that first name, surname, and date of birth match, but address is showing a mismatch</li>
-</ul>
-<p>Mismatches in data can happen, because, for example, the user typed the asserted information incorrectly or incorrect data is held in the service records. Service data may be incorrect for many reasons, for example if someone has moved house or changed their name but not informed the service.</p>
-<p>Matching may be easier when there’s a unique identifier, eg a passport number, but this should not be used in isolation, and the process should always attempt a match to the matching dataset first.</p>
-<p>It is up to the service to configure the level of match confidence that is needed, as attitudes to risk and matching requirements may be different for each service.</p>
-<p>We recommend that the service analyse its local data sources in light of the matching strategy, so that the service can test and refine the strategy before launching alpha or beta services.</p>
-</div>
-<div class="section" id="example-of-matching-request">
-<h3>Example of matching request<a class="headerlink" href="#example-of-matching-request" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>John Doe wishes to submit his Self Assessment tax return online to HMRC. He will attempt to sign in to the service using his identity provider.</li>
-<li>HMRC issues a request to the GOV.UK Verify hub to authenticate John Doe.</li>
-<li>The hub forwards the request on to John Doe’s chosen identity provider.</li>
-<li>John Doe provides his identity credentials.</li>
-<li>The identity provider confirms these credentials are correct and responds with identity information (matching dataset), which is returned to HMRC through the hub.</li>
-<li>The hub provides the matching service with the user’s persistent identifier and matching dataset.</li>
-<li>The Matching Service Adapter hashes the persistent identifier so that it is meaningless to other services and passes the hashed persistent identifier (PID) and the matching dataset to HMRC’S matching service.</li>
-<li>HMRC’s matching service tries to locate John Doe’s tax record in their internal dataset, using the hashed persistent identifier and the matching dataset.</li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The hashed pid is specific to the combination of user, service and LPD. Please refer to <a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a></p>
-</div>
-<p>The following diagram gives an overview of the matching process:</p>
-<img alt="../../_images/MatchingProcessDiagram.jpg" id="matchingprocessdiagram" src="../../_images/MatchingProcessDiagram.jpg" />
-<p>Matching is initiated when a user has successfully authenticated at an identity provider in response to a request from you. The hub receives the identity provider’s response, containing:</p>
-<ul class="simple">
-<li>identity matching data, known as the matching dataset</li>
-<li>unique persistent identifier for the identity, created by the identity provider</li>
-</ul>
-<p>The hub passes this response to the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>. The Matching Service Adapter essentially converts the SAML used by the hub into the JSON used by your matching service.</p>
-<p>The Matching Service Adapter hashes the persistent identifier to create an identifier that is meaningless to other services, and then sends a JSON query to your matching service which tries to find a match for the user’s identity in your service’s records. The matching service attempts 3 cycles of matching as described below.</p>
-<p>NEED TO INTEGRATE THIS (COPIED OVER FROM HOW A MS WORKS IN TECH GUIDE)</p>
-<p>The hub sends the matching dataset to the matching service via the Matching Service Adapter. Once matching has taken place, the user is directed to the correct record within the service.</p>
-<p>There are potentially 3 cycles of matching, see <a class="reference internal" href="#matching-cycles">Matching cycles</a> . If, after these 3 cycles, there’s no match, the service can optionally decide to create a new account for the user. See <a class="reference internal" href="#creating-user-accounts">Creating user accounts</a> for more information.</p>
-</div>
-</div>
-<div class="section" id="build-a-matching-service">
-<h2>Build a matching service<a class="headerlink" href="#build-a-matching-service" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="matching-strategy">
-<h3>Matching strategy<a class="headerlink" href="#matching-strategy" title="Permalink to this headline">¶</a></h3>
-<p>The matching strategy should take into account:</p>
-<ul class="simple">
-<li>quality of available data</li>
-<li>completeness of local data sources</li>
-<li>confidence level required in a successful match</li>
-<li>how to score the confidence of a match (based on multiple criteria)</li>
-</ul>
-<p>Take into account the following considerations when defining your matching service:</p>
-<ul class="simple">
-<li>Understand the different types of users</li>
-<li>Prepare for matching with customer data aggregation and data cleansing</li>
-<li>Define the rules for successful matching, for example:<ul>
-<li>matching synonyms, for example matching personal names of <strong>William</strong> and <strong>Bill</strong></li>
-<li>possible transposition of multiple part names, for example <strong>Anna Marie</strong>,  <strong>Jane</strong> and <strong>Anna, Marie Jane</strong></li>
-<li>possible transposition errors of day and month in the date of birth, for example <strong>04/10/78</strong> and <strong>10/04/78</strong></li>
-</ul>
-</li>
-<li>Specify additional attributes that can be used to match identities reliably and securely, for example; passport number. The matching service can then prompt the hub to request additional attributes from the identity provider</li>
-<li>Understand, from both a business and a technical view, what level of ‘fuzzy matching’ is acceptable and possible. The service can apply fuzzy matching when an exact match is not found; it allows a match that, although not 100%, is above a service-defined threshold matching percentage</li>
-<li>Define the fuzzy matching rules</li>
-<li>Manage the risk of incorrect matching and decide what happens if multiple records are found or if there are no matches (user not found). If there are no matches, you can optionally  <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/buildMatchingService.html#creating-user-accounts">create a new account.</a></li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>The matching strategy has to be shared/agreed/whatever it is with engagement leads</li>
-<li>For more guidance, see <a class="reference internal" href="#matching-strategy-example">Matching strategy example</a>.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="matching-strategy-example">
-<h3>Matching strategy example<a class="headerlink" href="#matching-strategy-example" title="Permalink to this headline">¶</a></h3>
-<p>An example matching strategy for a service is outlined in the following steps. In this example, the service’s local data source is called local-data.</p>
-<ol class="arabic simple">
-<li>Identify potential matches by trying to match the matching dataset to the service’s local records (local-data). The first attempt at matching looks for a 100% match to full name and date of birth. If there are no matches, it widens as follows:</li>
-</ol>
-<blockquote>
-<div><ol class="loweralpha">
-<li><p class="first">Request the set of records (from local-data) that match both surname and date of birth (from the matching dataset).</p>
-</li>
-<li><p class="first">Perform the following matches:</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Include matches to historic names in the matching dataset, if provided.</p>
-</div>
-</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>surname
-forename 1
-forename 2
-date of birth</li>
-</ul>
-<blockquote>
-<div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If forename 2 does not exist, skip this match</p>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>surname
-forename 1
-date of birth</li>
-<li>surname
-date of birth</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Look for a match to historic information in the matching dataset. As for step 1, but match to historic names if provided in the matching dataset.</li>
-<li>Look for a match to historic information in local-data (if available). As for step 1, but match current matching dataset names to name history in local-data.</li>
-<li>Match to partial data and synonyms. As for step 1, but with synonyms applied to names from the matching dataset. For example Mike rather than Michael, Steven rather than Steve or Stephen.</li>
-</ol>
-<p>If there’s still no match, try further matching to surname and initials, for example surname, initial 1, date of birth.</p>
-<ol class="arabic simple" start="5">
-<li>If there are matches, apply the outcode element of the postcode&#8217;s first element for example; PO1, to increase match confidence (match score). Of the remaining (potential) matches, try to match to:</li>
-</ol>
-<blockquote>
-<div><ol class="loweralpha simple">
-<li>Full postcode and first 6 characters of address line 1.</li>
-<li>Outcode element of postcode and first 6 characters of address line 1.</li>
-<li>Full postcode only.</li>
-</ol>
-</div></blockquote>
-<ol class="arabic simple" start="6">
-<li>If step 5 results in one or more matches:</li>
-</ol>
-<blockquote>
-<div><ol class="loweralpha simple">
-<li>If there’s a single match and the match confidence score is over the acceptable limit, assume a match to the matching dataset.</li>
-<li>If there are multiple matches over the confidence score, proceed to cycle 3 matching (user-asserted match). See GOV.UK Verify Architecture Overview for a description of the 3 matching cycles.</li>
-<li>If all matches are below the match confidence threshold, proceed to address and date of birth partial matching.</li>
-</ol>
-</div></blockquote>
-<ol class="arabic simple" start="7">
-<li>Look for address and date of birth partial matching. Date of birth is sometimes incorrectly recorded so the service could perform additional address level matching to find potential matches, as follows:</li>
-</ol>
-<blockquote>
-<div><ol class="loweralpha simple">
-<li>Retrieve records that match the following criteria:</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>union (surname, outcode (first element of postcode)</li>
-<li>surname</li>
-<li>first 6 characters of address (line 1)</li>
-</ul>
-</div></blockquote>
-<ol class="loweralpha simple" start="2">
-<li>With these records, attempt the following matches at the matching service:</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>surname</li>
-<li>forename 1</li>
-<li>forename 2</li>
-<li>MDS-YYYY-DD-MM where MDS is matching dataset and YYYY-DD-MM is year-day-month</li>
-</ul>
-<p>If forename 2 does not exist, skip this match</p>
-<ul class="simple">
-<li>surname forename 1, date of birth</li>
-<li>surname, date of birth</li>
-</ul>
-</div></blockquote>
-</div></blockquote>
-</div>
-<div class="section" id="matching-cycles">
-<span id="mc"></span><h3>Matching cycles<a class="headerlink" href="#matching-cycles" title="Permalink to this headline">¶</a></h3>
-<p>The matching process currently consists of three matching cycles in which you try to match the user to the correct record:</p>
-<ul class="simple">
-<li>hashed persistent identifier match (cycle 0)</li>
-<li>matching dataset match (cycle 1)</li>
-<li>user asserted match (cycle 3)</li>
-</ul>
-<p>Cycle numbers refer to the sequence of attempts made to find a matching account or local identifier for a particular verified identity as expressed in an assertion of matching data from an identity provider.</p>
-<p><strong>Cycle 0 (Persistent identifier match)</strong></p>
-<p>This allows the matching service to match the hashed PID for a user to hashed PIDs held in the matching service against previous matches. This cycle is a shortcut for full matching (cycles 1/2/3).</p>
-<p>Each identity provider assigns a unique persistent identifier to a user. In the first cycle of matching, the matching service tries to match this persistent identifier in the mapping table. This only succeeds if the user has previously been matched by the matching service with the same identity provider, as the previous transaction would have written the persistent identifier to the mapping table.</p>
-<p><strong>Cycle 1 (Matching dataset match)</strong></p>
-<p>This checks for a match in the user’s identity in the transaction’s local store, using the matching dataset to try and achieve a match.</p>
-<p>The identity provider supplies the matching dataset if the persistent identifier cycle 0 attempt does not result in a match. The matching dataset information can then be used to search for the record. The matching service searches your databases for a record with the same name / address / date of birth / gender details (using history data if available in the matching dataset). The matching service can use any or all of these details to attempt to find a match, as determined by the matching rules of the service provider’s matching service. If a unique match is found, the hashed persistent identifier is written to the mapping table with the corresponding local identifier to enable cycle 0 matching to occur during subsequent transactions.</p>
-<p><strong>Cycle 2</strong></p>
-<p>This is an additional matching cycle where attributes gained from attribute providers are used to enhance the matching process.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Cycle 2 is currently not supported by GOV.UK Verify.</p>
-</div>
-<p><strong>Cycle 3 (User-asserted match)</strong></p>
-<p>This asks the user for additional information for the matching service to complete a match. This cycle is defined in the service provider policy and may not be required for all matches.</p>
-<p>If more than one potential match is found, the user is asked for some additional information (self-asserted attributes) so that the matching service can refine the match, for example Unique Taxpayer Reference (collected by the hub). This cycle is defined in the service provider policy and may not be required for all matches.</p>
-</div>
-<div class="section" id="creating-user-accounts">
-<span id="cuc"></span><h3>Creating user accounts<a class="headerlink" href="#creating-user-accounts" title="Permalink to this headline">¶</a></h3>
-<p>If all three matching cycles fail to find a match for the user’s identity in your records, you can choose to create a new account for the user based on the hashed persistent identifier and a subset of specified attributes from the matching dataset returned by the identity provider.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Creating new accounts is optional and, if you decide to do this, you must ensure your matching service supports this feature.</p>
-</div>
-</div>
-<div class="section" id="minimum-requirements-for-a-matching-service">
-<h3>Minimum requirements for a matching service<a class="headerlink" href="#minimum-requirements-for-a-matching-service" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Build your matching service to support creation of new accounts if matching fails.</li>
-<li>Ensure your matching service exposes the User Account Creation URI endpoint. This is the fully qualified URI to which the hub makes Unknown User Attribute Query requests (message flow number 7 in the message flow diagram below). This endpoint must accept the following JSON:</li>
-</ol>
-<div class="highlight-python"><div class="highlight"><pre>[{
- &quot;hashedPid&quot;: &quot;&lt;some string value&gt;&quot;,
- &quot;levelOfAssurance&quot;: &quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;
-}]`
-
-
-You must also specify this URI on the Request access to an environment form that you fill in when requesting access to the integration and production environments. This form is available from your engagement lead.
-</pre></div>
-</div>
-<ol class="arabic simple" start="3">
-<li>Make sure the User Account Creation URI endpoint returns the following JSON, choosing success or failure as appropriate:</li>
-</ol>
-<div class="highlight-python"><div class="highlight"><pre>[{
- &quot;result&quot;: &quot;&lt;success or failure&gt;&quot;
-}]`
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">&#8220;success&#8221; and &#8220;failure&#8221; are case sensitive and must be lower case, as shown in the above example.</p>
-</div>
-<ol class="arabic simple" start="4">
-<li>Configure your Matching Service Adapter to create new user accounts by supplying the User Account Creation URI in unknownUserCreationServiceUri: in the configuration file.</li>
-<li>See <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> for a description of how to configure the Matching Service Adapter.</li>
-</ol>
-<p>Provide the hub with a list of the attributes you want to be returned to your service when creating new user accounts. The options are:</p>
-<div class="highlight-python"><div class="highlight"><pre>FIRST_NAME
-FIRST_NAME_VERIFIED
-MIDDLE_NAME
-MIDDLE_NAME_VERIFIED
-SURNAME
-SURNAME_VERIFIED
-DATE_OF_BIRTH
-DATE_OF_BIRTH_VERIFIED
-CURRENT_ADDRESS
-CURRENT_ADDRESS_VERIFIED
-CYCLE_3`
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You define your required attributes on the Request access to an environment form.</p>
-</div>
-<p><strong>User account creation message flow</strong>
-The following diagram shows the message flow for user account creation (happy path), followed by an outline description of the process.</p>
-<img alt="../../_images/useraccountmssflow.png" src="../../_images/useraccountmssflow.png" />
-<p><em>User account creation message flow diagram</em></p>
-<ol class="arabic simple">
-<li>Message flow number 1 in the above diagram: Your service sends a request to the GOV.UK Verify hub to authenticate the user’s identity, forwarded by the GOV.UK Verify hub to the identity provider.</li>
-<li>The identity provider authenticates the user and sends the user’s matching dataset (MDS) to the GOV.UK Verify hub.</li>
-<li>The GOV.UK Verify hub passes the matching dataset and the persistent identifier (PID) to the Matching Service Adapter.</li>
-<li>The Matching Service Adapter hashes the persistent identifier (#PID) and forwards it with the matching dataset to your matching service. Your matching service tries to find a match for the user in your records, using cycle 0, then cycle 1 if necessary, and then cycle 3 if necessary.</li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The Matching Service Adapter hashes the persistent identifier to prevent it being used by other services, as hashing makes it meaningless to them.</p>
-</div>
-<ol class="arabic simple" start="5">
-<li>Your matching service sends a match or no match response to the Matching Service Adapter.</li>
-<li>The Matching Service Adapter forwards the match or no match response to the GOV.UK Verify hub.</li>
-<li>If there’s no match, even after the user-asserted match (cycle 3), the GOV.UK Verify hub checks your matching service to see if you wish to receive certain attributes (specified by you) from the matching dataset so that you can create a new user account, and then makes an Unknown User Attribute Query request.</li>
-<li>If your matching service supports creating new user accounts, the GOV.UK Verify hub passes the hashed persistent identifier and level of assurance to the Matching Service Adapter. The GOV.UK Verify hub passes on the level of assurance to prevent identity theft via fake uplifting, (the act of being ‘lifted’ from one level of assurance to a higher one).</li>
-<li>The Matching Service Adapter forwards the hashed persistent identifier and level of assurance to your matching service. Your matching service then typically creates a new record for the user (called a local identifier), linking the hashed persistent identifier and level of assurance to that record. However, it’s up to you to define what your matching service does with the hashed persistent identifier and level of assurance.</li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Your matching service must not add attributes to your local records at this point.</p>
-</div>
-<ol class="arabic simple" start="10">
-<li>If your matching service successfully creates a new account (or does whatever you specify), it returns a success response to the Matching Service Adapter. If your matching service fails to create a new account (or fails to do whatever you specify), it returns a failure response to the Matching Service Adapter (eg because the hashed persistent identifier already exists in the system). It returns aurn:oasis:names:tc:SAML:2.0:status:Responder and no attributes are extracted from the matching dataset.</li>
-<li>The Matching Service Adapter extracts your specified attributes from the matching dataset (if available)</li>
-<li>The Matching Service Adapter returns these attributes to the GOV.UK Verify hub.</li>
-<li>If the response is success, the GOV.UK Verify hub sends your service the attributes and hashed persistent identifier. Your service uses the hashed persistent identifier to look for a mapped local identifier and then creates a new account, associating the attributes with the local identifier.</li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To create a user account, the Matching Service Adapter must send the attributes and hashed persistent identifier to your service via the GOV.UK Verify hub (message flows 12 and 13). This is because of user control (the user must give their informed consent to the information being sent) and data minimisation (the service only receives the restricted set of attributes it needs, not the full matching dataset). For more information see the <a class="reference external" href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/361496/PCAG_IDA_Principles_3.1__4_.pdf">Identity Assurance Principles</a>.</p>
-</div>
-</div>
-<div class="section" id="common-problems">
-<h3>Common problems<a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h3>
-<p>Exact matching of identity data such as name, address and date of birth is rarely possible because of the following:</p>
-<ul class="simple">
-<li>transcription errors</li>
-<li>spelling mistakes</li>
-<li>user-asserted data from previous records may include typos or errors</li>
-</ul>
-<p>Services should be aware of this and devise a matching strategy that deals with these issues. Some suggestions are as follows:</p>
-<ul class="simple">
-<li>Widen initial queries (or traces) to ensure that relevant records are not missed or false positives returned. For example, search for surname, date of birth and postcode first, then examine the results to identify the required record with further scored matching.</li>
-<li>Split names into separate forename(s) and surname elements and try synonym matching against combinations of forename and surname, possibly transposing them, for example; surname, forename 1.</li>
-</ul>
-<p>This is to overcome the common situation where people refer to themselves using shortened versions of their name or nicknames, as opposed to their legal name. For example, Mike Smith, Michael Smith and David Michael Smith may all be different representations of the same person (usual name, official name and legal name, for example; from a passport.</p>
-</div>
-<div class="section" id="further-guidance">
-<h3>Further guidance<a class="headerlink" href="#further-guidance" title="Permalink to this headline">¶</a></h3>
-<p>Please Contact the <a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">GOV.UK Verify team</a> or your engagement lead if your service needs more help with building a matching service.</p>
-<p>CATH COMMENT : NOT SURE WHERE TO PUT THIS OR WHETHER IT IS NEEDED</p>
-</div>
-<div class="section" id="importance-of-a-matching-service">
-<h3>Importance of a matching service<a class="headerlink" href="#importance-of-a-matching-service" title="Permalink to this headline">¶</a></h3>
-<p>The Identity Assurance Hub Service SAML 2.0 Profile states that a service must nominate a matching service, even if it doesn&#8217;t need to perform matching. This is because the matching service also performs other key functions. The matching service also:</p>
-<ul class="simple">
-<li>Creates the hashed persistent identifier</li>
-<li>Creates the final assertion as sent to the service</li>
-<li>Acts as the trust anchor for the service (signs the assertion)</li>
-<li>Attempts to find a local identifier that means something to the service (optionally)</li>
-</ul>
-</div>
+<p>The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.</p>
+<p>Government services host their matching service within their security domain. A matching service is composed of the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and a local matching service.</p>
+<div align="center" class="align-center"><img alt="Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service." src="../../_images/matchingservice.svg" /></div>
+<p class="rubric">Why does GOV.UK Verify use a matching service?</p>
+<p>UK citizens do not have a unique identifier. Government services need to match other information about the user, for example address or date of birth, against their data sources.</p>
+<p class="rubric">What do you need to do?</p>
+<p>As a government service, it&#8217;s your responsibility to develop and build your own local matching service.</p>
+<p>We&#8217;re aware that some services don&#8217;t have experience of matching verified identities to government data sources, and that the process can be complex. You need to understand <a class="reference internal" href="msWorks.html#msworks"><span>how a matching service works</span></a> and <a class="reference internal" href="msBuild.html#msbuild"><span>how to build a local matching service</span></a>. If your service needs further help with building a local matching service, contact your engagement lead or the <a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">GOV.UK Verify team</a>.</p>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
 
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../msa/msa.html" class="btn btn-neutral float-right" title="Matching Service Adapter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="msWorks.html" class="btn btn-neutral float-right" title="How a matching service works" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../hub/hub.html" class="btn btn-neutral" title="GOV.UK Verify Hub" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../saml/samlComplianceTool.html" class="btn btn-neutral" title="Run SAML compliance tests" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -530,8 +198,9 @@ The following diagram shows the message flow for user account creation (happy pa
 
   <div role="contentinfo">
     <p>
+
     </p>
-  </div>
+  </div> 
 
 </footer>
 
@@ -573,22 +242,7 @@ The following diagram shows the message flow for user account creation (happy pa
           SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-  
- 
-<!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-54060634-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-<!-- End Google Analytics -->
-
+   
 
 </body>
 </html>
