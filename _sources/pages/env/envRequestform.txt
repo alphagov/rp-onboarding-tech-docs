@@ -15,11 +15,11 @@ Fill in the form as indicated below:
 
 1. **Service entityID** 
 
-  Enter the entityID for the service you want to connect to the integration environment. This is a globally unique identifier for your service within the environment. It's typically in URL format, for example \https://identity.service.gov.uk. If you have more than one service connected to the environment, make sure each has a unique entityID.
+  Enter the entityID for the service you want to connect to the integration environment. This is a globally unique identifier for your service within the environment. It's typically in URL format, for example \https://identity.service.gov.uk. If you have more than 1 service connected to the environment, make sure each has a unique entityID.
 
 2. **Matching service entityID**
 
-  Your matching service is a unique entity within the federation. It therefore needs an entityID, which must be different from your service entityID. For example, \https://identity.service-ms.gov.uk. Several services can use the same matching service.
+  Your matching service is a unique entity within the federation. It therefore needs an entityID, which must be different from your service entityID. For example \https://identity.service-ms.gov.uk. Several services can use the same matching service.
 
 3. **Matching service URL** 
 
@@ -27,7 +27,7 @@ Fill in the form as indicated below:
 
 4. **Service start page URL**
 
-  Enter the fully qualified URL used to access your service. This is usually a page on GOV.UK, for example, \https://www.gov.uk/update-company-car-details.
+  Enter the fully qualified URL used to access your service. This is usually a page on GOV.UK, for example \https://www.gov.uk/update-company-car-details.
 
 5. **Assertion consumer service HTTPS URL**
 
@@ -84,7 +84,7 @@ Your content designer can provide the remaining information:
 
 14. **Other ways to... display name** 
 
-  Enter an alternative service name, for example, *access your personal tax account*. This appears on the *Other ways to...* page in the hub, which opens when a user can't verify their identity using GOV.UK Verify. If you don't provide an alternative service name, the GOV.UK Verify team sets it to the service display name by default. 
+  Enter an alternative service name, for example *access your personal tax account*. This appears on the *Other ways to...* content in the hub, which appears when a user can't verify their identity using GOV.UK Verify. If you don't provide an alternative service name, the GOV.UK Verify team sets it to the service display name by default. 
 
 15. **Other ways to complete the transaction** 
 
