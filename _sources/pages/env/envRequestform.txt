@@ -88,5 +88,5 @@ Your content designer can provide the remaining information:
 
 15. **Other ways to complete the transaction** 
 
-  Enter valid HTML content that displays on the *Other ways to...* page in the hub. This informs the user of alternative methods of using your service. For example: *If you can’t access your personal tax account online, contact HMRC. Make sure you have your National Insurance number before you call.*
+  Enter valid HTML content that displays on the *Other ways to...* page in the hub. This informs the user of alternative methods of using your service. For example: *If you can't verify your identity using GOV.UK Verify, there are other ways to access HMRC services.*
 
