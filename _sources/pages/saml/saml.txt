@@ -22,6 +22,7 @@ You must :ref:`build a government service <SAMLintegration>` that sends SAML aut
 
 When you build your service, you must :ref:`run SAML compliance tests <samlComplianceTool>`. Before running SAML compliance tests, :ref:`build your local matching service <msBuild>` and :ref:`install your Matching Service Adapter <msa_install_msa>`. When you have completed SAML compliance tests, you must test :ref:`end-to-end user journeys <envEndToEndTests>` in the integration environment. 
 
+For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
 
 .. _saml_docs:
 

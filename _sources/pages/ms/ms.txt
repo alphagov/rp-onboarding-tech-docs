@@ -22,6 +22,8 @@ As a government service, it's your responsibility to develop and build your own 
 
 We're aware that some services don't have experience of matching verified identities to government data sources, and that the process can be complex. You need to understand :ref:`how a matching service works <msWorks>` and :ref:`how to build a local matching service <msBuild>`. If your service needs further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 
 
+For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
+
 
 .. toctree::
    :hidden:
