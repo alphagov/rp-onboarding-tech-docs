@@ -121,7 +121,7 @@ Some prompts appear in the terminal. Enter the following information:
 * *Email Address*: the requester or group email address (if you've set one up)
 * *Extra attributes* (optional): 
  
- * *A challenge password*: if you provide this, you'll need it to inspect the contents of the file 
+ * *A challenge password*: if you provide this, the certificate authority may request it when you submit the certificate signing request
  * *An optional company name*  
 
 
