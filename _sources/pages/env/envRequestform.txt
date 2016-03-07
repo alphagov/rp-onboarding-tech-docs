@@ -88,5 +88,5 @@ Your content designer can provide the remaining information:
 
 15. **Other ways to complete the transaction** 
 
-  Enter valid HTML content, including URLs, that displays on the *Other ways to...* content in the hub. This informs the user of alternative methods of using your service. For example: *If you can't verify your identity using GOV.UK Verify, there are other ways to access HMRC services.*
+  Enter valid HTML content, including URLs, that displays on the *Other ways to...* content in the hub. This informs the user of alternative methods of using your service. For example: *If you can’t verify your identity using GOV.UK Verify, request Government Gateway user ID and password replacements from HMRC. This can take about 10 working days (or longer if you live abroad). For help, contact the HMRC Online Self Assessment helpline.*
 
