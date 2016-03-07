@@ -6,14 +6,14 @@
 Install the Matching Service Adapter
 ======================================
 
-Content being developed.
+Content being developed. See `existing guidance in the onboarding guide <http://alphagov.github.io/identity-assurance-documentation/stage4/msa.html#msa>`_.
 
 .. _msa_config_msa:
 
 Configure the Matching Service Adapter
 ==============================================
 
-Content being developed.
+Content being developed. See `existing guidance in the onboarding guide <http://alphagov.github.io/identity-assurance-documentation/stage4/msa.html#msa>`_.
  
 .. _msa_config_environ:
 
@@ -21,7 +21,7 @@ Content being developed.
 Configure for the integration and production environments
 ------------------------------------------------------------
 
-Content being developed.
+Content being developed. See `existing guidance in the onboarding guide <http://alphagov.github.io/identity-assurance-documentation/stage4/msa.html#msa>`_.
 
 
 .. _msa_config_msa_ct:
@@ -29,13 +29,13 @@ Content being developed.
 Configure for the compliance tool
 ------------------------------------
 
-Content being developed.
+Content being developed. See `existing guidance in the onboarding guide <http://alphagov.github.io/identity-assurance-documentation/stage4/msa.html#msa>`_.
 
 .. _msa_test_msa:
 
 Test the Matching Service Adapter using the compliance tool
 =====================================================================
 
-Content being developed.
+Content being developed. See `existing guidance in the onboarding guide <http://alphagov.github.io/identity-assurance-documentation/stage4/msa.html#msa>`_.
 
 

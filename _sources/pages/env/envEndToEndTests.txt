@@ -3,4 +3,4 @@
 Run end-to-end testing
 ===================================
 
-Content being developed. 
+Content being developed. See `existing guidance in the onboarding guide <http://alphagov.github.io/identity-assurance-documentation/stage4/testUsers.html#testusers>`_.
