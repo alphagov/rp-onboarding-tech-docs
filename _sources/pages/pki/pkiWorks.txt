@@ -45,6 +45,7 @@ To obtain a certificate:
  
 
 .. figure:: pkiIssueCerts.svg 
+    :alt: Diagram with an overview of how to generate certificates. Generate a private key. Generate a public key from the private key. Generate a certificate signing request containing the public key. Send the certificate signing request to the IDAP certificate authority. The certificate authority generates the certificate and sends it to you. 
     :align: center
 
     Request certificates
@@ -64,6 +65,7 @@ The sender extracts the public encryption key from the receiver's encryption cer
 
 
   .. figure:: pkiEncryption.svg
+      :alt: Diagram with an overview of how data encryption works. The GOV.UK Verify hub extracts the Matching Service Adapter public encryption key from the Matching Service Adapter encryption certificate.  The GOV.UK Verify hub encrypts data and sends it to the Matching Service Adapter. The Matching Service Adapter decrypts the data using the Matching Service Adapter private encryption key. 
       :align: center
 
       Example of data encryption
@@ -75,6 +77,7 @@ Signing certificates provide the receiver with assurance of who authored the mes
 When signing data, you use your private signing key to create a digital signature, and then send the signed message. The receivers check the digital signature using your public signing key from your signing certificate.
 
  .. figure:: pkiSigning.svg
+     :alt: Diagram with an overview of how data signing works. The government service signs data using their private signing key. The government service sends the signed data to the GOV.UK Verify hub. The hub checks the signature using the government service public signing key.  
      :align: center
 
      Example of data signing

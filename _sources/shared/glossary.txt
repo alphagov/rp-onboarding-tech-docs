@@ -11,19 +11,19 @@ An identity that's been verified to the required level of assurance.
 
 **attributes**
 
-Data that is sent from one entity to another in a SAML assertion, for example, the matching dataset for use by the matching service.
+Data that's sent from 1 entity to another in a SAML assertion, for example, the matching dataset for use by the matching service.
 
 **authentication**
 
-The process by which a system confirms the user is known to that system, usually through the use of one or more credentials.
+The process by which a system confirms the user is known to that system, usually through the use of 1 or more credentials.
 
 **authentication request**
 
-The request that a service sends to the hub, or the hub sends to an identity provider, to request identification of an individual trying to access an online digital service.
+The request that a service sends to the hub, or the hub sends to an identity provider, to request the identification of an individual trying to access an online digital service.
 
 **certificate**
 
-A file containing a public key. Only certificates that have been approved by a GDS certificate authority can be used with GOV.UK Verify.
+A file containing a public key. Only certificates that have been approved by an IDAP certificate authority can be used with GOV.UK Verify.
 
 	**certificate authority**
 
@@ -148,6 +148,8 @@ The degree of confidence the government service requires that a user is who they
 **local matching datastore**
 
 A datastore that is part of a government service’s local matching service. It stores correlations between hashed persistent identifiers and local identifiers for users.
+
+.. _gloss_lms:
 
 **local matching service**
 

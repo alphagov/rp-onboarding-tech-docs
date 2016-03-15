@@ -100,7 +100,7 @@ This diagram shows the message flow for matching cycles 0, 1, and 3. The numbers
    :widths: 80, 15
    :name: flow-diagram
 
-   ".. figure:: matchingcycles.png
+   ".. figure:: matchingcyclesGraphics.svg
      :alt: Diagram showing the three matching cycles, 0, 1 and 3. The Matching Service Adapter converts between SAML and JSON. The text below the image describes the steps.
 
      Matching cycles 0, 1, and 3","For more details, see the diagrams:
