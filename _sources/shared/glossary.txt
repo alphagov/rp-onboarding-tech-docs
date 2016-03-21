@@ -249,12 +249,12 @@ An entity in a system of federated identity that relies on a response from anoth
 
 **SAML (Security Assertion Markup Language)**
 
-An Extensible Markup Language (XML) open standard for the exchange of authentication and authorisation data between parties such as identity providers and government services. OASIS governs the SAML standards. 
+An Extensible Markup Language (XML) open standard for the exchange of authentication and authorisation data between parties such as identity providers and government services. `OASIS <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security>`_  governs the SAML standards. 
 
 
 **SAML profile**
 
-A profile that specifies how to use SAML within a system of federated identity. The SAML profile for the GOV.UK Verify federation defines the SAML messages that are passed between entities within the federation and the rules for their use. SAML messages take the form of requests and responses, and can contain SAML assertions. The profile is built upon core SAML profiles as defined by OASIS.
+A profile that specifies how to use SAML within a system of federated identity. The SAML profile for the GOV.UK Verify federation defines the SAML messages that are passed between entities within the federation and the rules for their use. SAML messages take the form of requests and responses, and can contain SAML assertions. The profile is built upon core SAML profiles as defined by `OASIS <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security>`_.
 
 
 **service provider matching service (SPMS)**

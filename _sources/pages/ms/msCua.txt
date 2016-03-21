@@ -59,7 +59,7 @@ This diagram shows the message flow for creating user accounts. The numbers iden
    :widths: 80, 15
    :name: flow-diagram
 
-   ".. figure:: accountcreation.png
+   ".. figure:: accountcreationGraphic.svg
      :alt: Diagram showing user account creation. The Matching Service Adapter converts between SAML and JSON. The Matching Service Adapter contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps.
 
      User account creation","For more details, see the diagrams:

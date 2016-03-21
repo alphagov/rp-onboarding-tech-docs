@@ -178,19 +178,19 @@
 <li>your service will work with GOV.UK Verify</li>
 <li>user data will remain secure within the GOV.UK Verify federation</li>
 </ul>
-<p>Use the compliance tool after <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>building your local matching service</span></a> and <a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>installing your Matching Service Adapter</span></a>. After SAML compliance tests, run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
+<p>Use the compliance tool after <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>building your local matching service</span></a> and <a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>installing your Matching Service Adapter</span></a>. After SAML compliance tests, run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.  Your GOV.UK Verify engagement lead provides access to the compliance tool on completion of a successful <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3</a> gate review.</p>
 <p>The SAML compliance tool tests the connections between:</p>
 <ul class="simple">
-<li>your service and the GOV.UK Verify hub (see below)</li>
+<li>your service and a test instance of the GOV.UK Verify hub (see below)</li>
 <li><a class="reference internal" href="../msa/msaUse.html#msa-test-msa"><span>the GOV.UK Verify hub and the Matching Service Adapter</span></a></li>
 </ul>
 <p>The compliance tool provides clear error messages. These will help with iterative development of your service.</p>
-<p>We also advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
+<p>We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
 <div class="section" id="test-connections-between-your-service-and-the-gov-uk-verify-hub">
 <h2>Test connections between your service and the GOV.UK Verify hub<a class="headerlink" href="#test-connections-between-your-service-and-the-gov-uk-verify-hub" title="Permalink to this headline">¶</a></h2>
-<p>Your GOV.UK Verify engagement lead provides access to the compliance tool on completion of a successful <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3</a> gate review.</p>
+<p>To use the compliance tool, you need configuration data. Generate the configuration data for every test run.</p>
 <ol class="arabic simple">
-<li>Generate the metadata for your:</li>
+<li>Generate configuration data for your:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -198,8 +198,8 @@
 <li>local matching service</li>
 <li>Matching Service Adapter</li>
 </ul>
-<p>The metadata must include self-signed certificates that you will use only with the compliance tool.</p>
-<p>The metadata contains the:</p>
+<p>The configuration data includes self-signed certificates that you will use only with the compliance tool.
+The configuration data contains the:</p>
 <blockquote>
 <div><ul class="simple">
 <li>entity id for your service</li>
@@ -243,15 +243,15 @@
     &quot;expectedPID&quot;:&quot;[expected persistent identifier]&quot;,
     &quot;matchingServiceEntityId&quot;:&quot;[entity id for your matching service]&quot;,
     &quot;matchingServiceSigningPrivateCert&quot;:&quot;[base 64 private signing key for the Matching Service Adapter]&quot;,
-    &quot;userAccountRequiredAttributes&quot;:&quot;[attributes the government service requires for account creation]&quot;
+    &quot;userAccountCreationAttributes&quot;:&quot;[attributes the government service requires for account creation]&quot;
 }
 </pre></div>
 </div>
 </li>
 </ol>
 <blockquote>
-<div><p>Replace the square brackets and their contents with your metadata.</p>
-<p>The keys in the metadata must be single-line strings of base 64 data without the text &#8216;CERTIFICATE&#8217; and &#8216;END CERTIFICATE&#8217;.</p>
+<div><p>Replace the square brackets and their contents with your configuration data.</p>
+<p>The keys in the configuration data must be single-line strings of base 64 data without the text &#8216;CERTIFICATE&#8217; and &#8216;END CERTIFICATE&#8217;.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The private signing key for the Matching Service Adapter must be in PKCS#8 PEM format, for example:</p>
