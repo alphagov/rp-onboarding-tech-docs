@@ -45,7 +45,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-69990724-1', 'auto');
+    ga('create', 'UA-54060634-2', 'auto');
     ga('send', 'pageview');
 
   </script>
@@ -206,7 +206,7 @@
 <li>The certificate authority generates your certificate and sends it to you.</li>
 </ol>
 <div class="figure align-center" id="id1">
-<img alt="Diagram with an overview of how to generate certificates. Generate a private key. Generate a public key from the private key. Generate a certificate signing request containing the public key. Send the certificate signing request to the IDAP certificate authority. The certificate authority generates the certificate and sends it to you." src="../../_images/pkiIssueCerts.svg" /><p class="caption"><span class="caption-text">Request certificates</span></p>
+<img alt="Diagram with an overview of how to generate certificates. Generate a private key. Generate a public key from the private key. Generate a certificate signing request containing the public key. Send the certificate signing request to the IDAP certificate authority. The certificate authority generates the certificate and sends it to you." src="../../_images/pkiIssueCertsGraphic.svg" /><p class="caption"><span class="caption-text">Request certificates</span></p>
 </div>
 <p>The certificate authority also issues certificates for the GOV.UK Verify hub and identity providers.</p>
 </div>
@@ -216,14 +216,14 @@
 <p>The sender extracts the public encryption key from the receiver&#8217;s encryption certificate and uses it to encrypt a message. The receiver decrypts the message using their corresponding private encryption key.</p>
 <blockquote>
 <div><div class="figure align-center" id="id2">
-<img alt="Diagram with an overview of how data encryption works. The GOV.UK Verify hub extracts the Matching Service Adapter public encryption key from the Matching Service Adapter encryption certificate.  The GOV.UK Verify hub encrypts data and sends it to the Matching Service Adapter. The Matching Service Adapter decrypts the data using the Matching Service Adapter private encryption key." src="../../_images/pkiEncryption.svg" /><p class="caption"><span class="caption-text">Example of data encryption</span></p>
+<img alt="Diagram with an overview of how data encryption works. The GOV.UK Verify hub extracts the Matching Service Adapter public encryption key from the Matching Service Adapter encryption certificate.  The GOV.UK Verify hub encrypts data and sends it to the Matching Service Adapter. The Matching Service Adapter decrypts the data using the Matching Service Adapter private encryption key." src="../../_images/pkiEncryptionGraphic.svg" /><p class="caption"><span class="caption-text">Example of data encryption</span></p>
 </div>
 </div></blockquote>
 <p id="pki-sign-cert">Signing certificates provide the receiver with assurance of who authored the message. They also guarantee that the message hasn&#8217;t been tampered with since the author signed it.</p>
 <p>When signing data, you use your private signing key to create a digital signature, and then send the signed message. The receivers check the digital signature using your public signing key from your signing certificate.</p>
 <blockquote>
 <div><div class="figure align-center" id="id3">
-<img alt="Diagram with an overview of how data signing works. The government service signs data using their private signing key. The government service sends the signed data to the GOV.UK Verify hub. The hub checks the signature using the government service public signing key." src="../../_images/pkiSigning.svg" /><p class="caption"><span class="caption-text">Example of data signing</span></p>
+<img alt="Diagram with an overview of how data signing works. The government service signs data using their private signing key. The government service sends the signed data to the GOV.UK Verify hub. The hub checks the signature using the government service public signing key." src="../../_images/pkiSigningGraphic.svg" /><p class="caption"><span class="caption-text">Example of data signing</span></p>
 </div>
 </div></blockquote>
 <p>You can use encryption and signing together or alone. For example:</p>

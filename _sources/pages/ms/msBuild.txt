@@ -54,7 +54,7 @@ When you define your matching strategy you need to:
 
 * analyse your data sources in the light of your matching strategy, so you can test and refine your strategy before launching alpha or beta services
 
-.. note:: We recommend that you discuss your matching strategy with your engagement lead. They will be able to organise technical support if needed.
+.. note:: We recommend that you discuss your matching strategy with your engagement lead. They can organise technical support if needed.
 
 
 

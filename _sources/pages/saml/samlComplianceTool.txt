@@ -23,7 +23,7 @@ We advise you to use the compliance tool as part of your continuous integration 
 Test connections between your service and the GOV.UK Verify hub
 -----------------------------------------------------------------
 
-To use the compliance tool, you need configuration data. Generate the configuration data for every test run.
+To use the compliance tool, you need configuration data. Generate a new set of configuration data for every test run.
 
 
 1. Generate configuration data for your:
