@@ -23,7 +23,7 @@ You can create a new account for the user based on the hashed persistent identif
  ::
 
   [{
-   "result": "<success or failure>"
+   "result": "success | failure"
   }]`
 
  .. note:: As shown in the above example, ``success`` and ``failure`` must be in lower case.
@@ -64,14 +64,14 @@ This diagram shows the message flow for creating user accounts. The numbers iden
 
      User account creation","For more details, see the diagrams:
 
-   * :ref:`GOV.UK architecture <arch>`
+   * :ref:`GOV.UK Verify architecture <arch>`
    * :ref:`SAML message flow <samlflow_diagram>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`" 
 
 .. note:: In this example, all 3 :ref:`matching cycles <ms_matchcycles>` failed to find a match for the user in the government service records. See the :ref:`diagram for matching cycles <ms_matchcyles_diagram>`.
 
-1.	Your local matching service sends a ``no match`` response to the Matching Service Adapter.
-2.	The Matching Service Adapter forwards the no match response to the GOV.UK Verify hub.
+1.	Your local matching service sends a ``no-match`` response to the Matching Service Adapter.
+2.	The Matching Service Adapter forwards the ``no-match`` response to the GOV.UK Verify hub.
 3.	The GOV.UK Verify hub:
 
   * checks that your matching service supports the creation of new user accounts 

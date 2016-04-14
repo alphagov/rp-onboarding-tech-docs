@@ -105,7 +105,7 @@ This diagram shows the message flow for matching cycles 0, 1, and 3. The numbers
 
      Matching cycles 0, 1, and 3","For more details, see the diagrams:
 
-   * :ref:`GOV.UK architecture <arch>`
+   * :ref:`GOV.UK Verify architecture <arch>`
    * :ref:`SAML message flow <samlflow_diagram>`
    * :ref:`user account creation <ms_cua_diagram>`"
 
@@ -125,11 +125,11 @@ This diagram shows the message flow for matching cycles 0, 1, and 3. The numbers
 
  The local matching service tries to find a match between the user's hashed persistent identifier and a hashed persistent identifier in the local matching datastore. If cycle 0 finds a match, go to step 9.
  
-6. If cycle 0 finds no match, a ``no match`` response is returned to the Matching Service Adapter (6a) and the local matching service runs cycle 1: 
+6. If cycle 0 finds no match, a ``no-match`` response is returned to the Matching Service Adapter (6a) and the local matching service runs cycle 1: 
 
   The local matching service tries to find a match between the user's matching dataset and a record in government service data sources. If cycle 1 finds a match, go to step 8.
 
-7. If cycle 1 finds no match, a ``no match`` response is returned to the Matching Service Adapter (7a) and the local matching service runs cycle 3: 
+7. If cycle 1 finds no match, a ``no-match`` response is returned to the Matching Service Adapter (7a) and the local matching service runs cycle 3: 
  
  The hub asks the user to provide additional information, for example, their driving licence number and sends it to the Matching Service Adapter. If cycle 3 finds no match, the matching service can :ref:`create a new account <ms_cua>`  for the user, provided your matching service supports this feature and your user journey seeks explicit user consent.
 

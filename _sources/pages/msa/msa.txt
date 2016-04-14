@@ -7,7 +7,7 @@ The :ref:`Matching Service Adapter <gloss_msa>` is a software tool supplied free
 
 A matching service is composed of the Matching Service Adapter and a local matching service. Government services host their matching service within their security domain. 
 
- .. image:: ../ms/matchingservice.svg    
+ .. image:: ../ms/matchingserviceGraphics.svg    
     :align: center
     :alt: Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service.
 

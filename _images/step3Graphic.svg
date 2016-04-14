@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="750" height="170" viewBox="0, 0, 750, 170">
+  <g id="Layer_1">
+    <g id="rect56071">
+      <path d="M302.944,5.68 L374.958,5.68 L374.958,164.32 L302.944,164.32 z" fill="#A6C4FF"/>
+      <path d="M302.944,5.68 L374.958,5.68 L374.958,164.32 L302.944,164.32 z" fill-opacity="0" stroke="#090D14" stroke-width="0.917" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="rect56073">
+      <path d="M7.343,5.623 L302.944,5.623 L302.944,164.377 L7.343,164.377 z" fill="#627180" fill-opacity="0.551"/>
+      <path d="M7.343,5.623 L302.944,5.623 L302.944,164.377 L7.343,164.377 z" fill-opacity="0" stroke="#090D14" stroke-width="0.898" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="rect56075">
+      <path d="M15.245,27.402 L274.865,27.402 L274.865,86.931 L15.245,86.931 z" fill="#D4E1F5"/>
+      <path d="M15.245,27.402 L274.865,27.402 L274.865,86.931 L15.245,86.931 z" fill-opacity="0" stroke="#090D14" stroke-width="0.943" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="rect56075">
+      <path d="M15.245,96.471 L274.865,96.471 L274.865,156 L15.245,156 z" fill="#D4E1F5"/>
+      <path d="M15.245,96.471 L274.865,96.471 L274.865,156 L15.245,156 z" fill-opacity="0" stroke="#090D14" stroke-width="0.943" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 338.951, 87.471)">
+      <tspan x="-28.91" y="-11" font-family="ArialMT" font-size="13" fill="#000000">Signed by</tspan>
+      <tspan x="-20.595" y="4" font-family="ArialMT" font-size="13" fill="#000000">identity </tspan>
+      <tspan x="-23.483" y="19" font-family="ArialMT" font-size="13" fill="#000000">provider</tspan>
+    </text>
+    <g>
+      <g>
+        <g id="rect56077">
+          <path d="M145.18,34.153 L206.977,34.153 L206.977,80.18 L145.18,80.18 z" fill="#A6C4FF"/>
+          <path d="M145.18,34.153 L206.977,34.153 L206.977,80.18 L145.18,80.18 z" fill-opacity="0" stroke="#090D14" stroke-width="1.057" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text transform="matrix(1, 0, 0, 1, 176.078, 57.167)">
+          <tspan x="-28.91" y="-11" font-family="ArialMT" font-size="13" fill="#000000">Signed by </tspan>
+          <tspan x="-20.595" y="4" font-family="ArialMT" font-size="13" fill="#000000">identity</tspan>
+          <tspan x="-23.483" y="19" font-family="ArialMT" font-size="13" fill="#000000">provider</tspan>
+        </text>
+      </g>
+      <g>
+        <g id="rect56093">
+          <path d="M19.319,34.137 L145.362,34.137 L145.362,80.197 L19.319,80.197 z" fill="#CFD3D8"/>
+          <path d="M19.319,34.137 L145.362,34.137 L145.362,80.197 L19.319,80.197 z" fill-opacity="0" stroke="#090D14" stroke-width="1.042" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text transform="matrix(1, 0, 0, 1, 82.341, 57.167)">
+          <tspan x="-41.196" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Authentication</tspan>
+          <tspan x="-49.137" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">context assertion</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <g>
+        <g id="rect56077">
+          <path d="M145.374,103.221 L207.171,103.221 L207.171,149.248 L145.374,149.248 z" fill="#A6C4FF"/>
+          <path d="M145.374,103.221 L207.171,103.221 L207.171,149.248 L145.374,149.248 z" fill-opacity="0" stroke="#090D14" stroke-width="1.057" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text transform="matrix(1, 0, 0, 1, 176.272, 126.235)">
+          <tspan x="-28.91" y="-11" font-family="ArialMT" font-size="13" fill="#000000">Signed by </tspan>
+          <tspan x="-20.595" y="4" font-family="ArialMT" font-size="13" fill="#000000">identity</tspan>
+          <tspan x="-23.483" y="19" font-family="ArialMT" font-size="13" fill="#000000">provider</tspan>
+        </text>
+      </g>
+      <g>
+        <g id="rect56093">
+          <path d="M19.319,103.206 L145.362,103.206 L145.362,149.265 L19.319,149.265 z" fill="#CFD3D8"/>
+          <path d="M19.319,103.206 L145.362,103.206 L145.362,149.265 L19.319,149.265 z" fill-opacity="0" stroke="#090D14" stroke-width="1.042" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text transform="matrix(1, 0, 0, 1, 82.341, 126.235)">
+          <tspan x="-20.957" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Identity </tspan>
+          <tspan x="-26.375" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">assertion</tspan>
+        </text>
+      </g>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 241.599, 57.167)">
+      <tspan x="-29.266" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Encrypted </tspan>
+      <tspan x="-20.236" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">for hub</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 241.599, 126.235)">
+      <tspan x="-29.266" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Encrypted </tspan>
+      <tspan x="-20.236" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">for hub</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 51.34, 16)">
+      <tspan x="-42.39" y="4" font-family="ArialMT" font-size="13" fill="#000000">SAML respose</tspan>
+    </text>
+  </g>
+</svg>

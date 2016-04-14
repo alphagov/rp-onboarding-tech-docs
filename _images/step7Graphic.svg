@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="370" height="100" viewBox="0, 0, 370, 100">
+  <g id="Layer_1">
+    <g>
+      <g id="rect56071">
+        <path d="M296.794,1.596 L368.807,1.596 L368.807,98.404 L296.794,98.404 z" fill="#A6C4FF"/>
+        <path d="M296.794,1.596 L368.807,1.596 L368.807,98.404 L296.794,98.404 z" fill-opacity="0" stroke="#090D14" stroke-width="0.917" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g id="rect56073">
+        <path d="M1.192,1.561 L296.794,1.561 L296.794,98.439 L1.192,98.439 z" fill="#627180" fill-opacity="0.551"/>
+        <path d="M1.192,1.561 L296.794,1.561 L296.794,98.439 L1.192,98.439 z" fill-opacity="0" stroke="#090D14" stroke-width="0.898" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <g id="rect56075">
+      <path d="M9.095,27.902 L268.715,27.902 L268.715,87.431 L9.095,87.431 z" fill="#D4E1F5"/>
+      <path d="M9.095,27.902 L268.715,27.902 L268.715,87.431 L9.095,87.431 z" fill-opacity="0" stroke="#090D14" stroke-width="0.943" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 332.801, 57.292)">
+      <tspan x="-28.91" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Signed by</tspan>
+      <tspan x="-14.085" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">MSA</tspan>
+    </text>
+    <g id="rect56077">
+      <path d="M139.212,34.653 L201.009,34.653 L201.009,80.68 L139.212,80.68 z" fill="#A6C4FF"/>
+      <path d="M139.212,34.653 L201.009,34.653 L201.009,80.68 L139.212,80.68 z" fill-opacity="0" stroke="#090D14" stroke-width="1.057" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 170.11, 57.292)">
+      <tspan x="-28.91" y="-3.25" font-family="ArialMT" font-size="13" fill="#000000">Signed by </tspan>
+      <tspan x="-14.085" y="11.75" font-family="ArialMT" font-size="13" fill="#000000">MSA</tspan>
+    </text>
+    <g id="rect56093">
+      <path d="M13.169,34.637 L139.212,34.637 L139.212,80.697 L13.169,80.697 z" fill="#CFD3D8"/>
+      <path d="M13.169,34.637 L139.212,34.637 L139.212,80.697 L13.169,80.697 z" fill-opacity="0" stroke="#090D14" stroke-width="1.042" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 76.69, 57.292)">
+      <tspan x="-27.095" y="3" font-family="ArialMT" font-size="13" fill="#000000">Assertion</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 235.949, 57.292)">
+      <tspan x="-29.266" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Encrypted </tspan>
+      <tspan x="-20.236" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">for hub</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 90.271, 13.273)">
+      <tspan x="-85.747" y="4" font-family="ArialMT" font-size="13" fill="#000000">SAML attribute query respose</tspan>
+    </text>
+  </g>
+</svg>

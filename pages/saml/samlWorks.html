@@ -191,7 +191,7 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
 <li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
 <li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
 </ul>
@@ -203,17 +203,17 @@
 <li>The government service sends a SAML authentication request to the GOV.UK Verify <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>. The request indicates that a user wants to access the service and needs to verify their identity using GOV.UK Verify.</li>
 </ol>
 <blockquote>
-<div><img alt="Diagram showing a SAML authentication request signed by the government service" src="../../_images/step1.svg" /></div></blockquote>
+<div><img alt="Diagram showing a SAML authentication request signed by the government service" src="../../_images/step1Graphic.svg" /></div></blockquote>
 <ol class="arabic simple" start="2">
 <li>The GOV.UK Verify hub prompts the user to select an identity provider to authenticate them. The GOV.UK Verify hub forwards the SAML authentication request to the chosen identity provider.</li>
 </ol>
 <blockquote>
-<div><img alt="Diagram showing a SAML authentication request signed by the hub" src="../../_images/step2.svg" /></div></blockquote>
+<div><img alt="Diagram showing a SAML authentication request signed by the hub" src="../../_images/step2Graphic.svg" /></div></blockquote>
 <ol class="arabic simple" start="3">
 <li>The chosen identity provider authenticates the user based on the required <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a>. The identity provider then sends a SAML response to the GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
-<div><img alt="Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub." src="../../_images/step3.svg" /><ul class="simple">
+<div><img alt="Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub." src="../../_images/step3Graphic.svg" /><ul class="simple">
 <li>SAML response <a class="reference internal" href="../pki/pkiWorks.html#pki-sign-cert"><span>signed</span></a> by the identity provider</li>
 <li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub - this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
 <li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub - this contains the user&#8217;s <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> and the <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a></li>
@@ -227,7 +227,7 @@
 <li>The GOV.UK Verify hub sends a SAML attribute query to the government service’s Matching Service Adapter:</li>
 </ol>
 <blockquote>
-<div><img alt="Diagram showing a SAML attribute query signed by the hub. It contains an identity assertion signed by the identity provider and encrypted for the Matching Service Adapter." src="../../_images/step4.svg" /><ul class="simple">
+<div><img alt="Diagram showing a SAML attribute query signed by the hub. It contains an identity assertion signed by the identity provider and encrypted for the Matching Service Adapter." src="../../_images/step4Graphic.svg" /><ul class="simple">
 <li>SAML attribute query signed by the GOV.UK Verify hub</li>
 <li>identity assertion signed by identity provider and encrypted for the Matching Service Adapter</li>
 </ul>
@@ -242,7 +242,7 @@
 <li>In the case of a <code class="docutils literal"><span class="pre">match</span></code> response, the Matching Service Adapter translates the JSON response into a SAML attribute query response and forwards it to the GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
-<div><img alt="Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub." src="../../_images/step7.svg" /><ul class="simple">
+<div><img alt="Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub." src="../../_images/step7Graphic.svg" /><ul class="simple">
 <li>SAML attribute query response signed by the Matching Service Adapter</li>
 <li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub - this assertion contains the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
 </ul>
@@ -251,7 +251,7 @@
 <li>The GOV.UK Verify hub sends a SAML response to the service, authenticating the user:</li>
 </ol>
 <blockquote>
-<div><img alt="Diagram showing a SAML response signed by the hub. It contains an assertion signed by the Matching Service Adapter and encrypted for the government service." src="../../_images/step8.svg" /><ul class="simple">
+<div><img alt="Diagram showing a SAML response signed by the hub. It contains an assertion signed by the Matching Service Adapter and encrypted for the government service." src="../../_images/step8Graphic.svg" /><ul class="simple">
 <li>SAML response (optionally) signed by the GOV.UK Verify hub</li>
 <li>assertion signed by the Matching Service Adapter and encrypted for the government service</li>
 </ul>

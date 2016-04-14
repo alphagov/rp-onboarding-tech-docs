@@ -170,7 +170,7 @@
 <p>The <a class="reference internal" href="../../shared/glossary.html#gloss-msa"><span>Matching Service Adapter</span></a> is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the <a class="reference internal" href="../arch/hub.html#hub"><span>GOV.UK Verify hub</span></a>.</p>
 <p>A matching service is composed of the Matching Service Adapter and a local matching service. Government services host their matching service within their security domain.</p>
 <blockquote>
-<div><div align="center" class="align-center"><img alt="Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service." src="../../_images/matchingservice1.svg" /></div>
+<div><div align="center" class="align-center"><img alt="Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service." src="../../_images/matchingserviceGraphics1.svg" /></div>
 </div></blockquote>
 <p class="rubric">Why does GOV.UK Verify use the Matching Service Adapter?</p>
 <p>The hub uses <a class="reference internal" href="../saml/saml.html#saml"><span>Security Assertion Markup Language</span></a> (SAML) as its communication method. Government services usually use JSON (JavaScript Object Notation) for their local matching services. A SAML matching service interface is therefore required.  The Matching Service Adapter converts SAML into JSON and vice versa. It also performs encryption, decryption, and signing of SAML messages. For more information, see  the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>

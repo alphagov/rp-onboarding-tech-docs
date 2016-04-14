@@ -19,7 +19,7 @@ The process by which a system confirms the user is known to that system, usually
 
 **authentication request**
 
-The request that a service sends to the hub, or the hub sends to an identity provider, to request the identification of an individual trying to access an online digital service.
+The request that a service sends to the hub, or the hub sends to an identity provider, to request the identification of a user trying to access a digital service.
 
 **certificate**
 
@@ -45,7 +45,7 @@ A file containing a public key. Only certificates that have been approved by an 
 
 **compliance tool**
 
-Enables services to carry out testing of SAML interoperability before testing end to end user journeys in the integration environment. It allows isolated testing of both the connection from the service to the hub and the connection from the hub to the Matching Service Adapter.
+Enables services to carry out testing of SAML compliance before testing end-to-end user journeys in the integration environment. It allows isolated testing of both the connection from the service to the hub and the connection from the hub to the Matching Service Adapter.
 
 **credentials**
 
@@ -71,6 +71,12 @@ Documents that have been developed collaboratively with HMG departments, private
 
 	Also known as Requirements for Secure Delivery of Online Public Services (RSDOPS).  This document sets out an approach to determining the components needed to securely deliver public services online to individuals and businesses.
 
+
+.. _gloss_govserv:
+
+**government service**
+
+A service provided by a government department such as Check or update your company car tax (HMRC) or Claim your redundancy payment (BIS), that needs proof of a user’s identity to complete a transaction.
 
 .. _gloss_hashpid:
 
@@ -108,18 +114,6 @@ The organisations are certified as meeting relevant industry security standards 
 **integration environment**
 
 A production-sized deployment of the entire GOV.UK Verify hub environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.
-
-**knowledge based verification**
-
-A process of testing a user's knowledge about the claimed identity to verify that they are who they claim to be.
-
-	**dynamic knowledge based verification**
-
-	A process where the user is required to provide answers to questions relating to the claimed identity.
-
-	**static knowledge based verification**
-
-	Where a secret has been previously exchanged between 2 parties. One party uses the secret to verify that they are the other party with whom the secret was originally exchanged. Also referred to as a shared secret.
 
 .. _gloss_loa:
 
@@ -197,7 +191,8 @@ A software tool provided by GOV.UK Verify that’s installed within the governme
 
 **onboarding**
 
-The process through which new government services and identity providers acquire the necessary knowledge, technical skills and integration environment to become part of the identity assurance federation.
+The process through which new government services integrate with GOV.UK Verify. The onboarding process is divided into 6 stages. Each stage has a defined set of outputs which a service must meet before moving to the next stage. Onboarding ends with access to the full production environment where the government service deploys their live service.
+
 
 .. _gloss_persid:
 
@@ -211,11 +206,12 @@ Established to help government develop an approach to identity assurance and dev
 
 **private beta**
 
-The first version of the service available to a small number of selected users so we can test and develop it further.
+The initial version of a government service that is available to a small number of selected users, so a service can test and develop it further before rolling it out to a wider audience. Users have access through pre-approved tokens or personalised invitation.
+
 
 **public beta**
 
-The service is available to users of approved relying party services without the need for pre-approved tokens or a personalised invitation.
+The full end-to-end version of a government service that is publicly available, to allow further testing and development.
 
 .. _gloss_pki:
 
@@ -235,9 +231,6 @@ A set of hardware, software, people, policies and procedures needed to create, m
 
 	A long string of data derived from a private key. Data encrypted with a public key can only be decrypted with the corresponding private key, and vice versa.
 
-**registration**
-
-The process of collecting the required data to enable an identity provider to begin the proofing process.
 
 .. _relying-party:
 
@@ -261,19 +254,11 @@ A profile that specifies how to use SAML within a system of federated identity. 
 
 See :ref:`matching service <matching-service>`.
 
-**Shibboleth**
-
-A standards based, open source software package for web single sign-on.
 
 **Simple Object Access Protocol (SOAP)** 
 
 A messaging protocol that allows programs that run on different operating systems to communicate.
 
-**transaction**
-
-The thing the user wants to do or get from a government service.
-
-An individual online service that a government service offers, for example renew a passport.
 
 **Transport Layer Security (TLS)**
 

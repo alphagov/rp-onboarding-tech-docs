@@ -171,7 +171,7 @@
 <p><strong>authentication</strong></p>
 <p>The process by which a system confirms the user is known to that system, usually through the use of 1 or more credentials.</p>
 <p><strong>authentication request</strong></p>
-<p>The request that a service sends to the hub, or the hub sends to an identity provider, to request the identification of an individual trying to access an online digital service.</p>
+<p>The request that a service sends to the hub, or the hub sends to an identity provider, to request the identification of a user trying to access a digital service.</p>
 <p><strong>certificate</strong></p>
 <p>A file containing a public key. Only certificates that have been approved by an IDAP certificate authority can be used with GOV.UK Verify.</p>
 <blockquote>
@@ -187,7 +187,7 @@
 <p>Contains a public key that the receiver uses to decrypt a message encrypted with the sender&#8217;s private key. This provides the receiver with assurance as to the sender&#8217;s identity.</p>
 </div></blockquote>
 <p><strong>compliance tool</strong></p>
-<p>Enables services to carry out testing of SAML interoperability before testing end to end user journeys in the integration environment. It allows isolated testing of both the connection from the service to the hub and the connection from the hub to the Matching Service Adapter.</p>
+<p>Enables services to carry out testing of SAML compliance before testing end-to-end user journeys in the integration environment. It allows isolated testing of both the connection from the service to the hub and the connection from the hub to the Matching Service Adapter.</p>
 <p><strong>credentials</strong></p>
 <p>An identity provider issues credentials to a user to allow the user to be authenticated when accessing a government service. Examples of credentials are usernames, passwords and security codes.</p>
 <p><strong>data matching</strong></p>
@@ -202,6 +202,8 @@
 <div><p><strong>Good Practice Guide 43 (GPG 43)</strong></p>
 <p>Also known as Requirements for Secure Delivery of Online Public Services (RSDOPS).  This document sets out an approach to determining the components needed to securely deliver public services online to individuals and businesses.</p>
 </div></blockquote>
+<p id="gloss-govserv"><strong>government service</strong></p>
+<p>A service provided by a government department such as Check or update your company car tax (HMRC) or Claim your redundancy payment (BIS), that needs proof of a user’s identity to complete a transaction.</p>
 <p id="gloss-hashpid"><strong>hashed persistent identifier</strong></p>
 <p>A unique identifier which refers to a combination of a user, the identity provider that verified the user’s identity, and the government service that the user is trying to access.  The Matching Service Adapter generates the hashed persistent identifier from the persistent identifier. This ensures that identifiers for user identity are unique to specific services and can’t be used across multiple services.</p>
 <p id="gloss-hub"><strong>hub (hub service, GOV.UK Verify hub)</strong></p>
@@ -217,14 +219,6 @@
 <p>The organisations are certified as meeting relevant industry security standards and identity assurance standards published by the Cabinet Office and CESG (the UK&#8217;s national technical authority).</p>
 <p><strong>integration environment</strong></p>
 <p>A production-sized deployment of the entire GOV.UK Verify hub environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.</p>
-<p><strong>knowledge based verification</strong></p>
-<p>A process of testing a user&#8217;s knowledge about the claimed identity to verify that they are who they claim to be.</p>
-<blockquote>
-<div><p><strong>dynamic knowledge based verification</strong></p>
-<p>A process where the user is required to provide answers to questions relating to the claimed identity.</p>
-<p><strong>static knowledge based verification</strong></p>
-<p>Where a secret has been previously exchanged between 2 parties. One party uses the secret to verify that they are the other party with whom the secret was originally exchanged. Also referred to as a shared secret.</p>
-</div></blockquote>
 <p id="gloss-loa"><strong>level of assurance (LOA)</strong></p>
 <p>The degree of confidence the government service requires that a user is who they say they are.</p>
 <blockquote>
@@ -260,15 +254,15 @@
 <p id="gloss-msa"><strong>Matching Service Adapter</strong></p>
 <p>A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the local matching service together comprise the matching service.</p>
 <p><strong>onboarding</strong></p>
-<p>The process through which new government services and identity providers acquire the necessary knowledge, technical skills and integration environment to become part of the identity assurance federation.</p>
+<p>The process through which new government services integrate with GOV.UK Verify. The onboarding process is divided into 6 stages. Each stage has a defined set of outputs which a service must meet before moving to the next stage. Onboarding ends with access to the full production environment where the government service deploys their live service.</p>
 <p id="gloss-persid"><strong>persistent identifier</strong></p>
 <p>A unique identifier which refers to a combination of a user and the identity provider that verified the user’s identity. Persistent identifiers are generated by identity providers. They are constructed using pseudo-random values that have no discernible correspondence with the user’s actual identifier, for example, their email address.</p>
 <p><strong>Privacy and Consumer Advisory Group (PCAG)</strong></p>
 <p>Established to help government develop an approach to identity assurance and develop the Identity Assurance Principles.</p>
 <p><strong>private beta</strong></p>
-<p>The first version of the service available to a small number of selected users so we can test and develop it further.</p>
+<p>The initial version of a government service that is available to a small number of selected users, so a service can test and develop it further before rolling it out to a wider audience. Users have access through pre-approved tokens or personalised invitation.</p>
 <p><strong>public beta</strong></p>
-<p>The service is available to users of approved relying party services without the need for pre-approved tokens or a personalised invitation.</p>
+<p>The full end-to-end version of a government service that is publicly available, to allow further testing and development.</p>
 <p id="gloss-pki"><strong>public key infrastructure (PKI)</strong></p>
 <p>A set of hardware, software, people, policies and procedures needed to create, manage, distribute, use, store and revoke digital certificates. <a class="footnote-reference" href="#id3" id="id1">[1]</a></p>
 <blockquote id="private-key">
@@ -279,8 +273,6 @@
 <div><p><strong>public key</strong></p>
 <p>A long string of data derived from a private key. Data encrypted with a public key can only be decrypted with the corresponding private key, and vice versa.</p>
 </div></blockquote>
-<p><strong>registration</strong></p>
-<p>The process of collecting the required data to enable an identity provider to begin the proofing process.</p>
 <p id="relying-party"><strong>relying party</strong></p>
 <p>An entity in a system of federated identity that relies on a response from another entity, such as a successful authentication request. A relying party is also referred to as a service provider when it provides a service that the end user directly interacts with. Relying party is a term used in SAML specifications. In the GOV.UK Verify federation, relying parties are government services.</p>
 <p id="glosssaml"><strong>SAML (Security Assertion Markup Language)</strong></p>
@@ -289,13 +281,8 @@
 <p>A profile that specifies how to use SAML within a system of federated identity. The SAML profile for the GOV.UK Verify federation defines the SAML messages that are passed between entities within the federation and the rules for their use. SAML messages take the form of requests and responses, and can contain SAML assertions. The profile is built upon core SAML profiles as defined by <a class="reference external" href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security">OASIS</a>.</p>
 <p><strong>service provider matching service (SPMS)</strong></p>
 <p>See <a class="reference internal" href="#matching-service"><span>matching service</span></a>.</p>
-<p><strong>Shibboleth</strong></p>
-<p>A standards based, open source software package for web single sign-on.</p>
 <p><strong>Simple Object Access Protocol (SOAP)</strong></p>
 <p>A messaging protocol that allows programs that run on different operating systems to communicate.</p>
-<p><strong>transaction</strong></p>
-<p>The thing the user wants to do or get from a government service.</p>
-<p>An individual online service that a government service offers, for example renew a passport.</p>
 <p><strong>Transport Layer Security (TLS)</strong></p>
 <p>A protocol used to provide secure communications across the internet, to websites or between services. A site using TLS has a URL beginning <cite>https://</cite></p>
 <p><strong>Uniform Resource Identifier (URI)</strong></p>

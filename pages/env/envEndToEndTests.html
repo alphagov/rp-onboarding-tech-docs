@@ -117,7 +117,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="envRequestform.html">Request access to environments</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Run end-to-end testing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Run end-to-end testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-for-end-to-end-testing">Setup for end-to-end testing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-your-authentication">Create your authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-test-users">Create test users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#view-test-users">View test users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-test-users">Delete test users</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-end-to-end-tests">Run end-to-end tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tear-down">Tear down</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
@@ -169,7 +180,206 @@
             
       <div class="section" id="run-end-to-end-testing">
 <span id="envendtoendtests"></span><h1>Run end-to-end testing<a class="headerlink" href="#run-end-to-end-testing" title="Permalink to this headline">¶</a></h1>
-<p>Content being developed. See <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/testUsers.html#testusers">existing guidance in the onboarding guide</a>.</p>
+<p>The integration environment accurately reflects hub behaviour in the production environment. You can use the integration environment to test complete user journeys, both success and failure scenarios.</p>
+<p>We  advise you to do end-to-end testing in the integration environment as part of your continuous integration pipeline. For more information, see <a class="reference external" href="https://www.gov.uk/service-manual/making-software/code-testing">Testing code</a> in the Government Service Design Manual.</p>
+<p>You must provide a full demonstration of all user journeys as part of your <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html#stage-4">Stage 4</a> gate review.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first consult the GOV.UK Verify team at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
+</div>
+<p>This diagram shows the end-to-end testing flow. See below for explanations.</p>
+<div class="figure align-center" id="id2">
+<img alt="Image showing, on one side, the test government service consisting of the government service, Matching Service Adapter, local matching service and local matching datastore.  On the other side, the integration environment consisting of the GOV.UK Verify hub and test identity providers. The test identity providers contain test users. Step 1: create test users. Step 2: End-to-end testing where you test authentication success and failure, and match or no match scenarios. Step 3: Tear down where you delete test users." src="../../_images/envEndToEndTestsGraphic.svg" /><p class="caption"><span class="caption-text">End-to-end testing in the integration environment</span></p>
+</div>
+<div class="section" id="setup-for-end-to-end-testing">
+<h2>Setup for end-to-end testing<a class="headerlink" href="#setup-for-end-to-end-testing" title="Permalink to this headline">¶</a></h2>
+<p>The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during matching. Then, in the user administration API, create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.</p>
+<p>A test identity provider contains:</p>
+<ul class="simple">
+<li>the user administration API - you need basic authentication credentials to manage test user data</li>
+<li>a connection to the hub in the integration environment, which is used for end-to-end testing - no authentication credentials are required</li>
+</ul>
+<p>Setup for end-to-end testing involves the following procedures:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#authentication-for-managing-users"><span>create your authentication to manage test users</span></a></li>
+<li><a class="reference internal" href="#creating-users-by-http-post"><span>create test users</span></a></li>
+<li><a class="reference internal" href="#view-test-users"><span>view test users</span></a></li>
+<li><a class="reference internal" href="#delete-users"><span>delete test users</span></a></li>
+</ul>
+</div></blockquote>
+<div class="section" id="create-your-authentication">
+<span id="authentication-for-managing-users"></span><h3>Create your authentication<a class="headerlink" href="#create-your-authentication" title="Permalink to this headline">¶</a></h3>
+<p>This procedure describes how to obtain a username and password so you can manage test users.</p>
+<ol class="arabic simple">
+<li>Request IP whitelisting for your hosts from <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</li>
+<li>Go to the password generation page: <a class="reference external" href="https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen">https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen</a></li>
+<li>Store the password securely. Then email us the hash, along with a username of your choice.</li>
+</ol>
+<blockquote>
+<div><blockquote>
+<div><div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Don&#8217;t email us the password. Send us the hash and your chosen username.</p>
+</div>
+</div></blockquote>
+<p>We&#8217;ll use this hash and username to configure your authentication credentials to the user administration API for the test identity provider.</p>
+</div></blockquote>
+</div>
+<div class="section" id="create-test-users">
+<span id="creating-users-by-http-post"></span><h3>Create test users<a class="headerlink" href="#create-test-users" title="Permalink to this headline">¶</a></h3>
+<p>This procedure describes how to create test users in bulk and load them into the test identity provider. You must add the same test users to your local matching datastore in the integration environment.</p>
+<p>Make an http POST to the user administration API with a JSON document containing an array of user data. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>curl --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39; -d @create-user.json https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+</pre></div>
+</div>
+<p>where:</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#authentication-for-managing-users"><span>basic authentication credentials</span></a></p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can find the name of the test identity provider by accessing the test identity provider once your service is connected to the integration environment.</p>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">create-user.json</span></code> is the name of the file containing an array of test user data in JSON format, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s">&quot;pid&quot;</span><span class="p">:</span> <span class="s">&quot;00754148-902f-4d94-b0db-cb1f7eb3fd84&quot;</span><span class="p">,</span>
+    <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;user1&quot;</span><span class="p">,</span>
+    <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;password&quot;</span><span class="p">,</span>
+    <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;Fred&quot;</span><span class="p">,</span>
+        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;MALE&quot;</span><span class="p">,</span>
+        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="p">},</span>
+    <span class="s">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
+        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s">&quot;postCode&quot;</span><span class="p">:</span> <span class="s">&quot;WC2B 6NH&quot;</span><span class="p">,</span>
+        <span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">&quot;Aviation House&quot;</span><span class="p">,</span>
+            <span class="s">&quot;London&quot;</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s">&quot;LEVEL_2&quot;</span><span class="p">,</span>
+    <span class="s">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span>
+        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">}]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+<p>Possible values are shown in the following table.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>levelOfAssurance</td>
+<td><p class="first">Level of assurance must be 1 of the following values:</p>
+<ul class="last simple">
+<li>LEVEL_X</li>
+<li>LEVEL_1</li>
+<li>LEVEL_2</li>
+<li>LEVEL_3</li>
+<li>LEVEL_4</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first">firstName</p>
+<p>surnames</p>
+<p class="last">dateOfBirth</p>
+</td>
+<td><p class="first">These attributes can contain the following fields:</p>
+<ul class="last simple">
+<li>value (variable type)</li>
+<li>DateTime from (the time when this value started - eg changed name to this - Optional)</li>
+<li>DateTime to (The time after which this value ended - eg changed name from this - Optional)</li>
+<li>boolean verified</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>gender</td>
+<td><p class="first">Gender must be 1 of the following values:</p>
+<ul class="last simple">
+<li>FEMALE</li>
+<li>MALE</li>
+<li>NOT_SPECIFIED</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>address</td>
+<td><p class="first">Address consists of:</p>
+<ul class="last simple">
+<li>boolean verified</li>
+<li>DateTime fromDate</li>
+<li>DateTime toDate (Optional)</li>
+<li>String postCode (Optional)</li>
+<li>List&lt;String&gt; lines</li>
+<li>String internationalPostCode (Optional)</li>
+<li>String uprn (Optional)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="section" id="view-test-users">
+<span id="id1"></span><h3>View test users<a class="headerlink" href="#view-test-users" title="Permalink to this headline">¶</a></h3>
+<p>To view existing test users, GET the users resource from the relevant test identity provider. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>curl https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider.</p>
+<p>The test users are returned in JSON format. To view the page you must provide your <a class="reference internal" href="#authentication-for-managing-users"><span>basic authentication credentials</span></a>.</p>
+</div>
+<div class="section" id="delete-test-users">
+<span id="delete-users"></span><h3>Delete test users<a class="headerlink" href="#delete-test-users" title="Permalink to this headline">¶</a></h3>
+<p>To delete test users from the test identity provider, POST a JSON document to the user administration API containing the usernames you want to delete. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>curl --data &#39;{&quot;username&quot;: &quot;user1&quot;}&#39;  --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39;  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">user1</span></code> is the name of the test user you want to delete</li>
+<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#authentication-for-managing-users"><span>basic authentication credentials</span></a></li>
+<li><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</li>
+</ul>
+</div>
+</div>
+<div class="section" id="run-end-to-end-tests">
+<h2>Run end-to-end tests<a class="headerlink" href="#run-end-to-end-tests" title="Permalink to this headline">¶</a></h2>
+<p>As a minimum, test the following end-to-end user scenarios:</p>
+<ul class="simple">
+<li>authentication success and authentication failure</li>
+<li>match and no match</li>
+<li>all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a>, if implemented</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Run end-to-end tests for all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a>, if implemented.</p>
+</div>
+</div>
+<div class="section" id="tear-down">
+<h2>Tear down<a class="headerlink" href="#tear-down" title="Permalink to this headline">¶</a></h2>
+<p>After each integration test run, we recommend that you <a class="reference internal" href="#delete-users"><span>delete the test users</span></a>.  Set up each integration test run with newly created test users.</p>
+<p>When you&#8217;ve successfully completed testing in the integration environment, you must provide a full demonstration of all user journeys. This is one of the <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html#stage-4">outputs required at this stage</a> before moving on to <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage5/Stage5.html">Stage 5 Production Onboarding</a>.</p>
+</div>
 </div>
 
 

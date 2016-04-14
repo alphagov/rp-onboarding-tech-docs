@@ -195,7 +195,7 @@
 </ol>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre>[{
- &quot;result&quot;: &quot;&lt;success or failure&gt;&quot;
+ &quot;result&quot;: &quot;success | failure&quot;
 }]`
 </pre></div>
 </div>
@@ -242,7 +242,7 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
 <li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
 <li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
 </ul>
@@ -255,8 +255,8 @@
 <p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
 </div>
 <ol class="arabic simple">
-<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no</span> <span class="pre">match</span></code> response to the Matching Service Adapter.</li>
-<li>The Matching Service Adapter forwards the no match response to the GOV.UK Verify hub.</li>
+<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the Matching Service Adapter.</li>
+<li>The Matching Service Adapter forwards the <code class="docutils literal"><span class="pre">no-match</span></code> response to the GOV.UK Verify hub.</li>
 <li>The GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
