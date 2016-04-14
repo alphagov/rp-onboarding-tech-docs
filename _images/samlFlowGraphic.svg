@@ -209,7 +209,7 @@
     <text transform="matrix(1, 0, 0, 1, 204.633, 321.508)">
       <tspan x="-16.002" y="-12.25" font-family="ArialMT" font-size="12" fill="#000000">JSON</tspan>
       <tspan x="-24.683" y="1.75" font-family="ArialMT" font-size="12" fill="#000000">response </tspan>
-      <tspan x="-50.016" y="15.75" font-family="ArialMT" font-size="12" fill="#000000">(match / no match)</tspan>
+      <tspan x="-50.347" y="15.75" font-family="ArialMT" font-size="12" fill="#000000">(match / no-match)</tspan>
     </text>
     <path d="M237.186,338.464 L241.436,338.464 L241.436,346.918 L237.186,346.918 L237.186,338.464 z" fill="#BDC1C7"/>
     <path d="M300.501,338.721 L304.75,338.61 L304.963,346.807 L300.714,346.918 L300.501,338.721 z" fill="#BDC1C7"/>
