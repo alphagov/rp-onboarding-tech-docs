@@ -20,7 +20,7 @@ Public keys are shared using certificates. A certificate is a file that contains
 * information about the identity of the certificate owner
 * an indication of the purpose of the certificate, for example, encryption or signing
 
-Certificates are issued and signed by a certificate authority. The certificate authority acts as the root of trust in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party's certificate is valid.
+Certificates are issued and signed by a certificate authority. The certificate authority acts as the :ref:`trust anchor <gloss_trustanchor>` in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party's certificate is valid.
 
 .. _pki_keys_certs_GOVUK:
 

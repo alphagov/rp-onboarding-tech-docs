@@ -7,7 +7,7 @@ Even if your service doesn’t need to perform matching, you must still build a 
 
 * creates the :ref:`hashed persistent identifier <gloss_hashpid>` 
 * creates and signs the final assertion sent to your service - for more information, see :ref:`samlWorks`
-* acts as the trust anchor for your service because the final assertion is created in your service's security domain
+* acts as the :ref:`trust anchor <gloss_trustanchor>` for your service because the final assertion is created in your service's security domain
 
 .. _ms_strat:
 
@@ -25,8 +25,8 @@ A local matching service carries out a risk-based match to find the local record
 
 Your local matching service must be able to handle these issues. You may decide to:
 
-* widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, first search for surname, date of birth, and postcode, then run further matching on the results and apply a confidence score
-* try synonym matching against combinations of forename and surname, possibly transposing them to maximise the chances of finding a match
+* widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, search for last name, date of birth, and postcode, then run further matching on the results and apply a confidence score
+* try synonym matching against combinations of first name and last name, possibly transposing them to maximise the chances of finding a match
  
 Matching considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,7 +37,7 @@ When you define your matching strategy you need to:
 * define the confidence level required for a successful match and how to score the confidence level, for example:
 
   * 100% match confidence means that all elements from the matching dataset fully match the local record 
-  * 80% match confidence might mean that the first name, surname, and date of birth match, but the address is showing a mismatch 
+  * 80% match confidence might mean that the first name, last name, and date of birth match, but the address is showing a mismatch 
 
 
 * define the rules for successful matching, which may include what to do with:

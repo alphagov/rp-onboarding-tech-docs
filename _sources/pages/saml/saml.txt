@@ -18,7 +18,7 @@ SAML is a mature standard and is widely used by industry.  SAML libraries and co
 .. rubric:: What do you need to do?
 
 
-You must :ref:`build a government service <SAMLintegration>` that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand :ref:`how SAML works with GOV.UK Verify <samlWorks>`. 
+You must :ref:`build a government service <SAMLintegration>` that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand :ref:`how SAML works with GOV.UK Verify <samlWorks>` and :ref:`decide how to add the SAML funcionality to your service <samlIntegrationtool>`.
 
 When you build your service, you must :ref:`run SAML compliance tests <samlComplianceTool>`. Before running SAML compliance tests, :ref:`build your local matching service <msBuild>` and :ref:`install your Matching Service Adapter <msa_install_msa>`. When you have completed SAML compliance tests, you must test :ref:`end-to-end user journeys <envEndToEndTests>` in the integration environment. 
 

@@ -180,7 +180,7 @@
 <ul class="simple">
 <li>creates the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
 <li>creates and signs the final assertion sent to your service - for more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works</span></a></li>
-<li>acts as the trust anchor for your service because the final assertion is created in your service&#8217;s security domain</li>
+<li>acts as the <a class="reference internal" href="../../shared/glossary.html#gloss-trustanchor"><span>trust anchor</span></a> for your service because the final assertion is created in your service&#8217;s security domain</li>
 </ul>
 <div class="section" id="define-your-matching-strategy">
 <span id="ms-strat"></span><h2>Define your matching strategy<a class="headerlink" href="#define-your-matching-strategy" title="Permalink to this headline">¶</a></h2>
@@ -194,8 +194,8 @@
 </ul>
 <p>Your local matching service must be able to handle these issues. You may decide to:</p>
 <ul class="simple">
-<li>widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, first search for surname, date of birth, and postcode, then run further matching on the results and apply a confidence score</li>
-<li>try synonym matching against combinations of forename and surname, possibly transposing them to maximise the chances of finding a match</li>
+<li>widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, search for last name, date of birth, and postcode, then run further matching on the results and apply a confidence score</li>
+<li>try synonym matching against combinations of first name and last name, possibly transposing them to maximise the chances of finding a match</li>
 </ul>
 <div class="section" id="matching-considerations">
 <h3>Matching considerations<a class="headerlink" href="#matching-considerations" title="Permalink to this headline">¶</a></h3>
@@ -204,7 +204,7 @@
 <li>prepare for matching with customer data aggregation and data cleansing</li>
 <li>define the confidence level required for a successful match and how to score the confidence level, for example:<ul>
 <li>100% match confidence means that all elements from the matching dataset fully match the local record</li>
-<li>80% match confidence might mean that the first name, surname, and date of birth match, but the address is showing a mismatch</li>
+<li>80% match confidence might mean that the first name, last name, and date of birth match, but the address is showing a mismatch</li>
 </ul>
 </li>
 <li>define the rules for successful matching, which may include what to do with:<ul>

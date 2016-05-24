@@ -185,11 +185,11 @@
 <p>You must provide a full demonstration of all user journeys as part of your <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html#stage-4">Stage 4</a> gate review.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first consult the GOV.UK Verify team at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
+<p class="last">If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first contact GOV.UK Verify support at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
 </div>
 <p>This diagram shows the end-to-end testing flow. See below for explanations.</p>
 <div class="figure align-center" id="id2">
-<img alt="Image showing, on one side, the test government service consisting of the government service, Matching Service Adapter, local matching service and local matching datastore.  On the other side, the integration environment consisting of the GOV.UK Verify hub and test identity providers. The test identity providers contain test users. Step 1: create test users. Step 2: End-to-end testing where you test authentication success and failure, and match or no match scenarios. Step 3: Tear down where you delete test users." src="../../_images/envEndToEndTestsGraphic.svg" /><p class="caption"><span class="caption-text">End-to-end testing in the integration environment</span></p>
+<img alt="Image showing, on one side, the test government service consisting of the government service, Matching Service Adapter, local matching service and local matching datastore.  On the other side, the integration environment consisting of the GOV.UK Verify hub and test identity providers. The test identity providers contain test users. Step 1: create test users. Step 2: End-to-end testing where you test authentication success and failure, and match or no-match scenarios. Step 3: Tear down where you delete test users." src="../../_images/envEndToEndTestsGraphic.svg" /><p class="caption"><span class="caption-text">End-to-end testing in the integration environment</span></p>
 </div>
 <div class="section" id="setup-for-end-to-end-testing">
 <h2>Setup for end-to-end testing<a class="headerlink" href="#setup-for-end-to-end-testing" title="Permalink to this headline">¶</a></h2>
@@ -212,7 +212,7 @@
 <span id="authentication-for-managing-users"></span><h3>Create your authentication<a class="headerlink" href="#create-your-authentication" title="Permalink to this headline">¶</a></h3>
 <p>This procedure describes how to obtain a username and password so you can manage test users.</p>
 <ol class="arabic simple">
-<li>Request IP whitelisting for your hosts from <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</li>
+<li>Request IP whitelisting for your hosts from GOV.UK Verify support at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</li>
 <li>Go to the password generation page: <a class="reference external" href="https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen">https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen</a></li>
 <li>Store the password securely. Then email us the hash, along with a username of your choice.</li>
 </ol>
@@ -367,7 +367,7 @@
 <p>As a minimum, test the following end-to-end user scenarios:</p>
 <ul class="simple">
 <li>authentication success and authentication failure</li>
-<li>match and no match</li>
+<li>match and no-match</li>
 <li>all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a>, if implemented</li>
 </ul>
 <div class="admonition note">

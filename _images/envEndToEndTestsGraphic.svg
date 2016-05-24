@@ -164,7 +164,7 @@
     </g>
     <text transform="matrix(1, 0, 0, 1, 93.053, 248.728)">
       <tspan x="-48.191" y="-3.5" font-family="ArialMT" font-size="12" fill="#000000">JSON response: </tspan>
-      <tspan x="-48.191" y="10.5" font-family="ArialMT" font-size="12" fill="#000000">match / no match </tspan>
+      <tspan x="-48.191" y="10.5" font-family="ArialMT" font-size="12" fill="#000000">match / no-match </tspan>
     </text>
     <g>
       <path d="M405.55,220.725 L234.615,220.725" fill-opacity="0" stroke="#0041C7" stroke-width="1" stroke-linecap="round"/>

@@ -330,7 +330,7 @@
     <text transform="matrix(1, 0, 0, 1, 638.457, 30.106)">
       <tspan x="-137.79" y="-15.228" font-family="ArialMT" font-size="12" fill="#000000">Check:</tspan>
       <tspan x="-137.79" y="-1.228" font-family="ArialMT" font-size="12" fill="#000000">- that gov service supports user account creation</tspan>
-      <tspan x="-137.79" y="12.772" font-family="ArialMT" font-size="12" fill="#000000">- list of attributes to extract from MDS</tspan>
+      <tspan x="-137.79" y="12.772" font-family="ArialMT" font-size="12" fill="#000000">- the list of attributes to extract from MDS</tspan>
     </text>
     <path d="M628.341,51.5 L584.333,51.5" fill-opacity="0" stroke="#0041C7" stroke-width="1" stroke-linecap="round"/>
     <g>

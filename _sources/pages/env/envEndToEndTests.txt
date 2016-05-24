@@ -13,12 +13,12 @@ You must provide a full demonstration of all user journeys as part of your `Stag
 
 
 
-.. important:: If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first consult the GOV.UK Verify team at idasupport+onboarding@digital.cabinet-office.gov.uk.
+.. important:: If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first contact GOV.UK Verify support at idasupport+onboarding@digital.cabinet-office.gov.uk.
 
 This diagram shows the end-to-end testing flow. See below for explanations.
 
 .. figure:: envEndToEndTestsGraphic.svg 
-    :alt: Image showing, on one side, the test government service consisting of the government service, Matching Service Adapter, local matching service and local matching datastore.  On the other side, the integration environment consisting of the GOV.UK Verify hub and test identity providers. The test identity providers contain test users. Step 1: create test users. Step 2: End-to-end testing where you test authentication success and failure, and match or no match scenarios. Step 3: Tear down where you delete test users.
+    :alt: Image showing, on one side, the test government service consisting of the government service, Matching Service Adapter, local matching service and local matching datastore.  On the other side, the integration environment consisting of the GOV.UK Verify hub and test identity providers. The test identity providers contain test users. Step 1: create test users. Step 2: End-to-end testing where you test authentication success and failure, and match or no-match scenarios. Step 3: Tear down where you delete test users.
     :align: center
 
     End-to-end testing in the integration environment
@@ -52,7 +52,7 @@ Create your authentication
 
 This procedure describes how to obtain a username and password so you can manage test users.
 
-1. Request IP whitelisting for your hosts from idasupport+onboarding@digital.cabinet-office.gov.uk.
+1. Request IP whitelisting for your hosts from GOV.UK Verify support at idasupport+onboarding@digital.cabinet-office.gov.uk.
 
 2. Go to the password generation page: `<https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen>`_
 
@@ -164,7 +164,7 @@ Run end-to-end tests
 As a minimum, test the following end-to-end user scenarios:
 
 * authentication success and authentication failure
-* match and no match
+* match and no-match
 * all the possible outcomes of your matching service, including :ref:`cycle 3 <ms_mc3>` and :ref:`user account creation <ms_cua>`, if implemented
 
 .. note:: Run end-to-end tests for all the possible outcomes of your matching service, including :ref:`cycle 3 <ms_mc3>` and :ref:`user account creation <ms_cua>`, if implemented.

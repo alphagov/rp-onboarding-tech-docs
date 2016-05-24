@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build your service: SAML integration &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  <title>Build your service &mdash; GOV.UK Verify Technical Guide  documentation</title>
   
 
   
@@ -113,7 +113,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Build your service: SAML integration</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Build your service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#saml-integration-products-and-frameworks">SAML integration: products and frameworks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#access-the-saml-metadata">Access the SAML metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#consume-responses-using-saml-metadata">Consume responses using SAML metadata</a></li>
 </ul>
@@ -160,7 +161,7 @@
       
         <li><a href="saml.html">SAML</a> &raquo;</li>
       
-    <li>Build your service: SAML integration</li>
+    <li>Build your service</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -172,15 +173,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="build-your-service-saml-integration">
-<span id="samlintegration"></span><h1>Build your service: SAML integration<a class="headerlink" href="#build-your-service-saml-integration" title="Permalink to this headline">¶</a></h1>
+      <div class="section" id="build-your-service">
+<span id="samlintegration"></span><h1>Build your service<a class="headerlink" href="#build-your-service" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="saml-integration-products-and-frameworks">
+<span id="samlintegrationtool"></span><h2>SAML integration: products and frameworks<a class="headerlink" href="#saml-integration-products-and-frameworks" title="Permalink to this headline">¶</a></h2>
 <p>Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
-<p>You can choose from a wide range of libraries and off-the-shelf products to add the SAML functionality to your service, for example, Shibboleth-SP (service provider). Contact your engagement lead if you need further information.</p>
-<p>When you&#8217;ve built your service you must:</p>
-<ul class="simple">
-<li><a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a></li>
-<li><a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>run end-to-end testing in the integration environment</span></a></li>
-</ul>
+<p>You can choose from a wide range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.</p>
+<p>GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See <a class="reference external" href="https://www.gov.uk/service-manual/making-software/choosing-technology.html">Choosing technology</a> in the Government Service Design Manual.</p>
+<p>Contact your engagement lead if you need further information.</p>
+</div>
 <div class="section" id="access-the-saml-metadata">
 <span id="saml-access-metadata"></span><h2>Access the SAML metadata<a class="headerlink" href="#access-the-saml-metadata" title="Permalink to this headline">¶</a></h2>
 <p>The SAML metadata contains the <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-signing"><span>SAML encryption and signing certificates</span></a> used within the GOV.UK Verify federation. The preferred way to distribute and access certificates is through the SAML metadata. The IDAP certificate authority issues certificates. See <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>

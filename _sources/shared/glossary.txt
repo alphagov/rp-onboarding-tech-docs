@@ -23,11 +23,11 @@ The request that a service sends to the hub, or the hub sends to an identity pro
 
 **certificate**
 
-A file containing a public key. Only certificates that have been approved by an IDAP certificate authority can be used with GOV.UK Verify.
+A file that is issued and signed by a certificate authority. It contains a copy of the certificate owner’s public key, used for encryption or signing.
 
 	**certificate authority**
 
-	A service that signs and subsequently verifies the authenticity of digital certificates.
+	A service that issues and signs digital certificates within a public key infrastructure (PKI). The certificate authority acts as the trust anchor in the PKI.
 
 .. _csr_file:
 
@@ -37,11 +37,11 @@ A file containing a public key. Only certificates that have been approved by an 
 
 	**encryption certificate**
 
-	Contains a public key that the sender uses to encrypt a message that the receiver decrypts using their corresponding private key. This provides the sender with assurance that only the receiver can decrypt the message.
+	Contains the receiver’s public key that the sender uses to encrypt a message. The receiver decrypts the message using their corresponding private key. This provides the sender with assurance that only the receiver can decrypt the message.
 
 	**signing certificate**
 
-	Contains a public key that the receiver uses to decrypt a message encrypted with the sender's private key. This provides the receiver with assurance as to the sender's identity.
+	Contains a public key that the receiver uses to check the authenticity of a message signed with the sender’s private key. This provides the receiver with assurance of the sender’s identity.
 
 **compliance tool**
 
@@ -51,6 +51,16 @@ Enables services to carry out testing of SAML compliance before testing end-to-e
 
 An identity provider issues credentials to a user to allow the user to be authenticated when accessing a government service. Examples of credentials are usernames, passwords and security codes.
 
+**cryptography**
+
+A set of techniques for guaranteeing the integrity and confidentiality of data transmitted over a public network. This is done by a combination of encryption and signing
+
+.. _gloss_entityID:
+
+**entityID**
+
+A unique identifier for each participant, or entity, within the GOV.UK Verify federation. Government services, matching service adapters, the GOV.UK Verify hub, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: \https://signin.service.gov.uk.
+
 **data matching**
 
 The process of finding a local identifier through matching that's useful to a government service when completing a transaction, for example confirming a National Insurance number so the user can amend their tax records.
@@ -59,9 +69,6 @@ The process of finding a local identifier through matching that's useful to a go
 
 The Data Protection Act controls how personal information is used by organisations, businesses or the government. Read more about the `Data Protection Act <https://www.gov.uk/data-protection/the-data-protection-act>`_.
 
-**document checking service (DCS)**
-
-A service supplementary to GOV.UK Verify that allows an identity provider to validate user documents against government records.
 
 **Good Practice Guides (GPGs 43, 44, 45, 46 and 56 in relation to identity assurance)**
 
@@ -97,7 +104,7 @@ In the case of identity assurance, this is the description of who or what an ent
 
 **identity assurance**
 
-The ability to determine, with some level of certainty, that an electronic credential representing an entity (human or a machine) with which it interacts to effect a transaction, can be trusted to actually belong to the entity. Proving that a user is who they say they are to a certain level of confidence.
+The ability to determine whether an electronic credential representing a user trying to access a government service can be trusted to actually belong to that user. Identity assurance involves proving that a user is who they say they are to a certain level of confidence.
 
 **Identity Assurance Principles**
 
@@ -107,7 +114,7 @@ The principles that set out how the government's identity assurance approach sho
 
 **identity provider**
 
-Private sector organisations, paid by the government, to verify a user is who they say they are and assert verified data that identifies them to a government service.
+Private sector organisations, paid by the government, to verify that a user is who they say they are and assert verified data that identifies them to a government service.
 
 The organisations are certified as meeting relevant industry security standards and identity assurance standards published by the Cabinet Office and CESG (the UK's national technical authority).
 
@@ -267,6 +274,19 @@ A protocol used to provide secure communications across the internet, to website
 **Uniform Resource Identifier (URI)**
 
 A character string that identifies a resource, for example an electronic document, an image, a source of information or a service. A URI could be a name, a location or both.
+
+.. _gloss_trustanchor:
+
+**trust anchor**
+
+An authoritative entity in cryptographic systems for which trust is pre-established and not derived. For example, the IDAP certificate authority is the trust anchor within the GOV.UK Verify federation.
+
+.. _gloss_truststore:
+
+**truststore**
+
+A file containing certificates from parties that you expect to communicate with, or from certificate authorities that you trust to identify other parties.
+
 
 **Uniform Resource Locator (URL)**
 

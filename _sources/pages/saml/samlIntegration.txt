@@ -1,16 +1,21 @@
 .. _samlIntegration:
 
-Build your service: SAML integration 
-=====================================
+Build your service
+=====================================================
+
+.. _samlIntegrationtool:
+
+SAML integration: products and frameworks
+------------------------------------------------
 
 Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub. 
 
-You can choose from a wide range of libraries and off-the-shelf products to add the SAML functionality to your service, for example, Shibboleth-SP (service provider). Contact your engagement lead if you need further information. 
+You can choose from a wide range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify. 
 
-When you've built your service you must:
+GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See `Choosing technology <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ in the Government Service Design Manual. 
 
-* :ref:`run SAML compliance tests <samlComplianceTool>` 
-* :ref:`run end-to-end testing in the integration environment <envEndToEndTests>` 
+Contact your engagement lead if you need further information.
+
 
 .. _saml_access_metadata:
 
