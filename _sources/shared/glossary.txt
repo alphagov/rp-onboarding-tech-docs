@@ -1,33 +1,47 @@
 Glossary of terms
 ==================
 
+.. _gloss_assertion:
+
 **assertion**
 
-A package of data created by an entity in the GOV.UK federation. Data in an assertion is signed by the creator of the assertion (eg an identity provider or the Matching Service Adapter) and encrypted for the recipient (eg the hub).
+A package of data created by an entity in the GOV.UK federation. Data in an assertion is signed by the creator of the assertion (eg an identity provider or the :ref:`Matching Service Adapter <gloss_msa>`) and encrypted for the recipient (eg the :ref:`hub <gloss_hub>`).
+
+.. _gloss_assid:
 
 **assured identity**
 
-An identity that's been verified to the required level of assurance.
+An identity that's been verified to the required :ref:`level of assurance <gloss_loa>`.
+
+.. _gloss_attr:
 
 **attributes**
 
-Data that's sent from 1 entity to another in a SAML assertion, for example, the matching dataset for use by the matching service.
+Data that's sent from 1 entity to another in a SAML :ref:`assertion <gloss_assertion>`, for example, the :ref:`matching dataset <gloss_mds>` for use by the matching service.
 
-**authentication**
+.. _gloss_authent:
 
-The process by which a system confirms the user is known to that system, usually through the use of 1 or more credentials.
+**authentication** 
 
-**authentication request**
+The process by which a system confirms the user is known to that system, usually through the use of 1 or more :ref:`credentials <gloss_credent>`.
 
-The request that a service sends to the hub, or the hub sends to an identity provider, to request the identification of a user trying to access a digital service.
+.. _gloss_authentreq:
+
+**authentication request** 
+
+The request that a service sends to the :ref:`hub <gloss_hub>`, or the hub sends to an identity provider, to request the identification of a user trying to access a digital service.
+
+.. _gloss_cert:
 
 **certificate**
 
 A file that is issued and signed by a certificate authority. It contains a copy of the certificate owner’s public key, used for encryption or signing.
 
-	**certificate authority**
+.. _gloss_certauth:
 
-	A service that issues and signs digital certificates within a public key infrastructure (PKI). The certificate authority acts as the trust anchor in the PKI.
+	**certificate authority** 
+
+	A service that issues and signs digital certificates within a :ref:`public key infrastructure <gloss_pki>` (PKI). The certificate authority acts as the :ref:`trust anchor <gloss_trustanchor>` in the PKI.
 
 .. _csr_file:
 
@@ -45,13 +59,17 @@ A file that is issued and signed by a certificate authority. It contains a copy 
 
 **compliance tool**
 
-Enables services to carry out testing of SAML compliance before testing end-to-end user journeys in the integration environment. It allows isolated testing of both the connection from the service to the hub and the connection from the hub to the Matching Service Adapter.
+Enables services to carry out testing of SAML compliance before testing end-to-end user journeys in the :ref:`integration environment <gloss_intenv>`. It allows isolated testing of both the connection from the service to the :ref:`hub <gloss_hub>` and the connection from the hub to the :ref:`Matching Service Adapter <gloss_msa>`.
 
-**credentials**
+.. _gloss_credent:
+
+**credentials** 
 
 An identity provider issues credentials to a user to allow the user to be authenticated when accessing a government service. Examples of credentials are usernames, passwords and security codes.
 
-**cryptography**
+.. _gloss_cryptog:
+
+**cryptography** 
 
 A set of techniques for guaranteeing the integrity and confidentiality of data transmitted over a public network. This is done by a combination of encryption and signing
 
@@ -59,7 +77,7 @@ A set of techniques for guaranteeing the integrity and confidentiality of data t
 
 **entityID**
 
-A unique identifier for each participant, or entity, within the GOV.UK Verify federation. Government services, matching service adapters, the GOV.UK Verify hub, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: \https://signin.service.gov.uk.
+A unique identifier for each participant, or entity, within the GOV.UK Verify federation. Government services, Matching Service Adapters, the GOV.UK Verify :ref:`hub <gloss_hub>`, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: \https://signin.service.gov.uk.
 
 **data matching**
 
@@ -69,6 +87,10 @@ The process of finding a local identifier through matching that's useful to a go
 
 The Data Protection Act controls how personal information is used by organisations, businesses or the government. Read more about the `Data Protection Act <https://www.gov.uk/data-protection/the-data-protection-act>`_.
 
+
+**document checking service (DCS)**
+
+A service supplementary to GOV.UK Verify that allows an identity provider to validate user documents against government records.
 
 **Good Practice Guides (GPGs 43, 44, 45, 46 and 56 in relation to identity assurance)**
 
@@ -87,20 +109,20 @@ A service provided by a government department such as Check or update your compa
 
 .. _gloss_hashpid:
 
-**hashed persistent identifier**
+**hashed persistent identifier**  
 
-A unique identifier which refers to a combination of a user, the identity provider that verified the user’s identity, and the government service that the user is trying to access.  The Matching Service Adapter generates the hashed persistent identifier from the persistent identifier. This ensures that identifiers for user identity are unique to specific services and can’t be used across multiple services.
+A unique identifier which refers to a combination of a user, the identity provider that verified the user’s identity, and the government service that the user is trying to access.  The :ref:`Matching Service Adapter <gloss_msa>` generates the hashed persistent identifier from the :ref:`persistent identifier <gloss_persid>`. This ensures that identifiers for user identity are unique to specific services and can’t be used across multiple services.
 
 .. _gloss_hub:
 
-**hub (hub service, GOV.UK Verify hub)**
+**hub (hub service, GOV.UK Verify hub)** 
 
-The infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service. The hub protects privacy and ensures security during authentication.
+The infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service. The :ref:`hub <gloss_hub>` protects privacy and ensures security during :ref:`authentication <gloss_authent>`.
 
 
 **identity**
 
-In the case of identity assurance, this is the description of who or what an entity is, defined by a collection of attributes.
+In the case of identity assurance, this is the description of who or what an entity is, defined by a collection of :ref:`attributes <gloss_attr>`. 
 
 **identity assurance**
 
@@ -118,9 +140,11 @@ Private sector organisations, paid by the government, to verify that a user is w
 
 The organisations are certified as meeting relevant industry security standards and identity assurance standards published by the Cabinet Office and CESG (the UK's national technical authority).
 
-**integration environment**
+.. _gloss_intenv:
 
-A production-sized deployment of the entire GOV.UK Verify hub environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.
+**integration environment** 
+
+A production-sized deployment of the entire GOV.UK Verify :ref:`hub <gloss_hub>` environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.
 
 .. _gloss_loa:
 
@@ -146,32 +170,34 @@ The degree of confidence the government service requires that a user is who they
 
 	As level of assurance 3, but with a biometric profile captured at the point of registration.
 
-**local matching datastore**
+.. _gloss_lmd:
+
+**local matching datastore** 
 
 A datastore that is part of a government service’s local matching service. It stores correlations between hashed persistent identifiers and local identifiers for users.
 
 .. _gloss_lms:
 
-**local matching service**
+**local matching service** 
 
-The part of a government service's matching service that runs matching cycles to find a match between a user’s assured identity and a record in the government service’s data sources. This allows the government service to interact with the user. Government services build their own local matching service. 
+The part of a government service's matching service that runs matching cycles to find a match between a user’s :ref:`assured identity <gloss_assid>` and a record in the government service’s data sources. This allows the government service to interact with the user. Government services build their own local matching service. 
 
 
 **matching cycles**
 
-Matching cycle numbers refer to the sequence of attempts made to find a matching account or local identifier for a particular verified identity as expressed in an assertion of matching data from an identity provider.
+Matching cycle numbers refer to the sequence of attempts made to find a matching account or local identifier for a particular verified identity as expressed in an :ref:`assertion <gloss_assertion>` of matching data from an identity provider.
 
 	**cycle 0**
 
-	Cycle 0 allows the matching service to match the hashed persistent identifier of a verified user to a hashed persistent identifier held in their local matching datastore. Cycle 0 is used for efficiency. A successful match at cycle 0 can be treated by the matching service as confirmation that the identity being presented is the same identity as previously matched by that service.
+	Cycle 0 allows the matching service to match the hashed :ref:`hashed persistent identifier <gloss_hashpid>` of a verified user to a hashed persistent identifier held in their :ref:`local matching datastore <gloss_lmd>`. Cycle 0 is used for efficiency. A successful match at cycle 0 can be treated by the matching service as confirmation that the identity being presented is the same identity as previously matched by that service.
 
 	**cycle 1**
 
-	Checks if there’s a match for the user’s identity in the government service’s data sources, using the matching dataset to search for a match.
+	Checks if there’s a match for the user’s identity in the government service’s data sources, using the :ref:`matching dataset <gloss_mds>` to search for a match.
 
 	**cycle 2**
 
-	Additional matching cycle where trusted attributes are used to enhance the matching process. Cycle 2 is currently not supported by GOV.UK Verify.
+	Additional matching cycle where trusted :ref:`attributes <gloss_attr>` are used to enhance the matching process. Cycle 2 is currently not supported by GOV.UK Verify.
 
 
 	**cycle 3**
@@ -180,21 +206,21 @@ Matching cycle numbers refer to the sequence of attempts made to find a matching
 
 .. _gloss_mds:
 
-**matching dataset**
+**matching dataset** 
 
-The minimum dataset of name, address, date of birth, and (optionally) gender required for matching. The matching dataset is provided by the identity provider. The hub forwards it to the government service's matching service.
+The minimum dataset of name, address, date of birth, and (optionally) gender required for matching. The matching dataset is provided by the identity provider. The :ref:`hub <gloss_hub>` forwards it to the government service's matching service.
 
 .. _matching-service:
 
 **matching service**
 
-The function of finding a local identifier for the individual (eg an id for the user’s account) based on a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the local matching service.  In the SAML profile used by GOV.UK Verify, the matching service is referred to as the service provider matching service (SPMS). 
+The function of finding a local identifier for the individual (eg an id for the user’s account) based on a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the :ref:`local matching service <gloss_lms>`.  In the SAML profile used by GOV.UK Verify, the matching service is referred to as the service provider matching service (SPMS). 
 
 .. _gloss_msa:
 
-**Matching Service Adapter**
+**Matching Service Adapter** 
 
-A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the local matching service together comprise the matching service.
+A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the :ref:`local matching service <gloss_lms>` together comprise the matching service.
 
 **onboarding**
 
@@ -203,7 +229,7 @@ The process through which new government services integrate with GOV.UK Verify. 
 
 .. _gloss_persid:
 
-**persistent identifier**
+**persistent identifier** 
 
 A unique identifier which refers to a combination of a user and the identity provider that verified the user’s identity. Persistent identifiers are generated by identity providers. They are constructed using pseudo-random values that have no discernible correspondence with the user’s actual identifier, for example, their email address.
 
@@ -224,13 +250,13 @@ The full end-to-end version of a government service that is publicly available, 
 
 **public key infrastructure (PKI)**
 
-A set of hardware, software, people, policies and procedures needed to create, manage, distribute, use, store and revoke digital certificates. [#]_ 
+A set of hardware, software, people, policies and procedures needed to create, manage, distribute, use, store and revoke digital :ref:`certificate <gloss_cert>`. [#]_ 
 
 .. _private-key:
 
 	**private key**
 
-	A long string of data used in cryptography. Generating a certificate signing request creates a corresponding public key.
+	A long string of data used in :ref:`cryptography <gloss_cryptog>`. Generating a certificate signing request creates a corresponding public key.
 
 .. _public-key:
 
@@ -243,7 +269,7 @@ A set of hardware, software, people, policies and procedures needed to create, m
 
 **relying party**
 
-An entity in a system of federated identity that relies on a response from another entity, such as a successful authentication request. A relying party is also referred to as a service provider when it provides a service that the end user directly interacts with. Relying party is a term used in SAML specifications. In the GOV.UK Verify federation, relying parties are government services.
+An entity in a system of federated identity that relies on a response from another entity, such as a successful :ref:`authentication request <gloss_authentreq>`. A relying party is also referred to as a service provider when it provides a service that the end user directly interacts with. Relying party is a term used in SAML specifications. In the GOV.UK Verify federation, relying parties are government services.
 
 .. _glossSAML:
 
@@ -279,7 +305,7 @@ A character string that identifies a resource, for example an electronic documen
 
 **trust anchor**
 
-An authoritative entity in cryptographic systems for which trust is pre-established and not derived. For example, the IDAP certificate authority is the trust anchor within the GOV.UK Verify federation.
+An authoritative entity in cryptographic systems for which trust is pre-established and not derived. For example, the IDAP :ref:`certificate authority <gloss_certauth>` is the trust anchor within the GOV.UK Verify federation.
 
 .. _gloss_truststore:
 
