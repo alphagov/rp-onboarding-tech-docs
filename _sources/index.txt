@@ -3,7 +3,7 @@
 About this guide
 =================
 
-This is the technical reference guide for GOV.UK Verify. It’s in beta.
+This is the technical reference guide for GOV.UK Verify.
 
 This guide contains information to help teams who are building secure digital services to integrate with GOV.UK Verify, and should be used together with the `GOV.UK Verify Onboarding Guide <http://alphagov.github.io/identity-assurance-documentation/#>`_. This guide will be continually improved. Check the :ref:`version history <vershis>` for the latest changes to the guide. 
 

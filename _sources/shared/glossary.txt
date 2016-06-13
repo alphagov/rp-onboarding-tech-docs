@@ -41,7 +41,7 @@ A file that is issued and signed by a certificate authority. It contains a copy 
 
 	**certificate authority** 
 
-	A service that issues and signs digital certificates within a :ref:`public key infrastructure <gloss_pki>` (PKI). The certificate authority acts as the :ref:`trust anchor <gloss_trustanchor>` in the PKI.
+	An entity that issues and signs digital certificates within a :ref:`public key infrastructure <gloss_pki>` (PKI). The certificate authority acts as the :ref:`trust anchor <gloss_trustanchor>` in the PKI.
 
 .. _csr_file:
 
@@ -77,7 +77,7 @@ A set of techniques for guaranteeing the integrity and confidentiality of data t
 
 **entityID**
 
-A unique identifier for each participant, or entity, within the GOV.UK Verify federation. Government services, Matching Service Adapters, the GOV.UK Verify :ref:`hub <gloss_hub>`, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: \https://signin.service.gov.uk.
+A unique identifier for each entity within the GOV.UK Verify federation. Government services, Matching Service Adapters, the GOV.UK Verify :ref:`hub <gloss_hub>`, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: \https://signin.service.gov.uk.
 
 **data matching**
 
@@ -126,7 +126,7 @@ In the case of identity assurance, this is the description of who or what an ent
 
 **identity assurance**
 
-The ability to determine whether an electronic credential representing a user trying to access a government service can be trusted to actually belong to that user. Identity assurance involves proving that a user is who they say they are to a certain level of confidence.
+The ability to prove, to a certain level of confidence, that a user trying to access a digital service is who they say they are.
 
 **Identity Assurance Principles**
 
