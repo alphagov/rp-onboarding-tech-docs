@@ -23,7 +23,7 @@ The hub is at the centre of GOV.UK Verify, centralising the interactions between
 3. The GOV.UK Verify hub sends a SAML request to the chosen identity provider to authenticate the user.
 4. The chosen identity provider authenticates the user. It then sends two assertions (in a SAML response) to the GOV.UK Verify hub. These assertions contain the:
 
- * :ref:`matching dataset <gloss_mds>` - name, address, date of birth, and gender (optional), plus historical data where available
+ * :ref:`matching dataset <gloss_mds>` – name, address, date of birth, and gender (optional), plus historical data where available
  * :ref:`persistent identifier <gloss_persid>` which identifies the unique combination of the user and identity provider
  * :ref:`level of assurance <gloss_loa>` to which the identity provider authenticated the user
 

@@ -5,6 +5,10 @@ Architecture
 
 GOV.UK Verify lets users prove their identity online so they can access government services. When a user wants to access a government service, a trusted identity provider performs the checks needed to verify the user’s identity. 
 
+
+Below is a high-level diagram of the GOV.UK Verify architecture.
+
+
 .. csv-table:: 
    :widths: 75, 20
    :name: flow-diagram

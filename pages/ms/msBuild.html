@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="up" title="Matching Service" href="ms.html"/>
+        <link rel="up" title="Local Matching Service" href="ms.html"/>
         <link rel="next" title="Create user accounts" href="msCua.html"/>
         <link rel="prev" title="How a matching service works" href="msWorks.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
@@ -112,7 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Matching Service</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Local Matching Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Build a local matching service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#define-your-matching-strategy">Define your matching strategy</a><ul>
@@ -160,7 +160,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="ms.html">Matching Service</a> &raquo;</li>
+        <li><a href="ms.html">Local Matching Service</a> &raquo;</li>
       
     <li>Build a local matching service</li>
     <li class="wy-breadcrumbs-aside">
@@ -213,10 +213,10 @@
 <li>transpositions errors of day and month in the date of birth, for example, <strong>04/10/78</strong> and <strong>10/04/78</strong></li>
 </ul>
 </li>
-<li>define the level of &#8216;fuzzy matching&#8217; that is acceptable when an exact match is not found - this allows a match that, although not 100%, is above a service-defined threshold</li>
+<li>define the level of &#8216;fuzzy matching&#8217; that is acceptable when an exact match is not found – this allows a match that, although not 100%, is above a service-defined threshold</li>
 <li>manage the risk of incorrect matching by defining what happens when:<ul>
-<li>there&#8217;s no match - you can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user</li>
-<li>there are multiple matches - you can implement <a class="reference internal" href="msWorks.html#ms-mc3"><span>matching cycle 3</span></a></li>
+<li>there&#8217;s no match – you can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user</li>
+<li>there are multiple matches – you can implement <a class="reference internal" href="msWorks.html#ms-mc3"><span>matching cycle 3</span></a></li>
 </ul>
 </li>
 <li>analyse your data sources in the light of your matching strategy, so you can test and refine your strategy before launching alpha or beta services</li>

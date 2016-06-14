@@ -116,7 +116,7 @@
 <li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
@@ -174,13 +174,13 @@
 <p>SAML is a mature standard and is widely used by industry.  SAML libraries and components are available for most programming languages and platforms.</p>
 <p class="rubric">What do you need to do?</p>
 <p>You must <a class="reference internal" href="samlIntegration.html#samlintegration"><span>build a government service</span></a> that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand <a class="reference internal" href="samlWorks.html#samlworks"><span>how SAML works with GOV.UK Verify</span></a> and <a class="reference internal" href="samlIntegration.html#samlintegrationtool"><span>decide how to add the SAML funcionality to your service</span></a>.</p>
-<p>When you build your service, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a>. Before running SAML compliance tests, <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> and <a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install your Matching Service Adapter</span></a>. When you have completed SAML compliance tests, you must test <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end user journeys</span></a> in the integration environment.</p>
+<p>When you build your service, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a>.</p>
 <p>For an outline of the technical steps in the onboarding process, see <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html">Stage 4: Build and integration testing</a> in the onboarding guide.</p>
 <p id="saml-docs">You must adhere to the following specifications and guidance:</p>
 <ul class="simple">
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216; - describes the SAML specifications you must respect to connect to the GOV.UK Verify hub</li>
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts">Identity Assurance Hub Service Profile - Authentication Contexts</a>&#8216; - describes how the level of assurance is specified</li>
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes">Identity Assurance Hub Service Profile - SAML Attributes</a>&#8216; - describes the matching dataset attributes and fraud event assertion attributes</li>
+<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216; – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub</li>
+<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts">Identity Assurance Hub Service Profile – Authentication Contexts</a>&#8216; – describes how the level of assurance is specified</li>
+<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes">Identity Assurance Hub Service Profile – SAML Attributes</a>&#8216; – describes the matching dataset attributes and fraud event assertion attributes</li>
 <li>&#8216;<a class="reference external" href="https://www.gov.uk/service-manual/identity-assurance/index.html">GOV.UK Verify guidance</a>&#8216;</li>
 </ul>
 <p>The SAML profile used by GOV.UK Verify builds on the <a class="reference external" href="https://www.oasis-open.org/standards#samlv2.0">OASIS documentation for the SAML 2.0 standard</a>.</p>

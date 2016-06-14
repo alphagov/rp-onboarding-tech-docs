@@ -112,7 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
@@ -175,13 +175,18 @@
 <p class="last">Please allow up to 5 working days for the GOV.UK Verify team to set up and configure access to an environment.</p>
 </div>
 <p>Before filling in the form, you must <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>obtain signed certificates</span></a> from the appropriate certificate authority.</p>
-<p>First select the environment you want to access: integration or production.</p>
+<p>First select the environment you want to access: integration or production. If you&#8217;re requesting access to the production environment, you need to fill in the entire form. Information from your integration environment is not carried over.</p>
 <p>Fill in the form as indicated below:</p>
 <ol class="arabic simple">
 <li><strong>Service entityID</strong></li>
 </ol>
 <blockquote>
-<div>Enter the entityID for the service you want to connect to the integration environment. This is a globally unique identifier for your service within the environment. It&#8217;s typically in URL format, for example https://identity.service.gov.uk. If you have more than 1 service connected to the environment, make sure each has a unique entityID.</div></blockquote>
+<div><p>Enter the entityID for the service you want to connect to the integration environment. This is a globally unique identifier for your service within the environment. It&#8217;s typically in URL format, for example https://identity.service.gov.uk. If you have more than 1 service connected to the environment, make sure each has a unique entityID.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This field must be unique for each connection you request for the integration or production environment.</p>
+</div>
+</div></blockquote>
 <ol class="arabic simple" start="2">
 <li><strong>Matching service entityID</strong></li>
 </ol>
@@ -201,7 +206,12 @@
 <li><strong>Assertion consumer service HTTPS URL</strong></li>
 </ol>
 <blockquote>
-<div>Enter the fully qualified URL to which the hub will send its responses. For example https://test-rp.service.signin.gov.uk/authentication_endpoint.</div></blockquote>
+<div><p>Enter the fully qualified URL to which the hub will send its responses. For example https://test-rp.service.signin.gov.uk/authentication_endpoint.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This field must be unique for each connection you request for the integration or production environment.</p>
+</div>
+</div></blockquote>
 <ol class="arabic simple" start="6">
 <li><strong>Service signature validation certificate</strong></li>
 </ol>
@@ -253,13 +263,6 @@
 </ul>
 </div></blockquote>
 </div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>The above fields don&#8217;t have to be unique for each connection you request for the integration or production environment. The only fields that must be unique are <em>Service entityID</em> and <em>Assertion consumer service HTTPS URL</em>.</li>
-<li>If you&#8217;re requesting access to the production environment, you need to fill in the entire form. Information from your integration environment is not carried over.</li>
-</ul>
-</div>
 <p>Your content designer can provide the remaining information:</p>
 <ol class="arabic simple" start="13">
 <li><strong>Service display name</strong></li>

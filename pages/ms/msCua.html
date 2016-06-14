@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="up" title="Matching Service" href="ms.html"/>
+        <link rel="up" title="Local Matching Service" href="ms.html"/>
         <link rel="next" title="Matching Service Adapter" href="../msa/msa.html"/>
         <link rel="prev" title="Build a local matching service" href="msBuild.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
@@ -112,7 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Matching Service</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Local Matching Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Create user accounts</a><ul>
@@ -157,7 +157,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="ms.html">Matching Service</a> &raquo;</li>
+        <li><a href="ms.html">Local Matching Service</a> &raquo;</li>
       
     <li>Create user accounts</li>
     <li class="wy-breadcrumbs-aside">
@@ -205,10 +205,10 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#msa-config-msa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
+<li>Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#msa-adapt-yaml"><span>Adapt the YAML configuration file</span></a> for more information.</li>
 <li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
 </ol>
-<blockquote>
+<blockquote id="list-cua-attributes">
 <div><div class="highlight-python"><div class="highlight"><pre><span class="n">FIRST_NAME</span>
 <span class="n">FIRST_NAME_VERIFIED</span>
 <span class="n">MIDDLE_NAME</span>
@@ -284,8 +284,8 @@
 <p class="first admonition-title">Note</p>
 <p>The Matching Service Adapter must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:</p>
 <ul class="simple">
-<li>user control - the user must give their informed consent to the information being sent</li>
-<li>data minimisation - the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>
+<li>user control  the user must give their informed consent to the information being sent</li>
+<li>data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>
 </ul>
 <p class="last">For more information see the <a class="reference external" href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/361496/PCAG_IDA_Principles_3.1__4_.pdf">Identity Assurance Principles</a>.</p>
 </div>

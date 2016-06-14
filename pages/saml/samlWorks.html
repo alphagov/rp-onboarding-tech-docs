@@ -117,7 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
@@ -172,9 +172,9 @@
 <span id="samlworks"></span><h1>How SAML works<a class="headerlink" href="#how-saml-works" title="Permalink to this headline">¶</a></h1>
 <p>SAML messages take the form of requests and responses. Messages can contain assertions about the user&#8217;s identity. GOV.UK Verify uses the following types of assertion:</p>
 <ul class="simple">
-<li>identity assertions - contain information about the user</li>
-<li>authentication context assertions - contain information related to how authentication was carried out, for example, the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
-<li>fraud event assertions - contain identifiers related to an identified fraud detected by the identity provider</li>
+<li>identity assertions – contain information about the user</li>
+<li>authentication context assertions – contain information related to how authentication was carried out, for example, the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
+<li>fraud event assertions – contain identifiers related to an identified fraud detected by the identity provider</li>
 </ul>
 <p>The SAML profile defines these assertions. See the <a class="reference internal" href="saml.html#saml-docs"><span>list of documents defining the SAML profile</span></a>.</p>
 <p>All SAML messages that pass between the government service, the hub, and identity providers are sent via the user&#8217;s browser.</p>
@@ -215,8 +215,8 @@
 <blockquote>
 <div><img alt="Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub." src="../../_images/step3Graphic.svg" /><ul class="simple">
 <li>SAML response <a class="reference internal" href="../pki/pkiWorks.html#pki-sign-cert"><span>signed</span></a> by the identity provider</li>
-<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub - this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
-<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub - this contains the user&#8217;s <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> and the <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a></li>
+<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub – this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
+<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user&#8217;s <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> and the <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a></li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -233,7 +233,7 @@
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching query and forwards it to the service’s local matching service.</li>
+<li>The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching request and forwards it to the service’s local matching service.</li>
 </ol>
 <blockquote>
 <div>The local matching service tries to match the user with a record in the government service’s database.</div></blockquote>
@@ -244,7 +244,7 @@
 <blockquote>
 <div><img alt="Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub." src="../../_images/step7Graphic.svg" /><ul class="simple">
 <li>SAML attribute query response signed by the Matching Service Adapter</li>
-<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub - this assertion contains the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="8">

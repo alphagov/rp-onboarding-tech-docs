@@ -200,7 +200,7 @@
       <tspan x="-33.761" y="11.75" font-family="Arial-BoldMT" font-size="15" fill="#000000">datastore</tspan>
     </text>
     <text transform="matrix(1, 0, 0, 1, 372.565, 323.407)">
-      <tspan x="-64.744" y="0.123" font-family="ArialMT" font-size="12" fill="#000000">JSON matching query</tspan>
+      <tspan x="-64.744" y="0.123" font-family="ArialMT" font-size="12" fill="#000000">JSON matching request</tspan>
     </text>
     <text transform="matrix(1, 0, 0, 1, 233.48, 445.314)">
       <tspan x="-39.021" y="-4.833" font-family="ArialMT" font-size="12" fill="#000000">Match user to</tspan>

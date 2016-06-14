@@ -112,7 +112,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
@@ -196,8 +196,8 @@
 <p>The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during matching. Then, in the user administration API, create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.</p>
 <p>A test identity provider contains:</p>
 <ul class="simple">
-<li>the user administration API - you need basic authentication credentials to manage test user data</li>
-<li>a connection to the hub in the integration environment, which is used for end-to-end testing - no authentication credentials are required</li>
+<li>the user administration API – you need basic authentication credentials to manage test user data</li>
+<li>a connection to the hub in the integration environment, which is used for end-to-end testing – no authentication credentials are required</li>
 </ul>
 <p>Setup for end-to-end testing involves the following procedures:</p>
 <blockquote>

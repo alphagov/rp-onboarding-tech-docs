@@ -1,15 +1,23 @@
 .. _ms:
 
-Matching Service
+Local Matching Service
 ========================
 
 The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.
 
 Government services host their matching service within their security domain. A matching service is composed of the :ref:`Matching Service Adapter <msa>` and a local matching service.  
 
-.. image:: matchingserviceGraphics.svg    
-   :align: center
-   :alt: Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service.
+
+.. csv-table:: 
+   :widths: 50, 50
+   :name: flow-diagram
+
+   ".. figure:: matchingserviceGraphics.svg
+     :alt: Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service.","For more details, see the diagrams:
+
+   * :ref:`GOV.UK architecture <arch>`
+   * :ref:`matching cycles <ms_matchcyles_diagram>`
+   * :ref:`user account creation <ms_cua_diagram>`"
 
 .. rubric:: Why does GOV.UK Verify use a matching service? 
 
@@ -18,9 +26,12 @@ UK citizens do not have a unique identifier. Government services need to match o
 
 .. rubric:: What do you need to do?
 
-As a government service, it's your responsibility to develop and build your own local matching service. 
+As a government service, it's your responsibility to develop and :ref:`build your local matching service <msBuild>`. 
 
-We're aware that some services don't have experience of matching verified identities to government data sources, and that the process can be complex. You need to understand :ref:`how a matching service works <msWorks>` and :ref:`how to build a local matching service <msBuild>`. If your service needs further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 
+We're aware that some services don't have experience of matching verified identities to government data sources, and that the process can be complex. You need to understand :ref:`how a matching service works <msWorks>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of a JSON request<samlCT_JSONeg>` that the Matching Service Adapter posts to your service. 
+
+If your service needs further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 
+
 
 For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
 

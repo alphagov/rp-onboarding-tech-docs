@@ -1,7 +1,7 @@
 .. _ms_cua:
 
 Create user accounts
-----------------------
+===============================
 
 You can create a new account for the user based on the hashed persistent identifier and a subset of attributes from the matching dataset. It's optional to set up your matching service to support the creation of new accounts.
 
@@ -28,9 +28,12 @@ You can create a new account for the user based on the hashed persistent identif
 
  .. note:: As shown in the above example, ``success`` and ``failure`` must be in lower case.
 
-3.	Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service's user account creation URI for the attribute ``unknownUserCreationServiceUri:`` in the configuration file. See :ref:`msa_config_msa` for more information.
+3.	Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service's user account creation URI for the attribute ``unknownUserCreationServiceUri:`` in the configuration file. See :ref:`msa_adapt_YAML` for more information.
 
 4. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:
+
+.. _list_cua_attributes:
+
 
   ::
 
@@ -51,7 +54,7 @@ You can create a new account for the user based on the hashed persistent identif
 .. _ms_cua_diagram:
 
 Create user accounts: message flow
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------------
 
 This diagram shows the message flow for creating user accounts. The numbers identify each stage in the flow. See below for explanations.
 
@@ -88,8 +91,8 @@ This diagram shows the message flow for creating user accounts. The numbers iden
 
   .. note:: The Matching Service Adapter must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:
 
-    * user control - the user must give their informed consent to the information being sent
-    * data minimisation - the service receives only the restricted set of attributes it needs, not the full matching dataset. 
+    * user control  the user must give their informed consent to the information being sent
+    * data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset. 
 
     For more information see the `Identity Assurance Principles <https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/361496/PCAG_IDA_Principles_3.1__4_.pdf>`_.
 

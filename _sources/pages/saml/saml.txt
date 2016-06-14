@@ -20,7 +20,7 @@ SAML is a mature standard and is widely used by industry.  SAML libraries and co
 
 You must :ref:`build a government service <SAMLintegration>` that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand :ref:`how SAML works with GOV.UK Verify <samlWorks>` and :ref:`decide how to add the SAML funcionality to your service <samlIntegrationtool>`.
 
-When you build your service, you must :ref:`run SAML compliance tests <samlComplianceTool>`. Before running SAML compliance tests, :ref:`build your local matching service <msBuild>` and :ref:`install your Matching Service Adapter <msa_install_msa>`. When you have completed SAML compliance tests, you must test :ref:`end-to-end user journeys <envEndToEndTests>` in the integration environment. 
+When you build your service, you must :ref:`run SAML compliance tests <samlComplianceTool>`.
 
 For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
 
@@ -28,9 +28,9 @@ For an outline of the technical steps in the onboarding process, see `Stage 4: B
 
 You must adhere to the following specifications and guidance:
 
-* '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_' - describes the SAML specifications you must respect to connect to the GOV.UK Verify hub
-* '`Identity Assurance Hub Service Profile - Authentication Contexts <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts>`_' - describes how the level of assurance is specified
-* '`Identity Assurance Hub Service Profile - SAML Attributes <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes>`_' - describes the matching dataset attributes and fraud event assertion attributes
+* '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_' – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub
+* '`Identity Assurance Hub Service Profile – Authentication Contexts <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts>`_' – describes how the level of assurance is specified
+* '`Identity Assurance Hub Service Profile – SAML Attributes <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes>`_' – describes the matching dataset attributes and fraud event assertion attributes
 * '`GOV.UK Verify guidance <https://www.gov.uk/service-manual/identity-assurance/index.html>`_'
 
 The SAML profile used by GOV.UK Verify builds on the `OASIS documentation for the SAML 2.0 standard <https://www.oasis-open.org/standards#samlv2.0>`_. 

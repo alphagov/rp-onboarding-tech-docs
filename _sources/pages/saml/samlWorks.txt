@@ -5,9 +5,9 @@ How SAML works
 
 SAML messages take the form of requests and responses. Messages can contain assertions about the user's identity. GOV.UK Verify uses the following types of assertion:
 
-* identity assertions - contain information about the user
-* authentication context assertions - contain information related to how authentication was carried out, for example, the :ref:`level of assurance <gloss_loa>`
-* fraud event assertions - contain identifiers related to an identified fraud detected by the identity provider
+* identity assertions – contain information about the user
+* authentication context assertions – contain information related to how authentication was carried out, for example, the :ref:`level of assurance <gloss_loa>`
+* fraud event assertions – contain identifiers related to an identified fraud detected by the identity provider
 
 The SAML profile defines these assertions. See the :ref:`list of documents defining the SAML profile <saml_docs>`.
 
@@ -48,8 +48,8 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
       :alt: Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub. 
 
  * SAML response :ref:`signed <pki_sign_cert>` by the identity provider
- * authentication context assertion signed by the identity provider and :ref:`encrypted <pki_encrypt_cert>` for the GOV.UK Verify hub - this asserts that the user's identity is authenticated; it also contains contextual information, including the :ref:`level of assurance <gloss_loa>`
- * identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub - this contains the user's :ref:`matching dataset <gloss_mds>` and the :ref:`persistent identifier <gloss_persid>` 
+ * authentication context assertion signed by the identity provider and :ref:`encrypted <pki_encrypt_cert>` for the GOV.UK Verify hub – this asserts that the user's identity is authenticated; it also contains contextual information, including the :ref:`level of assurance <gloss_loa>`
+ * identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user's :ref:`matching dataset <gloss_mds>` and the :ref:`persistent identifier <gloss_persid>` 
 
  .. note:: For more information on the contents of the assertions, see the diagrams for :ref:`matching cycles <ms_matchcyles_diagram>` and :ref:`user account creation <ms_cua_diagram>`.
 
@@ -61,7 +61,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
  * SAML attribute query signed by the GOV.UK Verify hub
  * identity assertion signed by identity provider and encrypted for the Matching Service Adapter
 
-5. The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching query and forwards it to the service’s local matching service. 
+5. The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching request and forwards it to the service’s local matching service. 
 
  The local matching service tries to match the user with a record in the government service’s database.
 
@@ -73,7 +73,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
        :alt: Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub.
 
  * SAML attribute query response signed by the Matching Service Adapter
- * assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub - this assertion contains the :ref:`hashed persistent identifier <gloss_hashpid>`
+ * assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the :ref:`hashed persistent identifier <gloss_hashpid>`
 
 
 8. The GOV.UK Verify hub sends a SAML response to the service, authenticating the user:

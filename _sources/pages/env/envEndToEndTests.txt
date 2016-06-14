@@ -30,9 +30,9 @@ The integration environment is not accredited to use real user data, and it has 
 
 A test identity provider contains:
 
-* the user administration API - you need basic authentication credentials to manage test user data
+* the user administration API – you need basic authentication credentials to manage test user data
 
-* a connection to the hub in the integration environment, which is used for end-to-end testing - no authentication credentials are required
+* a connection to the hub in the integration environment, which is used for end-to-end testing – no authentication credentials are required
 
 Setup for end-to-end testing involves the following procedures: 
 

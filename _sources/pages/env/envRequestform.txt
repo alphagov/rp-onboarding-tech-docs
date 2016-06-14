@@ -9,13 +9,15 @@ To access the integration and production environments, fill in the 'Request acce
 
 Before filling in the form, you must :ref:`obtain signed certificates <pkiRequestCert>` from the appropriate certificate authority.
 
-First select the environment you want to access: integration or production.
+First select the environment you want to access: integration or production. If you're requesting access to the production environment, you need to fill in the entire form. Information from your integration environment is not carried over. 
 
 Fill in the form as indicated below:
 
 1. **Service entityID** 
 
   Enter the entityID for the service you want to connect to the integration environment. This is a globally unique identifier for your service within the environment. It's typically in URL format, for example \https://identity.service.gov.uk. If you have more than 1 service connected to the environment, make sure each has a unique entityID.
+
+  .. note:: This field must be unique for each connection you request for the integration or production environment. 
 
 2. **Matching service entityID**
 
@@ -32,6 +34,8 @@ Fill in the form as indicated below:
 5. **Assertion consumer service HTTPS URL**
 
   Enter the fully qualified URL to which the hub will send its responses. For example \https://test-rp.service.signin.gov.uk/authentication_endpoint.
+
+  .. note:: This field must be unique for each connection you request for the integration or production environment. 
 
 6. **Service signature validation certificate** 
 
@@ -70,11 +74,6 @@ Fill in the form as indicated below:
     * ``DATE_OF_BIRTH``
     * ``CURRENT_ADDRESS``
     * ``CYCLE_3``
-
-.. note:: 
-
- * The above fields don't have to be unique for each connection you request for the integration or production environment. The only fields that must be unique are *Service entityID* and *Assertion consumer service HTTPS URL*. 
- * If you're requesting access to the production environment, you need to fill in the entire form. Information from your integration environment is not carried over. 
 
 Your content designer can provide the remaining information:
  
