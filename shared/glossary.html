@@ -240,7 +240,7 @@
 <p id="gloss-lms"><strong>local matching service</strong></p>
 <p>The part of a government service&#8217;s matching service that runs matching cycles to find a match between a user’s <a class="reference internal" href="#gloss-assid"><span>assured identity</span></a> and a record in the government service’s data sources. This allows the government service to interact with the user. Government services build their own local matching service.</p>
 <p><strong>matching cycles</strong></p>
-<p>Matching cycle numbers refer to the sequence of attempts made to find a matching account or local identifier for a particular verified identity as expressed in an <a class="reference internal" href="#gloss-assertion"><span>assertion</span></a> of matching data from an identity provider.</p>
+<p>Matching cycle numbers refer to the sequence of attempts to find a match between a user’s <a class="reference internal" href="#gloss-assid"><span>assured identity</span></a> and a record in a government service’s data sources.</p>
 <blockquote>
 <div><p><strong>cycle 0</strong></p>
 <p>Cycle 0 allows the matching service to match the hashed <a class="reference internal" href="#gloss-hashpid"><span>hashed persistent identifier</span></a> of a verified user to a hashed persistent identifier held in their <a class="reference internal" href="#gloss-lmd"><span>local matching datastore</span></a>. Cycle 0 is used for efficiency. A successful match at cycle 0 can be treated by the matching service as confirmation that the identity being presented is the same identity as previously matched by that service.</p>
@@ -252,7 +252,7 @@
 <p>Asks the user for some additional information, for example, driving licence number, to complete a match. This cycle enhances cycle 1 and may not be required for all matches.</p>
 </div></blockquote>
 <p id="gloss-mds"><strong>matching dataset</strong></p>
-<p>The minimum dataset of name, address, date of birth, and (optionally) gender required for matching. The matching dataset is provided by the identity provider. The <a class="reference internal" href="#gloss-hub"><span>hub</span></a> forwards it to the government service&#8217;s matching service.</p>
+<p>A dataset provided by the <a class="reference internal" href="#identity-provider"><span>identity provider</span></a> so the government service can perform matching. The matching dataset contains the verified user’s first name, middle name, surname, address, date of birth, and (optionally) gender. It may also contain historical values for these attributes. The hub forwards it to the government service’s <a class="reference internal" href="#matching-service"><span>matching service</span></a>.</p>
 <p id="matching-service"><strong>matching service</strong></p>
 <p>The function of finding a local identifier for the individual (eg an id for the user’s account) based on a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the <a class="reference internal" href="#gloss-lms"><span>local matching service</span></a>.  In the SAML profile used by GOV.UK Verify, the matching service is referred to as the service provider matching service (SPMS).</p>
 <p id="gloss-msa"><strong>Matching Service Adapter</strong></p>

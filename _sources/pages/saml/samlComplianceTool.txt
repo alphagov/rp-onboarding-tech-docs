@@ -17,8 +17,8 @@ The compliance tool provides clear error messages. These will help with iterativ
 
 Prerequisites: 
 
-* :ref:`build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the Matching Service Adapter posts to your service
-* :ref:`install <msa_install_msa>` and :ref:`configure  <msa_config_msa>` your Matching Service Adapter
+* :ref:`build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <RespondJSONmr>` that the Matching Service Adapter posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request
+* :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your Matching Service Adapter
 
 After SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.  
 
@@ -212,7 +212,7 @@ Test connections between the hub and your Matching Service Adapter
 Example of a JSON request to your local matching service
 ---------------------------------------------------------
 
-Below is a formatted example of a third cycle matching request that the Matching Service Adapter sends to your local matching service: 
+Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service: 
 
 ::
 

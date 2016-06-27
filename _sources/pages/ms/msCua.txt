@@ -28,7 +28,8 @@ You can create a new account for the user based on the hashed persistent identif
 
  .. note:: As shown in the above example, ``success`` and ``failure`` must be in lower case.
 
-3.	Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service's user account creation URI for the attribute ``unknownUserCreationServiceUri:`` in the configuration file. See :ref:`msa_adapt_YAML` for more information.
+3.	Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service's user account creation URI for the attribute ``unknownUserCreationServiceUri:`` in the configuration file. See :ref:`ConfigureMSA` for more information.
+
 
 4. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:
 

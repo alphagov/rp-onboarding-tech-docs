@@ -31,9 +31,9 @@ We recommend that you use the Matching Service Adapter.  If you do not want to, 
 
 To use the Matching Service Adapter, you need to:
 
-#. :ref:`Build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the Matching Service Adapter posts to your service.
+#. :ref:`Build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the Matching Service Adapter posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request.
 #. :ref:`Install the Matching Service Adapter <msa_install_msa>`.
-#. :ref:`Configure the Matching Service Adapter <msa_config_msa>`.
+#. :ref:`Configure the Matching Service Adapter <ConfigureMSA>`.
 
 You will then be able to run :ref:`SAML compliance tests between the hub and your Matching Service Adapter <samlCThubMSA>`.
 

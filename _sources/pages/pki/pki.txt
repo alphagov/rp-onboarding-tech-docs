@@ -3,7 +3,7 @@
 Public Key Infrastructure
 ==========================
 
-The purpose of a :ref:`public key infrastructure <gloss_pki>` (PKI) is to implement secure electronic transactions over insecure networks such as the internet. A PKI is used to authenticate identities for the purposes of data encryption and signing:
+The purpose of a public key infrastructure (PKI) is to implement secure electronic transactions over insecure networks such as the internet. A PKI is used to authenticate identities for the purposes of data encryption and signing:
 
 * encryption – scrambles the data in a way that makes it unreadable except to intended recipients
 * signing – proves who authored the data and guarantees that it hasn't been tampered with since

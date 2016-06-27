@@ -26,11 +26,14 @@ UK citizens do not have a unique identifier. Government services need to match o
 
 .. rubric:: What do you need to do?
 
-As a government service, it's your responsibility to develop and :ref:`build your local matching service <msBuild>`. 
+As a government service, it's your responsibility to develop and :ref:`build your local matching service <msBuild>`. You need to understand :ref:`how a matching service works <msWorks>`. 
 
-We're aware that some services don't have experience of matching verified identities to government data sources, and that the process can be complex. You need to understand :ref:`how a matching service works <msWorks>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of a JSON request<samlCT_JSONeg>` that the Matching Service Adapter posts to your service. 
+To help build your local matching service, you can use the:
 
-If your service needs further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 
+* :ref:`example of a JSON request<samlCT_JSONeg>` that the Matching Service Adapter posts to your service
+* :ref:`JSON schema <JSONschema>` for a matching request
+
+We're aware that some services don't have experience of matching verified identities to government data sources, and that the process can be complex. If your service needs further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 
 
 
 For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.

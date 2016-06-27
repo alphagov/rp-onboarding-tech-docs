@@ -69,7 +69,7 @@ The main elements of GOV.UK Verify architecture are:
 
 **Matching Service Adapter**
  
-    The :ref:`Matching Service Adapter <msa>` is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The Matching Service Adapter converts SAML into JSON and vice versa. 
+    The :ref:`Matching Service Adapter <msa>` is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The Matching Service Adapter converts SAML into JSON (JavaScript Object Notation) and vice versa. 
 
 |
 
@@ -79,7 +79,7 @@ The main elements of GOV.UK Verify architecture are:
 
 **SAML (Security Assertion Markup Language)**
 
- :ref:`SAML <saml>` is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON (JavaScript Object Notation). 
+ :ref:`SAML <saml>` is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON. 
 
  For more information, see the :ref:`diagram showing the SAML message flow <samlWorks>` within the GOV.UK Verify federation.
 

@@ -36,7 +36,7 @@ Versioning
 Typically, GOV.UK Verify releases a new version of the Matching Service Adapter every 2 or 3 months. Some releases are essential updates, and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to ensure you are on the Matching Service Adapter email distribution list.
 
 
-.. _msa_config_msa:
+.. _msa_certs:
 
 Obtain certificates for your Matching Service Adapter
 =======================================================
@@ -49,6 +49,7 @@ To obtain certificates:
 * :ref:`request certificates <pkiRequestCert>` from the IDAP certificate authority for the integration and production environments
 
 
+.. _ConfigureMSA:
 
 Configure the Matching Service Adapter
 ==============================================

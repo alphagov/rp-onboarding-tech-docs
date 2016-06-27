@@ -185,7 +185,7 @@ The part of a government service's matching service that runs matching cycles to
 
 **matching cycles**
 
-Matching cycle numbers refer to the sequence of attempts made to find a matching account or local identifier for a particular verified identity as expressed in an :ref:`assertion <gloss_assertion>` of matching data from an identity provider.
+Matching cycle numbers refer to the sequence of attempts to find a match between a user’s :ref:`assured identity <gloss_assid>` and a record in a government service’s data sources.
 
 	**cycle 0**
 
@@ -206,9 +206,10 @@ Matching cycle numbers refer to the sequence of attempts made to find a matching
 
 .. _gloss_mds:
 
-**matching dataset** 
+**matching dataset**  
 
-The minimum dataset of name, address, date of birth, and (optionally) gender required for matching. The matching dataset is provided by the identity provider. The :ref:`hub <gloss_hub>` forwards it to the government service's matching service.
+A dataset provided by the :ref:`identity provider <identity-provider>` so the government service can perform matching. The matching dataset contains the verified user’s first name, middle name, surname, address, date of birth, and (optionally) gender. It may also contain historical values for these attributes. The hub forwards it to the government service’s :ref:`matching service <matching-service>`.
+
 
 .. _matching-service:
 

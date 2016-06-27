@@ -188,8 +188,8 @@
 <p>The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
 <p>Prerequisites:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="#samlct-jsoneg"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service</li>
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#msa-config-msa"><span>configure</span></a> your Matching Service Adapter</li>
+<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your Matching Service Adapter</li>
 </ul>
 <p>After SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
 <div class="section" id="test-connections-between-the-gov-uk-verify-hub-and-your-service">
@@ -382,7 +382,7 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 </div>
 <div class="section" id="example-of-a-json-request-to-your-local-matching-service">
 <span id="samlct-jsoneg"></span><h2>Example of a JSON request to your local matching service<a class="headerlink" href="#example-of-a-json-request-to-your-local-matching-service" title="Permalink to this headline">¶</a></h2>
-<p>Below is a formatted example of a third cycle matching request that the Matching Service Adapter sends to your local matching service:</p>
+<p>Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
