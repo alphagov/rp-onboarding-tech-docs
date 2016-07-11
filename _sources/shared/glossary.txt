@@ -17,7 +17,7 @@ An identity that's been verified to the required :ref:`level of assurance <gloss
 
 **attributes**
 
-Data that's sent from 1 entity to another in a SAML :ref:`assertion <gloss_assertion>`, for example, the :ref:`matching dataset <gloss_mds>` for use by the matching service.
+Data that's sent from one entity to another in a SAML :ref:`assertion <gloss_assertion>`, for example, the :ref:`matching dataset <gloss_mds>` for use by the matching service.
 
 .. _gloss_authent:
 
@@ -251,7 +251,7 @@ The full end-to-end version of a government service that is publicly available, 
 
 **public key infrastructure (PKI)**
 
-A set of hardware, software, people, policies and procedures needed to create, manage, distribute, use, store and revoke digital :ref:`certificate <gloss_cert>`. [#]_ 
+The purpose of a public key infrastructure is to implement secure electronic transactions over insecure networks such as the internet. It is used to authenticate identities for the purposes of data encryption and signing.
 
 .. _private-key:
 
@@ -329,6 +329,3 @@ A list or register of those permitted access. Whitelisting is the reverse of bla
 
 
 
-.. rubric:: Footnotes
-
-.. [#] http://en.wikipedia.org/wiki/Public_key_infrastructure
