@@ -230,7 +230,7 @@
 <span id="creating-users-by-http-post"></span><h3>Create test users<a class="headerlink" href="#create-test-users" title="Permalink to this headline">¶</a></h3>
 <p>This procedure describes how to create test users in bulk and load them into the test identity provider. You must add the same test users to your local matching datastore in the integration environment.</p>
 <p>Make an http POST to the user administration API with a JSON document containing an array of user data. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39; -d @create-user.json https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+<div class="highlight-python"><div class="highlight"><pre><span></span>curl --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39; -d @create-user.json https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
 </pre></div>
 </div>
 <p>where:</p>
@@ -244,34 +244,34 @@
 </div>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">create-user.json</span></code> is the name of the file containing an array of test user data in JSON format, for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
-    <span class="s">&quot;pid&quot;</span><span class="p">:</span> <span class="s">&quot;00754148-902f-4d94-b0db-cb1f7eb3fd84&quot;</span><span class="p">,</span>
-    <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;user1&quot;</span><span class="p">,</span>
-    <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;password&quot;</span><span class="p">,</span>
-    <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;Fred&quot;</span><span class="p">,</span>
-        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[{</span>
+    <span class="s2">&quot;pid&quot;</span><span class="p">:</span> <span class="s2">&quot;00754148-902f-4d94-b0db-cb1f7eb3fd84&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;user1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
     <span class="p">},</span>
-    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;MALE&quot;</span><span class="p">,</span>
-        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">false</span>
+    <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">false</span>
     <span class="p">},</span>
-    <span class="s">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;1970-01-01&quot;</span><span class="p">,</span>
-        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1970-01-01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
     <span class="p">},</span>
-    <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-        <span class="s">&quot;postCode&quot;</span><span class="p">:</span> <span class="s">&quot;WC2B 6NH&quot;</span><span class="p">,</span>
-        <span class="s">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s">&quot;Aviation House&quot;</span><span class="p">,</span>
-            <span class="s">&quot;London&quot;</span>
+    <span class="s2">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;WC2B 6NH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;Aviation House&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;London&quot;</span>
         <span class="p">]</span>
     <span class="p">},</span>
-    <span class="s">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s">&quot;LEVEL_2&quot;</span><span class="p">,</span>
-    <span class="s">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s">&quot;value&quot;</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span>
-        <span class="s">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Smith&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
     <span class="p">}]</span>
 <span class="p">}]</span>
 </pre></div>
@@ -342,7 +342,7 @@
 <div class="section" id="view-test-users">
 <span id="id1"></span><h3>View test users<a class="headerlink" href="#view-test-users" title="Permalink to this headline">¶</a></h3>
 <p>To view existing test users, GET the users resource from the relevant test identity provider. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+<div class="highlight-python"><div class="highlight"><pre><span></span>curl https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider.</p>
@@ -351,7 +351,7 @@
 <div class="section" id="delete-test-users">
 <span id="delete-users"></span><h3>Delete test users<a class="headerlink" href="#delete-test-users" title="Permalink to this headline">¶</a></h3>
 <p>To delete test users from the test identity provider, POST a JSON document to the user administration API containing the usernames you want to delete. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>curl --data &#39;{&quot;username&quot;: &quot;user1&quot;}&#39;  --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39;  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
+<div class="highlight-python"><div class="highlight"><pre><span></span>curl --data &#39;{&quot;username&quot;: &quot;user1&quot;}&#39;  --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39;  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
 </pre></div>
 </div>
 <p>where:</p>

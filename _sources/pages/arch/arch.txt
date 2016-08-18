@@ -75,7 +75,7 @@ The main elements of GOV.UK Verify architecture are:
 
 **Local matching service**
 
-     A local matching service finds a match between a user’s assured identity and a record in the government service's data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (eg name, address, date of birth) against the service’s records. 
+     A local matching service finds a match between a user’s assured identity and a record in the government service's data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (for example name, address, date of birth) against the service’s records. 
 
 **SAML (Security Assertion Markup Language)**
 

@@ -232,7 +232,7 @@
 <div class="section" id="generate-private-keys">
 <span id="pki-gen-private-key"></span><h2>Generate private keys<a class="headerlink" href="#generate-private-keys" title="Permalink to this headline">¶</a></h2>
 <p>Run the following command from a Linux (or OSX) command line:</p>
-<div class="highlight-python"><div class="highlight"><pre>openssl genrsa -out &lt;file name&gt;.key 2048
+<div class="highlight-python"><div class="highlight"><pre><span></span>openssl genrsa -out &lt;file name&gt;.key 2048
 </pre></div>
 </div>
 <p>where:</p>
@@ -258,7 +258,7 @@
 <span id="pki-gen-csr"></span><h2>Generate certificate signing requests<a class="headerlink" href="#generate-certificate-signing-requests" title="Permalink to this headline">¶</a></h2>
 <p>Use a private key to create a certificate signing request. This request will contain the corresponding public key.</p>
 <p>Run the following command from a Linux (or OSX) command line:</p>
-<div class="highlight-python"><div class="highlight"><pre>openssl req -new -key &lt;file name&gt;.key -out &lt;file name&gt;.csr
+<div class="highlight-python"><div class="highlight"><pre><span></span>openssl req -new -key &lt;file name&gt;.key -out &lt;file name&gt;.csr
 </pre></div>
 </div>
 <p>where:</p>

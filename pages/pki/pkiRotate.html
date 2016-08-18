@@ -237,22 +237,22 @@
 <li>First install the new private encryption key on the Matching Service Adapter. Then configure the Matching Service Adapter for 2 encryption keys. To do this, add the new private encryption key to the Matching Service Adapter configuration file as indicated in the highlighted section below:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p-Indicator">:</span>
- <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
 
-<span class="hll"><span class="l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p-Indicator">:</span>
-</span><span class="hll"> <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.pk8</span>
+<span class="hll"><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.pk8</span>
 </span><span class="hll">
-</span><span class="hll"><span class="l-Scalar-Plain">privateSecondaryEncryptionKeyConfiguration</span><span class="p-Indicator">:</span>
-</span><span class="hll"> <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.pk8</span>
+</span><span class="hll"><span class="l l-Scalar l-Scalar-Plain">privateSecondaryEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.pk8</span>
 </span>
-<span class="l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p-Indicator">:</span>
- <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
- <span class="l-Scalar-Plain">keyName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+<span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 
-<span class="l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p-Indicator">:</span>
- <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_encryption.crt</span>
- <span class="l-Scalar-Plain">keyName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption.crt</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 </pre></div>
 </div>
 <p>The Matching Service Adapter can now use both the new and old keys to decrypt SAML messages.</p>
@@ -285,20 +285,20 @@
 <li>Configure your Matching Service Adapter to support 2 signing certificates. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the Matching Service Adapter configuration file as indicated in the highlighted section below:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p-Indicator">:</span>
- <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
 
-<span class="hll"><span class="l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p-Indicator">:</span>
-</span><span class="hll"> <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
-</span><span class="hll"> <span class="l-Scalar-Plain">keyName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+<span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 </span><span class="hll">
-</span><span class="hll"><span class="l-Scalar-Plain">publicSecondarySigningKeyConfiguration</span><span class="p-Indicator">:</span>
-</span><span class="hll"> <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new_cert.crt</span>
-</span><span class="hll"> <span class="l-Scalar-Plain">keyName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD/Secondary</span>
+</span><span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSecondarySigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new_cert.crt</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD/Secondary</span>
 </span>
-<span class="l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p-Indicator">:</span>
- <span class="l-Scalar-Plain">keyUri</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deploy/keys/test_rp_msa_encryption.crt</span>
- <span class="l-Scalar-Plain">keyName</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption.crt</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 </pre></div>
 </div>
 </div></blockquote>

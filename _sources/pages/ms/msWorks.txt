@@ -60,7 +60,7 @@ The matching dataset contains:
 * address 
 * date of birth 
 * gender (optional)
-* historical data, if available, eg previous addresses
+* historical data, if available, for example previous addresses
 
 .. note:: It's optional for users to provide gender. Where provided, gender is not verified by the identity provider. It's used for matching purposes only.
 
@@ -82,7 +82,7 @@ Cycle 2 uses trusted attributes related to identity, for example, being a disabl
 Cycle 3: user-asserted match
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If cycle 1 finds more than 1 potential match, cycle 3 asks the user for some additional information, for example, driving licence number. The hub collects the additional information and sends it to the matching service. The local matching service then uses it to refine the match. When the local matching service finds a match, it saves the hashed persistent identifier in the matching datastore.
+If cycle 1 finds more than 1 potential match, cycle 3 asks the user for some additional information, for example driving licence number. The hub collects the additional information and sends it to the matching service. The local matching service then uses it to refine the match. When the local matching service finds a match, it saves the hashed persistent identifier in the matching datastore.
 
 This cycle is defined in the government service policy and may not be required for all matches. The government service defines the information the hub collects and how to use it for matching. For example, you decide how many pieces of additional information to request. If you request 2 pieces of information and the user can only provide 1 of them, your matching rules specify whether to match this user.  
 

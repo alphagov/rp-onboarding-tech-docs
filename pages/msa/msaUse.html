@@ -199,7 +199,7 @@
 </div></blockquote>
 <ol class="arabic" start="3">
 <li><p class="first">To extract the files and move the truststore to the environment where you want to use the Matching Service Adapter, run the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>tar -xf [filename].tar.gz
+<div class="highlight-python"><div class="highlight"><pre><span></span>tar -xf [filename].tar.gz
 unzip ida-msa-[xxx].zip
 mv prod_ida_truststore.ts [path to truststore directory in the production environment]
 mv test_ida_truststore.ts [path to truststore directory in the integration environment]
@@ -235,7 +235,7 @@ mv test_ida_truststore.ts [path to truststore directory in the integration envir
 <h2>Create a YAML configuration file<a class="headerlink" href="#create-a-yaml-configuration-file" title="Permalink to this headline">¶</a></h2>
 <p>When you <a class="reference internal" href="#msa-test-msa"><span>start the Matching Service Adapter</span></a>, you need to supply a YAML configuration file.</p>
 <p>Create a YAML configuration file based on the example below. Then <a class="reference internal" href="#msa-adapt-yaml"><span>adapt it</span></a> for the SAML compliance tool or appropriate environment.</p>
-<div class="highlight-python" id="yamlfile"><div class="highlight"><pre>server:
+<div class="highlight-python" id="yamlfile"><div class="highlight"><pre><span></span>server:
  applicationConnectors:
    - type: http
      port: 50210
@@ -289,6 +289,15 @@ acceptSelfSignedCerts: true
 
 serviceInfo:
  name: matching-service-adapter
+
+# If you would like the Matching Service Adapter to report to a Graphite instance.
+metrics:
+ reporters:
+   - type: graphite
+     host: [graphite host]
+     port: [graphite port]
+     prefix: [some prefix of your choosing]
+     frequency: 30s
 
 privateSigningKeyConfiguration:
  keyUri: deploy/keys/msa_signing.pk8
@@ -382,12 +391,15 @@ featureFlagConfiguration:
 <li><code class="docutils literal"><span class="pre">publicEncryptionKeyConfiguration:</span></code> – public encryption certificate, PEM formatted</li>
 </ul>
 </div></blockquote>
+<ol class="arabic simple" start="9">
+<li>If you want to use Graphite software to monitor the Matching Service Adapter’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.</li>
+</ol>
 </div>
 </div>
 <div class="section" id="start-the-matching-service-adapter">
 <span id="msa-test-msa"></span><h1>Start the Matching Service Adapter<a class="headerlink" href="#start-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <p>To start using the Matching Service Adapter, run the following command, supplying the path to your configuration file:</p>
-<div class="highlight-python"><div class="highlight"><pre>java -jar [filename].jar server [path to configuration file].yml
+<div class="highlight-python"><div class="highlight"><pre><span></span>java -jar [filename].jar server [path to configuration file].yml
 </pre></div>
 </div>
 <p>You can now run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>SAML compliance tests between the hub and your Matching Service Adapter</span></a>. To help <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a>, you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service.</p>
@@ -449,7 +461,7 @@ featureFlagConfiguration:
 <ul>
 <li><p class="first">is only exposed as HTTPS endpoints</p>
 </li>
-<li><p class="first">only uses strong recent versions of TLS (eg TLS 1.2); turn off obsolete and insecure versions (eg SSLv1, SSLv2, and SSLv3)</p>
+<li><p class="first">only uses strong recent versions of TLS (for example TLS 1.2); turn off obsolete and insecure versions (for example SSLv1, SSLv2, and SSLv3)</p>
 </li>
 <li><p class="first">supports multiple strong cipher suites</p>
 <div class="admonition note">

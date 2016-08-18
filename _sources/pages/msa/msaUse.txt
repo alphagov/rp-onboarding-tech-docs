@@ -121,6 +121,15 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
  serviceInfo:
   name: matching-service-adapter
 
+ # If you would like the Matching Service Adapter to report to a Graphite instance.
+ metrics:
+  reporters:
+    - type: graphite
+      host: [graphite host]
+      port: [graphite port]
+      prefix: [some prefix of your choosing]
+      frequency: 30s 
+
  privateSigningKeyConfiguration:
   keyUri: deploy/keys/msa_signing.pk8
 
@@ -196,6 +205,7 @@ Make the following changes to the YAML configuration file. Variations are indica
  * ``publicSigningKeyConfiguration:`` – public signing certificate, PEM formatted
  * ``publicEncryptionKeyConfiguration:`` – public encryption certificate, PEM formatted
 
+9. If you want to use Graphite software to monitor the Matching Service Adapter’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.
 
 
 .. _msa_test_msa:
@@ -265,7 +275,7 @@ The Matching Service Adapter checks that matching service requests are genuine b
 To ensure that only the GOV.UK Verify hub can access the Matching Service Adapter, make sure your Matching Service Adapter:
 
 * is only exposed as HTTPS endpoints 
-* only uses strong recent versions of TLS (eg TLS 1.2); turn off obsolete and insecure versions (eg SSLv1, SSLv2, and SSLv3)
+* only uses strong recent versions of TLS (for example TLS 1.2); turn off obsolete and insecure versions (for example SSLv1, SSLv2, and SSLv3)
 * supports multiple strong cipher suites
 
   .. note:: GOV.UK Verify will remove support for TLS cipher suites if serious weaknesses become known. Having multiple suites provides resilience. 
