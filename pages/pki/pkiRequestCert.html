@@ -111,6 +111,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Technical steps for onboarding with GOV.UK Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
@@ -243,7 +244,7 @@
 <p>We advise you to establish a naming convention for all your PKI files. Typically, this includes the name of your service or the Matching Service Adapter and an incremental version number.</p>
 <p>Generate a new private key for each certificate signing request file that you submit. This naturally retires any private keys that have been compromised; you should not re-use existing private keys.</p>
 <div class="section" id="store-private-keys">
-<h3>Store private keys<a class="headerlink" href="#store-private-keys" title="Permalink to this headline">¶</a></h3>
+<span id="pki-store-private-key"></span><h3>Store private keys<a class="headerlink" href="#store-private-keys" title="Permalink to this headline">¶</a></h3>
 <p>You must store private key files in a secure environment. Typical controls include:</p>
 <ul class="simple">
 <li>restricting private key access to approved staff</li>

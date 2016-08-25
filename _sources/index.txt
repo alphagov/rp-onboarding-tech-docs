@@ -16,6 +16,7 @@ This guide is for technical delivery teams who are building secure digital servi
 
    self
    pages/arch/arch
+   pages/steps/steps
    pages/saml/saml
    pages/ms/ms
    pages/msa/msa

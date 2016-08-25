@@ -20,6 +20,8 @@ The entities in the GOV.UK Verify federation communicate with each other using :
 
 As part of the GOV.UK Verify federation you need to :ref:`request certificates <pkiRequestCert>` from the IDAP PKI certificate authority. When your certificates are due to expire you need to run the :ref:`key rotation process <pkiRotate>` to update the keys in your certificates. 
 
+For more information, see :ref:`steps`.
+
 You are responsible for ensuring that the terms of the IDAP PKI Certification Policy are upheld. To do this, you and your service manager need to refer to a set of documents. Your service manager must request these documents from the IDAP PKI:
 
 * 'Certification Practice Statement for the Interim PKI for the IDAP Ecosystem' – sets out the practices governing cryptographic services for the IDAP federation

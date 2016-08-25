@@ -22,7 +22,7 @@ You must :ref:`build a government service <SAMLintegration>` that sends SAML aut
 
 When you build your service, you must :ref:`run SAML compliance tests <samlComplianceTool>`.
 
-For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
+For more information, see :ref:`steps`.
 
 .. _saml_docs:
 

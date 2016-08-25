@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Technical steps for onboarding with GOV.UK Verify &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="next" title="SAML" href="../saml/saml.html"/>
+        <link rel="prev" title="What does the GOV.UK Verify hub do?" href="../arch/hub.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-54060634-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+<div id="ida-cookie-message">
+  <div id="cookie-message-close" style="display:none">
+    <a href="">✖</a>
+  </div>
+  <div id="ida-cookie-message-body">
+    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
+  </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Technical steps for onboarding with GOV.UK Verify</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration">Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maintenance">Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Technical steps for onboarding with GOV.UK Verify</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+      <div class="section" id="technical-steps-for-onboarding-with-gov-uk-verify">
+<span id="steps"></span><h1>Technical steps for onboarding with GOV.UK Verify<a class="headerlink" href="#technical-steps-for-onboarding-with-gov-uk-verify" title="Permalink to this headline">¶</a></h1>
+<p>Perform these steps to onboard with GOV.UK Verify.</p>
+<div class="section" id="development">
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="stepsdev">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Step</th>
+<th class="head">What you need to do</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><ol class="first last arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Build a service that produces and consumes SAML.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Read the SAML specifications described in the &#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216;.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#samlintegrationtool"><span>Choose a product and framework</span></a> to integrate your service with GOV.UK Verify.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#configureadapttechnology"><span>Configure and adapt your chosen technology</span></a> to respect the SAML profile.</li>
+<li>Decide how to <a class="reference internal" href="../pki/pkiRequestCert.html#pki-store-private-key"><span>store and manage keys</span></a> and certificates so you can <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>rotate your keys</span></a> when needed.</li>
+</ol>
+</div></blockquote>
+<p>Outcome:  your service can send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
+<p class="last">For more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works</span></a>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="first last arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Build a local matching service.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="../ms/msBuild.html#ms-strat"><span>Define your matching strategy</span></a> with your service manager.</li>
+<li>Use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example JSON matching request</span></a> and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> to help build your local matching service.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: your service can match users’ verified identities to your data sources.</p>
+<p class="last">For more information, see <a class="reference internal" href="../ms/msWorks.html#msworks"><span>How a matching service works</span></a>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Set up the Matching Service Adapter for the SAML compliance tool.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>Generate self-signed certificates for the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: you&#8217;re ready to run SAML compliance tests.</p>
+<p class="last">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="first last arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Run SAML compliance tests.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctservicehub"><span>Test your service with the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>Test your matching service with the SAML compliance tool</span></a>.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: your service and matching service can consume and produce valid SAML.</p>
+<p class="last">For more information, see see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="integration">
+<h2>Integration<a class="headerlink" href="#integration" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="stepsinteg">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Step</th>
+<th class="head">What you need to do</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><ol class="first last arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Request access to the integration environment.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Send the GOV.UK Verify operations team the IP address where you&#8217;ll host the Matching Service Adapter.</li>
+</ol>
+<blockquote>
+<div>This allows GOV.UK Verify to put in place firewall rules so the hub can communicate with the Matching Service Adapter.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Send the GOV.UK Verify operations team the IP addresses of the browsers you&#8217;ll use when testing in the integration environment.</li>
+</ol>
+<blockquote>
+<div>Access to the hub and the test identity providers in the integration environment is restricted by IP address.</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Obtain <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>signed certificates</span></a> for the integration environment from the IDAP test certificate authority.</li>
+<li>Send the GOV.UK Verify operations team your signed certificates for the integration environment.</li>
+<li>Fill in the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: you&#8217;re ready to connect the Matching Service Adapter and your service to the integration environment.</p>
+<p class="last">For more information, see <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a> and <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="first last arabic simple" start="2">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Connect the Matching Service Adapter and your service to the integration environment.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the integration environment</span></a>.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: you&#8217;re ready to run end-to-end testing with test users.</p>
+<p class="last">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last arabic simple" start="3">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Run end-to-end testing of all your user journeys in the integration environment.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="../env/envEndToEndTests.html#createauth"><span>Set up authentication to manage test users</span></a>.</li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#createtestusers"><span>Create test users</span></a>.</li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#runetoetest"><span>Run end-to-end tests</span></a>.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: your service can handle all the possible outcomes of end-to-end user journeys.</p>
+<p class="last">For more information, <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><ol class="first last arabic simple" start="4">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Request access to the production environment.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Send the GOV.UK Verify operations team the IP address where you&#8217;ll host the Matching Service Adapter.</li>
+</ol>
+<blockquote>
+<div>This allows GOV.UK Verify to put in place firewall rules so the hub can communicate with the Matching Service Adapter.</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Obtain <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>signed certificates</span></a> for the production environment from the IDAP certificate authority.</li>
+<li>Send the GOV.UK Verify operations team your signed certificates for the production environment.</li>
+<li>Fill in the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: you&#8217;re ready to connect the Matching Service Adapter and your service to the production environment.</p>
+<p class="last">For more information, see <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a> and <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last arabic simple" start="5">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Connect the Matching Service Adapter and your service to the production environment.</strong></p>
+<p>To do this:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the production environment</span></a>.</li>
+<li>Connect your service to the production environment by <a class="reference internal" href="../saml/samlIntegration.html#saml-access-metadata"><span>accessing the federation metadata</span></a>.</li>
+</ol>
+</div></blockquote>
+<p>Outcome: your service is ready to go live.</p>
+<p class="last">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="maintenance">
+<h2>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="stepsmaint">
+<colgroup>
+<col width="9%" />
+<col width="91%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Step</th>
+<th class="head">For more information</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><ol class="first last arabic simple">
+<li></li>
+</ol>
+</td>
+<td><p class="first"><strong>Rotate your keys</strong>.</p>
+<blockquote class="last">
+<div><p>When the certificates containing your public keys are due to expire, <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>run the key rotation process</span></a> to replace your keys and certificates.</p>
+<p>Outcome: the encryption and signing certificates for your service and Matching Service Adapter are up to date.</p>
+<p>For more information, see <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../saml/saml.html" class="btn btn-neutral float-right" title="SAML" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../arch/hub.html" class="btn btn-neutral" title="What does the GOV.UK Verify hub do?" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

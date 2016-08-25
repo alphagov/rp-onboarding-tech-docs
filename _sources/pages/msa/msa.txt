@@ -35,9 +35,9 @@ To use the Matching Service Adapter, you need to:
 #. :ref:`Install the Matching Service Adapter <msa_install_msa>`.
 #. :ref:`Configure the Matching Service Adapter <ConfigureMSA>`.
 
-You will then be able to run :ref:`SAML compliance tests between the hub and your Matching Service Adapter <samlCThubMSA>`.
+You will then be able to run :ref:`SAML compliance tests between the hub and your matching service <samlCThubMSA>`.
 
-For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
+For more information, see :ref:`steps`.
 
 
 .. toctree::

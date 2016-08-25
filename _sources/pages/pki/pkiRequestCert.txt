@@ -70,6 +70,9 @@ We advise you to establish a naming convention for all your PKI files. Typically
 
 Generate a new private key for each certificate signing request file that you submit. This naturally retires any private keys that have been compromised; you should not re-use existing private keys. 
 
+
+.. _pki_store_private_key:
+
 Store private keys
 ~~~~~~~~~~~~~~~~~~~~
 

@@ -40,7 +40,6 @@ Typically, GOV.UK Verify releases a new version of the Matching Service Adapter 
 
 Obtain certificates for your Matching Service Adapter
 =======================================================
-
 Your Matching Service Adapter needs a signing certificate and an encryption certificate. You must use different certificates for each environment.
 
 To obtain certificates: 
@@ -178,9 +177,9 @@ Make the following changes to the YAML configuration file. Variations are indica
 
   * for the SAML compliance tool, your GOV.UK Verify engagement lead will give you the URL
 
-  * for the integration environment, enter: ``https://www.integration.signin.service.gov.uk/SAML2/metadata/sp``
+  * for the integration environment, enter: ``https://www.integration.signin.service.gov.uk/SAML2/metadata/federation``
 
-  * for the production environment, enter: ``https://www.signin.service.gov.uk/SAML2/metadata/sp``
+  * for the production environment, enter: ``https://www.signin.service.gov.uk/SAML2/metadata/federation``
 
 6. In ``storeUri``, specify the path of your truststore for the appropriate environment: 
 

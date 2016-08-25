@@ -111,6 +111,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Technical steps for onboarding with GOV.UK Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
@@ -202,14 +203,14 @@
 <p>Setup for end-to-end testing involves the following procedures:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="#authentication-for-managing-users"><span>create your authentication to manage test users</span></a></li>
-<li><a class="reference internal" href="#creating-users-by-http-post"><span>create test users</span></a></li>
+<li><a class="reference internal" href="#createauth"><span>create your authentication to manage test users</span></a></li>
+<li><a class="reference internal" href="#createtestusers"><span>create test users</span></a></li>
 <li><a class="reference internal" href="#view-test-users"><span>view test users</span></a></li>
 <li><a class="reference internal" href="#delete-users"><span>delete test users</span></a></li>
 </ul>
 </div></blockquote>
 <div class="section" id="create-your-authentication">
-<span id="authentication-for-managing-users"></span><h3>Create your authentication<a class="headerlink" href="#create-your-authentication" title="Permalink to this headline">¶</a></h3>
+<span id="createauth"></span><h3>Create your authentication<a class="headerlink" href="#create-your-authentication" title="Permalink to this headline">¶</a></h3>
 <p>This procedure describes how to obtain a username and password so you can manage test users.</p>
 <ol class="arabic simple">
 <li>Request IP whitelisting for your hosts from GOV.UK Verify support at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</li>
@@ -227,7 +228,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="create-test-users">
-<span id="creating-users-by-http-post"></span><h3>Create test users<a class="headerlink" href="#create-test-users" title="Permalink to this headline">¶</a></h3>
+<span id="createtestusers"></span><h3>Create test users<a class="headerlink" href="#create-test-users" title="Permalink to this headline">¶</a></h3>
 <p>This procedure describes how to create test users in bulk and load them into the test identity provider. You must add the same test users to your local matching datastore in the integration environment.</p>
 <p>Make an http POST to the user administration API with a JSON document containing an array of user data. For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>curl --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39; -d @create-user.json https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
@@ -235,7 +236,7 @@
 </div>
 <p>where:</p>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#authentication-for-managing-users"><span>basic authentication credentials</span></a></p>
+<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a></p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</p>
 <div class="admonition note">
@@ -346,7 +347,7 @@
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider.</p>
-<p>The test users are returned in JSON format. To view the page you must provide your <a class="reference internal" href="#authentication-for-managing-users"><span>basic authentication credentials</span></a>.</p>
+<p>The test users are returned in JSON format. To view the page you must provide your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a>.</p>
 </div>
 <div class="section" id="delete-test-users">
 <span id="delete-users"></span><h3>Delete test users<a class="headerlink" href="#delete-test-users" title="Permalink to this headline">¶</a></h3>
@@ -357,13 +358,13 @@
 <p>where:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">user1</span></code> is the name of the test user you want to delete</li>
-<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#authentication-for-managing-users"><span>basic authentication credentials</span></a></li>
+<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a></li>
 <li><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</li>
 </ul>
 </div>
 </div>
 <div class="section" id="run-end-to-end-tests">
-<h2>Run end-to-end tests<a class="headerlink" href="#run-end-to-end-tests" title="Permalink to this headline">¶</a></h2>
+<span id="runetoetest"></span><h2>Run end-to-end tests<a class="headerlink" href="#run-end-to-end-tests" title="Permalink to this headline">¶</a></h2>
 <p>As a minimum, test the following end-to-end user scenarios:</p>
 <ul class="simple">
 <li>authentication success and authentication failure</li>

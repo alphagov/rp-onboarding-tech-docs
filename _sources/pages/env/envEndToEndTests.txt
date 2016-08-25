@@ -11,8 +11,6 @@ We  advise you to do end-to-end testing in the integration environment as part o
 You must provide a full demonstration of all user journeys as part of your `Stage 4 <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html#stage-4>`_ gate review.
 
 
-
-
 .. important:: If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first contact GOV.UK Verify support at idasupport+onboarding@digital.cabinet-office.gov.uk.
 
 This diagram shows the end-to-end testing flow. See below for explanations.
@@ -36,16 +34,16 @@ A test identity provider contains:
 
 Setup for end-to-end testing involves the following procedures: 
 
- * :ref:`create your authentication to manage test users <authentication-for-managing-users>`
+ * :ref:`create your authentication to manage test users <CreateAuth>`
  
- * :ref:`create test users <creating-users-by-http-post>`
+ * :ref:`create test users <CreateTestUsers>`
 
  * :ref:`view test users <view-test-users>`
 
  * :ref:`delete test users <delete-users>`
 
 
-.. _authentication-for-managing-users:
+.. _CreateAuth:
 
 Create your authentication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,7 +62,7 @@ This procedure describes how to obtain a username and password so you can manage
 
 
 
-.. _creating-users-by-http-post:
+.. _CreateTestUsers:
 
 Create test users
 ~~~~~~~~~~~~~~~~~~~
@@ -78,7 +76,7 @@ Make an http POST to the user administration API with a JSON document containing
 
 where:
 
-* ``username`` and ``password`` are your :ref:`basic authentication credentials <authentication-for-managing-users>` 
+* ``username`` and ``password`` are your :ref:`basic authentication credentials <CreateAuth>` 
 * ``idp-name`` is the name of the test identity provider
 
   .. note:: You can find the name of the test identity provider by accessing the test identity provider once your service is connected to the integration environment. 
@@ -138,7 +136,7 @@ To view existing test users, GET the users resource from the relevant test ident
     
 where ``idp-name`` is the name of the test identity provider. 
 
-The test users are returned in JSON format. To view the page you must provide your :ref:`basic authentication credentials <authentication-for-managing-users>`. 
+The test users are returned in JSON format. To view the page you must provide your :ref:`basic authentication credentials <CreateAuth>`. 
 
 .. _delete-users:
 
@@ -154,9 +152,10 @@ To delete test users from the test identity provider, POST a JSON document to th
 where:
 
 * ``user1`` is the name of the test user you want to delete
-* ``username`` and ``password`` are your :ref:`basic authentication credentials <authentication-for-managing-users>` 
+* ``username`` and ``password`` are your :ref:`basic authentication credentials <CreateAuth>` 
 * ``idp-name`` is the name of the test identity provider
 
+.. _RunEtoEtest:
 
 Run end-to-end tests
 ---------------------

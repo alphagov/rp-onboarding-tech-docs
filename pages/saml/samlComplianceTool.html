@@ -33,7 +33,7 @@
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="SAML" href="saml.html"/>
         <link rel="next" title="Local Matching Service" href="../ms/ms.html"/>
-        <link rel="prev" title="Build your service" href="samlIntegration.html"/>
+        <link rel="prev" title="Build your service: SAML integration" href="samlIntegration.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
@@ -111,12 +111,13 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Technical steps for onboarding with GOV.UK Verify</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service: SAML integration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Run SAML compliance tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#test-connections-between-the-gov-uk-verify-hub-and-your-service">Test connections between the GOV.UK Verify hub and your service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#test-connections-between-the-hub-and-your-matching-service-adapter">Test connections between the hub and your Matching Service Adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-your-service-with-the-saml-compliance-tool">Test your service with the SAML compliance tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-your-matching-service-with-the-saml-compliance-tool">Test your matching service with the SAML compliance tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-of-a-json-request-to-your-local-matching-service">Example of a JSON request to your local matching service</a></li>
 </ul>
 </li>
@@ -175,25 +176,26 @@
             
       <div class="section" id="run-saml-compliance-tests">
 <span id="samlcompliancetool"></span><h1>Run SAML compliance tests<a class="headerlink" href="#run-saml-compliance-tests" title="Permalink to this headline">¶</a></h1>
-<p>The purpose of SAML compliance tests is to ensure that the service you&#8217;re building is compliant with the SAML profile. This will guarantee that:</p>
+<p>The purpose of SAML compliance tests is to ensure that the service you&#8217;re building is compliant with the <a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">SAML profile</a>. This guarantees that:</p>
 <ul class="simple">
 <li>your service will work with GOV.UK Verify</li>
 <li>user data will remain secure within the GOV.UK Verify federation</li>
 </ul>
-<p>Use the SAML compliance tool to test the connections between a test instance of the GOV.UK Verify hub and:</p>
-<ul class="simple">
-<li><a class="reference internal" href="#samlctservicehub"><span>your service</span></a></li>
-<li><a class="reference internal" href="#samlcthubmsa"><span>your Matching Service Adapter</span></a></li>
-</ul>
+<p>Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.</p>
 <p>The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
 <p>Prerequisites:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
 <li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your Matching Service Adapter</li>
 </ul>
+<p>Use the SAML compliance test to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#samlctservicehub"><span>test your service</span></a></li>
+<li><a class="reference internal" href="#samlcthubmsa"><span>test your matching service</span></a></li>
+</ul>
 <p>After SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
-<div class="section" id="test-connections-between-the-gov-uk-verify-hub-and-your-service">
-<span id="samlctservicehub"></span><h2>Test connections between the GOV.UK Verify hub and your service<a class="headerlink" href="#test-connections-between-the-gov-uk-verify-hub-and-your-service" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-your-service-with-the-saml-compliance-tool">
+<span id="samlctservicehub"></span><h2>Test your service with the SAML compliance tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <p>To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.</p>
 <ol class="arabic simple">
 <li>On completion of a successful <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3</a> gate review, your GOV.UK Verify engagement lead will give you access to the compliance tool.</li>
@@ -268,8 +270,8 @@ openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
 <p>The above scenarios are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 </div></blockquote>
 </div>
-<div class="section" id="test-connections-between-the-hub-and-your-matching-service-adapter">
-<span id="samlcthubmsa"></span><h2>Test connections between the hub and your Matching Service Adapter<a class="headerlink" href="#test-connections-between-the-hub-and-your-matching-service-adapter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
+<span id="samlcthubmsa"></span><h2>Test your matching service with the SAML compliance tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or similar) to the URL <code class="docutils literal"><span class="pre">&lt;compliance-tool-host&gt;/ms-test-run</span></code> provided by your GOV.UK Verify engagement lead.</li>
 </ol>
@@ -470,7 +472,7 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
         <a href="../ms/ms.html" class="btn btn-neutral float-right" title="Local Matching Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="samlIntegration.html" class="btn btn-neutral" title="Build your service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="samlIntegration.html" class="btn btn-neutral" title="Build your service: SAML integration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

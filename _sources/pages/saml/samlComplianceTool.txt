@@ -3,15 +3,13 @@
 Run SAML compliance tests 
 ===========================
 
-The purpose of SAML compliance tests is to ensure that the service you're building is compliant with the SAML profile. This will guarantee that:
+The purpose of SAML compliance tests is to ensure that the service you're building is compliant with the `SAML profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_. This guarantees that:
 
 * your service will work with GOV.UK Verify 
 * user data will remain secure within the GOV.UK Verify federation
 
-Use the SAML compliance tool to test the connections between a test instance of the GOV.UK Verify hub and:
+Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages. 
 
-* :ref:`your service  <samlCTservicehub>` 
-* :ref:`your Matching Service Adapter <samlCThubMSA>` 
 
 The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility. 
 
@@ -20,13 +18,19 @@ Prerequisites:
 * :ref:`build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <RespondJSONmr>` that the Matching Service Adapter posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request
 * :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your Matching Service Adapter
 
+
+Use the SAML compliance test to: 
+
+* :ref:`test your service <samlCTservicehub>` 
+* :ref:`test your matching service <samlCThubMSA>` 
+
 After SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.  
 
 
 
 .. _samlCTservicehub:
 
-Test connections between the GOV.UK Verify hub and your service
+Test your service with the SAML compliance tool
 -----------------------------------------------------------------
 
 To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.
@@ -96,7 +100,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
 .. _samlCThubMSA:
 
-Test connections between the hub and your Matching Service Adapter 
+Test your matching service with the SAML compliance tool 
 --------------------------------------------------------------------
 
 1. To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or similar) to the URL ``<compliance-tool-host>/ms-test-run`` provided by your GOV.UK Verify engagement lead.
