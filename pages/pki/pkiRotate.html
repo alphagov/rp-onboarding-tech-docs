@@ -122,10 +122,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#initial-steps-for-all-keys">Initial steps for all keys</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-encryption-key">Rotate your service encryption key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-signing-key">Rotate your service signing key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-encryption-key">Rotate your Matching Service Adapter encryption key</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configure-the-matching-service-adapter-for-2-encryption-keys">Configure the Matching Service Adapter for 2 encryption keys</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-encryption-key">Rotate your Matching Service Adapter encryption key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-signing-key">Rotate your Matching Service Adapter signing key</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#use-saml-metadata">Use SAML metadata</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#your-service-supports-2-matching-service-adapter-signing-keys">Your service supports 2 Matching Service Adapter signing keys</a></li>
@@ -266,9 +263,6 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">While both keys are in use, you may see error messages in the logs with the description &#8220;Unwrapping failed&#8221;. These messages appear because the Matching Service Adapter attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.</p>
-</div>
-<div class="section" id="configure-the-matching-service-adapter-for-2-encryption-keys">
-<span id="pki-config-msa-2keys"></span><h3>Configure the Matching Service Adapter for 2 encryption keys<a class="headerlink" href="#configure-the-matching-service-adapter-for-2-encryption-keys" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="rotate-your-matching-service-adapter-signing-key">
