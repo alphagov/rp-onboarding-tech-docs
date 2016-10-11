@@ -42,7 +42,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
 .. _samlCTselfsigncert:
 
-3. Generate self-signed certificates, for use only with the compliance tool. You can use OpenSSL to generate self-signed certificates using the `guidelines provided by the Heroku Dev Center <https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites>`_.
+3. Generate self-signed certificates for use with the compliance tool only. You can use OpenSSL to generate self-signed certificates using the `guidelines provided by the Heroku Dev Center <https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites>`_.
 
 4. POST the following JSON (via curl, or similar) to the ``URI compliance-tool.RPPostUri`` provided by your GOV.UK Verify engagement lead::
 

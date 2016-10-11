@@ -111,7 +111,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Technical steps for onboarding with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service: SAML integration</a></li>
@@ -202,7 +202,7 @@
 <li>Send the IP addresses of your hosts to the GOV.UK Verify support team: <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>. We will add a firewall rule allowing access to the compliance tool.</li>
 </ol>
 <ol class="arabic" id="samlctselfsigncert" start="3">
-<li><p class="first">Generate self-signed certificates, for use only with the compliance tool. You can use OpenSSL to generate self-signed certificates using the <a class="reference external" href="https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites">guidelines provided by the Heroku Dev Center</a>.</p>
+<li><p class="first">Generate self-signed certificates for use with the compliance tool only. You can use OpenSSL to generate self-signed certificates using the <a class="reference external" href="https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites">guidelines provided by the Heroku Dev Center</a>.</p>
 </li>
 <li><p class="first">POST the following JSON (via curl, or similar) to the <code class="docutils literal"><span class="pre">URI</span> <span class="pre">compliance-tool.RPPostUri</span></code> provided by your GOV.UK Verify engagement lead:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json

@@ -1,10 +1,7 @@
 .. _steps:
 
-Technical steps for onboarding with GOV.UK Verify
+Steps to integrate with GOV.UK Verify
 ===================================================
-
-Perform these steps to onboard with GOV.UK Verify.
-
 
 Development
 ~~~~~~~~~~~~~~
