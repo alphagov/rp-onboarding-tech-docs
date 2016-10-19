@@ -12,7 +12,7 @@ Development
    :widths: 1, 10
 
 
-
+.. steps_buildservice:
    "1.", "**Build a service that produces and consumes SAML.** 
 
    To do this: 
@@ -24,6 +24,7 @@ Development
 
    Outcome:  your service can send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.
 
+.. steps_buildLMS:
    For more information, see :ref:`samlWorks`."
     "2.", "**Build a local matching service.** 
 
@@ -35,6 +36,7 @@ Development
    Outcome: your service can match users’ verified identities to your data sources.
 
    For more information, see :ref:`msWorks`."
+.. steps_setupMSA_compliancetool:
     "3.", "**Set up the Matching Service Adapter for the SAML compliance tool.** 
 
    To do this: 
@@ -46,6 +48,7 @@ Development
    Outcome: you're ready to run SAML compliance tests.
 
    For more information, see :ref:`msa`."
+.. steps_run_compliance_tests:    
     "4.", "**Run SAML compliance tests.** 
 
    To do this: 
@@ -65,6 +68,7 @@ Integration
    :name: "stepsinteg"
    :widths: 1, 10
 
+.. steps_request_integ_env:
    "1.", "**Request access to the integration environment.** 
 
    To do this:
@@ -87,6 +91,7 @@ Integration
    Outcome: you're ready to connect the Matching Service Adapter and your service to the integration environment.
 
    For more information, see :ref:`env` and :ref:`pkiWorks`."
+.. steps_connect_MSA_int_env:   
    "2.", "**Connect the Matching Service Adapter and your service to the integration environment.** 
 
    To do this:
@@ -99,6 +104,7 @@ Integration
    Outcome: you're ready to run end-to-end testing with test users.
 
    For more information, see :ref:`msa` and :ref:`env`."
+.. steps_run_endtoend_tests:    
    "3.", "**Run end-to-end testing of all your user journeys in the integration environment.** 
 
    To do this:
@@ -110,6 +116,7 @@ Integration
    Outcome: your service can handle all the possible outcomes of end-to-end user journeys.
 
    For more information, :ref:`env`."
+.. steps_request_prod:   
    "4.", "**Request access to the production environment.** 
 
    To do this:
@@ -127,6 +134,7 @@ Integration
    Outcome: you're ready to connect the Matching Service Adapter and your service to the production environment.
 
    For more information, see :ref:`env` and :ref:`pkiWorks`."
+.. steps_connect_MSA_prod_env:   
    "5.", "**Connect the Matching Service Adapter and your service to the production environment.** 
 
    To do this:
@@ -146,7 +154,7 @@ Maintenance
    :header: "Step", "For more information"
    :name: "stepsmaint"
    :widths: 1, 10
-
+.. steps_rotate_keys:
    "1.", "**Rotate your keys**.
 
     When the certificates containing your public keys are due to expire, :ref:`run the key rotation process <pkiRotate>` to replace your keys and certificates.
