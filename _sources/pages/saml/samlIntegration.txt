@@ -1,13 +1,27 @@
 .. _samlIntegration:
 
 
-Build your service: SAML integration
+Build your service
 =====================================================
 
 .. _samlIntegrationtool:
 
+
+Use extended validation certificates
+-------------------------------------
+
+You must use extended validation (EV) certificates for all public interactions with your service. When you use EV certificates, the user's web browser clearly indicates the name of the organisation they are interacting with.
+
+
+Using EV certificates is one of a range of measures to protect your users from sites pretending to be you. See best practices for `using TLS to protect data <https://www.ncsc.gov.uk/guidance/tls-external-facing-services>`_ from the National Cyber Security Centre (NCSC).
+
+
+
+SAML integration
+-------------------
+
 Choose a product and framework
-------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub. 
 
@@ -22,18 +36,19 @@ Contact your engagement lead if you need further information.
 
 
 Configure and adapt your technology to respect the SAML profile
--------------------------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-SAML metadata 
-~~~~~~~~~~~~~~~~~
+SAML metadata
+``````````````````````````
+
 
 The SAML metadata contains the :ref:`SAML encryption and signing certificates <pki_encrypt_signing>` used within the GOV.UK Verify federation. The preferred way to distribute and access certificates is through the SAML metadata. When you build your service, make sure it can handle SAML metadata. You may want to use some sample metadata. 
 
 .. _saml_access_metadata:
 
-Access the SAML metadata 
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Access the SAML metadata
+``````````````````````````
 
 1. **Federation metadata**
     
@@ -57,8 +72,7 @@ Access the SAML metadata
 
 .. _saml_consume_responses:
 
-Handle responses using SAML metadata
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Handle responses using SAML metadata**
 
 Your service must be able to consume SAML responses that are issued by the GOV.UK Verify hub. We recommend that you use the federation metadata and the Matching Service Adapter metadata to do this. You must first :ref:`access the metadata <saml_access_metadata>`.
 

@@ -3,6 +3,13 @@
 Matching Service Adapter
 ===========================
 
+
+
+`Request access to the integration environment <file:///Users/catherineheywood/Documents/Projects/rp-onboarding-technical-guide/build/html/pages/steps/steps.html#steps_integration>`_
+
+`how to secure your Matching Service Adapter <http://alphagov.github.io/rp-onboarding-tech-docs/pages/msa/msaUse.html#matching-service-adapter-tls-certificates>`_
+
+
 The :ref:`Matching Service Adapter <gloss_msa>` is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the :ref:`GOV.UK Verify hub <hub>`.
 
 A matching service is composed of the Matching Service Adapter and a :ref:`local matching service <ms>`. Government services host their matching service within their security domain. 

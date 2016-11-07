@@ -48,7 +48,7 @@ The main elements of GOV.UK Verify architecture are:
 
   A private sector organisation paid by government to verify a user’s identity and assert verified data that identifies them to the government service.
 
-  The organisations are certified as meeting relevant industry security standards and the Identity Assurance Principles published by the Cabinet Office and the `National Technical Authority for Information Assurance (CESG) <https://www.cesg.gov.uk/>`_.
+  The organisations are certified as meeting relevant industry security standards and the Identity Assurance Principles published by the Cabinet Office and the `National Cyber Security Centre (NCSC) <https://www.ncsc.gov.uk/>`_.
 
 |
 
