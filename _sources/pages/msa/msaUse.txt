@@ -131,8 +131,8 @@ metadata:
     validateAfterInactivityPeriod: 5s
     tls:
       protocol: TLSv1.2
-      verifyHostname: false
-      trustSelfSignedCertificates: true
+      verifyHostname: true
+      trustSelfSignedCertificates: false
 
 hubSSOUri: https://www.[your-env].signin.service.gov.uk/SAML2/SSO
 
@@ -166,11 +166,11 @@ requireHubCertificates: false
 
 publicSecondarySigningKeyConfiguration
   keyUri: deploy/keys/msa_signing_secondary.crt
-  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-sigining
 
 publicSecondaryEncryptionKeyConfiguration
-    keyUri: deploy/keys/msa_encryption_secondary.crt
-    keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+  keyUri: deploy/keys/msa_encryption_secondary.crt
+  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-encryption
 
  returnStackTraceInResponse: false
 
