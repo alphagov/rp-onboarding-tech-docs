@@ -35,7 +35,7 @@ Development
 
    Outcome: your service can match users’ verified identities to your data sources.
 
-   .. _step-setup-MSAforSAML: 
+   .. _step-setup-msaforsaml: 
 
    For more information, see :ref:`msWorks`."
    "3.", "**Set up the Matching Service Adapter for the SAML compliance tool.** 
@@ -48,7 +48,7 @@ Development
 
    Outcome: you're ready to run SAML compliance tests.
 
-   .. _step-run-SAML-tests:
+   .. _step-run-saml-tests:
 
    For more information, see :ref:`msa`."
    "4.", "**Run SAML compliance tests.** 
