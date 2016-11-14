@@ -5,14 +5,14 @@
 Install the Matching Service Adapter
 ======================================
 
-**Prerequisite:** The Matching Service Adapter requires Java 8. Make sure you have the latest version of the JRE (Java Runtime Environment) installed. 
+**Prerequisite:** The Matching Service Adapter requires Java 8. Make sure you have the latest version of the JRE (Java Runtime Environment) installed.
 
 1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, email `idasupport+onboarding@digital.cabinet-office.gov.uk <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to request access to the secure site where you can download the Matching Service Adapter.
 
 2. Download the Matching Service Adapter to your host. It contains:
 
- * a jar (java archive) file 
- * a :ref:`truststore <gloss_truststore>` file for non-production environments (the SAML compliance tool and the integration environment) 
+ * a jar (java archive) file
+ * a :ref:`truststore <gloss_truststore>` file for non-production environments (the SAML compliance tool and the integration environment)
  * a truststore file for the production environment
 
 3. To extract the files and move the truststore to the environment where you want to use the Matching Service Adapter, run the following commands::
@@ -42,7 +42,7 @@ Obtain certificates for your Matching Service Adapter
 =======================================================
 Your Matching Service Adapter needs a signing certificate and an encryption certificate. You must use different certificates for each environment.
 
-To obtain certificates: 
+To obtain certificates:
 
 * :ref:`generate self-signed certificates <samlCTselfsigncert>` for use with the compliance tool
 * :ref:`request certificates <pkiRequestCert>` from the IDAP certificate authority for the integration and production environments
@@ -53,10 +53,10 @@ To obtain certificates:
 Configure the Matching Service Adapter
 ==============================================
 
-Create a YAML configuration file 
+Create a YAML configuration file
 -------------------------------------
 
-When you :ref:`start the Matching Service Adapter <msa_test_msa>`, you need to supply a YAML configuration file. 
+When you :ref:`start the Matching Service Adapter <msa_test_msa>`, you need to supply a YAML configuration file.
 
 Create a YAML configuration file based on the example below. Then :ref:`adapt it <msa_adapt_YAML>` for the SAML compliance tool or appropriate environment.
 
@@ -107,15 +107,36 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
  saml:
   entityId: http://matching-service-adapter.my.service.gov.uk/matching-service
 
- httpClient:
+ matchingServiceClient:
   timeout: 2s
   timeToLive: 10m
   cookiesEnabled: false
   connectionTimeout: 1s
 
- metadataUri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/sp
+metadata:
+  uri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/federation
+  trustStorePath: deploy/keys/ida_truststore.ts
+  trustStorePassword: puppet
+  expectedEntityId: https://signin.service.gov.uk
+  maxRefreshDelay: 100000
+  minRefreshDelay: 10000
+  client:
+    timeout: 2s
+    timeToLive: 10m
+    cookiesEnabled: false
+    connectionTimeout: 1s
+    retries: 3
+    keepAlive: 60s
+    chunkedEncodingEnabled: false
+    validateAfterInactivityPeriod: 5s
+    tls:
+      protocol: TLSv1.2
+      verifyHostname: true
+      trustSelfSignedCertificates: false
 
- acceptSelfSignedCerts: true
+hubSSOUri: https://www.[your-env].signin.service.gov.uk/SAML2/SSO
+
+requireHubCertificates: false
 
  serviceInfo:
   name: matching-service-adapter
@@ -127,7 +148,7 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
       host: [graphite host]
       port: [graphite port]
       prefix: [some prefix of your choosing]
-      frequency: 30s 
+      frequency: 30s
 
  privateSigningKeyConfiguration:
   keyUri: deploy/keys/msa_signing.pk8
@@ -142,6 +163,14 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
  publicEncryptionKeyConfiguration:
   keyUri: deploy/keys/msa_encryption.crt
   keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+
+publicSecondarySigningKeyConfiguration
+  keyUri: deploy/keys/msa_signing_secondary.crt
+  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-sigining
+
+publicSecondaryEncryptionKeyConfiguration
+  keyUri: deploy/keys/msa_encryption_secondary.crt
+  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-encryption
 
  returnStackTraceInResponse: false
 
@@ -158,7 +187,7 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
 Adapt the YAML configuration file
 ------------------------------------
 
-Make the following changes to the YAML configuration file. Variations are indicated where appropriate for the SAML compliance tool and integration and production environments. 
+Make the following changes to the YAML configuration file. Variations are indicated where appropriate for the SAML compliance tool and integration and production environments.
 
 
 1. Enter port numbers for the server application and admin ports.
@@ -181,7 +210,7 @@ Make the following changes to the YAML configuration file. Variations are indica
 
   * for the production environment, enter: ``https://www.signin.service.gov.uk/SAML2/metadata/federation``
 
-6. In ``storeUri``, specify the path of your truststore for the appropriate environment: 
+6. In ``storeUri``, specify the path of your truststore for the appropriate environment:
 
   * for the SAML compliance tool and the integration environment, use the ``test_ida_truststore.ts``
 
@@ -218,11 +247,11 @@ To start using the Matching Service Adapter, run the following command, supplyin
 
  java -jar [filename].jar server [path to configuration file].yml
 
-You can now run :ref:`SAML compliance tests between the hub and your Matching Service Adapter <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the Matching Service Adapter posts to your service. 
+You can now run :ref:`SAML compliance tests between the hub and your Matching Service Adapter <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the Matching Service Adapter posts to your service.
 
 
 
-Monitoring 
+Monitoring
 ============
 
 Health checks run every 60 seconds to ensure that the Matching Service Adapter is functioning correctly. They test:
@@ -235,7 +264,7 @@ Health checks run every 60 seconds to ensure that the Matching Service Adapter i
 Configure HTTPS Proxies
 ==================================
 
-The Matching Service Adapter supports HTTP and HTTPS proxies configured by Java properties. 
+The Matching Service Adapter supports HTTP and HTTPS proxies configured by Java properties.
 
 For information on configuring HTTPS proxies, see `http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html <http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html>`_.
 
@@ -260,7 +289,7 @@ GOV.UK Verify trusts the following root certificate authorities for HTTPS connec
 
 If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport+onboarding@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
 
-When you raise a ticket, indicate the chain of trust with your SSL/TLS certificate. You will also need the chain of trust when you configure your server. 
+When you raise a ticket, indicate the chain of trust with your SSL/TLS certificate. You will also need the chain of trust when you configure your server.
 
 
 Connect your Matching Service Adapter to the internet securely
@@ -273,12 +302,12 @@ The Matching Service Adapter checks that matching service requests are genuine b
 
 To ensure that only the GOV.UK Verify hub can access the Matching Service Adapter, make sure your Matching Service Adapter:
 
-* is only exposed as HTTPS endpoints 
+* is only exposed as HTTPS endpoints
 * only uses strong recent versions of TLS (for example TLS 1.2); turn off obsolete and insecure versions (for example SSLv1, SSLv2, and SSLv3)
 * supports multiple strong cipher suites
 
-  .. note:: GOV.UK Verify will remove support for TLS cipher suites if serious weaknesses become known. Having multiple suites provides resilience. 
+  .. note:: GOV.UK Verify will remove support for TLS cipher suites if serious weaknesses become known. Having multiple suites provides resilience.
 
-* allows requests and health checks only from the IP addresses of hub services provided by your engagement lead 
+* allows requests and health checks only from the IP addresses of hub services provided by your engagement lead
 
   .. note:: Each Matching Service Adapter should communicate with only 1 hub service (SAML compliance tool, integration environment, or production environment).
