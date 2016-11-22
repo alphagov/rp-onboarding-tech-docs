@@ -194,16 +194,16 @@
 <blockquote>
 <div><ul class="simple">
 <li>a jar (java archive) file</li>
-<li>a <a class="reference internal" href="../../shared/glossary.html#gloss-truststore"><span>truststore</span></a> file for non-production environments (the SAML compliance tool and the integration environment)</li>
-<li>a truststore file for the production environment</li>
+<li>a <a class="reference internal" href="../../shared/glossary.html#gloss-truststore"><span>truststore</span></a> file and a metadata truststore file for non-production environments (the SAML compliance tool and the integration environment)</li>
+<li>a truststore file and a metadata truststore file for the production environment</li>
 </ul>
 </div></blockquote>
 <ol class="arabic" start="3">
-<li><p class="first">To extract the files and move the truststore to the environment where you want to use the Matching Service Adapter, run the following commands:</p>
+<li><p class="first">To extract the files and move the truststore files to the environment where you want to use the Matching Service Adapter, run the following commands:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>tar -xf [filename].tar.gz
 unzip ida-msa-[xxx].zip
-mv prod_ida_truststore.ts [path to truststore directory in the production environment]
-mv test_ida_truststore.ts [path to truststore directory in the integration environment]
+mv prod_ida_truststore.ts prod_ida_metadata_truststore.ts [path to truststore directory in the production environment]
+mv test_ida_truststore.ts test_ida_metadata_truststore.ts [path to truststore directory in the integration environment]
 </pre></div>
 </div>
 </li>
@@ -213,7 +213,7 @@ mv test_ida_truststore.ts [path to truststore directory in the integration envir
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">[filename]</span></code> is the name of the tar file</li>
 <li><code class="docutils literal"><span class="pre">[xxx]</span></code> is the build number</li>
-<li><code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration option <code class="docutils literal"><span class="pre">storeUri:</span></code> in the <a class="reference internal" href="#yamlfile"><span>YAML file</span></a>)</li>
+<li><code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration options <code class="docutils literal"><span class="pre">storeUri:</span></code> and <code class="docutils literal"><span class="pre">trustStorePath:</span></code> in the <a class="reference internal" href="#yamlfile"><span>YAML file</span></a>)</li>
 </ul>
 </div></blockquote>
 <div class="section" id="versioning">
@@ -278,15 +278,36 @@ matchingServiceAdapterLocation: http://matching-service-adapter.my.service.gov.u
 saml:
  entityId: http://matching-service-adapter.my.service.gov.uk/matching-service
 
-httpClient:
+matchingServiceClient:
  timeout: 2s
  timeToLive: 10m
  cookiesEnabled: false
  connectionTimeout: 1s
 
-metadataUri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/sp
+metadata:
+ uri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/federation
+ trustStorePath: [path to truststore directory...]/ida_metadata_truststore.ts
+ trustStorePassword: puppet
+ expectedEntityId: https://signin.service.gov.uk
+ maxRefreshDelay: 100000
+ minRefreshDelay: 10000
+ client:
+   timeout: 2s
+   timeToLive: 10m
+   cookiesEnabled: false
+   connectionTimeout: 1s
+   retries: 3
+   keepAlive: 60s
+   chunkedEncodingEnabled: false
+   validateAfterInactivityPeriod: 5s
+   tls:
+     protocol: TLSv1.2
+     verifyHostname: true
+     trustSelfSignedCertificates: false
 
-acceptSelfSignedCerts: true
+hubSSOUri: https://www.[your-env].signin.service.gov.uk/SAML2/SSO
+
+requireHubCertificates: false
 
 serviceInfo:
  name: matching-service-adapter
@@ -301,23 +322,31 @@ metrics:
      frequency: 30s
 
 privateSigningKeyConfiguration:
- keyUri: deploy/keys/msa_signing.pk8
+ keyUri: [path to your keys directory...]/msa_signing.pk8
 
 privateEncryptionKeyConfiguration:
- keyUri: deploy/keys/msa_encryption.pk8
+ keyUri: [path to your keys directory...]/msa_encryption.pk8
 
 publicSigningKeyConfiguration:
- keyUri: deploy/keys/msa_signing.crt
+ keyUri: [path to your keys directory...]/msa_signing.crt
  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
 
 publicEncryptionKeyConfiguration:
- keyUri: deploy/keys/msa_encryption.crt
+ keyUri: [path to your keys directory...]/msa_encryption.crt
  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+
+publicSecondarySigningKeyConfiguration
+ keyUri: [path to your keys directory...]/msa_signing_secondary.crt
+ keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-sigining
+
+publicSecondaryEncryptionKeyConfiguration
+ keyUri: [path to your keys directory...]/msa_encryption_secondary.crt
+ keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-encryption
 
 returnStackTraceInResponse: false
 
 clientTrustStoreConfiguration:
- storeUri: deploy/keys/ida_truststore.ts
+ storeUri: [path to truststore directory...]/ida_truststore.ts
  password: puppet
 
 featureFlagConfiguration:
@@ -350,7 +379,7 @@ featureFlagConfiguration:
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>In <code class="docutils literal"><span class="pre">metadataUri:</span></code>, specify the location where the Matching Service Adapter accesses the SAML metadata:</li>
+<li>In <code class="docutils literal"><span class="pre">metadata:</span></code>, use the <code class="docutils literal"><span class="pre">uri:</span></code> parameter to specify the location where the Matching Service Adapter accesses the SAML metadata:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -360,15 +389,24 @@ featureFlagConfiguration:
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="6">
-<li>In <code class="docutils literal"><span class="pre">storeUri</span></code>, specify the path of your truststore for the appropriate environment:</li>
+<li>In <code class="docutils literal"><span class="pre">metadata:</span></code>, use the <code class="docutils literal"><span class="pre">trustStorePath:</span></code> parameter to specify the path to your metadata truststore for the appropriate environment:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>for the SAML compliance tool and the integration environment, use the <code class="docutils literal"><span class="pre">test_ida_truststore.ts</span></code></li>
-<li>for the production environment, use the <code class="docutils literal"><span class="pre">prod_ida_truststore.ts</span></code></li>
+<li>for the SAML compliance tool and the integration environment, use <code class="docutils literal"><span class="pre">test_metadata_truststore.ts</span></code></li>
+<li>for the production environment, use <code class="docutils literal"><span class="pre">prod_metadata_truststore.ts</span></code></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="7">
+<li>In <code class="docutils literal"><span class="pre">clientTrustStoreConfiguration:</span></code>, use the <code class="docutils literal"><span class="pre">storeUri</span></code> parameter to specify the path of your general truststore for the appropriate environment:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>for the SAML compliance tool and the integration environment, use <code class="docutils literal"><span class="pre">test_ida_truststore.ts</span></code></li>
+<li>for the production environment, use <code class="docutils literal"><span class="pre">prod_ida_truststore.ts</span></code></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="8">
 <li>Enter the paths of the SAML signing and encryption private keys for your Matching Service Adapter:</li>
 </ol>
 <blockquote>
@@ -383,7 +421,7 @@ featureFlagConfiguration:
 <p>For the compliance tool, <a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>generate self-signed certificates</span></a>.</p>
 <p>You will use different keys and certificates for the integration and production environments. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</p>
 </div></blockquote>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple" start="9">
 <li>Enter the paths and names of the SAML signing and encryption certificates for your Matching Service Adapter.  The names are used to identify the certificates in the metadata so should be meaningful and unique:  <code class="docutils literal"><span class="pre">signing_1</span></code> and <code class="docutils literal"><span class="pre">encryption_1</span></code> would be acceptable.</li>
 </ol>
 <blockquote>
@@ -392,7 +430,7 @@ featureFlagConfiguration:
 <li><code class="docutils literal"><span class="pre">publicEncryptionKeyConfiguration:</span></code> – public encryption certificate, PEM formatted</li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="9">
+<ol class="arabic simple" start="10">
 <li>If you want to use Graphite software to monitor the Matching Service Adapter’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.</li>
 </ol>
 </div>

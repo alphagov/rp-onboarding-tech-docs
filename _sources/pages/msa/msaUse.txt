@@ -12,22 +12,22 @@ Install the Matching Service Adapter
 2. Download the Matching Service Adapter to your host. It contains:
 
  * a jar (java archive) file 
- * a :ref:`truststore <gloss_truststore>` file for non-production environments (the SAML compliance tool and the integration environment) 
- * a truststore file for the production environment
+ * a :ref:`truststore <gloss_truststore>` file and a metadata truststore file for non-production environments (the SAML compliance tool and the integration environment) 
+ * a truststore file and a metadata truststore file for the production environment
 
-3. To extract the files and move the truststore to the environment where you want to use the Matching Service Adapter, run the following commands::
 
+3. To extract the files and move the truststore files to the environment where you want to use the Matching Service Adapter, run the following commands::
 
     tar -xf [filename].tar.gz
     unzip ida-msa-[xxx].zip
-    mv prod_ida_truststore.ts [path to truststore directory in the production environment]
-    mv test_ida_truststore.ts [path to truststore directory in the integration environment]
+    mv prod_ida_truststore.ts prod_ida_metadata_truststore.ts [path to truststore directory in the production environment]
+    mv test_ida_truststore.ts test_ida_metadata_truststore.ts [path to truststore directory in the integration environment]
 
  where:
 
  * ``[filename]`` is the name of the tar file
  * ``[xxx]`` is the build number
- * ``[path to truststore directory...]`` is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration option ``storeUri:`` in the :ref:`YAML file <yamlfile>`)
+ * ``[path to truststore directory...]`` is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration options ``storeUri:`` and ``trustStorePath:`` in the :ref:`YAML file <yamlfile>`)
 
 
 Versioning
@@ -107,15 +107,36 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
  saml:
   entityId: http://matching-service-adapter.my.service.gov.uk/matching-service
 
- httpClient:
+ matchingServiceClient:
   timeout: 2s
   timeToLive: 10m
   cookiesEnabled: false
   connectionTimeout: 1s
 
- metadataUri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/sp
+ metadata:
+  uri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/federation
+  trustStorePath: [path to truststore directory...]/ida_metadata_truststore.ts
+  trustStorePassword: puppet
+  expectedEntityId: https://signin.service.gov.uk
+  maxRefreshDelay: 100000
+  minRefreshDelay: 10000
+  client:
+    timeout: 2s
+    timeToLive: 10m
+    cookiesEnabled: false
+    connectionTimeout: 1s
+    retries: 3
+    keepAlive: 60s
+    chunkedEncodingEnabled: false
+    validateAfterInactivityPeriod: 5s
+    tls:
+      protocol: TLSv1.2
+      verifyHostname: true
+      trustSelfSignedCertificates: false
 
- acceptSelfSignedCerts: true
+ hubSSOUri: https://www.[your-env].signin.service.gov.uk/SAML2/SSO
+
+ requireHubCertificates: false
 
  serviceInfo:
   name: matching-service-adapter
@@ -127,26 +148,34 @@ Create a YAML configuration file based on the example below. Then :ref:`adapt it
       host: [graphite host]
       port: [graphite port]
       prefix: [some prefix of your choosing]
-      frequency: 30s 
+      frequency: 30s
 
  privateSigningKeyConfiguration:
-  keyUri: deploy/keys/msa_signing.pk8
+  keyUri: [path to your keys directory...]/msa_signing.pk8
 
  privateEncryptionKeyConfiguration:
-  keyUri: deploy/keys/msa_encryption.pk8
+  keyUri: [path to your keys directory...]/msa_encryption.pk8
 
  publicSigningKeyConfiguration:
-  keyUri: deploy/keys/msa_signing.crt
+  keyUri: [path to your keys directory...]/msa_signing.crt
   keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
 
  publicEncryptionKeyConfiguration:
-  keyUri: deploy/keys/msa_encryption.crt
+  keyUri: [path to your keys directory...]/msa_encryption.crt
   keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+
+ publicSecondarySigningKeyConfiguration
+  keyUri: [path to your keys directory...]/msa_signing_secondary.crt
+  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-sigining
+
+ publicSecondaryEncryptionKeyConfiguration
+  keyUri: [path to your keys directory...]/msa_encryption_secondary.crt
+  keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-encryption
 
  returnStackTraceInResponse: false
 
  clientTrustStoreConfiguration:
-  storeUri: deploy/keys/ida_truststore.ts
+  storeUri: [path to truststore directory...]/ida_truststore.ts
   password: puppet
 
  featureFlagConfiguration:
@@ -173,7 +202,7 @@ Make the following changes to the YAML configuration file. Variations are indica
 
  .. note:: It's good practice to use the Matching Service Adapter's URI (i.e. the URI where the hub will send Matching Requests) as its entity ID, but this isn't mandatory.
 
-5. In ``metadataUri:``, specify the location where the Matching Service Adapter accesses the SAML metadata:
+5. In ``metadata:``, use the ``uri:`` parameter to specify the location where the Matching Service Adapter accesses the SAML metadata:
 
   * for the SAML compliance tool, your GOV.UK Verify engagement lead will give you the URL
 
@@ -181,13 +210,19 @@ Make the following changes to the YAML configuration file. Variations are indica
 
   * for the production environment, enter: ``https://www.signin.service.gov.uk/SAML2/metadata/federation``
 
-6. In ``storeUri``, specify the path of your truststore for the appropriate environment: 
+6. In ``metadata:``, use the ``trustStorePath:`` parameter to specify the path to your metadata truststore for the appropriate environment:
 
-  * for the SAML compliance tool and the integration environment, use the ``test_ida_truststore.ts``
+  * for the SAML compliance tool and the integration environment, use ``test_metadata_truststore.ts``
 
-  * for the production environment, use the ``prod_ida_truststore.ts``
+  * for the production environment, use ``prod_metadata_truststore.ts``
 
-7. Enter the paths of the SAML signing and encryption private keys for your Matching Service Adapter:
+7. In ``clientTrustStoreConfiguration:``, use the ``storeUri`` parameter to specify the path of your general truststore for the appropriate environment: 
+
+  * for the SAML compliance tool and the integration environment, use ``test_ida_truststore.ts``
+
+  * for the production environment, use ``prod_ida_truststore.ts``
+
+8. Enter the paths of the SAML signing and encryption private keys for your Matching Service Adapter:
 
  * ``privateSigningKeyConfiguration:`` – PKCS#8 DER formatted
 
@@ -199,12 +234,12 @@ Make the following changes to the YAML configuration file. Variations are indica
 
  You will use different keys and certificates for the integration and production environments. See :ref:`pkiRequestCert`.
 
-8. Enter the paths and names of the SAML signing and encryption certificates for your Matching Service Adapter.  The names are used to identify the certificates in the metadata so should be meaningful and unique:  ``signing_1`` and ``encryption_1`` would be acceptable.
+9. Enter the paths and names of the SAML signing and encryption certificates for your Matching Service Adapter.  The names are used to identify the certificates in the metadata so should be meaningful and unique:  ``signing_1`` and ``encryption_1`` would be acceptable.
 
  * ``publicSigningKeyConfiguration:`` – public signing certificate, PEM formatted
  * ``publicEncryptionKeyConfiguration:`` – public encryption certificate, PEM formatted
 
-9. If you want to use Graphite software to monitor the Matching Service Adapter’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.
+10. If you want to use Graphite software to monitor the Matching Service Adapter’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.
 
 
 .. _msa_test_msa:
