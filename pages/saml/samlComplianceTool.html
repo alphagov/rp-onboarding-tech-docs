@@ -248,16 +248,10 @@ openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
 </li>
 <li><p class="first">Generate an authentication request and POST it to the compliance tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</p>
 </li>
-</ol>
-<blockquote>
-<div><div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You may want to use an off-the-shelf tool to generate an authentication request.</p>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="8">
-<li>If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</li>
-<li>Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</li>
+<li><p class="first">If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</p>
+</li>
+<li><p class="first">Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</p>
+</li>
 </ol>
 <blockquote>
 <div><ul class="simple">

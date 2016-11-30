@@ -84,8 +84,6 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
 7. Generate an authentication request and POST it to the compliance tool's SSO URI. Follow the redirect in the response to retrieve the result. 
 
-  .. note:: You may want to use an off-the-shelf tool to generate an authentication request. 
-
 8. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
 9. Access the ``executeUri`` for each test scenario you want to execute. The following test scenarios are provided:
 
