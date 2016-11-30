@@ -60,7 +60,7 @@ Access the SAML metadata
 
     * integration environment at `https://www.integration.signin.service.gov.uk/SAML2/metadata/federation <https://www.integration.signin.service.gov.uk/SAML2/metadata/federation>`_
 
-    *  prduction environment at `https://www.signin.service.gov.uk/SAML2/metadata/federation <https://www.signin.service.gov.uk/SAML2/metadata/federation>`_
+    *  production environment at `https://www.signin.service.gov.uk/SAML2/metadata/federation <https://www.signin.service.gov.uk/SAML2/metadata/federation>`_
 
   The federation metadata is signed. It includes entity descriptors that define the roles of the GOV.UK Verify hub and the identity providers.
 
