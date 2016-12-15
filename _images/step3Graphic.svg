@@ -77,8 +77,8 @@
       <tspan x="-29.266" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Encrypted </tspan>
       <tspan x="-20.236" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">for hub</tspan>
     </text>
-    <text transform="matrix(1, 0, 0, 1, 51.34, 16)">
-      <tspan x="-42.39" y="4" font-family="ArialMT" font-size="13" fill="#000000">SAML respose</tspan>
+    <text transform="matrix(1, 0, 0, 1, 54.34, 23.5)">
+      <tspan x="-46.005" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">SAML response</tspan>
     </text>
   </g>
 </svg>
