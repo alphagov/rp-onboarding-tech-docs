@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Matching Service Adapter" href="msa.html"/>
         <link rel="next" title="Public Key Infrastructure" href="../pki/pki.html"/>
@@ -61,16 +64,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -115,7 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="msa.html">Matching Service Adapter</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Install the Matching Service Adapter</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Install the Matching Service Adapter</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#versioning">Versioning</a></li>
 </ul>
 </li>
@@ -162,7 +155,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -170,21 +163,21 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="msa.html">Matching Service Adapter</a> &raquo;</li>
+          <li><a href="msa.html">Matching Service Adapter</a> &raquo;</li>
       
     <li>Install the Matching Service Adapter</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="install-the-matching-service-adapter">
+  <div class="section" id="install-the-matching-service-adapter">
 <span id="msa-install-msa"></span><span id="msause"></span><h1>Install the Matching Service Adapter<a class="headerlink" href="#install-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <p><strong>Prerequisite:</strong> The Matching Service Adapter requires Java 8. Make sure you have the latest version of the JRE (Java Runtime Environment) installed.</p>
 <ol class="arabic simple">
@@ -194,16 +187,16 @@
 <blockquote>
 <div><ul class="simple">
 <li>a jar (java archive) file</li>
-<li>a <a class="reference internal" href="../../shared/glossary.html#gloss-truststore"><span>truststore</span></a> file and a metadata truststore file for non-production environments (the SAML compliance tool and the integration environment)</li>
+<li>a <a class="reference internal" href="../../shared/glossary.html#gloss-truststore"><span class="std std-ref">truststore</span></a> file and a metadata truststore file for non-production environments (the SAML compliance tool and the integration environment)</li>
 <li>a truststore file and a metadata truststore file for the production environment</li>
 </ul>
 </div></blockquote>
 <ol class="arabic" start="3">
 <li><p class="first">To extract the files and move the truststore files to the environment where you want to use the Matching Service Adapter, run the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>tar -xf [filename].tar.gz
-unzip ida-msa-[xxx].zip
-mv prod_ida_truststore.ts prod_ida_metadata_truststore.ts [path to truststore directory in the production environment]
-mv test_ida_truststore.ts test_ida_metadata_truststore.ts [path to truststore directory in the integration environment]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xf</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">unzip</span> <span class="n">ida</span><span class="o">-</span><span class="n">msa</span><span class="o">-</span><span class="p">[</span><span class="n">xxx</span><span class="p">]</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">mv</span> <span class="n">prod_ida_truststore</span><span class="o">.</span><span class="n">ts</span> <span class="n">prod_ida_metadata_truststore</span><span class="o">.</span><span class="n">ts</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">truststore</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">production</span> <span class="n">environment</span><span class="p">]</span>
+<span class="n">mv</span> <span class="n">test_ida_truststore</span><span class="o">.</span><span class="n">ts</span> <span class="n">test_ida_metadata_truststore</span><span class="o">.</span><span class="n">ts</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">truststore</span> <span class="n">directory</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">integration</span> <span class="n">environment</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>
@@ -213,7 +206,7 @@ mv test_ida_truststore.ts test_ida_metadata_truststore.ts [path to truststore di
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">[filename]</span></code> is the name of the tar file</li>
 <li><code class="docutils literal"><span class="pre">[xxx]</span></code> is the build number</li>
-<li><code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration options <code class="docutils literal"><span class="pre">storeUri:</span></code> and <code class="docutils literal"><span class="pre">trustStorePath:</span></code> in the <a class="reference internal" href="#yamlfile"><span>YAML file</span></a>)</li>
+<li><code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration options <code class="docutils literal"><span class="pre">storeUri:</span></code> and <code class="docutils literal"><span class="pre">trustStorePath:</span></code> in the <a class="reference internal" href="#yamlfile"><span class="std std-ref">YAML file</span></a>)</li>
 </ul>
 </div></blockquote>
 <div class="section" id="versioning">
@@ -226,132 +219,132 @@ mv test_ida_truststore.ts test_ida_metadata_truststore.ts [path to truststore di
 <p>Your Matching Service Adapter needs a signing certificate and an encryption certificate. You must use different certificates for each environment.</p>
 <p>To obtain certificates:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>generate self-signed certificates</span></a> for use with the compliance tool</li>
-<li><a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>request certificates</span></a> from the IDAP certificate authority for the integration and production environments</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span class="std std-ref">generate self-signed certificates</span></a> for use with the compliance tool</li>
+<li><a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">request certificates</span></a> from the IDAP certificate authority for the integration and production environments</li>
 </ul>
 </div>
 <div class="section" id="configure-the-matching-service-adapter">
 <span id="configuremsa"></span><h1>Configure the Matching Service Adapter<a class="headerlink" href="#configure-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="create-a-yaml-configuration-file">
 <h2>Create a YAML configuration file<a class="headerlink" href="#create-a-yaml-configuration-file" title="Permalink to this headline">¶</a></h2>
-<p>When you <a class="reference internal" href="#msa-test-msa"><span>start the Matching Service Adapter</span></a>, you need to supply a YAML configuration file.</p>
-<p>Create a YAML configuration file based on the example below. Then <a class="reference internal" href="#msa-adapt-yaml"><span>adapt it</span></a> for the SAML compliance tool or appropriate environment.</p>
-<div class="highlight-python" id="yamlfile"><div class="highlight"><pre><span></span>server:
- applicationConnectors:
-   - type: http
-     port: 50210
- adminConnectors:
-   - type: http
-     port: 50211
- requestLog:
-   appenders:
-     - type: file
-       currentLogFilename: apps-home/msa.log
-       archivedLogFilenamePattern: apps-home/msa.log.%d.gz
-       logFormat: &#39;%-5p [%d{ISO8601,UTC}] %c: %m%n%xEx&#39;
-     - type: logstash-file
-       currentLogFilename: apps-home/logstash/msa.log
-       archivedLogFilenamePattern: apps-home/logstash/msa.log.%d.gz
-       archivedFileCount: 7
-     - type: console
+<p>When you <a class="reference internal" href="#msa-test-msa"><span class="std std-ref">start the Matching Service Adapter</span></a>, you need to supply a YAML configuration file.</p>
+<p>Create a YAML configuration file based on the example below. Then <a class="reference internal" href="#msa-adapt-yaml"><span class="std std-ref">adapt it</span></a> for the SAML compliance tool or appropriate environment.</p>
+<div class="highlight-default" id="yamlfile"><div class="highlight"><pre><span></span><span class="n">server</span><span class="p">:</span>
+ <span class="n">applicationConnectors</span><span class="p">:</span>
+   <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">http</span>
+     <span class="n">port</span><span class="p">:</span> <span class="mi">50210</span>
+ <span class="n">adminConnectors</span><span class="p">:</span>
+   <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">http</span>
+     <span class="n">port</span><span class="p">:</span> <span class="mi">50211</span>
+ <span class="n">requestLog</span><span class="p">:</span>
+   <span class="n">appenders</span><span class="p">:</span>
+     <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">file</span>
+       <span class="n">currentLogFilename</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span>
+       <span class="n">archivedLogFilenamePattern</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span><span class="o">.%</span><span class="n">d</span><span class="o">.</span><span class="n">gz</span>
+       <span class="n">logFormat</span><span class="p">:</span> <span class="s1">&#39;%-5p [</span><span class="si">%d</span><span class="s1">{ISO8601,UTC}] </span><span class="si">%c</span><span class="s1">: %m%n</span><span class="si">%x</span><span class="s1">Ex&#39;</span>
+     <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">logstash</span><span class="o">-</span><span class="n">file</span>
+       <span class="n">currentLogFilename</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span>
+       <span class="n">archivedLogFilenamePattern</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span><span class="o">.%</span><span class="n">d</span><span class="o">.</span><span class="n">gz</span>
+       <span class="n">archivedFileCount</span><span class="p">:</span> <span class="mi">7</span>
+     <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">console</span>
 
-logging:
- level: INFO
- appenders:
-   - type: file
-     currentLogFilename: apps-home/msa.log
-     archivedLogFilenamePattern: apps-home/msa.log.%d.gz
-     logFormat: &#39;%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx&#39;
-   - type: logstash-file
-     currentLogFilename: apps-home/logstash/msa.log
-     archivedLogFilenamePattern: apps-home/logstash/msa.log.%d.gz
-     archivedFileCount: 7
-   - type: console
-     logFormat: &#39;%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx&#39;
+<span class="n">logging</span><span class="p">:</span>
+ <span class="n">level</span><span class="p">:</span> <span class="n">INFO</span>
+ <span class="n">appenders</span><span class="p">:</span>
+   <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">file</span>
+     <span class="n">currentLogFilename</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span>
+     <span class="n">archivedLogFilenamePattern</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span><span class="o">.%</span><span class="n">d</span><span class="o">.</span><span class="n">gz</span>
+     <span class="n">logFormat</span><span class="p">:</span> <span class="s1">&#39;%-5p [</span><span class="si">%d</span><span class="s1">{ISO8601,UTC}] </span><span class="si">%c</span><span class="s1">: </span><span class="si">%X{logPrefix}</span><span class="s1">%m%n</span><span class="si">%x</span><span class="s1">Ex&#39;</span>
+   <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">logstash</span><span class="o">-</span><span class="n">file</span>
+     <span class="n">currentLogFilename</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span>
+     <span class="n">archivedLogFilenamePattern</span><span class="p">:</span> <span class="n">apps</span><span class="o">-</span><span class="n">home</span><span class="o">/</span><span class="n">logstash</span><span class="o">/</span><span class="n">msa</span><span class="o">.</span><span class="n">log</span><span class="o">.%</span><span class="n">d</span><span class="o">.</span><span class="n">gz</span>
+     <span class="n">archivedFileCount</span><span class="p">:</span> <span class="mi">7</span>
+   <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">console</span>
+     <span class="n">logFormat</span><span class="p">:</span> <span class="s1">&#39;%-5p [</span><span class="si">%d</span><span class="s1">{ISO8601,UTC}] </span><span class="si">%c</span><span class="s1">: </span><span class="si">%X{logPrefix}</span><span class="s1">%m%n</span><span class="si">%x</span><span class="s1">Ex&#39;</span>
 
-assertionLifetime: 60m
-matchingServiceUri: http://local-matching-service.my.service.gov.uk/matching-request
-unknownUserCreationServiceUri: http://local-matching-service.my.service.gov.uk/unknown-user-request
+<span class="n">assertionLifetime</span><span class="p">:</span> <span class="mi">60</span><span class="n">m</span>
+<span class="n">matchingServiceUri</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">local</span><span class="o">-</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">request</span>
+<span class="n">unknownUserCreationServiceUri</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">local</span><span class="o">-</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">unknown</span><span class="o">-</span><span class="n">user</span><span class="o">-</span><span class="n">request</span>
 
-matchingServiceAdapterLocation: http://matching-service-adapter.my.service.gov.uk/matching-service/POST
+<span class="n">matchingServiceAdapterLocation</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">/</span><span class="n">POST</span>
 
-saml:
- entityId: http://matching-service-adapter.my.service.gov.uk/matching-service
+<span class="n">saml</span><span class="p">:</span>
+ <span class="n">entityId</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span>
 
-matchingServiceClient:
- timeout: 2s
- timeToLive: 10m
- cookiesEnabled: false
- connectionTimeout: 1s
+<span class="n">matchingServiceClient</span><span class="p">:</span>
+ <span class="n">timeout</span><span class="p">:</span> <span class="mi">2</span><span class="n">s</span>
+ <span class="n">timeToLive</span><span class="p">:</span> <span class="mi">10</span><span class="n">m</span>
+ <span class="n">cookiesEnabled</span><span class="p">:</span> <span class="n">false</span>
+ <span class="n">connectionTimeout</span><span class="p">:</span> <span class="mi">1</span><span class="n">s</span>
 
-metadata:
- uri: https://www.[your-env].signin.service.gov.uk/SAML2/metadata/federation
- trustStorePath: [path to truststore directory...]/ida_metadata_truststore.ts
- trustStorePassword: puppet
- expectedEntityId: https://signin.service.gov.uk
- maxRefreshDelay: 100000
- minRefreshDelay: 10000
- client:
-   timeout: 2s
-   timeToLive: 10m
-   cookiesEnabled: false
-   connectionTimeout: 1s
-   retries: 3
-   keepAlive: 60s
-   chunkedEncodingEnabled: false
-   validateAfterInactivityPeriod: 5s
-   tls:
-     protocol: TLSv1.2
-     verifyHostname: true
-     trustSelfSignedCertificates: false
+<span class="n">metadata</span><span class="p">:</span>
+ <span class="n">uri</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">env</span><span class="p">]</span><span class="o">.</span><span class="n">signin</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">SAML2</span><span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">federation</span>
+ <span class="n">trustStorePath</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">truststore</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">ida_metadata_truststore</span><span class="o">.</span><span class="n">ts</span>
+ <span class="n">trustStorePassword</span><span class="p">:</span> <span class="n">puppet</span>
+ <span class="n">expectedEntityId</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">signin</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span>
+ <span class="n">maxRefreshDelay</span><span class="p">:</span> <span class="mi">100000</span>
+ <span class="n">minRefreshDelay</span><span class="p">:</span> <span class="mi">10000</span>
+ <span class="n">client</span><span class="p">:</span>
+   <span class="n">timeout</span><span class="p">:</span> <span class="mi">2</span><span class="n">s</span>
+   <span class="n">timeToLive</span><span class="p">:</span> <span class="mi">10</span><span class="n">m</span>
+   <span class="n">cookiesEnabled</span><span class="p">:</span> <span class="n">false</span>
+   <span class="n">connectionTimeout</span><span class="p">:</span> <span class="mi">1</span><span class="n">s</span>
+   <span class="n">retries</span><span class="p">:</span> <span class="mi">3</span>
+   <span class="n">keepAlive</span><span class="p">:</span> <span class="mi">60</span><span class="n">s</span>
+   <span class="n">chunkedEncodingEnabled</span><span class="p">:</span> <span class="n">false</span>
+   <span class="n">validateAfterInactivityPeriod</span><span class="p">:</span> <span class="mi">5</span><span class="n">s</span>
+   <span class="n">tls</span><span class="p">:</span>
+     <span class="n">protocol</span><span class="p">:</span> <span class="n">TLSv1</span><span class="o">.</span><span class="mi">2</span>
+     <span class="n">verifyHostname</span><span class="p">:</span> <span class="n">true</span>
+     <span class="n">trustSelfSignedCertificates</span><span class="p">:</span> <span class="n">false</span>
 
-hubSSOUri: https://www.[your-env].signin.service.gov.uk/SAML2/SSO
+<span class="n">hubSSOUri</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="p">[</span><span class="n">your</span><span class="o">-</span><span class="n">env</span><span class="p">]</span><span class="o">.</span><span class="n">signin</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">SAML2</span><span class="o">/</span><span class="n">SSO</span>
 
-requireHubCertificates: false
+<span class="n">requireHubCertificates</span><span class="p">:</span> <span class="n">false</span>
 
-serviceInfo:
- name: matching-service-adapter
+<span class="n">serviceInfo</span><span class="p">:</span>
+ <span class="n">name</span><span class="p">:</span> <span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span>
 
-# If you would like the Matching Service Adapter to report to a Graphite instance.
-metrics:
- reporters:
-   - type: graphite
-     host: [graphite host]
-     port: [graphite port]
-     prefix: [some prefix of your choosing]
-     frequency: 30s
+<span class="c1"># If you would like the Matching Service Adapter to report to a Graphite instance.</span>
+<span class="n">metrics</span><span class="p">:</span>
+ <span class="n">reporters</span><span class="p">:</span>
+   <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">graphite</span>
+     <span class="n">host</span><span class="p">:</span> <span class="p">[</span><span class="n">graphite</span> <span class="n">host</span><span class="p">]</span>
+     <span class="n">port</span><span class="p">:</span> <span class="p">[</span><span class="n">graphite</span> <span class="n">port</span><span class="p">]</span>
+     <span class="n">prefix</span><span class="p">:</span> <span class="p">[</span><span class="n">some</span> <span class="n">prefix</span> <span class="n">of</span> <span class="n">your</span> <span class="n">choosing</span><span class="p">]</span>
+     <span class="n">frequency</span><span class="p">:</span> <span class="mi">30</span><span class="n">s</span>
 
-privateSigningKeyConfiguration:
- keyUri: [path to your keys directory...]/msa_signing.pk8
+<span class="n">privateSigningKeyConfiguration</span><span class="p">:</span>
+ <span class="n">keyUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">keys</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">msa_signing</span><span class="o">.</span><span class="n">pk8</span>
 
-privateEncryptionKeyConfiguration:
- keyUri: [path to your keys directory...]/msa_encryption.pk8
+<span class="n">privateEncryptionKeyConfiguration</span><span class="p">:</span>
+ <span class="n">keyUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">keys</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">msa_encryption</span><span class="o">.</span><span class="n">pk8</span>
 
-publicSigningKeyConfiguration:
- keyUri: [path to your keys directory...]/msa_signing.crt
- keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+<span class="n">publicSigningKeyConfiguration</span><span class="p">:</span>
+ <span class="n">keyUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">keys</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">msa_signing</span><span class="o">.</span><span class="n">crt</span>
+ <span class="n">keyName</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span>
 
-publicEncryptionKeyConfiguration:
- keyUri: [path to your keys directory...]/msa_encryption.crt
- keyName: http://matching-service-adapter.my.service.gov.uk/matching-service
+<span class="n">publicEncryptionKeyConfiguration</span><span class="p">:</span>
+ <span class="n">keyUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">keys</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">msa_encryption</span><span class="o">.</span><span class="n">crt</span>
+ <span class="n">keyName</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span>
 
-publicSecondarySigningKeyConfiguration
- keyUri: [path to your keys directory...]/msa_signing_secondary.crt
- keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-sigining
+<span class="n">publicSecondarySigningKeyConfiguration</span>
+ <span class="n">keyUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">keys</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">msa_signing_secondary</span><span class="o">.</span><span class="n">crt</span>
+ <span class="n">keyName</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">secondary</span><span class="o">-</span><span class="n">sigining</span>
 
-publicSecondaryEncryptionKeyConfiguration
- keyUri: [path to your keys directory...]/msa_encryption_secondary.crt
- keyName: http://matching-service-adapter.my.service.gov.uk/matching-service-secondary-encryption
+<span class="n">publicSecondaryEncryptionKeyConfiguration</span>
+ <span class="n">keyUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">keys</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">msa_encryption_secondary</span><span class="o">.</span><span class="n">crt</span>
+ <span class="n">keyName</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">adapter</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">matching</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="n">secondary</span><span class="o">-</span><span class="n">encryption</span>
 
-returnStackTraceInResponse: false
+<span class="n">returnStackTraceInResponse</span><span class="p">:</span> <span class="n">false</span>
 
-clientTrustStoreConfiguration:
- storeUri: [path to truststore directory...]/ida_truststore.ts
- password: puppet
+<span class="n">clientTrustStoreConfiguration</span><span class="p">:</span>
+ <span class="n">storeUri</span><span class="p">:</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">truststore</span> <span class="n">directory</span><span class="o">...</span><span class="p">]</span><span class="o">/</span><span class="n">ida_truststore</span><span class="o">.</span><span class="n">ts</span>
+ <span class="n">password</span><span class="p">:</span> <span class="n">puppet</span>
 
-featureFlagConfiguration:
- isCertificateChainValidationRequired: true
- encryptionDisabled: false
+<span class="n">featureFlagConfiguration</span><span class="p">:</span>
+ <span class="n">isCertificateChainValidationRequired</span><span class="p">:</span> <span class="n">true</span>
+ <span class="n">encryptionDisabled</span><span class="p">:</span> <span class="n">false</span>
 </pre></div>
 </div>
 </div>
@@ -369,7 +362,7 @@ featureFlagConfiguration:
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li>Enter the URIs for your matching service and Matching Service Adapter in <code class="docutils literal"><span class="pre">matchingServiceUri:</span></code> and <code class="docutils literal"><span class="pre">matchingServiceAdapterLocation:</span></code> respectively.</li>
-<li>If you&#8217;re creating new user accounts when a match is not found (see <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>Create user accounts</span></a>), enter the user account creation URI in <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code></li>
+<li>If you&#8217;re creating new user accounts when a match is not found (see <a class="reference internal" href="../ms/msCua.html#ms-cua"><span class="std std-ref">Create user accounts</span></a>), enter the user account creation URI in <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code></li>
 <li>In <code class="docutils literal"><span class="pre">entity</span> <span class="pre">id</span></code>, enter the entityID for the Matching Service Adapter in URI format. You create your own URI, possibly to reflect the name of your service, for example: <code class="docutils literal"><span class="pre">https://&lt;service</span> <span class="pre">name&gt;/MSA</span></code></li>
 </ol>
 <blockquote>
@@ -418,8 +411,8 @@ featureFlagConfiguration:
 <p class="first admonition-title">Note</p>
 <p class="last">To convert a private key to PKCS#8 DER format, run the following command: <code class="docutils literal"><span class="pre">openssl</span> <span class="pre">pkcs8</span> <span class="pre">-topk8</span> <span class="pre">-nocrypt</span> <span class="pre">-in</span> <span class="pre">server.key</span> <span class="pre">-out</span> <span class="pre">server.pk8</span> <span class="pre">-outform</span> <span class="pre">DER</span></code></p>
 </div>
-<p>For the compliance tool, <a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>generate self-signed certificates</span></a>.</p>
-<p>You will use different keys and certificates for the integration and production environments. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</p>
+<p>For the compliance tool, <a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span class="std std-ref">generate self-signed certificates</span></a>.</p>
+<p>You will use different keys and certificates for the integration and production environments. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">Request certificates</span></a>.</p>
 </div></blockquote>
 <ol class="arabic simple" start="9">
 <li>Enter the paths and names of the SAML signing and encryption certificates for your Matching Service Adapter.  The names are used to identify the certificates in the metadata so should be meaningful and unique:  <code class="docutils literal"><span class="pre">signing_1</span></code> and <code class="docutils literal"><span class="pre">encryption_1</span></code> would be acceptable.</li>
@@ -438,10 +431,10 @@ featureFlagConfiguration:
 <div class="section" id="start-the-matching-service-adapter">
 <span id="msa-test-msa"></span><h1>Start the Matching Service Adapter<a class="headerlink" href="#start-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <p>To start using the Matching Service Adapter, run the following command, supplying the path to your configuration file:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>java -jar [filename].jar server [path to configuration file].yml
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span><span class="o">.</span><span class="n">jar</span> <span class="n">server</span> <span class="p">[</span><span class="n">path</span> <span class="n">to</span> <span class="n">configuration</span> <span class="n">file</span><span class="p">]</span><span class="o">.</span><span class="n">yml</span>
 </pre></div>
 </div>
-<p>You can now run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>SAML compliance tests between the hub and your Matching Service Adapter</span></a>. To help <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a>, you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service.</p>
+<p>You can now run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span class="std std-ref">SAML compliance tests between the hub and your Matching Service Adapter</span></a>. To help <a class="reference internal" href="../ms/msBuild.html#msbuild"><span class="std std-ref">build your local matching service</span></a>, you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span class="std std-ref">example of the JSON request</span></a> that the Matching Service Adapter posts to your service.</p>
 </div>
 <div class="section" id="monitoring">
 <h1>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h1>
@@ -539,7 +532,9 @@ featureFlagConfiguration:
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

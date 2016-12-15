@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="GOV.UK Verify environments" href="env.html"/>
         <link rel="next" title="Glossary of terms" href="../../shared/glossary.html"/>
@@ -61,16 +64,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -118,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="envRequestform.html">Request access to environments</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Run end-to-end testing</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Run end-to-end testing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup-for-end-to-end-testing">Setup for end-to-end testing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#create-your-authentication">Create your authentication</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-test-users">Create test users</a></li>
@@ -157,7 +150,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -165,21 +158,21 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="env.html">GOV.UK Verify environments</a> &raquo;</li>
+          <li><a href="env.html">GOV.UK Verify environments</a> &raquo;</li>
       
     <li>Run end-to-end testing</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="run-end-to-end-testing">
+  <div class="section" id="run-end-to-end-testing">
 <span id="envendtoendtests"></span><h1>Run end-to-end testing<a class="headerlink" href="#run-end-to-end-testing" title="Permalink to this headline">¶</a></h1>
 <p>The integration environment accurately reflects hub behaviour in the production environment. You can use the integration environment to test complete user journeys, both success and failure scenarios.</p>
 <p>We  advise you to do end-to-end testing in the integration environment as part of your continuous integration pipeline. For more information, see <a class="reference external" href="https://www.gov.uk/service-manual/making-software/code-testing">Testing code</a> in the Government Service Design Manual.</p>
@@ -203,10 +196,10 @@
 <p>Setup for end-to-end testing involves the following procedures:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="#createauth"><span>create your authentication to manage test users</span></a></li>
-<li><a class="reference internal" href="#createtestusers"><span>create test users</span></a></li>
-<li><a class="reference internal" href="#view-test-users"><span>view test users</span></a></li>
-<li><a class="reference internal" href="#delete-users"><span>delete test users</span></a></li>
+<li><a class="reference internal" href="#createauth"><span class="std std-ref">create your authentication to manage test users</span></a></li>
+<li><a class="reference internal" href="#createtestusers"><span class="std std-ref">create test users</span></a></li>
+<li><a class="reference internal" href="#view-test-users"><span class="std std-ref">view test users</span></a></li>
+<li><a class="reference internal" href="#delete-users"><span class="std std-ref">delete test users</span></a></li>
 </ul>
 </div></blockquote>
 <div class="section" id="create-your-authentication">
@@ -231,12 +224,12 @@
 <span id="createtestusers"></span><h3>Create test users<a class="headerlink" href="#create-test-users" title="Permalink to this headline">¶</a></h3>
 <p>This procedure describes how to create test users in bulk and load them into the test identity provider. You must add the same test users to your local matching datastore in the integration environment.</p>
 <p>Make an http POST to the user administration API with a JSON document containing an array of user data. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>curl --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39; -d @create-user.json https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">user</span> <span class="s1">&#39;</span><span class="si">{username}</span><span class="s1">:</span><span class="si">{password}</span><span class="s1">&#39;</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="o">-</span><span class="n">d</span> <span class="nd">@create</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">json</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idp</span><span class="o">-</span><span class="n">stub</span><span class="o">-</span><span class="n">integration</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">digital</span><span class="o">.</span><span class="n">cabinet</span><span class="o">-</span><span class="n">office</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="p">{</span><span class="n">idp</span><span class="o">-</span><span class="n">name</span><span class="p">}</span><span class="o">/</span><span class="n">users</span>
 </pre></div>
 </div>
 <p>where:</p>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a></p>
+<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span class="std std-ref">basic authentication credentials</span></a></p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</p>
 <div class="admonition note">
@@ -245,7 +238,7 @@
 </div>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">create-user.json</span></code> is the name of the file containing an array of test user data in JSON format, for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[{</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[{</span>
     <span class="s2">&quot;pid&quot;</span><span class="p">:</span> <span class="s2">&quot;00754148-902f-4d94-b0db-cb1f7eb3fd84&quot;</span><span class="p">,</span>
     <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;user1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
@@ -343,22 +336,22 @@
 <div class="section" id="view-test-users">
 <span id="id1"></span><h3>View test users<a class="headerlink" href="#view-test-users" title="Permalink to this headline">¶</a></h3>
 <p>To view existing test users, GET the users resource from the relevant test identity provider. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>curl https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idp</span><span class="o">-</span><span class="n">stub</span><span class="o">-</span><span class="n">integration</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">digital</span><span class="o">.</span><span class="n">cabinet</span><span class="o">-</span><span class="n">office</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="p">{</span><span class="n">idp</span><span class="o">-</span><span class="n">name</span><span class="p">}</span><span class="o">/</span><span class="n">users</span>
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider.</p>
-<p>The test users are returned in JSON format. To view the page you must provide your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a>.</p>
+<p>The test users are returned in JSON format. To view the page you must provide your <a class="reference internal" href="#createauth"><span class="std std-ref">basic authentication credentials</span></a>.</p>
 </div>
 <div class="section" id="delete-test-users">
 <span id="delete-users"></span><h3>Delete test users<a class="headerlink" href="#delete-test-users" title="Permalink to this headline">¶</a></h3>
 <p>To delete test users from the test identity provider, POST a JSON document to the user administration API containing the usernames you want to delete. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>curl --data &#39;{&quot;username&quot;: &quot;user1&quot;}&#39;  --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39;  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">data</span> <span class="s1">&#39;{&quot;username&quot;: &quot;user1&quot;}&#39;</span>  <span class="o">--</span><span class="n">user</span> <span class="s1">&#39;</span><span class="si">{username}</span><span class="s1">:</span><span class="si">{password}</span><span class="s1">&#39;</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idp</span><span class="o">-</span><span class="n">stub</span><span class="o">-</span><span class="n">integration</span><span class="o">.</span><span class="n">ida</span><span class="o">.</span><span class="n">digital</span><span class="o">.</span><span class="n">cabinet</span><span class="o">-</span><span class="n">office</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="p">{</span><span class="n">idp</span><span class="o">-</span><span class="n">name</span><span class="p">}</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">delete</span>
 </pre></div>
 </div>
 <p>where:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">user1</span></code> is the name of the test user you want to delete</li>
-<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a></li>
+<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span class="std std-ref">basic authentication credentials</span></a></li>
 <li><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</li>
 </ul>
 </div>
@@ -369,16 +362,16 @@
 <ul class="simple">
 <li>authentication success and authentication failure</li>
 <li>match and no-match</li>
-<li>all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a>, if implemented</li>
+<li>all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span class="std std-ref">cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span class="std std-ref">user account creation</span></a>, if implemented</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Run end-to-end tests for all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a>, if implemented.</p>
+<p class="last">Run end-to-end tests for all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span class="std std-ref">cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span class="std std-ref">user account creation</span></a>, if implemented.</p>
 </div>
 </div>
 <div class="section" id="tear-down">
 <h2>Tear down<a class="headerlink" href="#tear-down" title="Permalink to this headline">¶</a></h2>
-<p>After each integration test run, we recommend that you <a class="reference internal" href="#delete-users"><span>delete the test users</span></a>.  Set up each integration test run with newly created test users.</p>
+<p>After each integration test run, we recommend that you <a class="reference internal" href="#delete-users"><span class="std std-ref">delete the test users</span></a>.  Set up each integration test run with newly created test users.</p>
 <p>When you&#8217;ve successfully completed testing in the integration environment, you must provide a full demonstration of all user journeys. This is one of the <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html#stage-4">outputs required at this stage</a> before moving on to <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage5/Stage5.html">Stage 5 Production Onboarding</a>.</p>
 </div>
 </div>
@@ -404,7 +397,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

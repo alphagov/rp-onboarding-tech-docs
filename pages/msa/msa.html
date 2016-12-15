@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="next" title="Install the Matching Service Adapter" href="msaUse.html"/>
         <link rel="prev" title="Create user accounts" href="../ms/msCua.html"/>
@@ -60,16 +63,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -113,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Matching Service Adapter</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matching Service Adapter</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="msaUse.html">Install the Matching Service Adapter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msaUse.html#obtain-certificates-for-your-matching-service-adapter">Obtain certificates for your Matching Service Adapter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msaUse.html#configure-the-matching-service-adapter">Configure the Matching Service Adapter</a></li>
@@ -150,7 +143,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -159,21 +152,21 @@
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
     <li>Matching Service Adapter</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="matching-service-adapter">
+  <div class="section" id="matching-service-adapter">
 <span id="msa"></span><h1>Matching Service Adapter<a class="headerlink" href="#matching-service-adapter" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="../../shared/glossary.html#gloss-msa"><span>Matching Service Adapter</span></a> is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the <a class="reference internal" href="../arch/hub.html#hub"><span>GOV.UK Verify hub</span></a>.</p>
-<p>A matching service is composed of the Matching Service Adapter and a <a class="reference internal" href="../ms/ms.html#ms"><span>local matching service</span></a>. Government services host their matching service within their security domain.</p>
+<p>The <a class="reference internal" href="../../shared/glossary.html#gloss-msa"><span class="std std-ref">Matching Service Adapter</span></a> is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the <a class="reference internal" href="../arch/hub.html#hub"><span class="std std-ref">GOV.UK Verify hub</span></a>.</p>
+<p>A matching service is composed of the Matching Service Adapter and a <a class="reference internal" href="../ms/ms.html#ms"><span class="std std-ref">local matching service</span></a>. Government services host their matching service within their security domain.</p>
 <blockquote>
 <div><table border="1" class="docutils" id="flow-diagram">
 <colgroup>
@@ -186,9 +179,9 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
-<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
-<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+<li><a class="reference internal" href="../arch/arch.html#arch"><span class="std std-ref">GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a></li>
+<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span class="std std-ref">user account creation</span></a></li>
 </ul>
 </td>
 </tr>
@@ -196,18 +189,18 @@
 </table>
 </div></blockquote>
 <p class="rubric">Why does GOV.UK Verify use the Matching Service Adapter?</p>
-<p>The hub uses <a class="reference internal" href="../saml/saml.html#saml"><span>Security Assertion Markup Language</span></a> (SAML) as its communication method. Government services usually use JSON (JavaScript Object Notation) for their local matching services. A SAML matching service interface is therefore required.  The Matching Service Adapter converts SAML into JSON and vice versa. It also performs encryption, decryption, and signing of SAML messages. For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
+<p>The hub uses <a class="reference internal" href="../saml/saml.html#saml"><span class="std std-ref">Security Assertion Markup Language</span></a> (SAML) as its communication method. Government services usually use JSON (JavaScript Object Notation) for their local matching services. A SAML matching service interface is therefore required.  The Matching Service Adapter converts SAML into JSON and vice versa. It also performs encryption, decryption, and signing of SAML messages. For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
 <p>It can be difficult and expensive to implement a SAML matching service interface. GOV.UK Verify provides the Matching Service Adapter so you can concentrate on the business logic and matching rules for your local matching service.</p>
 <p class="rubric">What do you need to do?</p>
 <p>We recommend that you use the Matching Service Adapter.  If you do not want to, please contact the <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">GOV<span>&#46;</span>UK Verify support team</a>  to discuss your alternatives.</p>
 <p>To use the Matching Service Adapter, you need to:</p>
 <ol class="arabic simple">
-<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>Build your local matching service</span></a> – you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request.</li>
-<li><a class="reference internal" href="msaUse.html#msa-install-msa"><span>Install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span class="std std-ref">Build your local matching service</span></a> – you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span class="std std-ref">example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span class="std std-ref">JSON schema</span></a> for a matching request.</li>
+<li><a class="reference internal" href="msaUse.html#msa-install-msa"><span class="std std-ref">Install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="msaUse.html#configuremsa"><span class="std std-ref">Configure the Matching Service Adapter</span></a>.</li>
 </ol>
-<p>You will then be able to run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>SAML compliance tests between the hub and your matching service</span></a>.</p>
-<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span>Steps to integrate with GOV.UK Verify</span></a>.</p>
+<p>You will then be able to run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span class="std std-ref">SAML compliance tests between the hub and your matching service</span></a>.</p>
+<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span class="std std-ref">Steps to integrate with GOV.UK Verify</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -233,7 +226,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

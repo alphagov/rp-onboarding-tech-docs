@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="next" title="How SAML works" href="samlWorks.html"/>
         <link rel="prev" title="Steps to integrate with GOV.UK Verify" href="../steps/steps.html"/>
@@ -60,16 +63,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -111,7 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">SAML</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SAML</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
@@ -146,7 +139,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -155,28 +148,28 @@
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
     <li>SAML</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="saml">
+  <div class="section" id="saml">
 <span id="id1"></span><h1>SAML<a class="headerlink" href="#saml" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../shared/glossary.html#glosssaml"><span>Security Assertion Markup Language</span></a> (SAML) is an XML-based, open-standard data format for securely exchanging information about identities.</p>
+<p><a class="reference internal" href="../../shared/glossary.html#glosssaml"><span class="std std-ref">Security Assertion Markup Language</span></a> (SAML) is an XML-based, open-standard data format for securely exchanging information about identities.</p>
 <p>SAML can be used as the basis of a system of federated identity. This allows entities within a federation to refer to a user&#8217;s electronic identity, even if it is managed differently by each entity.</p>
 <p class="rubric">Why does GOV.UK Verify use SAML?</p>
 <p>GOV.UK Verify uses SAML to securely exchange information within a federated system of identity.</p>
 <p>SAML is a mature standard and is widely used by industry.  SAML libraries and components are available for most programming languages and platforms.</p>
 <p class="rubric">What do you need to do?</p>
-<p>You must <a class="reference internal" href="samlIntegration.html#samlintegration"><span>build a government service</span></a> that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand <a class="reference internal" href="samlWorks.html#samlworks"><span>how SAML works with GOV.UK Verify</span></a> and <a class="reference internal" href="samlIntegration.html#samlintegrationtool"><span>decide how to add the SAML funcionality to your service</span></a>.</p>
-<p>When you build your service, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a>.</p>
-<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span>Steps to integrate with GOV.UK Verify</span></a>.</p>
+<p>You must <a class="reference internal" href="samlIntegration.html#samlintegration"><span class="std std-ref">build a government service</span></a> that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand <a class="reference internal" href="samlWorks.html#samlworks"><span class="std std-ref">how SAML works with GOV.UK Verify</span></a> and <a class="reference internal" href="samlIntegration.html#samlintegrationtool"><span class="std std-ref">decide how to add the SAML funcionality to your service</span></a>.</p>
+<p>When you build your service, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span class="std std-ref">run SAML compliance tests</span></a>.</p>
+<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span class="std std-ref">Steps to integrate with GOV.UK Verify</span></a>.</p>
 <p id="saml-docs">You must adhere to the following specifications and guidance:</p>
 <ul class="simple">
 <li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216; – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub</li>
@@ -210,7 +203,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

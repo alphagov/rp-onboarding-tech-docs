@@ -1,0 +1,27 @@
+.. _index:
+
+About this guide
+=================
+
+This is the technical reference guide for GOV.UK Verify.
+
+This guide contains information to help teams who are building secure digital services to integrate with GOV.UK Verify, and should be used together with the `GOV.UK Verify Onboarding Guide <http://alphagov.github.io/identity-assurance-documentation/#>`_. This guide will be continually improved. Check the :ref:`version history <vershis>` for the latest changes to the guide. 
+
+Who this guide is for
+---------------------
+This guide is for technical delivery teams who are building secure digital services that integrate with GOV.UK Verify.
+
+.. toctree::
+   :hidden:
+
+   self
+   pages/arch/arch
+   pages/steps/steps
+   pages/saml/saml
+   pages/ms/ms
+   pages/msa/msa
+   pages/pki/pki
+   pages/env/env
+   shared/glossary
+   pages/vershis/vershis
+   Contact us <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>

@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Public Key Infrastructure" href="pki.html"/>
         <link rel="next" title="Request certificates" href="pkiRequestCert.html"/>
@@ -61,16 +64,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -116,7 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">How a PKI works</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How a PKI works</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#public-keys-private-keys-and-certificates">Public keys, private keys, and certificates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#keys-and-certificates-in-the-gov-uk-verify-federation">Keys and certificates in the GOV.UK Verify federation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-encryption-and-signing">Data encryption and signing</a></li>
@@ -152,7 +145,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -160,21 +153,21 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
+          <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
       
     <li>How a PKI works</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="how-a-pki-works">
+  <div class="section" id="how-a-pki-works">
 <span id="pkiworks"></span><h1>How a PKI works<a class="headerlink" href="#how-a-pki-works" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="public-keys-private-keys-and-certificates">
 <h2>Public keys, private keys, and certificates<a class="headerlink" href="#public-keys-private-keys-and-certificates" title="Permalink to this headline">¶</a></h2>
@@ -183,14 +176,14 @@
 <li>public and private <strong>encryption</strong> keys</li>
 <li>public and private <strong>signing</strong> keys</li>
 </ul>
-<p>The keys consist of very long numbers linked in a particular way so the public key can be derived from the private key but not the other way around. Entities within a PKI generate their own keys. They always retain their private keys. However, they share their public keys with other entities to allow secure communication through <a class="reference internal" href="#pki-encrypt-cert"><span>encryption</span></a> and <a class="reference internal" href="#pki-sign-cert"><span>signing</span></a>.</p>
+<p>The keys consist of very long numbers linked in a particular way so the public key can be derived from the private key but not the other way around. Entities within a PKI generate their own keys. They always retain their private keys. However, they share their public keys with other entities to allow secure communication through <a class="reference internal" href="#pki-encrypt-cert"><span class="std std-ref">encryption</span></a> and <a class="reference internal" href="#pki-sign-cert"><span class="std std-ref">signing</span></a>.</p>
 <p>Public keys are shared using certificates. A certificate is a file that contains:</p>
 <ul class="simple">
 <li>a copy of the certificate owner&#8217;s public key</li>
 <li>information about the identity of the certificate owner</li>
 <li>an indication of the purpose of the certificate, for example, encryption or signing</li>
 </ul>
-<p>Certificates are issued and signed by a certificate authority. The certificate authority acts as the <a class="reference internal" href="../../shared/glossary.html#gloss-trustanchor"><span>trust anchor</span></a> in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party&#8217;s certificate is valid.</p>
+<p>Certificates are issued and signed by a certificate authority. The certificate authority acts as the <a class="reference internal" href="../../shared/glossary.html#gloss-trustanchor"><span class="std std-ref">trust anchor</span></a> in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party&#8217;s certificate is valid.</p>
 </div>
 <div class="section" id="keys-and-certificates-in-the-gov-uk-verify-federation">
 <span id="pki-keys-certs-govuk"></span><h2>Keys and certificates in the GOV.UK Verify federation<a class="headerlink" href="#keys-and-certificates-in-the-gov-uk-verify-federation" title="Permalink to this headline">¶</a></h2>
@@ -202,8 +195,8 @@
 </ul>
 <p>To obtain a certificate:</p>
 <ol class="arabic simple">
-<li>Generate pair of keys (<a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span>private</span></a> and <a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span>public</span></a>). You must generate a pair of encryption keys for each encryption certificate request and a pair of signing keys for each signing certificate request.</li>
-<li><a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span>Submit a certificate signing request</span></a> to the IDAP certificate authority.</li>
+<li>Generate pair of keys (<a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span class="std std-ref">private</span></a> and <a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span class="std std-ref">public</span></a>). You must generate a pair of encryption keys for each encryption certificate request and a pair of signing keys for each signing certificate request.</li>
+<li><a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span class="std std-ref">Submit a certificate signing request</span></a> to the IDAP certificate authority.</li>
 <li>The certificate authority generates your certificate and sends it to you.</li>
 </ol>
 <div class="figure align-center" id="id1">
@@ -231,7 +224,7 @@
 <blockquote>
 <div><p><strong>Signing alone</strong></p>
 <blockquote>
-<div>When a user indicates that they would like to verify their identity, the government service sends a message to the <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>. The message is unencrypted because it contains no personal user information. However, the message is signed because the hub needs assurance that the message originated from the government service.</div></blockquote>
+<div>When a user indicates that they would like to verify their identity, the government service sends a message to the <a class="reference internal" href="../arch/hub.html#hub"><span class="std std-ref">hub</span></a>. The message is unencrypted because it contains no personal user information. However, the message is signed because the hub needs assurance that the message originated from the government service.</div></blockquote>
 </div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -241,7 +234,7 @@
 <blockquote>
 <div>When a user has verified their identity, the identity provider sends a signed message to the hub containing the user&#8217;s encrypted personal information. This ensures the confidentiality of the message and its origin.</div></blockquote>
 </div></blockquote>
-<p>A message can contain embedded messages which may be encrypted and/or signed by different entities within the GOV.UK Verify federation. For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
+<p>A message can contain embedded messages which may be encrypted and/or signed by different entities within the GOV.UK Verify federation. For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
 </div>
 </div>
 
@@ -266,7 +259,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

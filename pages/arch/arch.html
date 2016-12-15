@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="next" title="What does the GOV.UK Verify hub do?" href="hub.html"/>
         <link rel="prev" title="About this guide" href="../../index.html"/>
@@ -60,16 +63,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -109,7 +102,7 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Architecture</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hub.html">What does the GOV.UK Verify hub do?</a></li>
 </ul>
 </li>
@@ -144,7 +137,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -153,18 +146,18 @@
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
     <li>Architecture</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="architecture">
+  <div class="section" id="architecture">
 <span id="arch"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
 <p>GOV.UK Verify lets users prove their identity online so they can access government services. When a user wants to access a government service, a trusted identity provider performs the checks needed to verify the user’s identity.</p>
 <p>Below is a high-level diagram of the GOV.UK Verify architecture.</p>
@@ -180,9 +173,9 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
-<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
-<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span class="std std-ref">SAML message flow</span></a></li>
+<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a></li>
+<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span class="std std-ref">user account creation</span></a></li>
 </ul>
 </td>
 </tr>
@@ -191,16 +184,16 @@
 <p>The main elements of GOV.UK Verify architecture are:</p>
 <p><strong>GOV.UK Verify hub</strong></p>
 <blockquote>
-<div><p>The <a class="reference internal" href="hub.html#hub"><span>GOV.UK Verify hub</span></a> is the infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service.</p>
+<div><p>The <a class="reference internal" href="hub.html#hub"><span class="std std-ref">GOV.UK Verify hub</span></a> is the infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service.</p>
 <p>The hub is at the centre of the GOV.UK Verify federation, providing a clear divide between identity providers and government services, avoiding a complex many-many integration:</p>
 <div class="figure align-center" id="id2">
 <img alt="Diagram showing difference between GOV.UK Verify architecture and many-many integration. With GOV.UK Verify, the hub centralises communication between government services and identity providers. With many-many integration, there is no central hub. Each government service connects to each identity provider." src="../../_images/manyintegration.svg" /><p class="caption"><span class="caption-text">Integration with GOV.UK Verify hub (left); many-many integration (right)</span></p>
 </div>
 <p>The hub is stateless, which means that it doesn&#8217;t store any part of the message exchange any longer than a session. Also, it ensures privacy as it doesn&#8217;t hold any identity data.</p>
-<p>The hub ensures that the required <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a> is observed.</p>
+<p>The hub ensures that the required <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span class="std std-ref">level of assurance</span></a> is observed.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">GOV.UK Verify currently supports <a class="reference internal" href="../../shared/glossary.html#gloss-loa2"><span>level of assurance 2</span></a> only.</p>
+<p class="last">GOV.UK Verify currently supports <a class="reference internal" href="../../shared/glossary.html#gloss-loa2"><span class="std std-ref">level of assurance 2</span></a> only.</p>
 </div>
 </div></blockquote>
 <div class="line-block">
@@ -235,7 +228,7 @@
 </div>
 <p><strong>Matching Service Adapter</strong></p>
 <blockquote>
-<div>The <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The Matching Service Adapter converts SAML into JSON (JavaScript Object Notation) and vice versa.</div></blockquote>
+<div>The <a class="reference internal" href="../msa/msa.html#msa"><span class="std std-ref">Matching Service Adapter</span></a> is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The Matching Service Adapter converts SAML into JSON (JavaScript Object Notation) and vice versa.</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -244,12 +237,12 @@
 <div>A local matching service finds a match between a user’s assured identity and a record in the government service&#8217;s data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (for example name, address, date of birth) against the service’s records.</div></blockquote>
 <p><strong>SAML (Security Assertion Markup Language)</strong></p>
 <blockquote>
-<div><p><a class="reference internal" href="../saml/saml.html#saml"><span>SAML</span></a> is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON.</p>
-<p>For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
+<div><p><a class="reference internal" href="../saml/saml.html#saml"><span class="std std-ref">SAML</span></a> is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON.</p>
+<p>For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
 </div></blockquote>
 <p><strong>PKI (Public Key Infrastructure)</strong></p>
 <blockquote>
-<div><a class="reference internal" href="../pki/pki.html#pki"><span>PKI</span></a> implements secure electronic transactions between the entities in the GOV.UK Verify federation.</div></blockquote>
+<div><a class="reference internal" href="../pki/pki.html#pki"><span class="std std-ref">PKI</span></a> implements secure electronic transactions between the entities in the GOV.UK Verify federation.</div></blockquote>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -275,7 +268,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

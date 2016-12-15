@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Public Key Infrastructure" href="pki.html"/>
         <link rel="next" title="Rotate your keys" href="pkiRotate.html"/>
@@ -61,16 +64,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -117,7 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pkiWorks.html">How a PKI works</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Request certificates</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Request certificates</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#name-your-certificate-requesters-and-approvers">Name your certificate requesters and approvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generate-private-keys">Generate private keys</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#store-private-keys">Store private keys</a></li>
@@ -159,7 +152,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -167,21 +160,21 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
+          <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
       
     <li>Request certificates</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="request-certificates">
+  <div class="section" id="request-certificates">
 <span id="pkirequestcert"></span><h1>Request certificates<a class="headerlink" href="#request-certificates" title="Permalink to this headline">¶</a></h1>
 <p>To use an integration or production environment, you need to request 4 certificates from the IDAP certificate authority:</p>
 <ul class="simple">
@@ -192,14 +185,14 @@
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
 <li>Only certificates approved by the IDAP certificate authority can be used with GOV.UK Verify</li>
-<li>The procedure to request certificates for your integration and production environments are the same, except for the <a class="reference internal" href="#pki-submit-csr"><span>URL to use for enrolment</span></a></li>
+<li>The procedure to request certificates for your integration and production environments are the same, except for the <a class="reference internal" href="#pki-submit-csr"><span class="std std-ref">URL to use for enrolment</span></a></li>
 <li>You must make a separate request for each certificate</li>
 </ul>
 </div>
 <p><strong>To request certificates:</strong></p>
 <ol class="arabic simple">
-<li>Your service manager sends the <a class="reference internal" href="#pki-requesters-approvers"><span>contact details of your certificate requesters</span></a> to the certificate authority.</li>
-<li>Your service manager sends the <a class="reference internal" href="#pki-requesters-approvers"><span>contact details of your approvers</span></a> for the certificate requesters, to the certificate authority.</li>
+<li>Your service manager sends the <a class="reference internal" href="#pki-requesters-approvers"><span class="std std-ref">contact details of your certificate requesters</span></a> to the certificate authority.</li>
+<li>Your service manager sends the <a class="reference internal" href="#pki-requesters-approvers"><span class="std std-ref">contact details of your approvers</span></a> for the certificate requesters, to the certificate authority.</li>
 </ol>
 <blockquote>
 <div><div class="admonition important">
@@ -208,9 +201,9 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>The technical delivery team <a class="reference internal" href="#pki-gen-private-key"><span>generates a private key</span></a> in the form of a file.</li>
-<li>From the private key, the technical delivery team <a class="reference internal" href="#pki-gen-csr"><span>generates the certificate signing request</span></a> file containing a corresponding public key.</li>
-<li>The technical delivery team <a class="reference internal" href="#pki-submit-csr"><span>submits the certificate signing request</span></a> file to the appropriate certificate authority.</li>
+<li>The technical delivery team <a class="reference internal" href="#pki-gen-private-key"><span class="std std-ref">generates a private key</span></a> in the form of a file.</li>
+<li>From the private key, the technical delivery team <a class="reference internal" href="#pki-gen-csr"><span class="std std-ref">generates the certificate signing request</span></a> file containing a corresponding public key.</li>
+<li>The technical delivery team <a class="reference internal" href="#pki-submit-csr"><span class="std std-ref">submits the certificate signing request</span></a> file to the appropriate certificate authority.</li>
 </ol>
 <div class="section" id="name-your-certificate-requesters-and-approvers">
 <span id="pki-requesters-approvers"></span><h2>Name your certificate requesters and approvers<a class="headerlink" href="#name-your-certificate-requesters-and-approvers" title="Permalink to this headline">¶</a></h2>
@@ -233,7 +226,7 @@
 <div class="section" id="generate-private-keys">
 <span id="pki-gen-private-key"></span><h2>Generate private keys<a class="headerlink" href="#generate-private-keys" title="Permalink to this headline">¶</a></h2>
 <p>Run the following command from a Linux (or OSX) command line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>openssl genrsa -out &lt;file name&gt;.key 2048
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="o">&lt;</span><span class="n">file</span> <span class="n">name</span><span class="o">&gt;.</span><span class="n">key</span> <span class="mi">2048</span>
 </pre></div>
 </div>
 <p>where:</p>
@@ -259,7 +252,7 @@
 <span id="pki-gen-csr"></span><h2>Generate certificate signing requests<a class="headerlink" href="#generate-certificate-signing-requests" title="Permalink to this headline">¶</a></h2>
 <p>Use a private key to create a certificate signing request. This request will contain the corresponding public key.</p>
 <p>Run the following command from a Linux (or OSX) command line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>openssl req -new -key &lt;file name&gt;.key -out &lt;file name&gt;.csr
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">key</span> <span class="o">&lt;</span><span class="n">file</span> <span class="n">name</span><span class="o">&gt;.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="o">&lt;</span><span class="n">file</span> <span class="n">name</span><span class="o">&gt;.</span><span class="n">csr</span>
 </pre></div>
 </div>
 <p>where:</p>
@@ -283,8 +276,8 @@
 <li><p class="first"><em>Common Name</em>: one of the following, depending on the type of certificate.</p>
 <blockquote>
 <div><ul class="simple">
-<li>SAML <a class="reference internal" href="pkiWorks.html#pki-encrypt-cert"><span>encryption</span></a> certificate: <code class="docutils literal"><span class="pre">&lt;servicename&gt;</span> <span class="pre">SAML</span> <span class="pre">Encryption</span> <span class="pre">&lt;version&gt;</span></code></li>
-<li>SAML <a class="reference internal" href="pkiWorks.html#pki-sign-cert"><span>signing</span></a> certificate: <code class="docutils literal"><span class="pre">&lt;servicename&gt;</span> <span class="pre">SAML</span> <span class="pre">Signing</span> <span class="pre">&lt;version&gt;</span></code></li>
+<li>SAML <a class="reference internal" href="pkiWorks.html#pki-encrypt-cert"><span class="std std-ref">encryption</span></a> certificate: <code class="docutils literal"><span class="pre">&lt;servicename&gt;</span> <span class="pre">SAML</span> <span class="pre">Encryption</span> <span class="pre">&lt;version&gt;</span></code></li>
+<li>SAML <a class="reference internal" href="pkiWorks.html#pki-sign-cert"><span class="std std-ref">signing</span></a> certificate: <code class="docutils literal"><span class="pre">&lt;servicename&gt;</span> <span class="pre">SAML</span> <span class="pre">Signing</span> <span class="pre">&lt;version&gt;</span></code></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -314,7 +307,7 @@
 <p class="first admonition-title">Important</p>
 <p>Before you submit a certificate signing request, your service manager must:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="#pki-requesters-approvers"><span>send the requester&#8217;s details</span></a> to the IDAP certificate authority</li>
+<li><a class="reference internal" href="#pki-requesters-approvers"><span class="std std-ref">send the requester&#8217;s details</span></a> to the IDAP certificate authority</li>
 <li>request the &#8216;GOV.UK Verify Certification Process for (Relying Party) Subscribers&#8217; document containing the certificate authority URLs from <a class="reference external" href="mailto:idappki&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idappki<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a></li>
 </ul>
 </div>
@@ -365,7 +358,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

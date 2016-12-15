@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="SAML" href="saml.html"/>
         <link rel="next" title="Run SAML compliance tests" href="samlComplianceTool.html"/>
@@ -61,16 +64,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -114,7 +107,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Build your service</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build your service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#use-extended-validation-certificates">Use extended validation certificates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#saml-integration">SAML integration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#choose-a-product-and-framework">Choose a product and framework</a></li>
@@ -155,7 +148,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -163,21 +156,21 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="saml.html">SAML</a> &raquo;</li>
+          <li><a href="saml.html">SAML</a> &raquo;</li>
       
     <li>Build your service</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="build-your-service">
+  <div class="section" id="build-your-service">
 <span id="samlintegration"></span><h1>Build your service<a class="headerlink" href="#build-your-service" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="use-extended-validation-certificates">
 <span id="samlintegrationtool"></span><h2>Use extended validation certificates<a class="headerlink" href="#use-extended-validation-certificates" title="Permalink to this headline">¶</a></h2>
@@ -197,7 +190,7 @@
 <span id="configureadapttechnology"></span><h3>Configure and adapt your technology to respect the SAML profile<a class="headerlink" href="#configure-and-adapt-your-technology-to-respect-the-saml-profile" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="saml-metadata">
 <h4>SAML metadata<a class="headerlink" href="#saml-metadata" title="Permalink to this headline">¶</a></h4>
-<p>The SAML metadata contains the <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-signing"><span>SAML encryption and signing certificates</span></a> used within the GOV.UK Verify federation. The preferred way to distribute and access certificates is through the SAML metadata. When you build your service, make sure it can handle SAML metadata. You may want to use some sample metadata.</p>
+<p>The SAML metadata contains the <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-signing"><span class="std std-ref">SAML encryption and signing certificates</span></a> used within the GOV.UK Verify federation. The preferred way to distribute and access certificates is through the SAML metadata. When you build your service, make sure it can handle SAML metadata. You may want to use some sample metadata.</p>
 </div>
 <div class="section" id="access-the-saml-metadata">
 <span id="saml-access-metadata"></span><h4>Access the SAML metadata<a class="headerlink" href="#access-the-saml-metadata" title="Permalink to this headline">¶</a></h4>
@@ -223,7 +216,7 @@
 </li>
 </ol>
 <p id="saml-consume-responses"><strong>Handle responses using SAML metadata</strong></p>
-<p>Your service must be able to consume SAML responses that are issued by the GOV.UK Verify hub. We recommend that you use the federation metadata and the Matching Service Adapter metadata to do this. You must first <a class="reference internal" href="#saml-access-metadata"><span>access the metadata</span></a>.</p>
+<p>Your service must be able to consume SAML responses that are issued by the GOV.UK Verify hub. We recommend that you use the federation metadata and the Matching Service Adapter metadata to do this. You must first <a class="reference internal" href="#saml-access-metadata"><span class="std std-ref">access the metadata</span></a>.</p>
 <ol class="arabic">
 <li><p class="first">Validate the signature on the response. This checks that the response is correctly signed by the GOV.UK Verify hub
 (entityID: <code class="docutils literal"><span class="pre">https://signin.service.gov.uk</span></code>).</p>
@@ -265,7 +258,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 

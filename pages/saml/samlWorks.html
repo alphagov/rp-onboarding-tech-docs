@@ -30,6 +30,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="SAML" href="saml.html"/>
         <link rel="next" title="Build your service" href="samlIntegration.html"/>
@@ -61,16 +64,6 @@
 </head>
 
 <body class="wy-body-for-nav" role="document">
-
-  
-<div id="ida-cookie-message">
-  <div id="cookie-message-close" style="display:none">
-    <a href="">✖</a>
-  </div>
-  <div id="ida-cookie-message-body">
-    <p>To help us improve, this site uses <a target="_blank" title="Learn more about how we use cookies (opens in a new window)" href="https://www.signin.service.gov.uk/cookies">cookies</a>.</p>
-  </div>
-</div>
 
   <div class="wy-grid-for-nav">
 
@@ -113,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">How SAML works</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How SAML works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
 </ul>
@@ -147,7 +140,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -155,29 +148,29 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-        <li><a href="saml.html">SAML</a> &raquo;</li>
+          <li><a href="saml.html">SAML</a> &raquo;</li>
       
     <li>How SAML works</li>
-    <li class="wy-breadcrumbs-aside">
-      
+      <li class="wy-breadcrumbs-aside">
         
-      
-    </li>
+          
+        
+      </li>
   </ul>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-      <div class="section" id="how-saml-works">
+  <div class="section" id="how-saml-works">
 <span id="samlworks"></span><h1>How SAML works<a class="headerlink" href="#how-saml-works" title="Permalink to this headline">¶</a></h1>
 <p>SAML messages take the form of requests and responses. Messages can contain assertions about the user&#8217;s identity. GOV.UK Verify uses the following types of assertion:</p>
 <ul class="simple">
 <li>identity assertions – contain information about the user</li>
-<li>authentication context assertions – contain information related to how authentication was carried out, for example, the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
+<li>authentication context assertions – contain information related to how authentication was carried out, for example, the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span class="std std-ref">level of assurance</span></a></li>
 <li>fraud event assertions – contain identifiers related to an identified fraud detected by the identity provider</li>
 </ul>
-<p>The SAML profile defines these assertions. See the <a class="reference internal" href="saml.html#saml-docs"><span>list of documents defining the SAML profile</span></a>.</p>
+<p>The SAML profile defines these assertions. See the <a class="reference internal" href="saml.html#saml-docs"><span class="std std-ref">list of documents defining the SAML profile</span></a>.</p>
 <p>All SAML messages that pass between the government service, the hub, and identity providers are sent via the user&#8217;s browser.</p>
 <p>This diagram shows the SAML message flow within the GOV.UK Verify federation. The numbers identify each stage in the flow. See below for explanations.</p>
 <table border="1" class="docutils" id="flow-diagram">
@@ -192,16 +185,16 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
-<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
-<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+<li><a class="reference internal" href="../arch/arch.html#arch"><span class="std std-ref">GOV.UK Verify architecture</span></a></li>
+<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a></li>
+<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span class="std std-ref">user account creation</span></a></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <ol class="arabic simple">
-<li>The government service sends a SAML authentication request to the GOV.UK Verify <a class="reference internal" href="../arch/hub.html#hub"><span>hub</span></a>. The request indicates that a user wants to access the service and needs to verify their identity using GOV.UK Verify.</li>
+<li>The government service sends a SAML authentication request to the GOV.UK Verify <a class="reference internal" href="../arch/hub.html#hub"><span class="std std-ref">hub</span></a>. The request indicates that a user wants to access the service and needs to verify their identity using GOV.UK Verify.</li>
 </ol>
 <blockquote>
 <div><img alt="Diagram showing a SAML authentication request signed by the government service" src="../../_images/step1Graphic.svg" /></div></blockquote>
@@ -211,17 +204,17 @@
 <blockquote>
 <div><img alt="Diagram showing a SAML authentication request signed by the hub" src="../../_images/step2Graphic.svg" /></div></blockquote>
 <ol class="arabic simple" start="3">
-<li>The chosen identity provider authenticates the user based on the required <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a>. The identity provider then sends a SAML response to the GOV.UK Verify hub:</li>
+<li>The chosen identity provider authenticates the user based on the required <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span class="std std-ref">level of assurance</span></a>. The identity provider then sends a SAML response to the GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
 <div><img alt="Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub." src="../../_images/step3Graphic.svg" /><ul class="simple">
-<li>SAML response <a class="reference internal" href="../pki/pkiWorks.html#pki-sign-cert"><span>signed</span></a> by the identity provider</li>
-<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub – this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
-<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user&#8217;s <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> and the <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a></li>
+<li>SAML response <a class="reference internal" href="../pki/pkiWorks.html#pki-sign-cert"><span class="std std-ref">signed</span></a> by the identity provider</li>
+<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span class="std std-ref">encrypted</span></a> for the GOV.UK Verify hub – this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span class="std std-ref">level of assurance</span></a></li>
+<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user&#8217;s <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span class="std std-ref">matching dataset</span></a> and the <a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span class="std std-ref">persistent identifier</span></a></li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For more information on the contents of the assertions, see the diagrams for <a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a>.</p>
+<p class="last">For more information on the contents of the assertions, see the diagrams for <a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span class="std std-ref">user account creation</span></a>.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
@@ -245,7 +238,7 @@
 <blockquote>
 <div><img alt="Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub." src="../../_images/step7Graphic.svg" /><ul class="simple">
 <li>SAML attribute query response signed by the Matching Service Adapter</li>
-<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span class="std std-ref">hashed persistent identifier</span></a></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="8">
@@ -283,7 +276,9 @@
     <p>
 
     </p>
-  </div> 
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
 
 </footer>
 
