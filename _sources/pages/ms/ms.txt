@@ -17,7 +17,7 @@ Government services host their matching service within their security domain. A 
 
    * :ref:`GOV.UK architecture <arch>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`
-   * :ref:`user account creation <ms_cua_diagram>`"
+   * :ref:`create user accounts <ms_cua_diagram>`"
 
 .. rubric:: Why does GOV.UK Verify use a matching service? 
 

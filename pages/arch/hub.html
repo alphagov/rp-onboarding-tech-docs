@@ -30,12 +30,9 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Architecture" href="arch.html"/>
-        <link rel="next" title="Steps to integrate with GOV.UK Verify" href="../steps/steps.html"/>
+        <link rel="next" title="Steps to integrate GOV.UK Verify into your service" href="../steps/steps.html"/>
         <link rel="prev" title="Architecture" href="arch.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -104,10 +101,10 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="arch.html">Architecture</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">What does the GOV.UK Verify hub do?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">What does the GOV.UK Verify hub do?</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
@@ -138,7 +135,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -175,32 +172,32 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span class="std std-ref">SAML message flow</span></a></li>
-<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a></li>
-<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span class="std std-ref">user account creation</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
+<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <ol class="arabic simple">
-<li>The GOV.UK Verify hub receives a <a class="reference internal" href="../saml/saml.html#saml"><span class="std std-ref">SAML</span></a> request from the government service to authenticate a user who is trying to access their service.</li>
+<li>The GOV.UK Verify hub receives a <a class="reference internal" href="../saml/saml.html#saml"><span>SAML</span></a> request from the government service to authenticate a user who is trying to access their service.</li>
 <li>The GOV.UK Verify hub helps the user select an identity provider that will authenticate them.</li>
 <li>The GOV.UK Verify hub sends a SAML request to the chosen identity provider to authenticate the user.</li>
 <li>The chosen identity provider authenticates the user. It then sends two assertions (in a SAML response) to the GOV.UK Verify hub. These assertions contain the:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span class="std std-ref">matching dataset</span></a> – name, address, date of birth, and gender (optional), plus historical data where available</li>
-<li><a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span class="std std-ref">persistent identifier</span></a> which identifies the unique combination of the user and identity provider</li>
-<li><a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span class="std std-ref">level of assurance</span></a> to which the identity provider authenticated the user</li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> – name, address, date of birth, and gender (optional), plus historical data where available</li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-persid"><span>persistent identifier</span></a> which identifies the unique combination of the user and identity provider</li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a> to which the identity provider authenticated the user</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>The GOV.UK Verify hub initiates matching of the authenticated user, based on the service’s <a class="reference internal" href="../ms/msBuild.html#ms-strat"><span class="std std-ref">matching strategy</span></a>, by sending a SAML attribute query to the service’s Matching Service Adapter.</li>
+<li>The GOV.UK Verify hub initiates matching of the authenticated user, based on the service’s <a class="reference internal" href="../ms/msBuild.html#ms-strat"><span>matching strategy</span></a>, by sending a SAML attribute query to the service’s Matching Service Adapter.</li>
 <li>If the user is matched, the GOV.UK Verify hub passes an assertion (SAML response) of the user’s authenticated identity to the service.</li>
 </ol>
-<p>For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
+<p>For more information, see the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>diagram showing the SAML message flow</span></a> within the GOV.UK Verify federation.</p>
 </div>
 
 
@@ -210,7 +207,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../steps/steps.html" class="btn btn-neutral float-right" title="Steps to integrate with GOV.UK Verify" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../steps/steps.html" class="btn btn-neutral float-right" title="Steps to integrate GOV.UK Verify into your service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="arch.html" class="btn btn-neutral" title="Architecture" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

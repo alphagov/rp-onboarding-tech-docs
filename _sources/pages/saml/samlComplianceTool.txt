@@ -122,7 +122,7 @@ Test your matching service with the SAML compliance tool
      Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 
 
-3. POST your test matching dataset (see example below) to the ``Location`` field in the above response (``.../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19`` in the above example). 
+3. POST your test :ref:`matching dataset <gloss_mds>` (see example below) to the ``Location`` field in the above response (``.../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19`` in the above example). 
 
    ::
 

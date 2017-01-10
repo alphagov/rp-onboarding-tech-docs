@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="SAML" href="saml.html"/>
         <link rel="next" title="Local Matching Service" href="../ms/ms.html"/>
@@ -104,11 +101,11 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works wth GOV.UK Verify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Run SAML compliance tests</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Run SAML compliance tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-service-with-the-saml-compliance-tool">Test your service with the SAML compliance tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-matching-service-with-the-saml-compliance-tool">Test your matching service with the SAML compliance tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-of-a-json-request-to-your-local-matching-service">Example of a JSON request to your local matching service</a></li>
@@ -145,7 +142,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -178,15 +175,15 @@
 <p>The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
 <p>Prerequisites:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span class="std std-ref">build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span class="std std-ref">example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span class="std std-ref">JSON schema</span></a> for a matching request</li>
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span class="std std-ref">install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span class="std std-ref">configure</span></a> your Matching Service Adapter</li>
+<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your Matching Service Adapter</li>
 </ul>
 <p>Use the SAML compliance test to:</p>
 <ul class="simple">
-<li><a class="reference internal" href="#samlctservicehub"><span class="std std-ref">test your service</span></a></li>
-<li><a class="reference internal" href="#samlcthubmsa"><span class="std std-ref">test your matching service</span></a></li>
+<li><a class="reference internal" href="#samlctservicehub"><span>test your service</span></a></li>
+<li><a class="reference internal" href="#samlcthubmsa"><span>test your matching service</span></a></li>
 </ul>
-<p>After SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span class="std std-ref">end-to-end testing</span></a> in the integration environment.</p>
+<p>After SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
 <div class="section" id="test-your-service-with-the-saml-compliance-tool">
 <span id="samlctservicehub"></span><h2>Test your service with the SAML compliance tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <p>To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.</p>
@@ -198,18 +195,18 @@
 <li><p class="first">Generate self-signed certificates for use with the compliance tool only. You can use OpenSSL to generate self-signed certificates using the <a class="reference external" href="https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites">guidelines provided by the Heroku Dev Center</a>.</p>
 </li>
 <li><p class="first">POST the following JSON (via curl, or similar) to the <code class="docutils literal"><span class="pre">URI</span> <span class="pre">compliance-tool.RPPostUri</span></code> provided by your GOV.UK Verify engagement lead:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-<span class="p">{</span>
-    <span class="s2">&quot;rpEntityId&quot;</span><span class="p">:</span><span class="s2">&quot;[entityID for your service]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;assertionConsumerServiceUrl&quot;</span><span class="p">:</span><span class="s2">&quot;[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;signingPublicCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Base64-encoded X509 signing certificate for your service]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;encryptionPublicCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Base64-encoded X509 encryption certificate for your service]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;expectedPID&quot;</span><span class="p">:</span><span class="s2">&quot;[expected persistent identifier: this is the user id that the Matching Service Adapter returns in an assertion]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;matchingServiceEntityId&quot;</span><span class="p">:</span><span class="s2">&quot;[entityID for your Matching Service Adapter]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;matchingServiceSigningPrivateCert&quot;</span><span class="p">:</span><span class="s2">&quot;[Base64-encoded private signing key for the Matching Service Adapter, see below]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;userAccountCreationAttributes&quot;</span><span class="p">:</span><span class="s2">&quot;[optional list of attributes the government service requires for new user account creation, see below]&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;useSimpleProfile&quot;</span><span class="p">:</span><span class="s2">&quot;[optional, to use a simpler SAML profile that works with Shibboleth - defaults to false]&quot;</span>
-<span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
+{
+    &quot;rpEntityId&quot;:&quot;[entityID for your service]&quot;,
+    &quot;assertionConsumerServiceUrl&quot;:&quot;[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]&quot;,
+    &quot;signingPublicCert&quot;:&quot;[Base64-encoded X509 signing certificate for your service]&quot;,
+    &quot;encryptionPublicCert&quot;:&quot;[Base64-encoded X509 encryption certificate for your service]&quot;,
+    &quot;expectedPID&quot;:&quot;[expected persistent identifier: this is the user id that the Matching Service Adapter returns in an assertion]&quot;,
+    &quot;matchingServiceEntityId&quot;:&quot;[entityID for your Matching Service Adapter]&quot;,
+    &quot;matchingServiceSigningPrivateCert&quot;:&quot;[Base64-encoded private signing key for the Matching Service Adapter, see below]&quot;,
+    &quot;userAccountCreationAttributes&quot;:&quot;[optional list of attributes the government service requires for new user account creation, see below]&quot;,
+    &quot;useSimpleProfile&quot;:&quot;[optional, to use a simpler SAML profile that works with Shibboleth - defaults to false]&quot;
+}
 </pre></div>
 </div>
 </li>
@@ -221,19 +218,19 @@
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateCert</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the Matching Service Adapter</p>
 <p>This key must be in PKCS#8 PEM format:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">server</span><span class="o">.</span><span class="n">crt</span> <span class="n">server</span><span class="o">.</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">server</span><span class="o">.</span><span class="n">pem</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>cat server.crt server.key &gt; server.pem
 
-<span class="n">openssl</span> <span class="n">pkcs8</span> <span class="o">-</span><span class="n">nocrypt</span> <span class="o">-</span><span class="ow">in</span> <span class="n">server</span><span class="o">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">out</span> <span class="n">server</span><span class="o">.</span><span class="n">pk8</span><span class="o">.</span><span class="n">pem</span> <span class="o">-</span><span class="n">outform</span> <span class="n">PEM</span> <span class="o">-</span><span class="n">topk8</span>
+openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
 </pre></div>
 </div>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">userAccountCreationAttributes</span></code>: provide this only if you want to test <a class="reference internal" href="../ms/msCua.html#ms-cua"><span class="std std-ref">new user account creation</span></a> – select from the full <a class="reference internal" href="../ms/msCua.html#list-cua-attributes"><span class="std std-ref">list of attributes</span></a></p>
+<li><p class="first"><code class="docutils literal"><span class="pre">userAccountCreationAttributes</span></code>: provide this only if you want to test <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>new user account creation</span></a> – select from the full <a class="reference internal" href="../ms/msCua.html#list-cua-attributes"><span>list of attributes</span></a></p>
 </li>
 </ul>
 </div></blockquote>
 <ol class="arabic" start="5">
 <li><p class="first">You receive a response similar to the following:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span> <span class="mi">200</span> <span class="n">Created</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Status 200 Created
 </pre></div>
 </div>
 </li>
@@ -255,7 +252,7 @@
 <li>Requester error (this is when the request is invalid)</li>
 <li>Account creation</li>
 </ul>
-<p>The above scenarios are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span class="std std-ref">SAML message flow</span></a>.</p>
+<p>The above scenarios are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
@@ -264,26 +261,26 @@
 <li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or similar) to the URL <code class="docutils literal"><span class="pre">&lt;compliance-tool-host&gt;/ms-test-run</span></code> provided by your GOV.UK Verify engagement lead.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
- <span class="p">{</span>
- <span class="s2">&quot;matchingServiceEntityId&quot;</span><span class="p">:</span> <span class="s2">&quot;[entityID of the matching service]&quot;</span><span class="p">,</span>
- <span class="s2">&quot;transactionEntityId&quot;</span><span class="p">:</span> <span class="s2">&quot;[entityID of the transaction (service)]&quot;</span><span class="p">,</span>
- <span class="s2">&quot;matchingServiceEndpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;[the matching service&#39;s endpoint]&quot;</span><span class="p">,</span>
- <span class="s2">&quot;matchingServicePublicSigningCert&quot;</span><span class="p">:</span> <span class="s2">&quot;[signing certificate to verify the response]&quot;</span><span class="p">,</span>
- <span class="s2">&quot;matchingServicePublicEncryptionCert&quot;</span><span class="p">:</span> <span class="s2">&quot;[encryption certificate to encrypt the assertions]&quot;</span>
- <span class="p">}</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
+ {
+ &quot;matchingServiceEntityId&quot;: &quot;[entityID of the matching service]&quot;,
+ &quot;transactionEntityId&quot;: &quot;[entityID of the transaction (service)]&quot;,
+ &quot;matchingServiceEndpoint&quot;: &quot;[the matching service&#39;s endpoint]&quot;,
+ &quot;matchingServicePublicSigningCert&quot;: &quot;[signing certificate to verify the response]&quot;,
+ &quot;matchingServicePublicEncryptionCert&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;
+ }
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic" start="2">
 <li><p class="first">You receive a response similar to the following:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Status</span> <span class="mi">201</span> <span class="n">Created</span>
-<span class="n">Location</span><span class="p">:</span> <span class="o">.../</span><span class="n">ms</span><span class="o">-</span><span class="n">test</span><span class="o">-</span><span class="n">run</span><span class="o">/</span><span class="mi">8</span><span class="n">fd7782f</span><span class="o">-</span><span class="n">efac</span><span class="o">-</span><span class="mi">48</span><span class="n">b2</span><span class="o">-</span><span class="mi">8171</span><span class="o">-</span><span class="mi">3</span><span class="n">e4da9553d19</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Status 201 Created
+Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 </pre></div>
 </div>
 </li>
-<li><p class="first">POST your test matching dataset (see example below) to the <code class="docutils literal"><span class="pre">Location</span></code> field in the above response (<code class="docutils literal"><span class="pre">.../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19</span></code> in the above example).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<li><p class="first">POST your test <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> (see example below) to the <code class="docutils literal"><span class="pre">Location</span></code> field in the above response (<code class="docutils literal"><span class="pre">.../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19</span></code> in the above example).</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
     <span class="s2">&quot;persistentId&quot;</span><span class="p">:</span> <span class="s2">&quot;93E5910B-F4C2-4561-AEC5-C878AFEF25A3&quot;</span><span class="p">,</span>
     <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -366,14 +363,14 @@
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your Matching Service Adapter. This corresponds to step 4 in the <a class="reference internal" href="samlWorks.html#samlworks"><span class="std std-ref">SAML message flow</span></a>.</li>
-<li>Your Matching Service Adapter validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="samlWorks.html#samlworks"><span class="std std-ref">SAML message flow</span></a>.</li>
+<li>When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your Matching Service Adapter. This corresponds to step 4 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
+<li>Your Matching Service Adapter validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
 </ol>
 </div>
 <div class="section" id="example-of-a-json-request-to-your-local-matching-service">
 <span id="samlct-jsoneg"></span><h2>Example of a JSON request to your local matching service<a class="headerlink" href="#example-of-a-json-request-to-your-local-matching-service" title="Permalink to this headline">¶</a></h2>
 <p>Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;drivers_licence&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
@@ -441,12 +438,12 @@
 </div>
 <p>where the <code class="docutils literal"><span class="pre">matchId</span></code> field is unique to a user&#8217;s journey in the GOV.UK Verify hub – you can log this for future reference.</p>
 <p>Below is an example of a response from your local matching service:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>200 {
+<div class="highlight-python"><div class="highlight"><pre><span></span>200 {
  result : match|no-match
  }`
 </pre></div>
 </div>
-<p>This response corresponds to step 6 in the <a class="reference internal" href="samlWorks.html#samlworks"><span class="std std-ref">SAML message flow</span></a>.</p>
+<p>This response corresponds to step 6 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 </div>
 </div>
 

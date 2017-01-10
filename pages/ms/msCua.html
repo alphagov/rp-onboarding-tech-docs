@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Local Matching Service" href="ms.html"/>
         <link rel="next" title="Matching Service Adapter" href="../msa/msa.html"/>
@@ -104,12 +101,12 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="ms.html">Local Matching Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Create user accounts</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Create user accounts</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create-user-accounts-message-flow">Create user accounts: message flow</a></li>
 </ul>
 </li>
@@ -143,7 +140,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -167,28 +164,28 @@
             
   <div class="section" id="create-user-accounts">
 <span id="ms-cua"></span><h1>Create user accounts<a class="headerlink" href="#create-user-accounts" title="Permalink to this headline">¶</a></h1>
-<p>You can create a new account for the user based on the hashed persistent identifier and a subset of attributes from the matching dataset. It&#8217;s optional to set up your matching service to support the creation of new accounts.</p>
+<p>You can create a new account for the user based on the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a> and a subset of attributes from the <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a>. It&#8217;s optional to set up your matching service to support the creation of new accounts.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Before creating a user account you must request explicit user consent.</p>
 </div>
 <ol class="arabic simple">
-<li>Make sure your Matching Service Adapter exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the <a class="reference internal" href="#ms-cua-diagram"><span class="std std-ref">diagram showing user account creation</span></a>). The Matching Service Adapter then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
+<li>Make sure your Matching Service Adapter exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The Matching Service Adapter then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span>[{
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>[{
  &quot;hashedPid&quot;: &quot;&lt;some string value&gt;&quot;,
  &quot;levelOfAssurance&quot;: &quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;
 }]`
 </pre></div>
 </div>
-<p>You must specify the Matching Service Adapter&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span class="std std-ref">request access to an environment</span></a>. This form is available from your engagement lead.</p>
+<p>You must specify the Matching Service Adapter&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>request access to an environment</span></a>. This form is available from your engagement lead.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li>Make sure the local matching service&#8217;s user account creation URI endpoint returns the following JSON, choosing success or failure as appropriate:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-default"><div class="highlight"><pre><span></span>[{
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>[{
  &quot;result&quot;: &quot;success | failure&quot;
 }]`
 </pre></div>
@@ -199,11 +196,11 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span class="std std-ref">Configure the Matching Service Adapter</span></a> for more information.</li>
-<li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span class="std std-ref">Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
+<li>Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
+<li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
 </ol>
 <blockquote id="list-cua-attributes">
-<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FIRST_NAME</span>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FIRST_NAME</span>
 <span class="n">FIRST_NAME_VERIFIED</span>
 <span class="n">MIDDLE_NAME</span>
 <span class="n">MIDDLE_NAME_VERIFIED</span>
@@ -236,9 +233,9 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../arch/arch.html#arch"><span class="std std-ref">GOV.UK Verify architecture</span></a></li>
-<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span class="std std-ref">SAML message flow</span></a></li>
-<li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a></li>
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
 </ul>
 </td>
 </tr>
@@ -246,7 +243,7 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span class="std std-ref">matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">diagram for matching cycles</span></a>.</p>
+<p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
 </div>
 <ol class="arabic simple">
 <li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the Matching Service Adapter.</li>
@@ -264,8 +261,8 @@
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>hashed persistent identifier</li>
-<li>matching dataset</li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a></li>
 <li>list of attributes to extract from the matching dataset</li>
 </ul>
 </div></blockquote>
@@ -281,7 +278,7 @@
 <li>user control  the user must give their informed consent to the information being sent</li>
 <li>data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>
 </ul>
-<p class="last">For more information see the <a class="reference external" href="https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/361496/PCAG_IDA_Principles_3.1__4_.pdf">Identity Assurance Principles</a>.</p>
+<p class="last">For more information see the <a class="reference external" href="https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles">Identity Assurance Principles</a>.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">

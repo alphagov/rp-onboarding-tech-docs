@@ -3,7 +3,7 @@
 Architecture
 ============
 
-GOV.UK Verify lets users prove their identity online so they can access government services. When a user wants to access a government service, a trusted identity provider performs the checks needed to verify the user’s identity. 
+GOV.UK Verify lets users prove their identity online so they can access government services. When a user wants to access a government service, a trusted identity provider performs the checks needed to prove the user’s identity. 
 
 
 Below is a high-level diagram of the GOV.UK Verify architecture.
@@ -22,7 +22,8 @@ Below is a high-level diagram of the GOV.UK Verify architecture.
    * :ref:`matching cycles <ms_matchcyles_diagram>`
    * :ref:`user account creation <ms_cua_diagram>`"
 
-The main elements of GOV.UK Verify architecture are:
+
+The main elements in GOV.UK Verify architecture are:
 
 **GOV.UK Verify hub**
 
@@ -48,7 +49,7 @@ The main elements of GOV.UK Verify architecture are:
 
   A private sector organisation paid by government to verify a user’s identity and assert verified data that identifies them to the government service.
 
-  The organisations are certified as meeting relevant industry security standards and the Identity Assurance Principles published by the Cabinet Office and the `National Cyber Security Centre (NCSC) <https://www.ncsc.gov.uk/>`_.
+  The organisations are certified as meeting relevant industry security standards and the `Identity Assurnce Principles <https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles>`_ published by the Cabinet Office and the `National Cyber Security Centre <https://www.ncsc.gov.uk/>`_ (NCSC).
 
 |
 
@@ -86,6 +87,7 @@ The main elements of GOV.UK Verify architecture are:
 **PKI (Public Key Infrastructure)**
 
  :ref:`PKI <pki>` implements secure electronic transactions between the entities in the GOV.UK Verify federation. 
+
 
 
 .. toctree::

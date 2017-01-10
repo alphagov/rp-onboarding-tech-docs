@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Public Key Infrastructure" href="pki.html"/>
         <link rel="next" title="GOV.UK Verify environments" href="../env/env.html"/>
@@ -104,14 +101,14 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pkiWorks.html">How a PKI works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pkiRequestCert.html">Request certificates</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Rotate your keys</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Rotate your keys</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#initial-steps-for-all-keys">Initial steps for all keys</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-encryption-key">Rotate your service encryption key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-signing-key">Rotate your service signing key</a></li>
@@ -152,7 +149,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -188,8 +185,8 @@
 <div class="section" id="initial-steps-for-all-keys">
 <h2>Initial steps for all keys<a class="headerlink" href="#initial-steps-for-all-keys" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Generate a <a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span class="std std-ref">new private key</span></a>.</li>
-<li>Generate a <a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span class="std std-ref">certificate signing request</span></a> and <a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span class="std std-ref">submit it</span></a> to the IDAP certificate authority.</li>
+<li>Generate a <a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span>new private key</span></a>.</li>
+<li>Generate a <a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span>certificate signing request</span></a> and <a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span>submit it</span></a> to the IDAP certificate authority.</li>
 <li>The IDAP certificate authority issues the new certificate to the government service.</li>
 </ol>
 </div>
@@ -260,7 +257,7 @@
 </div>
 <div class="section" id="rotate-your-matching-service-adapter-signing-key">
 <h2>Rotate your Matching Service Adapter signing key<a class="headerlink" href="#rotate-your-matching-service-adapter-signing-key" title="Permalink to this headline">¶</a></h2>
-<p>There are 3 methods to rotate your Matching Service Adapter signing key. We recommend that you use SAML metadata as this minimises service downtime and reduces the complexity of the the key rotation procedure.  For more information, see <a class="reference internal" href="../saml/samlIntegration.html#saml-access-metadata"><span class="std std-ref">Access the SAML metadata</span></a>.</p>
+<p>There are 3 methods to rotate your Matching Service Adapter signing key. We recommend that you use SAML metadata as this minimises service downtime and reduces the complexity of the the key rotation procedure.  For more information, see <a class="reference internal" href="../saml/samlIntegration.html#saml-access-metadata"><span>Access the SAML metadata</span></a>.</p>
 <div class="section" id="use-saml-metadata">
 <span id="pki-config-msa-2signkeys-samlmetadata"></span><h3>Use SAML metadata<a class="headerlink" href="#use-saml-metadata" title="Permalink to this headline">¶</a></h3>
 <p>This procedure allows zero service downtime when you rotate your Matching Service Adapter signing key. It involves publishing 2 SAML signing certificates in the Matching Service Adapter SAML metadata.</p>

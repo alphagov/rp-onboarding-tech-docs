@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../index.html"/>
         <link rel="next" title="Version history" href="../pages/vershis/vershis.html"/>
         <link rel="prev" title="Run end-to-end testing" href="../pages/env/envEndToEndTests.html"/>
@@ -103,13 +100,13 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pages/steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/env/env.html">GOV.UK Verify environments</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary of terms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Glossary of terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/vershis/vershis.html">Version history</a></li>
 <li class="toctree-l1"><a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">Contact us</a></li>
 </ul>
@@ -134,7 +131,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -157,70 +154,69 @@
   <div class="section" id="glossary-of-terms">
 <h1>Glossary of terms<a class="headerlink" href="#glossary-of-terms" title="Permalink to this headline">¶</a></h1>
 <p id="gloss-assertion"><strong>assertion</strong></p>
-<p>A package of data created by an entity in the GOV.UK federation. Data in an assertion is signed by the creator of the assertion (eg an identity provider or the <a class="reference internal" href="#gloss-msa"><span class="std std-ref">Matching Service Adapter</span></a>) and encrypted for the recipient (eg the <a class="reference internal" href="#gloss-hub"><span class="std std-ref">hub</span></a>).</p>
+<p>A package of data created by an entity in the GOV.UK federation. Data in an assertion is signed by the creator of the assertion (for example, an identity provider or the <a class="reference internal" href="#gloss-msa"><span>Matching Service Adapter</span></a>) and encrypted for the recipient (for example, the <a class="reference internal" href="#gloss-hub"><span>hub</span></a>).</p>
 <p id="gloss-assid"><strong>assured identity</strong></p>
-<p>An identity that&#8217;s been verified to the required <a class="reference internal" href="#gloss-loa"><span class="std std-ref">level of assurance</span></a>.</p>
+<p>An identity that&#8217;s been verified to the required <a class="reference internal" href="#gloss-loa"><span>level of assurance</span></a>.</p>
 <p id="gloss-attr"><strong>attributes</strong></p>
-<p>Data that&#8217;s sent from one entity to another in a SAML <a class="reference internal" href="#gloss-assertion"><span class="std std-ref">assertion</span></a>, for example, the <a class="reference internal" href="#gloss-mds"><span class="std std-ref">matching dataset</span></a> for use by the matching service.</p>
+<p>Data that&#8217;s sent from one entity to another in a SAML <a class="reference internal" href="#gloss-assertion"><span>assertion</span></a>, for example, the <a class="reference internal" href="#gloss-mds"><span>matching dataset</span></a> for use by the matching service.</p>
 <p id="gloss-authent"><strong>authentication</strong></p>
-<p>The process by which a system confirms the user is known to that system, usually through the use of 1 or more <a class="reference internal" href="#gloss-credent"><span class="std std-ref">credentials</span></a>.</p>
+<p>The process by which a system confirms the user is known to that system, usually through the use of 1 or more <a class="reference internal" href="#gloss-credent"><span>credentials</span></a>.</p>
 <p id="gloss-authentreq"><strong>authentication request</strong></p>
-<p>The request that a service sends to the <a class="reference internal" href="#gloss-hub"><span class="std std-ref">hub</span></a>, or the hub sends to an identity provider, to request the identification of a user trying to access a digital service.</p>
+<p>The request that a service sends to the <a class="reference internal" href="#gloss-hub"><span>hub</span></a>, or the hub sends to an identity provider, to request the identification of a user trying to access a digital service.</p>
 <p id="gloss-cert"><strong>certificate</strong></p>
 <p>A file that is issued and signed by a certificate authority. It contains a copy of the certificate owner’s public key, used for encryption or signing.</p>
-<blockquote id="gloss-certauth">
-<div><p><strong>certificate authority</strong></p>
-<p>An entity that issues and signs digital certificates within a <a class="reference internal" href="#gloss-pki"><span class="std std-ref">public key infrastructure</span></a> (PKI). The certificate authority acts as the <a class="reference internal" href="#gloss-trustanchor"><span class="std std-ref">trust anchor</span></a> in the PKI.</p>
-</div></blockquote>
-<blockquote id="csr-file">
-<div><p><strong>certificate signing request file</strong></p>
+<p>See <a class="reference internal" href="#gloss-encryptioncert"><span>encryption certificate</span></a> and <a class="reference internal" href="#gloss-signingcert"><span>signing certificate</span></a>.</p>
+<p id="gloss-certauth"><strong>certificate authority</strong></p>
+<p>An entity that issues and signs digital certificates within a <a class="reference internal" href="#gloss-pki"><span>public key infrastructure</span></a> (PKI). The certificate authority acts as the <a class="reference internal" href="#gloss-trustanchor"><span>trust anchor</span></a> in the PKI.</p>
+<p id="csr-file"><strong>certificate signing request file</strong></p>
 <p>A file that contains all the information a certificate authority requires in order to issue a signed certificate.</p>
-<p><strong>encryption certificate</strong></p>
-<p>Contains the receiver’s public key that the sender uses to encrypt a message. The receiver decrypts the message using their corresponding private key. This provides the sender with assurance that only the receiver can decrypt the message.</p>
-<p><strong>signing certificate</strong></p>
-<p>Contains a public key that the receiver uses to check the authenticity of a message signed with the sender’s private key. This provides the receiver with assurance of the sender’s identity.</p>
-</div></blockquote>
 <p><strong>compliance tool</strong></p>
-<p>Enables services to carry out testing of SAML compliance before testing end-to-end user journeys in the <a class="reference internal" href="#gloss-intenv"><span class="std std-ref">integration environment</span></a>. It allows isolated testing of both the connection from the service to the <a class="reference internal" href="#gloss-hub"><span class="std std-ref">hub</span></a> and the connection from the hub to the <a class="reference internal" href="#gloss-msa"><span class="std std-ref">Matching Service Adapter</span></a>.</p>
+<p>Enables services to carry out testing of SAML compliance before testing end-to-end user journeys in the <a class="reference internal" href="#gloss-intenv"><span>integration environment</span></a>. It allows isolated testing of both the connection from the service to the <a class="reference internal" href="#gloss-hub"><span>hub</span></a> and the connection from the hub to the <a class="reference internal" href="#gloss-msa"><span>Matching Service Adapter</span></a>.</p>
 <p id="gloss-credent"><strong>credentials</strong></p>
 <p>An identity provider issues credentials to a user to allow the user to be authenticated when accessing a government service. Examples of credentials are usernames, passwords and security codes.</p>
 <p id="gloss-cryptog"><strong>cryptography</strong></p>
-<p>A set of techniques for guaranteeing the integrity and confidentiality of data transmitted over a public network. This is done by a combination of encryption and signing</p>
+<p>A set of techniques for guaranteeing the integrity and confidentiality of data transmitted over a public network. This is done by a combination of encryption and signing.</p>
+<p>See <a class="reference internal" href="#gloss-encryptioncert"><span>encryption certificate</span></a> and <a class="reference internal" href="#gloss-signingcert"><span>signing certificate</span></a>.</p>
+<p id="gloss-encryptioncert"><strong>encryption certificate</strong></p>
+<p>Contains the receiver’s public key that the sender uses to encrypt a message. The receiver decrypts the message using their corresponding private key. This provides the sender with assurance that only the receiver can decrypt the message.</p>
 <p id="gloss-entityid"><strong>entityID</strong></p>
-<p>A unique identifier for each entity within the GOV.UK Verify federation. Government services, Matching Service Adapters, the GOV.UK Verify <a class="reference internal" href="#gloss-hub"><span class="std std-ref">hub</span></a>, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: https://signin.service.gov.uk.</p>
+<p>A unique identifier for each entity within the GOV.UK Verify federation. Government services, Matching Service Adapters, the GOV.UK Verify <a class="reference internal" href="#gloss-hub"><span>hub</span></a>, and identity providers all have their own entityIDs. The entityID is used within messages and metadata to refer to an entity. The entityID is formatted as a URL  but is not necessarily resolvable. For example, the entityID of the GOV.UK Verify hub is: https://signin.service.gov.uk.</p>
 <p><strong>data matching</strong></p>
 <p>The process of finding a local identifier through matching that&#8217;s useful to a government service when completing a transaction, for example confirming a National Insurance number so the user can amend their tax records.</p>
 <p><strong>Data Protection Act 1998</strong></p>
 <p>The Data Protection Act controls how personal information is used by organisations, businesses or the government. Read more about the <a class="reference external" href="https://www.gov.uk/data-protection/the-data-protection-act">Data Protection Act</a>.</p>
 <p><strong>document checking service (DCS)</strong></p>
-<p>A service supplementary to GOV.UK Verify that allows an identity provider to validate user documents against government records.</p>
+<p>A service supplementary to GOV.UK Verify that allows identity providers to validate user documents against government records.</p>
 <p><strong>Good Practice Guides (GPGs 43, 44, 45, 46 and 56 in relation to identity assurance)</strong></p>
-<p>Documents that have been developed collaboratively with HMG departments, private sector representatives and the UK National Technical Authority for Information Assurance (CESG) to ensure that the business, technical and security demands across the sectors can be met. The guides are intended to ensure that the delivery of trusted online user transactions will take place in accordance with the Identity Assurance Principles.</p>
-<blockquote>
-<div><p><strong>Good Practice Guide 43 (GPG 43)</strong></p>
+<p>Documents that have been developed collaboratively with HMG departments, private sector representatives and the UK National Technical Authority for Information Assurance to ensure that the business, technical and security demands across the sectors can be met. The guides are intended to ensure that the delivery of trusted online user transactions will take place in accordance with the <a class="reference internal" href="#gloss-identityassuranceprinciples"><span>Identity Assurance Principles</span></a>.</p>
+<p><strong>Good Practice Guide 43 (GPG 43)</strong></p>
 <p>Also known as Requirements for Secure Delivery of Online Public Services (RSDOPS).  This document sets out an approach to determining the components needed to securely deliver public services online to individuals and businesses.</p>
-</div></blockquote>
 <p id="gloss-govserv"><strong>government service</strong></p>
 <p>A service provided by a government department such as Check or update your company car tax (HMRC) or Claim your redundancy payment (BIS), that needs proof of a user’s identity to complete a transaction.</p>
 <p id="gloss-hashpid"><strong>hashed persistent identifier</strong></p>
-<p>A unique identifier which refers to a combination of a user, the identity provider that verified the user’s identity, and the government service that the user is trying to access.  The <a class="reference internal" href="#gloss-msa"><span class="std std-ref">Matching Service Adapter</span></a> generates the hashed persistent identifier from the <a class="reference internal" href="#gloss-persid"><span class="std std-ref">persistent identifier</span></a>. This ensures that identifiers for user identity are unique to specific services and can’t be used across multiple services.</p>
+<p>A unique identifier which refers to a combination of:</p>
+<ul class="simple">
+<li>a user</li>
+<li>the identity provider that verified the user’s identity</li>
+<li>and the government service that the user is trying to access.</li>
+</ul>
+<p>The <a class="reference internal" href="#gloss-msa"><span>Matching Service Adapter</span></a> generates the hashed persistent identifier from the <a class="reference internal" href="#gloss-persid"><span>persistent identifier</span></a>. This ensures that identifiers for user identity are unique to specific services and can’t be used across multiple services.</p>
 <p id="gloss-hub"><strong>hub (hub service, GOV.UK Verify hub)</strong></p>
-<p>The infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service. The <a class="reference internal" href="#gloss-hub"><span class="std std-ref">hub</span></a> protects privacy and ensures security during <a class="reference internal" href="#gloss-authent"><span class="std std-ref">authentication</span></a>.</p>
+<p>The infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service. The <a class="reference internal" href="#gloss-hub"><span>hub</span></a> protects privacy and ensures security during <a class="reference internal" href="#gloss-authent"><span>authentication</span></a>.</p>
 <p><strong>identity</strong></p>
-<p>In the case of identity assurance, this is the description of who or what an entity is, defined by a collection of <a class="reference internal" href="#gloss-attr"><span class="std std-ref">attributes</span></a>.</p>
+<p>In the case of identity assurance, this is the description of who or what an entity is, defined by a collection of <a class="reference internal" href="#gloss-attr"><span>attributes</span></a>.</p>
 <p><strong>identity assurance</strong></p>
 <p>The ability to prove, to a certain level of confidence, that a user trying to access a digital service is who they say they are.</p>
-<p><strong>Identity Assurance Principles</strong></p>
-<p>The principles that set out how the government&#8217;s identity assurance approach should be configured to meet the privacy and consumer expectations of its users. They are published by the Privacy and Consumer Advisory Group and are amended or replaced from time to time.</p>
+<p id="gloss-identityassuranceprinciples"><strong>Identity Assurance Principles</strong></p>
+<p>The <a class="reference external" href="https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles">Identity Assurance Principles</a> that set out how the government&#8217;s identity assurance approach should be configured to meet the privacy and consumer expectations of its users. They are published by the <a class="reference internal" href="#gloss-privacyadvisorygroup"><span>Privacy and Consumer Advisory Group</span></a> and are amended or replaced from time to time.</p>
 <p id="identity-provider"><strong>identity provider</strong></p>
 <p>Private sector organisations, paid by the government, to verify that a user is who they say they are and assert verified data that identifies them to a government service.</p>
-<p>The organisations are certified as meeting relevant industry security standards and identity assurance standards published by the Cabinet Office and CESG (the UK&#8217;s national technical authority).</p>
+<p>The organisations are certified as meeting relevant industry security standards and identity assurance standards published by the Cabinet Office and the <a class="reference external" href="https://www.ncsc.gov.uk/">National Cyber Security Centre</a> (NCSC).</p>
 <p id="gloss-intenv"><strong>integration environment</strong></p>
-<p>A production-sized deployment of the entire GOV.UK Verify <a class="reference internal" href="#gloss-hub"><span class="std std-ref">hub</span></a> environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.</p>
+<p>A production-sized deployment of the entire GOV.UK Verify <a class="reference internal" href="#gloss-hub"><span>hub</span></a> environment. This allows services to test full end-to-end flows and to showcase a working system including happy path and failure scenarios.</p>
 <p id="gloss-loa"><strong>level of assurance (LOA)</strong></p>
 <p>The degree of confidence the government service requires that a user is who they say they are.</p>
-<blockquote>
-<div><p><strong>level of assurance 1 (LOA1)</strong></p>
+<p><strong>level of assurance 1 (LOA1)</strong></p>
 <p>Used when a government service needs to know that it&#8217;s the same user returning to the service but doesn&#8217;t need to know who that user is.</p>
 <p id="gloss-loa2"><strong>level of assurance 2 (LOA2)</strong></p>
 <p>Used when a government service needs to know on the balance of probabilities who the user is and that that they are a real person.</p>
@@ -228,57 +224,69 @@
 <p>Used when a government service needs to know beyond reasonable doubt who the user is and that that they are a real person.</p>
 <p><strong>level of assurance 4 (LOA4)</strong></p>
 <p>As level of assurance 3, but with a biometric profile captured at the point of registration.</p>
-</div></blockquote>
 <p id="gloss-lmd"><strong>local matching datastore</strong></p>
 <p>A datastore that is part of a government service’s local matching service. It stores correlations between hashed persistent identifiers and local identifiers for users.</p>
 <p id="gloss-lms"><strong>local matching service</strong></p>
-<p>The part of a government service&#8217;s matching service that runs matching cycles to find a match between a user’s <a class="reference internal" href="#gloss-assid"><span class="std std-ref">assured identity</span></a> and a record in the government service’s data sources. This allows the government service to interact with the user. Government services build their own local matching service.</p>
+<p>The part of a government service&#8217;s matching service that runs matching cycles to find a match between a user’s <a class="reference internal" href="#gloss-assid"><span>assured identity</span></a> and a record in the government service’s data sources. This allows the government service to interact with the user. Government services build their own local matching service.</p>
 <p><strong>matching cycles</strong></p>
-<p>Matching cycle numbers refer to the sequence of attempts to find a match between a user’s <a class="reference internal" href="#gloss-assid"><span class="std std-ref">assured identity</span></a> and a record in a government service’s data sources.</p>
-<blockquote>
-<div><p><strong>cycle 0</strong></p>
-<p>Cycle 0 allows the matching service to match the hashed <a class="reference internal" href="#gloss-hashpid"><span class="std std-ref">hashed persistent identifier</span></a> of a verified user to a hashed persistent identifier held in their <a class="reference internal" href="#gloss-lmd"><span class="std std-ref">local matching datastore</span></a>. Cycle 0 is used for efficiency. A successful match at cycle 0 can be treated by the matching service as confirmation that the identity being presented is the same identity as previously matched by that service.</p>
-<p><strong>cycle 1</strong></p>
-<p>Checks if there’s a match for the user’s identity in the government service’s data sources, using the <a class="reference internal" href="#gloss-mds"><span class="std std-ref">matching dataset</span></a> to search for a match.</p>
-<p><strong>cycle 2</strong></p>
-<p>Additional matching cycle where trusted <a class="reference internal" href="#gloss-attr"><span class="std std-ref">attributes</span></a> are used to enhance the matching process. Cycle 2 is currently not supported by GOV.UK Verify.</p>
-<p><strong>cycle 3</strong></p>
+<p>Matching cycle numbers refer to the sequence of attempts to find a match between a user’s <a class="reference internal" href="#gloss-assid"><span>assured identity</span></a> and a record in a government service’s data sources.</p>
+<p><strong>matching cycle 0</strong></p>
+<p>Cycle 0 allows the matching service to match the hashed <a class="reference internal" href="#gloss-hashpid"><span>hashed persistent identifier</span></a> of a verified user to a hashed persistent identifier held in their <a class="reference internal" href="#gloss-lmd"><span>local matching datastore</span></a>. Cycle 0 is used for efficiency. A successful match at cycle 0 can be treated by the matching service as confirmation that the identity being presented is the same identity as previously matched by that service.</p>
+<p><strong>matching cycle 1</strong></p>
+<p>Checks if there’s a match for the user’s identity in the government service’s data sources, using the <a class="reference internal" href="#gloss-mds"><span>matching dataset</span></a> to search for a match.</p>
+<p><strong>matching cycle 2</strong></p>
+<p>Additional matching cycle where trusted <a class="reference internal" href="#gloss-attr"><span>attributes</span></a> are used to enhance the matching process. Cycle 2 is currently not supported by GOV.UK Verify.</p>
+<p><strong>matching cycle 3</strong></p>
 <p>Asks the user for some additional information, for example, driving licence number, to complete a match. This cycle enhances cycle 1 and may not be required for all matches.</p>
-</div></blockquote>
 <p id="gloss-mds"><strong>matching dataset</strong></p>
-<p>A dataset provided by the <a class="reference internal" href="#identity-provider"><span class="std std-ref">identity provider</span></a> so the government service can perform matching. The matching dataset contains the verified user’s first name, middle name, surname, address, date of birth, and (optionally) gender. It may also contain historical values for these attributes. The hub forwards it to the government service’s <a class="reference internal" href="#matching-service"><span class="std std-ref">matching service</span></a>.</p>
+<p>A dataset containing a verified user’s:</p>
+<ul class="simple">
+<li>first name</li>
+<li>middle name (if provided)</li>
+<li>surname</li>
+<li>address</li>
+<li>date of birth</li>
+<li>gender (optional)</li>
+</ul>
+<p>It may also contain historical values for these attributes.</p>
+<p>The <a class="reference internal" href="#identity-provider"><span>identity provider</span></a> that verified the user&#8217;s identity provides the matching dataset. The identity provider verifies the information in the matching dataset (except gender). The hub forwards the matching dataset to the government service’s <a class="reference internal" href="#matching-service"><span>matching service</span></a> so the government service can perform matching.</p>
+<p>It’s optional for users to provide gender. Where provided, gender is not verified by the identity provider. It’s used for matching purposes only.</p>
 <p id="matching-service"><strong>matching service</strong></p>
-<p>The function of finding a local identifier for the individual (eg an id for the user’s account) based on a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the <a class="reference internal" href="#gloss-lms"><span class="std std-ref">local matching service</span></a>.  In the SAML profile used by GOV.UK Verify, the matching service is referred to as the service provider matching service (SPMS).</p>
+<p>The function of finding a local identifier for the individual (for example, an id for the user’s account) based on a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the <a class="reference internal" href="#gloss-lms"><span>local matching service</span></a>.  In the SAML profile used by GOV.UK Verify, the matching service is referred to as the service provider matching service (SPMS).</p>
 <p id="gloss-msa"><strong>Matching Service Adapter</strong></p>
-<p>A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the <a class="reference internal" href="#gloss-lms"><span class="std std-ref">local matching service</span></a> together comprise the matching service.</p>
+<p>A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the <a class="reference internal" href="#gloss-lms"><span>local matching service</span></a> together comprise the matching service.</p>
 <p><strong>onboarding</strong></p>
 <p>The process through which new government services integrate with GOV.UK Verify. The onboarding process is divided into 6 stages. Each stage has a defined set of outputs which a service must meet before moving to the next stage. Onboarding ends with access to the full production environment where the government service deploys their live service.</p>
 <p id="gloss-persid"><strong>persistent identifier</strong></p>
-<p>A unique identifier which refers to a combination of a user and the identity provider that verified the user’s identity. Persistent identifiers are generated by identity providers. They are constructed using pseudo-random values that have no discernible correspondence with the user’s actual identifier, for example, their email address.</p>
-<p><strong>Privacy and Consumer Advisory Group (PCAG)</strong></p>
-<p>Established to help government develop an approach to identity assurance and develop the Identity Assurance Principles.</p>
+<p>A unique identifier which refers to a combination of</p>
+<ul class="simple">
+<li>a user</li>
+<li>the identity provider that verified the user’s identity.</li>
+</ul>
+<p>Identity providers generate persistent identifiers. They use pseudo-random values that have no discernible correspondence with the user’s actual identifier, for example, their email address.</p>
+<p>See <a class="reference internal" href="#gloss-hashpid"><span>hashed persistent identifier</span></a>.</p>
+<p id="gloss-privacyadvisorygroup"><strong>Privacy and Consumer Advisory Group (PCAG)</strong></p>
+<p>Established to help government develop an approach to identity assurance and develop the <a class="reference internal" href="#gloss-identityassuranceprinciples"><span>Identity Assurance Principles</span></a>.</p>
 <p><strong>private beta</strong></p>
 <p>The initial version of a government service that is available to a small number of selected users, so a service can test and develop it further before rolling it out to a wider audience. Users have access through pre-approved tokens or personalised invitation.</p>
+<p id="private-key"><strong>private key</strong></p>
+<p>A long string of data used in <a class="reference internal" href="#gloss-cryptog"><span>cryptography</span></a>. Generating a certificate signing request creates a corresponding public key.</p>
 <p><strong>public beta</strong></p>
 <p>The full end-to-end version of a government service that is publicly available, to allow further testing and development.</p>
-<p id="gloss-pki"><strong>public key infrastructure (PKI)</strong></p>
-<p>The purpose of a public key infrastructure is to implement secure electronic transactions over insecure networks such as the internet. It is used to authenticate identities for the purposes of data encryption and signing.</p>
-<blockquote id="private-key">
-<div><p><strong>private key</strong></p>
-<p>A long string of data used in <a class="reference internal" href="#gloss-cryptog"><span class="std std-ref">cryptography</span></a>. Generating a certificate signing request creates a corresponding public key.</p>
-</div></blockquote>
-<blockquote id="public-key">
-<div><p><strong>public key</strong></p>
+<p id="public-key"><strong>public key</strong></p>
 <p>A long string of data derived from a private key. Data encrypted with a public key can only be decrypted with the corresponding private key, and vice versa.</p>
-</div></blockquote>
+<p id="gloss-pki"><strong>public key infrastructure (PKI)</strong></p>
+<p>The purpose of a public key infrastructure is to implement secure electronic transactions over insecure networks such as the internet. It is used to authenticate identities for the purposes of data encryption and signing. See <a class="reference internal" href="#private-key"><span>private key</span></a>  and <a class="reference internal" href="#public-key"><span>public key</span></a>.</p>
 <p id="relying-party"><strong>relying party</strong></p>
-<p>An entity in a system of federated identity that relies on a response from another entity, such as a successful <a class="reference internal" href="#gloss-authentreq"><span class="std std-ref">authentication request</span></a>. A relying party is also referred to as a service provider when it provides a service that the end user directly interacts with. Relying party is a term used in SAML specifications. In the GOV.UK Verify federation, relying parties are government services.</p>
+<p>An entity in a system of federated identity that relies on a response from another entity, such as a successful <a class="reference internal" href="#gloss-authentreq"><span>authentication request</span></a>. A relying party is also referred to as a service provider when it provides a service that the end user directly interacts with. Relying party is a term used in SAML specifications. In the GOV.UK Verify federation, relying parties are government services.</p>
 <p id="glosssaml"><strong>SAML (Security Assertion Markup Language)</strong></p>
 <p>An Extensible Markup Language (XML) open standard for the exchange of authentication and authorisation data between parties such as identity providers and government services. <a class="reference external" href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security">OASIS</a>  governs the SAML standards.</p>
 <p><strong>SAML profile</strong></p>
 <p>A profile that specifies how to use SAML within a system of federated identity. The SAML profile for the GOV.UK Verify federation defines the SAML messages that are passed between entities within the federation and the rules for their use. SAML messages take the form of requests and responses, and can contain SAML assertions. The profile is built upon core SAML profiles as defined by <a class="reference external" href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=security">OASIS</a>.</p>
 <p><strong>service provider matching service (SPMS)</strong></p>
-<p>See <a class="reference internal" href="#matching-service"><span class="std std-ref">matching service</span></a>.</p>
+<p>See <a class="reference internal" href="#matching-service"><span>matching service</span></a>.</p>
+<p id="gloss-signingcert"><strong>signing certificate</strong></p>
+<p>Contains a public key that the receiver uses to check the authenticity of a message signed with the sender’s private key. This provides the receiver with assurance of the sender’s identity.</p>
 <p><strong>Simple Object Access Protocol (SOAP)</strong></p>
 <p>A messaging protocol that allows programs that run on different operating systems to communicate.</p>
 <p><strong>Transport Layer Security (TLS)</strong></p>
@@ -286,11 +294,11 @@
 <p><strong>Uniform Resource Identifier (URI)</strong></p>
 <p>A character string that identifies a resource, for example an electronic document, an image, a source of information or a service. A URI could be a name, a location or both.</p>
 <p id="gloss-trustanchor"><strong>trust anchor</strong></p>
-<p>An authoritative entity in cryptographic systems for which trust is pre-established and not derived. For example, the IDAP <a class="reference internal" href="#gloss-certauth"><span class="std std-ref">certificate authority</span></a> is the trust anchor within the GOV.UK Verify federation.</p>
+<p>An authoritative entity in cryptographic systems for which trust is pre-established and not derived. For example, the IDAP <a class="reference internal" href="#gloss-certauth"><span>certificate authority</span></a> is the trust anchor within the GOV.UK Verify federation.</p>
 <p id="gloss-truststore"><strong>truststore</strong></p>
 <p>A file containing certificates from parties that you expect to communicate with, or from certificate authorities that you trust to identify other parties.</p>
 <p><strong>Uniform Resource Locator (URL)</strong></p>
-<p>A character string that identifies a resource by its location. A URL is typically a web address, particularly when used with http. A URL is held to be a subset of a URI, as it provides a way of identifying the resource by describing how to locate it (eg its network location).</p>
+<p>A character string that identifies a resource by its location. A URL is typically a web address, particularly when used with http. A URL is held to be a subset of a URI, as it provides a way of identifying the resource by describing how to locate it (for example, its network location).</p>
 <p><strong>user</strong></p>
 <p>The person accessing the government service on GOV.UK.</p>
 <p><strong>whitelist (for IP addresses)</strong></p>

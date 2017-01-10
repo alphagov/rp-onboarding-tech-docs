@@ -3,7 +3,7 @@
 Create user accounts
 ===============================
 
-You can create a new account for the user based on the hashed persistent identifier and a subset of attributes from the matching dataset. It's optional to set up your matching service to support the creation of new accounts.
+You can create a new account for the user based on the :ref:`hashed persistent identifier <gloss_hashpid>` and a subset of attributes from the :ref:`matching dataset <gloss_mds>`. It's optional to set up your matching service to support the creation of new accounts.
 
 .. important:: Before creating a user account you must request explicit user consent. 
 
@@ -83,8 +83,8 @@ This diagram shows the message flow for creating user accounts. The numbers iden
 
 4. If your service supports the creation of new user accounts, the hub sends an unknown user attribute query to the Matching Service Adapter. It contains the:
 
-  * hashed persistent identifier
-  * matching dataset 
+  * :ref:`hashed persistent identifier <gloss_hashpid>`
+  * :ref:`matching dataset <gloss_mds>`
   * list of attributes to extract from the matching dataset
 
 5. The Matching Service Adapter extracts the required attributes from the matching dataset (if available). 
@@ -95,7 +95,7 @@ This diagram shows the message flow for creating user accounts. The numbers iden
     * user control  the user must give their informed consent to the information being sent
     * data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset. 
 
-    For more information see the `Identity Assurance Principles <https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/361496/PCAG_IDA_Principles_3.1__4_.pdf>`_.
+    For more information see the `Identity Assurance Principles <https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles>`_.
 
 
 7. Optionally, the government service creates a correlation between the matching dataset and hashed persistent identifier in its matching datastore. This will be used for matching cycle 0 when the same user returns.  

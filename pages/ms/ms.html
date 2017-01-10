@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="next" title="How a matching service works" href="msWorks.html"/>
         <link rel="prev" title="Run SAML compliance tests" href="../saml/samlComplianceTool.html"/>
@@ -103,9 +100,9 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Local Matching Service</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Local Matching Service</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msCua.html">Create user accounts</a></li>
@@ -139,7 +136,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -162,7 +159,7 @@
   <div class="section" id="local-matching-service">
 <span id="ms"></span><h1>Local Matching Service<a class="headerlink" href="#local-matching-service" title="Permalink to this headline">¶</a></h1>
 <p>The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.</p>
-<p>Government services host their matching service within their security domain. A matching service is composed of the <a class="reference internal" href="../msa/msa.html#msa"><span class="std std-ref">Matching Service Adapter</span></a> and a local matching service.</p>
+<p>Government services host their matching service within their security domain. A matching service is composed of the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and a local matching service.</p>
 <table border="1" class="docutils" id="flow-diagram">
 <colgroup>
 <col width="50%" />
@@ -174,9 +171,9 @@
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../arch/arch.html#arch"><span class="std std-ref">GOV.UK architecture</span></a></li>
-<li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span class="std std-ref">matching cycles</span></a></li>
-<li><a class="reference internal" href="msCua.html#ms-cua-diagram"><span class="std std-ref">user account creation</span></a></li>
+<li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
+<li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
+<li><a class="reference internal" href="msCua.html#ms-cua-diagram"><span>create user accounts</span></a></li>
 </ul>
 </td>
 </tr>
@@ -185,14 +182,14 @@
 <p class="rubric">Why does GOV.UK Verify use a matching service?</p>
 <p>UK citizens do not have a unique identifier. Government services need to match other information about the user, for example address or date of birth, against their data sources.</p>
 <p class="rubric">What do you need to do?</p>
-<p>As a government service, it&#8217;s your responsibility to develop and <a class="reference internal" href="msBuild.html#msbuild"><span class="std std-ref">build your local matching service</span></a>. You need to understand <a class="reference internal" href="msWorks.html#msworks"><span class="std std-ref">how a matching service works</span></a>.</p>
+<p>As a government service, it&#8217;s your responsibility to develop and <a class="reference internal" href="msBuild.html#msbuild"><span>build your local matching service</span></a>. You need to understand <a class="reference internal" href="msWorks.html#msworks"><span>how a matching service works</span></a>.</p>
 <p>To help build your local matching service, you can use the:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span class="std std-ref">example of a JSON request</span></a> that the Matching Service Adapter posts to your service</li>
-<li><a class="reference internal" href="msBuild.html#jsonschema"><span class="std std-ref">JSON schema</span></a> for a matching request</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of a JSON request</span></a> that the Matching Service Adapter posts to your service</li>
+<li><a class="reference internal" href="msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
 </ul>
 <p>Some government services don&#8217;t have experience of matching verified identities to government data sources. The process can be complex, so if you  need further help with building a local matching service, contact your engagement lead or the <a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">GOV.UK Verify team</a>.</p>
-<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span class="std std-ref">Steps to integrate with GOV.UK Verify</span></a>.</p>
+<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span>Steps to integrate GOV.UK Verify into your service</span></a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

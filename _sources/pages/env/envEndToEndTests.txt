@@ -24,7 +24,7 @@ This diagram shows the end-to-end testing flow. See below for explanations.
 Setup for end-to-end testing
 ------------------------------
 
-The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during matching. Then, in the user administration API, create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.  
+The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during matching. Then, in the user administration application programming interface (API), create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.  
 
 A test identity provider contains:
 
@@ -54,7 +54,9 @@ This procedure describes how to obtain a username and password so you can manage
 
 2. Go to the password generation page: `<https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen>`_
 
-3. Store the password securely. Then email us the hash, along with a username of your choice.
+3. Store the password securely. 
+
+4. Email us the hash, along with a username of your choice.
 
   .. important:: Don't email us the password. Send us the hash and your chosen username.
 
@@ -69,7 +71,7 @@ Create test users
 
 This procedure describes how to create test users in bulk and load them into the test identity provider. You must add the same test users to your local matching datastore in the integration environment. 
 
-Make an http POST to the user administration API with a JSON document containing an array of user data. For example:
+Make an HTTP POST to the user administration API with a JSON document containing an array of user data. For example:
 ::
 
     curl --user '{username}:{password}' -H 'Content-Type: application/json' -d @create-user.json https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
@@ -165,8 +167,6 @@ As a minimum, test the following end-to-end user scenarios:
 * authentication success and authentication failure
 * match and no-match
 * all the possible outcomes of your matching service, including :ref:`cycle 3 <ms_mc3>` and :ref:`user account creation <ms_cua>`, if implemented
-
-.. note:: Run end-to-end tests for all the possible outcomes of your matching service, including :ref:`cycle 3 <ms_mc3>` and :ref:`user account creation <ms_cua>`, if implemented.
 
 Tear down
 ------------

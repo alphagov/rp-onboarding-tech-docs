@@ -200,7 +200,7 @@ Make the following changes to the YAML configuration file. Variations are indica
 
 4. In ``entity id``, enter the entityID for the Matching Service Adapter in URI format. You create your own URI, possibly to reflect the name of your service, for example: ``https://<service name>/MSA``
 
- .. note:: It's good practice to use the Matching Service Adapter's URI (i.e. the URI where the hub will send Matching Requests) as its entity ID, but this isn't mandatory.
+ .. note:: It's good practice to use the Matching Service Adapter's URI (that is, the URI where the hub will send matching requests) as its entity ID, but this isn't mandatory.
 
 5. In ``metadata:``, use the ``uri:`` parameter to specify the location where the Matching Service Adapter accesses the SAML metadata:
 

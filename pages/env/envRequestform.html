@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="GOV.UK Verify environments" href="env.html"/>
         <link rel="next" title="Run end-to-end testing" href="envEndToEndTests.html"/>
@@ -104,13 +101,13 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Request access to environments</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Request access to environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envEndToEndTests.html">Run end-to-end testing</a></li>
 </ul>
 </li>
@@ -139,7 +136,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -168,7 +165,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Please allow up to 5 working days for the GOV.UK Verify team to set up and configure access to an environment.</p>
 </div>
-<p>Before filling in the form, you must <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">obtain signed certificates</span></a> from the appropriate certificate authority.</p>
+<p>Before filling in the form, you must <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>obtain signed certificates</span></a> from the appropriate certificate authority.</p>
 <p>First select the environment you want to access: integration or production. If you&#8217;re requesting access to the production environment, you need to fill in the entire form. Information from your integration environment is not carried over.</p>
 <p>Fill in the form as indicated below:</p>
 <ol class="arabic simple">
@@ -210,27 +207,27 @@
 <li><strong>Service signature validation certificate</strong></li>
 </ol>
 <blockquote>
-<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. This certificate validates the digital signature present on all messages sent from your service. It must correspond to the private key for your service. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">Request certificates</span></a>.</div></blockquote>
+<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. This certificate validates the digital signature present on all messages sent from your service. It must correspond to the private key for your service. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</div></blockquote>
 <ol class="arabic simple" start="7">
 <li><strong>Matching service signature validation certificate</strong></li>
 </ol>
 <blockquote>
-<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. This certificate validates the digital signature present on all responses sent from the Matching Service Adapter. It must correspond to the private key for the Matching Service Adapter. You can retrieve the certificate from your Matching Service Adapter by accessing: /matching-service/SAML2/metadata. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">Request certificates</span></a>.</div></blockquote>
+<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. This certificate validates the digital signature present on all responses sent from the Matching Service Adapter. It must correspond to the private key for the Matching Service Adapter. You can retrieve the certificate from your Matching Service Adapter by accessing: /matching-service/SAML2/metadata. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</div></blockquote>
 <ol class="arabic simple" start="8">
 <li><strong>Service encryption certificate</strong></li>
 </ol>
 <blockquote>
-<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. The hub uses this certificate to encrypt the assertions within the responses that it sends to your service. Your service decrypts the assertions using your corresponding private key. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">Request certificates</span></a>.</div></blockquote>
+<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. The hub uses this certificate to encrypt the assertions within the responses that it sends to your service. Your service decrypts the assertions using your corresponding private key. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</div></blockquote>
 <ol class="arabic simple" start="9">
 <li><strong>Matching service encryption certificate</strong></li>
 </ol>
 <blockquote>
-<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. The hub uses this certificate to encrypt the assertions within the requests that it sends to the Matching Service Adapter. The Matching Service Adapter decrypts the the assertions using the corresponding private key. You can retrieve this certificate from your Matching Service Adapter by accessing: /matching-service/SAML2/metadata. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">Request certificates</span></a>.</div></blockquote>
+<div>Upload a valid X509 certificate signed by either the IDAP test certificate authority or the IDAP certificate authority. The hub uses this certificate to encrypt the assertions within the requests that it sends to the Matching Service Adapter. The Matching Service Adapter decrypts the the assertions using the corresponding private key. You can retrieve this certificate from your Matching Service Adapter by accessing: /matching-service/SAML2/metadata. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</div></blockquote>
 <ol class="arabic simple" start="10">
 <li><strong>Requested cycle 3 attribute name</strong></li>
 </ol>
 <blockquote>
-<div><p>Enter the name of the additional information you want the hub to send for <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span class="std std-ref">matching cycle 3</span></a>, for example, driving licence number. Matching cycle 3 is used if <a class="reference internal" href="../ms/msWorks.html#ms-mc1"><span class="std std-ref">matching cycle 1</span></a> fails. Make sure that your GOV.UK Verify engagement lead pre-approves this field as it requires development.</p>
+<div><p>Enter the name of the additional information you want the hub to send for <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>matching cycle 3</span></a>, for example, driving licence number. Matching cycle 3 is used if <a class="reference internal" href="../ms/msWorks.html#ms-mc1"><span>matching cycle 1</span></a> fails. Make sure that your GOV.UK Verify engagement lead pre-approves this field as it requires development.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you&#8217;ve made a special arrangement with your GOV.UK Verify engagement lead, enter <strong>previously arranged</strong> in this field.</p>
@@ -240,12 +237,12 @@
 <li><strong>Matching service user account creation URL</strong></li>
 </ol>
 <blockquote>
-<div>Enter the fully qualified URL to which the hub will make unknown user attribute query requests. This is optional. It is required only if you want to enable <a class="reference internal" href="../ms/msCua.html#ms-cua"><span class="std std-ref">user account creation</span></a> in your service.</div></blockquote>
+<div>Enter the fully qualified URL to which the hub will make unknown user attribute query requests. This is optional. It is required only if you want to enable <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a> in your service.</div></blockquote>
 <ol class="arabic simple" start="12">
 <li><strong>Attributes for creating user account</strong></li>
 </ol>
 <blockquote>
-<div><p>This applies if you have implemented <a class="reference internal" href="../ms/msCua.html#ms-cua"><span class="std std-ref">user account creation</span></a> in your service. Select the attributes you want the hub to send back to your service:</p>
+<div><p>This applies if you have implemented <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a> in your service. Select the attributes you want the hub to send back to your service:</p>
 <blockquote>
 <div><ul class="simple">
 <li><code class="docutils literal"><span class="pre">FIRST_NAME</span></code></li>
@@ -267,7 +264,7 @@
 <li><strong>Other ways to... display name</strong></li>
 </ol>
 <blockquote>
-<div>Enter an alternative service name, for example <em>access your personal tax account</em>. This appears on the <em>Other ways to...</em> content in the hub, which appears when a user can&#8217;t verify their identity using GOV.UK Verify. If you don&#8217;t provide an alternative service name, the GOV.UK Verify team sets it to the service display name by default.</div></blockquote>
+<div>Enter an alternative service name, for example <em>access your personal tax account</em>. This appears on the <em>Other ways to...</em> content in the hub, which appears when a user can&#8217;t prove their identity using GOV.UK Verify. If you don&#8217;t provide an alternative service name, the GOV.UK Verify team sets it to the service display name by default.</div></blockquote>
 <ol class="arabic simple" start="15">
 <li><strong>Other ways to complete the transaction</strong></li>
 </ol>

@@ -16,7 +16,7 @@ A matching service is composed of the Matching Service Adapter and a :ref:`local
 
    * :ref:`GOV.UK architecture <arch>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`
-   * :ref:`user account creation <ms_cua_diagram>`"
+   * :ref:`create user accounts <ms_cua_diagram>`"
 
 .. rubric:: Why does GOV.UK Verify use the Matching Service Adapter?
 

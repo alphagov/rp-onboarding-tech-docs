@@ -82,11 +82,11 @@ When signing data, you use your private signing key to create a digital signatur
 
      Example of data signing
 
-You can use encryption and signing together or alone. For example:
+You can use encryption and signing together or alone.
 
  **Signing alone**
 
-  When a user indicates that they would like to verify their identity, the government service sends a message to the :ref:`hub <hub>`. The message is unencrypted because it contains no personal user information. However, the message is signed because the hub needs assurance that the message originated from the government service. 
+  When a user indicates that they would like to prove their identity, the government service sends a message to the GOV.UK Verify hub. The message is unencrypted because it contains no personal user information. However, the message is signed because the hub needs assurance that the message originated from the government service. 
 
 |
 

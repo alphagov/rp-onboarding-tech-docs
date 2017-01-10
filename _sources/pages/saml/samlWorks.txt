@@ -1,7 +1,7 @@
 .. _samlWorks:
 
-How SAML works 
-----------------
+How SAML works wth GOV.UK Verify
+---------------------------------- 
 
 SAML messages take the form of requests and responses. Messages can contain assertions about the user's identity. GOV.UK Verify uses the following types of assertion:
 
@@ -28,9 +28,9 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
 
    * :ref:`GOV.UK Verify architecture <arch>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`
-   * :ref:`user account creation <ms_cua_diagram>`"
+   * :ref:`create user accounts <ms_cua_diagram>`"
 
-1. The government service sends a SAML authentication request to the GOV.UK Verify :ref:`hub <hub>`. The request indicates that a user wants to access the service and needs to verify their identity using GOV.UK Verify.
+1. The government service sends a SAML authentication request to the GOV.UK Verify :ref:`hub <hub>`. The request indicates that a user wants to access the service and needs to prove their identity using GOV.UK Verify.
 
  .. image:: step1Graphic.svg
      :alt: Diagram showing a SAML authentication request signed by the government service

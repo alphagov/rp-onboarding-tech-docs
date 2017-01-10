@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Steps to integrate with GOV.UK Verify &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  <title>Steps to integrate GOV.UK Verify into your service &mdash; GOV.UK Verify Technical Guide  documentation</title>
   
 
   
@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="next" title="SAML" href="../saml/saml.html"/>
         <link rel="prev" title="What does the GOV.UK Verify hub do?" href="../arch/hub.html"/>
@@ -103,7 +100,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Steps to integrate with GOV.UK Verify</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Steps to integrate GOV.UK Verify into your service</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#development">Development</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#integration">Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#maintenance">Maintenance</a></li>
@@ -139,7 +136,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -147,7 +144,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Steps to integrate with GOV.UK Verify</li>
+    <li>Steps to integrate GOV.UK Verify into your service</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -159,8 +156,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="steps-to-integrate-with-gov-uk-verify">
-<span id="steps"></span><h1>Steps to integrate with GOV.UK Verify<a class="headerlink" href="#steps-to-integrate-with-gov-uk-verify" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="steps-to-integrate-gov-uk-verify-into-your-service">
+<span id="steps"></span><h1>Steps to integrate GOV.UK Verify into your service<a class="headerlink" href="#steps-to-integrate-gov-uk-verify-into-your-service" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="development">
 <h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils" id="stepsdev">
@@ -183,13 +180,13 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li>Read the SAML specifications described in the &#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216;.</li>
-<li><a class="reference internal" href="../saml/samlIntegration.html#samlintegrationtool"><span class="std std-ref">Choose a product and framework</span></a> to integrate your service with GOV.UK Verify.</li>
-<li><a class="reference internal" href="../saml/samlIntegration.html#configureadapttechnology"><span class="std std-ref">Configure and adapt your chosen technology</span></a> to respect the SAML profile.</li>
-<li>Decide how to <a class="reference internal" href="../pki/pkiRequestCert.html#pki-store-private-key"><span class="std std-ref">store and manage keys</span></a> and certificates so you can <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span class="std std-ref">rotate your keys</span></a> when needed.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#samlintegrationtool"><span>Choose a product and framework</span></a> to integrate your service with GOV.UK Verify.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#configureadapttechnology"><span>Configure and adapt your chosen technology</span></a> to respect the SAML profile.</li>
+<li>Decide how to <a class="reference internal" href="../pki/pkiRequestCert.html#pki-store-private-key"><span>store and manage keys</span></a> and certificates so you can <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>rotate your keys</span></a> when needed.</li>
 </ol>
 </div></blockquote>
 <p>Outcome:  your service can send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
-<p class="last" id="step-build-lms">For more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">How SAML works</span></a>.</p>
+<p class="last" id="step-build-lms">For more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works wth GOV.UK Verify</span></a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="2">
@@ -200,12 +197,12 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../ms/msBuild.html#ms-strat"><span class="std std-ref">Define your matching strategy</span></a> with your service manager.</li>
-<li>Use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span class="std std-ref">example JSON matching request</span></a> and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span class="std std-ref">JSON schema</span></a> to help build your local matching service.</li>
+<li><a class="reference internal" href="../ms/msBuild.html#ms-strat"><span>Define your matching strategy</span></a> with your service manager.</li>
+<li>Use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example JSON matching request</span></a> and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> to help build your local matching service.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: your service can match users’ verified identities to your data sources.</p>
-<p class="last" id="step-setup-msaforsaml">For more information, see <a class="reference internal" href="../ms/msWorks.html#msworks"><span class="std std-ref">How a matching service works</span></a>.</p>
+<p class="last" id="step-setup-msaforsaml">For more information, see <a class="reference internal" href="../ms/msWorks.html#msworks"><span>How a matching service works</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><ol class="first last arabic simple" start="3">
@@ -216,13 +213,13 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span class="std std-ref">Download and install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span class="std std-ref">Generate self-signed certificates for the SAML compliance tool</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span class="std std-ref">Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>Generate self-signed certificates for the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: you&#8217;re ready to run SAML compliance tests.</p>
-<p class="last" id="step-run-saml-tests">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span class="std std-ref">Matching Service Adapter</span></a>.</p>
+<p class="last" id="step-run-saml-tests">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="4">
@@ -233,12 +230,12 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctservicehub"><span class="std std-ref">Test your service with the SAML compliance tool</span></a>.</li>
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span class="std std-ref">Test your matching service with the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctservicehub"><span>Test your service with the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>Test your matching service with the SAML compliance tool</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: your service and matching service can consume and produce valid SAML.</p>
-<p class="last">For more information, see see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">How SAML works</span></a>.</p>
+<p class="last">For more information, see see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works wth GOV.UK Verify</span></a>.</p>
 </td>
 </tr>
 </tbody>
@@ -275,13 +272,13 @@
 <blockquote>
 <div>Access to the hub and the test identity providers in the integration environment is restricted by IP address.</div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Obtain <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">signed certificates</span></a> for the integration environment from the IDAP test certificate authority.</li>
+<li>Obtain <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>signed certificates</span></a> for the integration environment from the IDAP test certificate authority.</li>
 <li>Send the GOV.UK Verify operations team your signed certificates for the integration environment.</li>
-<li>Fill in the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span class="std std-ref">Request access to an environment</span></a>&#8216; form.</li>
+<li>Fill in the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: you&#8217;re ready to connect the Matching Service Adapter and your service to the integration environment.</p>
-<p class="last" id="step-connect-msa-int-env">For more information, see <a class="reference internal" href="../env/env.html#env"><span class="std std-ref">GOV.UK Verify environments</span></a> and <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span class="std std-ref">How a PKI works</span></a>.</p>
+<p class="last" id="step-connect-msa-int-env">For more information, see <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a> and <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="2">
@@ -292,12 +289,12 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span class="std std-ref">Download and install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span class="std std-ref">Configure the Matching Service Adapter for the integration environment</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the integration environment</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: you&#8217;re ready to run end-to-end testing with test users.</p>
-<p class="last" id="step-run-end-to-end-tests">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span class="std std-ref">Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span class="std std-ref">GOV.UK Verify environments</span></a>.</p>
+<p class="last" id="step-run-end-to-end-tests">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><ol class="first last arabic simple" start="3">
@@ -308,13 +305,13 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../env/envEndToEndTests.html#createauth"><span class="std std-ref">Set up authentication to manage test users</span></a>.</li>
-<li><a class="reference internal" href="../env/envEndToEndTests.html#createtestusers"><span class="std std-ref">Create test users</span></a>.</li>
-<li><a class="reference internal" href="../env/envEndToEndTests.html#runetoetest"><span class="std std-ref">Run end-to-end tests</span></a>.</li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#createauth"><span>Set up authentication to manage test users</span></a>.</li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#createtestusers"><span>Create test users</span></a>.</li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#runetoetest"><span>Run end-to-end tests</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: your service can handle all the possible outcomes of end-to-end user journeys.</p>
-<p class="last" id="step-request-prod-env">For more information, <a class="reference internal" href="../env/env.html#env"><span class="std std-ref">GOV.UK Verify environments</span></a>.</p>
+<p class="last" id="step-request-prod-env">For more information, <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="4">
@@ -330,13 +327,13 @@
 <blockquote>
 <div>This allows GOV.UK Verify to put in place firewall rules so the hub can communicate with the Matching Service Adapter.</div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Obtain <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span class="std std-ref">signed certificates</span></a> for the production environment from the IDAP certificate authority.</li>
+<li>Obtain <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>signed certificates</span></a> for the production environment from the IDAP certificate authority.</li>
 <li>Send the GOV.UK Verify operations team your signed certificates for the production environment.</li>
-<li>Fill in the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span class="std std-ref">Request access to an environment</span></a>&#8216; form.</li>
+<li>Fill in the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: you&#8217;re ready to connect the Matching Service Adapter and your service to the production environment.</p>
-<p class="last" id="step-connect-msa-prod-env">For more information, see <a class="reference internal" href="../env/env.html#env"><span class="std std-ref">GOV.UK Verify environments</span></a> and <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span class="std std-ref">How a PKI works</span></a>.</p>
+<p class="last" id="step-connect-msa-prod-env">For more information, see <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a> and <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><ol class="first last arabic simple" start="5">
@@ -347,13 +344,13 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span class="std std-ref">Download and install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span class="std std-ref">Configure the Matching Service Adapter for the production environment</span></a>.</li>
-<li>Connect your service to the production environment by <a class="reference internal" href="../saml/samlIntegration.html#saml-access-metadata"><span class="std std-ref">accessing the federation metadata</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the production environment</span></a>.</li>
+<li>Connect your service to the production environment by <a class="reference internal" href="../saml/samlIntegration.html#saml-access-metadata"><span>accessing the federation metadata</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: your service is ready to go live.</p>
-<p class="last">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span class="std std-ref">Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span class="std std-ref">GOV.UK Verify environments</span></a>.</p>
+<p class="last">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
 </td>
 </tr>
 </tbody>
@@ -378,9 +375,9 @@
 </td>
 <td><p class="first"><strong>Rotate your keys</strong>.</p>
 <blockquote class="last">
-<div><p>When the certificates containing your public keys are due to expire, <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span class="std std-ref">run the key rotation process</span></a> to replace your keys and certificates.</p>
+<div><p>When the certificates containing your public keys are due to expire, <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>replace your keys and certificates</span></a>.</p>
 <p>Outcome: the encryption and signing certificates for your service and Matching Service Adapter are up to date.</p>
-<p>For more information, see <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span class="std std-ref">How a PKI works</span></a>.</p>
+<p>For more information, see <a class="reference internal" href="../pki/pkiWorks.html#pkiworks"><span>How a PKI works</span></a>.</p>
 </div></blockquote>
 </td>
 </tr>

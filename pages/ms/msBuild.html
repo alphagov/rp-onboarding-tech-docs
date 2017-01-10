@@ -30,9 +30,6 @@
   
 
   
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="Local Matching Service" href="ms.html"/>
         <link rel="next" title="Create user accounts" href="msCua.html"/>
@@ -104,11 +101,11 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate with GOV.UK Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="ms.html">Local Matching Service</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Build a local matching service</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Build a local matching service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#define-your-matching-strategy">Define your matching strategy</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#matching-considerations">Matching considerations</a></li>
 </ul>
@@ -147,7 +144,7 @@
         <div class="rst-content">
           
 
- 
+
 
 
 
@@ -173,9 +170,9 @@
 <span id="msbuild"></span><h1>Build a local matching service<a class="headerlink" href="#build-a-local-matching-service" title="Permalink to this headline">¶</a></h1>
 <p>Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:</p>
 <ul class="simple">
-<li>creates the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span class="std std-ref">hashed persistent identifier</span></a></li>
-<li>creates and signs the final assertion sent to your service - for more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span class="std std-ref">How SAML works</span></a></li>
-<li>acts as the <a class="reference internal" href="../../shared/glossary.html#gloss-trustanchor"><span class="std std-ref">trust anchor</span></a> for your service because the final assertion is created in your service&#8217;s security domain</li>
+<li>creates the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+<li>creates and signs the final assertion sent to your service - for more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works wth GOV.UK Verify</span></a></li>
+<li>acts as the <a class="reference internal" href="../../shared/glossary.html#gloss-trustanchor"><span>trust anchor</span></a> for your service because the final assertion is created in your service&#8217;s security domain</li>
 </ul>
 <div class="section" id="define-your-matching-strategy">
 <span id="ms-strat"></span><h2>Define your matching strategy<a class="headerlink" href="#define-your-matching-strategy" title="Permalink to this headline">¶</a></h2>
@@ -210,8 +207,8 @@
 </li>
 <li>define the level of &#8216;fuzzy matching&#8217; that is acceptable when an exact match is not found – this allows a match that, although not 100%, is above a service-defined threshold</li>
 <li>manage the risk of incorrect matching by defining what happens when:<ul>
-<li>there&#8217;s no match – you can <a class="reference internal" href="msCua.html#ms-cua"><span class="std std-ref">create a new account</span></a> for the user</li>
-<li>there are multiple matches – you can implement <a class="reference internal" href="msWorks.html#ms-mc3"><span class="std std-ref">matching cycle 3</span></a></li>
+<li>there&#8217;s no match – you can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user</li>
+<li>there are multiple matches – you can implement <a class="reference internal" href="msWorks.html#ms-mc3"><span>matching cycle 3</span></a></li>
 </ul>
 </li>
 <li>analyse your data sources in the light of your matching strategy, so you can test and refine your strategy before launching alpha or beta services</li>
@@ -224,13 +221,13 @@
 </div>
 <div class="section" id="respond-to-json-matching-requests">
 <span id="respondjsonmr"></span><h2>Respond to JSON matching requests<a class="headerlink" href="#respond-to-json-matching-requests" title="Permalink to this headline">¶</a></h2>
-<p>Your service must respond to JSON matching requests from the matching service adapter. The matching service adapter makes these requests to the following URLs specified in the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span class="std std-ref">YAML configuration file</span></a>:</p>
+<p>Your service must respond to JSON matching requests from the matching service adapter. The matching service adapter makes these requests to the following URLs specified in the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">matchingServiceUri</span></code></li>
-<li><code class="docutils literal"><span class="pre">unknownUserCreationServiceUri</span></code> (if you&#8217;re <a class="reference internal" href="msCua.html#ms-cua"><span class="std std-ref">creating new user accounts</span></a> when a match is not found)</li>
+<li><code class="docutils literal"><span class="pre">unknownUserCreationServiceUri</span></code> (if you&#8217;re <a class="reference internal" href="msCua.html#ms-cua"><span>creating new user accounts</span></a> when a match is not found)</li>
 </ul>
 <p>Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;drivers_licence&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
@@ -301,7 +298,7 @@
 <p class="first admonition-title">Note</p>
 <p class="last">The elements in <code class="docutils literal"><span class="pre">matchingDataset</span></code> are optional, so the code handling this in your local matching service must be appropriately flexible.</p>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>

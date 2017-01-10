@@ -1,6 +1,6 @@
 .. _steps:
 
-Steps to integrate with GOV.UK Verify
+Steps to integrate GOV.UK Verify into your service
 ===================================================
 
 Development
@@ -159,7 +159,7 @@ Maintenance
 
    "1.", "**Rotate your keys**.
 
-    When the certificates containing your public keys are due to expire, :ref:`run the key rotation process <pkiRotate>` to replace your keys and certificates.
+    When the certificates containing your public keys are due to expire, :ref:`replace your keys and certificates <pkiRotate>`.
 
     Outcome: the encryption and signing certificates for your service and Matching Service Adapter are up to date.
 
