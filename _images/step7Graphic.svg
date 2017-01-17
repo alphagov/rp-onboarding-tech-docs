@@ -39,8 +39,8 @@
       <tspan x="-29.266" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Encrypted </tspan>
       <tspan x="-20.236" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">for hub</tspan>
     </text>
-    <text transform="matrix(1, 0, 0, 1, 90.271, 13.273)">
-      <tspan x="-85.747" y="4" font-family="ArialMT" font-size="13" fill="#000000">SAML attribute query respose</tspan>
+    <text transform="matrix(1, 0, 0, 1, 96.271, 20.773)">
+      <tspan x="-89.362" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">SAML attribute query response</tspan>
     </text>
   </g>
 </svg>

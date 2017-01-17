@@ -113,12 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-encryption-key">Rotate your service encryption key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-signing-key">Rotate your service signing key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-encryption-key">Rotate your Matching Service Adapter encryption key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-signing-key">Rotate your Matching Service Adapter signing key</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#use-saml-metadata">Use SAML metadata</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#your-service-supports-2-matching-service-adapter-signing-keys">Your service supports 2 Matching Service Adapter signing keys</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#your-service-does-not-support-2-matching-service-adapter-signing-keys">Your service does not support 2 Matching Service Adapter signing keys</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-signing-key">Rotate your Matching Service Adapter signing key</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +168,7 @@
             
   <div class="section" id="rotate-your-keys">
 <span id="pkirotate"></span><h1>Rotate your keys<a class="headerlink" href="#rotate-your-keys" title="Permalink to this headline">¶</a></h1>
-<p>When the certificates containing your public keys are due to expire, run the key rotation process to replace the keys and certificates.</p>
+<p>When the certificates containing your public keys are due to expire, run the key rotation process to replace the keys and certificates. This allows you to introduce a new set of keys and certificates with no service interruption.</p>
 <p>As a government service you are responsible for maintaining the following keys:</p>
 <ul class="simple">
 <li>government service encryption key</li>
@@ -192,133 +187,111 @@
 </div>
 <div class="section" id="rotate-your-service-encryption-key">
 <h2>Rotate your service encryption key<a class="headerlink" href="#rotate-your-service-encryption-key" title="Permalink to this headline">¶</a></h2>
-<p>Use the procedure below if your service supports 2 encryption keys simultaneously.</p>
 <ol class="arabic simple">
-<li>Add the new private encryption key to your service endpoint. This means that your service can use the new and old private keys to decrypt SAML messages.</li>
+<li>Add the new private encryption key to your service endpoint.Your service can now use the new and old private keys to decrypt SAML messages.</li>
 <li>Send the new certificate to the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team installs the new certificate on the hub. This means that the GOV.UK Verify hub uses the new key to encrypt SAML messages for your service.</li>
+<li>The GOV.UK Verify operations team installs the new certificate on the hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.</li>
 <li>Remove the old encryption key from your service endpoint.</li>
-</ol>
-<p>Use the procedure below if your service does not support 2 encryption keys simultaneously.</p>
-<ol class="arabic simple">
-<li>Send the new encryption certificate to the the GOV.UK Verify operations team.</li>
-<li>Take your service offline.</li>
-<li>The GOV.UK Verify operations team installs the new certificate on the hub. This means that the GOV.UK Verify hub uses the new key to encrypt SAML messages for your service.</li>
-<li>Replace the old private encryption key with the new key on your service endpoint. This means that your service uses only the new key to decrypt SAML messages.</li>
-<li>Put your service back online.</li>
 </ol>
 </div>
 <div class="section" id="rotate-your-service-signing-key">
 <h2>Rotate your service signing key<a class="headerlink" href="#rotate-your-service-signing-key" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Send the new signing certificate to the the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team installs the new certificate on the GOV.UK Verify hub. This means that the GOV.UK Verify hub trusts SAML messages signed with the new and old keys.</li>
-<li>Replace the old private signing key with the new key on your service endpoint. This means that your service signs SAML messages with the new key only.</li>
+<li>The GOV.UK Verify operations team installs the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now trusts SAML messages signed with the new and old keys.</li>
+<li>Replace the old private signing key with the new key on your service endpoint. Your service now signs SAML messages with the new key only.</li>
 <li>Inform the GOV.UK Verify operations team that new key is live.</li>
-<li>The GOV.UK Verify operations team removes the old certificate from the GOV.UK Verify hub. This means that the GOV.UK Verify hub trusts SAML messages signed with the new key only.</li>
+<li>The GOV.UK Verify operations team removes the old certificate from the GOV.UK Verify hub. The GOV.UK Verify hub now trusts SAML messages signed with the new key only.</li>
 </ol>
 </div>
 <div class="section" id="rotate-your-matching-service-adapter-encryption-key">
 <h2>Rotate your Matching Service Adapter encryption key<a class="headerlink" href="#rotate-your-matching-service-adapter-encryption-key" title="Permalink to this headline">¶</a></h2>
-<p>The Matching Service Adapter supports 2 encryption keys simultaneously. Use the procedure below to rotate your key.</p>
 <ol class="arabic simple">
-<li>First install the new private encryption key on the Matching Service Adapter. Then configure the Matching Service Adapter for 2 encryption keys. To do this, add the new private encryption key to the Matching Service Adapter configuration file as indicated in the highlighted section below:</li>
+<li>Install the new private encryption key and encryption certificate on the Matching Service Adapter. To do this, add the fields <code class="docutils literal"><span class="pre">privateSecondaryEncryptionKeyConfiguration</span></code> and <code class="docutils literal"><span class="pre">publicSecondaryEncryptionKeyConfiguration</span></code> to the  <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a> as indicated in the highlighted sections below:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.pk8</span>
 
-<span class="hll"><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+<span class="hll"><span class="l l-Scalar l-Scalar-Plain">privateSecondaryEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
 </span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.pk8</span>
-</span><span class="hll">
-</span><span class="hll"><span class="l l-Scalar l-Scalar-Plain">privateSecondaryEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.pk8</span>
 </span>
-<span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
+<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.crt</span>
  <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 
-<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption.crt</span>
- <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
-</pre></div>
+<span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSecondaryEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.crt</span>
+</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+</span></pre></div>
 </div>
 <p>The Matching Service Adapter can now use both the new and old keys to decrypt SAML messages.</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Send the new certificate to the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team replaces the old certificate with the new certificate on the GOV.UK Verify hub. This means that the GOV.UK Verify hub uses the new key to encrypt SAML messages for your service.</li>
-<li>Remove the old private encryption key from the Matching Service Adapter. The Matching Service Adapter can no longer use the old key to decrypt SAML messages.</li>
-</ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">While both keys are in use, you may see error messages in the logs with the description &#8220;Unwrapping failed&#8221;. These messages appear because the Matching Service Adapter attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.</p>
 </div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Send the new certificate to the GOV.UK Verify operations team.</li>
+<li>The GOV.UK Verify operations team replaces the old certificate with the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.</li>
+<li>Promote the secondary private encryption key and encryption certificate to the primary position.</li>
+<li>Remove the old private encryption key and encryption certificate:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.pk8</span>
+
+<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.crt</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li>Restart the Matching Service Adapter. The Matching Service Adapter can no longer use the old key to decrypt SAML messages.</li>
+</ol>
 </div>
 <div class="section" id="rotate-your-matching-service-adapter-signing-key">
 <h2>Rotate your Matching Service Adapter signing key<a class="headerlink" href="#rotate-your-matching-service-adapter-signing-key" title="Permalink to this headline">¶</a></h2>
-<p>There are 3 methods to rotate your Matching Service Adapter signing key. We recommend that you use SAML metadata as this minimises service downtime and reduces the complexity of the the key rotation procedure.  For more information, see <a class="reference internal" href="../saml/samlIntegration.html#saml-access-metadata"><span>Access the SAML metadata</span></a>.</p>
-<div class="section" id="use-saml-metadata">
-<span id="pki-config-msa-2signkeys-samlmetadata"></span><h3>Use SAML metadata<a class="headerlink" href="#use-saml-metadata" title="Permalink to this headline">¶</a></h3>
-<p>This procedure allows zero service downtime when you rotate your Matching Service Adapter signing key. It involves publishing 2 SAML signing certificates in the Matching Service Adapter SAML metadata.</p>
-<div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">To use this procedure you must be using version 493 or later of the Matching Service Adapter. Contact your engagement lead if you want to update your Matching Service Adapter.</p>
-</div>
+<p id="pki-config-msa-2signkeys-samlmetadata">This procedure involves publishing 2 SAML signing certificates in the Matching Service Adapter SAML metadata.</p>
 <ol class="arabic simple">
 <li>Send the new signing certificate to the GOV.UK Verify operations team.</li>
-<li>Configure your Matching Service Adapter to support 2 signing certificates. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the Matching Service Adapter configuration file as indicated in the highlighted section below:</li>
+<li>Install the new signing certificate on the Matching Service Adapter. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>, as indicated in the highlighted section below:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
  <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
 
-<span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
-</span><span class="hll">
-</span><span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSecondarySigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+<span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+
+<span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSecondarySigningKeyConfiguration</span><span class="p p-Indicator">:</span>
 </span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new_cert.crt</span>
 </span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD/Secondary</span>
-</span>
-<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption.crt</span>
+</span></pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Check that your service endpoint has loaded the newly generated Matching Service Adapter metadata from: /matching-service/SAML2/metadata. The service endpoint now trusts assertions signed with the new key.</li>
+<li>Update the field <code class="docutils literal"><span class="pre">privateSigningKeyConfiguration</span></code> with the new private signing key.</li>
+<li>Promote the secondary signing certificate to the primary position.</li>
+<li>Remove the old signing certificate:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new.pk8</span>
+
+<span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
+ <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new.crt</span>
  <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Check that your service endpoint has loaded the newly generated Matching Service Adapter metadata from: /matching-service/SAML2/metadata. This means the service endpoint trusts assertions signed with the new key.</li>
-<li>Update the field <code class="docutils literal"><span class="pre">privateSigningKeyConfiguration</span></code> with the new private signing key and restart the Matching Service Adapter. This means that SAML messages are now signed with the new key.</li>
+<ol class="arabic simple" start="7">
+<li>Restart the Matching Service Adapter. SAML messages are now signed with the new key.</li>
 <li>Inform the GOV.UK Verify operations team that the new key is live.</li>
-<li>Remove the old signing certificate from the Matching Service Adapter configuration file.</li>
 </ol>
-</div>
-<div class="section" id="your-service-supports-2-matching-service-adapter-signing-keys">
-<span id="pki-config-msa-2signkeys-service2keys"></span><h3>Your service supports 2 Matching Service Adapter signing keys<a class="headerlink" href="#your-service-supports-2-matching-service-adapter-signing-keys" title="Permalink to this headline">¶</a></h3>
-<p>Use the procedure below if your service supports 2 Matching Service Adapter signing keys simultaneously but you are not using SAML metadata from your Matching Service Adapter.</p>
-<ol class="arabic simple">
-<li>Send the new signing certificate to the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team installs the new certificate on the GOV.UK Verify hub. This means that the GOV.UK hub trusts SAML messages signed with the new and old certificates.</li>
-<li>Add the new certificate to your service endpoint. This means that your service trusts SAML messages signed with the new and old keys.</li>
-<li>Replace the old private signing key with the new key on the Matching Service Adapter. This means that SAML is now signed with the new key.</li>
-<li>Remove the old certificate from your service endpoint. This means that your service trusts SAML messages signed with the new private signing key only.</li>
-<li>Inform the GOV.UK Verify operations team that the new key is live.</li>
-<li>The GOV.UK Verify operations team removes the old certificate from the GOV.UK Verify hub. This means that the GOV.UK Verify hub trusts SAML messages signed with the new private signing key only.</li>
-</ol>
-</div>
-<div class="section" id="your-service-does-not-support-2-matching-service-adapter-signing-keys">
-<span id="pki-config-msa-2signkeys-serviceno2keys"></span><h3>Your service does not support 2 Matching Service Adapter signing keys<a class="headerlink" href="#your-service-does-not-support-2-matching-service-adapter-signing-keys" title="Permalink to this headline">¶</a></h3>
-<p>Use the procedure below if your service does not support 2 Matching Service Adapter signing keys simultaneously. This involves service downtime during key rotation.</p>
-<ol class="arabic simple">
-<li>Take your service offline.</li>
-<li>Replace the old certificate with the new certificate on your service endpoint. This means that your service trusts SAML messages signed with the new key.</li>
-<li>Replace the old private signing key with the new key on the Matching Service Adapter. This means that SAML is now signed with the new key.</li>
-<li>Inform the GOV.UK Verify operations team that the new key is live.</li>
-<li>The GOV.UK Verify operations team removes the old certificate from the GOV.UK Verify hub. This means that the GOV.UK Verify hub trusts SAML messages signed with the new private signing key only.</li>
-<li>Put your service back online.</li>
-</ol>
-</div>
 </div>
 </div>
 

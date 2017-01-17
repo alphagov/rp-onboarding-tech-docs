@@ -81,7 +81,6 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
  .. image:: step8Graphic.svg
       :alt: Diagram showing a SAML response signed by the hub. It contains an assertion signed by the Matching Service Adapter and encrypted for the government service.
 
- * SAML response (optionally) signed by the GOV.UK Verify hub
  * assertion signed by the Matching Service Adapter and encrypted for the government service
 
 9. The government service retrieves the user's record from the datastore. This allows the government service to interact with the user.

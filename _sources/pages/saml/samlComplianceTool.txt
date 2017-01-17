@@ -56,8 +56,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
         "expectedPID":"[expected persistent identifier: this is the user id that the Matching Service Adapter returns in an assertion]",
         "matchingServiceEntityId":"[entityID for your Matching Service Adapter]",
         "matchingServiceSigningPrivateCert":"[Base64-encoded private signing key for the Matching Service Adapter, see below]",
-        "userAccountCreationAttributes":"[optional list of attributes the government service requires for new user account creation, see below]",
-        "useSimpleProfile":"[optional, to use a simpler SAML profile that works with Shibboleth - defaults to false]"
+        "userAccountCreationAttributes":"[optional list of attributes the government service requires for new user account creation, see below]"
     }
 
   Replace the square brackets and their contents with your configuration data, taking account of the following:

@@ -106,9 +106,9 @@
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works wth GOV.UK Verify</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Build your service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#use-extended-validation-certificates">Use extended validation certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#saml-integration">SAML integration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#choose-a-product-and-framework">Choose a product and framework</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#configure-and-adapt-your-technology-to-respect-the-saml-profile">Configure and adapt your technology to respect the SAML profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-a-product-and-framework">Choose a product and framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-your-service-to-the-matching-service-adapter-metadata">Connect your service to the Matching Service Adapter metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#handle-responses-using-saml-metadata">Handle responses using SAML metadata</a></li>
 </ul>
 </li>
 </ul>
@@ -174,51 +174,28 @@
 <p>You must use extended validation (EV) certificates for all public interactions with your service. When you use EV certificates, the user&#8217;s web browser clearly indicates the name of the organisation they are interacting with.</p>
 <p>Using EV certificates is one of a range of measures to protect your users from sites pretending to be you. See best practices for <a class="reference external" href="https://www.ncsc.gov.uk/guidance/tls-external-facing-services">using TLS to protect data</a> from the National Cyber Security Centre (NCSC).</p>
 </div>
-<div class="section" id="saml-integration">
-<h2>SAML integration<a class="headerlink" href="#saml-integration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="choose-a-product-and-framework">
-<h3>Choose a product and framework<a class="headerlink" href="#choose-a-product-and-framework" title="Permalink to this headline">¶</a></h3>
+<h2>Choose a product and framework<a class="headerlink" href="#choose-a-product-and-framework" title="Permalink to this headline">¶</a></h2>
 <p>Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
 <p>You can choose from a wide range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.</p>
 <p>GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See <a class="reference external" href="https://www.gov.uk/service-manual/making-software/choosing-technology.html">Choosing technology</a> in the Government Service Design Manual.</p>
 <p>Contact your engagement lead if you need further information.</p>
 </div>
-<div class="section" id="configure-and-adapt-your-technology-to-respect-the-saml-profile">
-<span id="configureadapttechnology"></span><h3>Configure and adapt your technology to respect the SAML profile<a class="headerlink" href="#configure-and-adapt-your-technology-to-respect-the-saml-profile" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="saml-metadata">
-<h4>SAML metadata<a class="headerlink" href="#saml-metadata" title="Permalink to this headline">¶</a></h4>
-<p>The SAML metadata contains the <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-signing"><span>SAML encryption and signing certificates</span></a> used within the GOV.UK Verify federation. The preferred way to distribute and access certificates is through the SAML metadata. When you build your service, make sure it can handle SAML metadata. You may want to use some sample metadata.</p>
-</div>
-<div class="section" id="access-the-saml-metadata">
-<span id="saml-access-metadata"></span><h4>Access the SAML metadata<a class="headerlink" href="#access-the-saml-metadata" title="Permalink to this headline">¶</a></h4>
-<ol class="arabic">
-<li><p class="first"><strong>Federation metadata</strong></p>
-<p>Each environment has its own federation metadata.</p>
-<p>Access the federation metadata for the:</p>
-<blockquote>
-<div><ul class="simple">
-<li>compliance tool by contacting your GOV.UK Verify engagement lead</li>
-<li>integration environment at <a class="reference external" href="https://www.integration.signin.service.gov.uk/SAML2/metadata/federation">https://www.integration.signin.service.gov.uk/SAML2/metadata/federation</a></li>
-<li>production environment at <a class="reference external" href="https://www.signin.service.gov.uk/SAML2/metadata/federation">https://www.signin.service.gov.uk/SAML2/metadata/federation</a></li>
+<div class="section" id="connect-your-service-to-the-matching-service-adapter-metadata">
+<span id="saml-access-metadata"></span><span id="configureadapttechnology"></span><h2>Connect your service to the Matching Service Adapter metadata<a class="headerlink" href="#connect-your-service-to-the-matching-service-adapter-metadata" title="Permalink to this headline">¶</a></h2>
+<p>To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter metadata.</p>
+<p>The Matching Service Adapter metadata:</p>
+<ul class="simple">
+<li>indicates the URL where your service will send users with their authentication requests - this is the GOV.UK Verify hub</li>
+<li>lists one or more Matching Service Adapter signing certificates, so your service can validate messages that are sent by your Matching Service Adapter</li>
+<li>describes the Matching Service Adapter as an identity provider</li>
 </ul>
-</div></blockquote>
-</li>
-</ol>
-<blockquote>
-<div>The federation metadata is signed. It includes entity descriptors that define the roles of the GOV.UK Verify hub and the identity providers.</div></blockquote>
-<ol class="arabic" start="2">
-<li><p class="first"><strong>Matching Service Adapter metadata</strong></p>
 <p>The Matching Service Adapter metadata is located in your Matching Service Adapter at /matching-service/SAML2/metadata</p>
-<p>This metadata is generated by your Matching Service Adapter and contains your Matching Service Adapter certificates. It includes an entity descriptor that defines the role of the Matching Service Adapter.</p>
-</li>
-</ol>
-<p id="saml-consume-responses"><strong>Handle responses using SAML metadata</strong></p>
-<p>Your service must be able to consume SAML responses that are issued by the GOV.UK Verify hub. We recommend that you use the federation metadata and the Matching Service Adapter metadata to do this. You must first <a class="reference internal" href="#saml-access-metadata"><span>access the metadata</span></a>.</p>
+<p>Your service must poll the Matching Service Adapter metadata every 10 minutes.</p>
+<div class="section" id="handle-responses-using-saml-metadata">
+<span id="saml-consume-responses"></span><h3>Handle responses using SAML metadata<a class="headerlink" href="#handle-responses-using-saml-metadata" title="Permalink to this headline">¶</a></h3>
+<p>To consume SAML responses that are issued by the GOV.UK Verify hub:</p>
 <ol class="arabic">
-<li><p class="first">Validate the signature on the response. This checks that the response is correctly signed by the GOV.UK Verify hub
-(entityID: <code class="docutils literal"><span class="pre">https://signin.service.gov.uk</span></code>).</p>
-<p>You can use the hub X509 signing certificates contained in the federation metadata to validate this signature.</p>
-</li>
 <li><p class="first">Decrypt the assertion.</p>
 </li>
 <li><p class="first">Validate the signature on the assertion contained in the response. This assertion is generated and signed by your Matching Service Adapter.</p>
@@ -227,8 +204,7 @@
 </ol>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
-<p class="last">Use this procedure with care. You must trust assertions signed by the Matching Service Adapter only. The GOV.Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s <em>not</em> possible to trust the hub to issue assertions.</p>
-</div>
+<p class="last">Use this procedure with care. You must trust assertions signed by the Matching Service Adapter only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s <em>not</em> possible to trust the hub to issue assertions.</p>
 </div>
 </div>
 </div>
