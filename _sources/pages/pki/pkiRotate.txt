@@ -29,7 +29,7 @@ Rotate your service encryption key
 -----------------------------------
 
 
-#. Add the new private encryption key to your service endpoint.Your service can now use the new and old private keys to decrypt SAML messages.
+#. Add the new private encryption key to your service endpoint. Your service can now use the new and old private keys to decrypt SAML messages.
 #. Send the new certificate to the GOV.UK Verify operations team.
 #. The GOV.UK Verify operations team installs the new certificate on the hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.
 #. Remove the old encryption key from your service endpoint.

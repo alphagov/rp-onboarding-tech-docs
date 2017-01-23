@@ -117,12 +117,12 @@ Some prompts appear in the terminal. Enter the following information:
 * **Country Name**: 2-letter code for your country, for example, GB for Great Britain
 * **State**: county or city
 * **Locality**: city or town
-* **Organisation Name**: this must match your contractual or programme status
-* **Organisation Unit**: your unit within the organisation, for example, the name of your government service
-* **Common Name**: one of the following, depending on the type of certificate. 
+* **Organisation Name**: the name of your government department, for example, DVLA
+* **Organisation Unit**: the name of your government service, for example, View your driving licence
+* **Common Name**: one of the following, depending on the type of certificate: 
 
-   * SAML :ref:`encryption<pki_encrypt_cert>` certificate: ``<servicename> SAML Encryption <version>``
-   * SAML :ref:`signing<pki_sign_cert>` certificate: ``<servicename> SAML Signing <version>``
+   * SAML :ref:`encryption<pki_encrypt_cert>` certificate: ``<servicename> SAML Encryption <version of your certificate>``
+   * SAML :ref:`signing<pki_sign_cert>` certificate: ``<servicename> SAML Signing <version of your certificate>``
    
   .. note:: **Common Name** must not contain underscores.
 
