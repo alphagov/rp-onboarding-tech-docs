@@ -27,7 +27,7 @@ The main elements in GOV.UK Verify architecture are:
 
 **GOV.UK Verify hub**
 
-  The :ref:`GOV.UK Verify hub <hub>` is the infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service.
+  The GOV.UK Verify hub is the infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service.
 
   The hub is at the centre of the GOV.UK Verify federation, providing a clear divide between identity providers and government services, avoiding a complex many-many integration:
 

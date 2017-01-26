@@ -30,7 +30,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
    * :ref:`matching cycles <ms_matchcyles_diagram>`
    * :ref:`create user accounts <ms_cua_diagram>`"
 
-1. The government service sends a SAML authentication request to the GOV.UK Verify :ref:`hub <hub>`. The request indicates that a user wants to access the service and needs to prove their identity using GOV.UK Verify.
+1. The government service sends a SAML authentication request to the GOV.UK Verify hub. The request indicates that a user wants to access the service and needs to prove their identity using GOV.UK Verify.
 
  .. image:: step1Graphic.svg
      :alt: Diagram showing a SAML authentication request signed by the government service

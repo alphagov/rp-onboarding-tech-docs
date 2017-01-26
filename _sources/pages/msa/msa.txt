@@ -3,7 +3,7 @@
 Matching Service Adapter
 ===========================
 
-The :ref:`Matching Service Adapter <gloss_msa>` is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the :ref:`GOV.UK Verify hub <hub>`.
+The :ref:`Matching Service Adapter <gloss_msa>` is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub.
 
 A matching service is composed of the Matching Service Adapter and a :ref:`local matching service <ms>`. Government services host their matching service within their security domain. 
 
