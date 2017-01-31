@@ -12,7 +12,7 @@ The matching process consists of 3 matching cycles. The cycles are progressive a
 
 * :ref:`Cycle 0: persistent identifier match <ms_mc0>` 
 * :ref:`Cycle 1: matching dataset match <ms_mc1>` 
-* :ref:`Cycle 3: user-asserted match <ms_mc3>`
+* :ref:`Cycle 3: additional information match <ms_mc3>`
 
 
   .. note:: Cycle 2 is not currently implemented.
@@ -60,8 +60,8 @@ Cycle 2 uses trusted attributes related to identity, for example, being a disabl
 
 .. _ms_mc3:
 
-Cycle 3: user-asserted match
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Cycle 3: additional information match
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If cycle 1 finds more than 1 potential match, cycle 3 asks the user for some additional information, for example driving licence number. The hub collects the additional information and sends it to the matching service. The local matching service then uses it to refine the match. When the local matching service finds a match, it saves the hashed persistent identifier in the matching datastore.
 

@@ -18,7 +18,7 @@ Development
 
     1. Read the SAML specifications described in the '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_'.
     2. :ref:`Choose a product and framework <samlIntegrationtool>` to integrate your service with GOV.UK Verify.
-    3. :ref:`Configure and adapt your chosen technology <ConfigureAdaptTechnology>` to respect the SAML profile.
+    3. :ref:`Connect your service to the Matching Service Adapter metadata <ConfigureAdaptTechnology>`.
     4. Decide how to :ref:`store and manage keys <pki_store_private_key>` and certificates so you can :ref:`rotate your keys <pkiRotate>` when needed. 
 
    Outcome:  your service can send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.
@@ -143,7 +143,6 @@ Integration
  
     1. :ref:`Download and install the Matching Service Adapter <msa_install_msa>`.
     2. :ref:`Configure the Matching Service Adapter for the production environment <ConfigureMSA>`.
-    3. Connect your service to the production environment by :ref:`accessing the federation metadata <saml_access_metadata>`.
 
    Outcome: your service is ready to go live.
 

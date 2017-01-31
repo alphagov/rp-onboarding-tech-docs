@@ -109,7 +109,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#cycle-0-persistent-identifier-match">Cycle 0: persistent identifier match</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cycle-1-matching-dataset-match">Cycle 1: matching dataset match</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cycle-2-not-used">Cycle 2: (not used)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cycle-3-user-asserted-match">Cycle 3: user-asserted match</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cycle-3-additional-information-match">Cycle 3: additional information match</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#matching-cycles-message-flow">Matching cycles: message flow</a></li>
@@ -179,7 +179,7 @@
 </li>
 <li><p class="first"><a class="reference internal" href="#ms-mc1"><span>Cycle 1: matching dataset match</span></a></p>
 </li>
-<li><p class="first"><a class="reference internal" href="#ms-mc3"><span>Cycle 3: user-asserted match</span></a></p>
+<li><p class="first"><a class="reference internal" href="#ms-mc3"><span>Cycle 3: additional information match</span></a></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Cycle 2 is not currently implemented.</p>
@@ -210,8 +210,8 @@
 <p class="last">Cycle 2 is not currently supported by GOV.UK Verify.</p>
 </div>
 </div>
-<div class="section" id="cycle-3-user-asserted-match">
-<span id="ms-mc3"></span><h3>Cycle 3: user-asserted match<a class="headerlink" href="#cycle-3-user-asserted-match" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cycle-3-additional-information-match">
+<span id="ms-mc3"></span><h3>Cycle 3: additional information match<a class="headerlink" href="#cycle-3-additional-information-match" title="Permalink to this headline">¶</a></h3>
 <p>If cycle 1 finds more than 1 potential match, cycle 3 asks the user for some additional information, for example driving licence number. The hub collects the additional information and sends it to the matching service. The local matching service then uses it to refine the match. When the local matching service finds a match, it saves the hashed persistent identifier in the matching datastore.</p>
 <p>This cycle is defined in the government service policy and may not be required for all matches. The government service defines the information the hub collects and how to use it for matching. For example, you decide how many pieces of additional information to request. If you request 2 pieces of information and the user can only provide 1 of them, your matching rules specify whether to match this user.</p>
 <p>Use this cycle to enhance cycle 1 and not as an alternative to cycle 1.</p>
