@@ -49,7 +49,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
     Content-Type: application/json
     {
-        "rpEntityId":"[entityID for your service]",
+        "rpEntityId":"[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]",
         "assertionConsumerServiceUrl":"[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]",
         "signingPublicCert":"[Base64-encoded X509 signing certificate for your service]",
         "encryptionPublicCert":"[Base64-encoded X509 encryption certificate for your service]",

@@ -197,7 +197,7 @@
 <li><p class="first">POST the following JSON (via curl, or similar) to the <code class="docutils literal"><span class="pre">URI</span> <span class="pre">compliance-tool.RPPostUri</span></code> provided by your GOV.UK Verify engagement lead:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
 {
-    &quot;rpEntityId&quot;:&quot;[entityID for your service]&quot;,
+    &quot;rpEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
     &quot;assertionConsumerServiceUrl&quot;:&quot;[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]&quot;,
     &quot;signingPublicCert&quot;:&quot;[Base64-encoded X509 signing certificate for your service]&quot;,
     &quot;encryptionPublicCert&quot;:&quot;[Base64-encoded X509 encryption certificate for your service]&quot;,
