@@ -183,28 +183,28 @@
 </div>
 <div class="section" id="connect-your-service-to-the-matching-service-adapter-metadata">
 <span id="saml-access-metadata"></span><span id="configureadapttechnology"></span><h2>Connect your service to the Matching Service Adapter metadata<a class="headerlink" href="#connect-your-service-to-the-matching-service-adapter-metadata" title="Permalink to this headline">¶</a></h2>
-<p>To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter metadata.</p>
-<p>The Matching Service Adapter metadata:</p>
+<p>To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter (MSA) metadata.</p>
+<p>The MSA metadata:</p>
 <ul class="simple">
 <li>indicates the URL where your service will send users with their authentication requests - this is the GOV.UK Verify hub</li>
-<li>lists one or more Matching Service Adapter signing certificates, so your service can validate messages that are sent by your Matching Service Adapter</li>
-<li>describes the Matching Service Adapter as an identity provider</li>
+<li>lists one or more MSA signing certificates, so your service can validate messages that are sent by your MSA</li>
+<li>describes the MSA as an identity provider</li>
 </ul>
-<p>The Matching Service Adapter metadata is located in your Matching Service Adapter at /matching-service/SAML2/metadata</p>
-<p>Your service must poll the Matching Service Adapter metadata every 10 minutes.</p>
+<p>The MSA metadata is located in your MSA at /matching-service/SAML2/metadata</p>
+<p>Your service must poll the MSA metadata every 10 minutes.</p>
 <div class="section" id="handle-responses-using-saml-metadata">
 <span id="saml-consume-responses"></span><h3>Handle responses using SAML metadata<a class="headerlink" href="#handle-responses-using-saml-metadata" title="Permalink to this headline">¶</a></h3>
 <p>To consume SAML responses that are issued by the GOV.UK Verify hub:</p>
 <ol class="arabic">
 <li><p class="first">Decrypt the assertion.</p>
 </li>
-<li><p class="first">Validate the signature on the assertion contained in the response. This assertion is generated and signed by your Matching Service Adapter.</p>
-<p>You can use the X509 signing certificate contained in the Matching Service Adapter metadata to validate this signature.</p>
+<li><p class="first">Validate the signature on the assertion contained in the response. This assertion is generated and signed by your MSA.</p>
+<p>You can use the X509 signing certificate contained in the MSA metadata to validate this signature.</p>
 </li>
 </ol>
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
-<p class="last">Use this procedure with care. You must trust assertions signed by the Matching Service Adapter only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s <em>not</em> possible to trust the hub to issue assertions.</p>
+<p class="last">Use this procedure with care. You must trust assertions signed by the MSA only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s <em>not</em> possible to trust the hub to issue assertions.</p>
 </div>
 </div>
 </div>

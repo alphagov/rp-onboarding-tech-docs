@@ -164,13 +164,13 @@
             
   <div class="section" id="create-user-accounts">
 <span id="ms-cua"></span><h1>Create user accounts<a class="headerlink" href="#create-user-accounts" title="Permalink to this headline">¶</a></h1>
-<p>You can create a new account for the user based on the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a> and a subset of attributes from the <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a>. It&#8217;s optional to set up your matching service to support the creation of new accounts.</p>
+<p>You can create a new account for the user based on the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a> (PID) and a subset of attributes from the <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a>. It&#8217;s optional to set up your matching service to support the creation of new accounts.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Before creating a user account you must request explicit user consent.</p>
 </div>
 <ol class="arabic simple">
-<li>Make sure your Matching Service Adapter exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The Matching Service Adapter then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
+<li>Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The MSA then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span>[{
@@ -179,7 +179,7 @@
 }]`
 </pre></div>
 </div>
-<p>You must specify the Matching Service Adapter&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>request access to an environment</span></a>. This form is available from your engagement lead.</p>
+<p>You must specify the MSA&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>request access to an environment</span></a>. This form is available from your engagement lead.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
 <li>Make sure the local matching service&#8217;s user account creation URI endpoint returns the following JSON, choosing success or failure as appropriate:</li>
@@ -196,7 +196,7 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Configure your Matching Service Adapter to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
+<li>Configure your MSA to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
 <li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
 </ol>
 <blockquote id="list-cua-attributes">
@@ -228,7 +228,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><div class="first last figure" id="id1">
-<img alt="Diagram showing user account creation. The Matching Service Adapter converts between SAML and JSON. The Matching Service Adapter contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps." src="../../_images/accountcreationGraphic.svg" /><p class="caption"><span class="caption-text">User account creation</span></p>
+<img alt="Diagram showing user account creation. The MSA converts between SAML and JSON. The MSA contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps." src="../../_images/accountcreationGraphic.svg" /><p class="caption"><span class="caption-text">User account creation</span></p>
 </div>
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
@@ -246,8 +246,8 @@
 <p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
 </div>
 <ol class="arabic simple">
-<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the Matching Service Adapter.</li>
-<li>The Matching Service Adapter forwards the <code class="docutils literal"><span class="pre">no-match</span></code> response to the GOV.UK Verify hub.</li>
+<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the MSA.</li>
+<li>The MSA forwards the <code class="docutils literal"><span class="pre">no-match</span></code> response to the GOV.UK Verify hub.</li>
 <li>The GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
@@ -257,23 +257,23 @@
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>If your service supports the creation of new user accounts, the hub sends an unknown user attribute query to the Matching Service Adapter. It contains the:</li>
+<li>If your service supports the creation of new user accounts, the hub sends an unknown user attribute query to the MSA. It contains the:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a></li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed PID</span></a></li>
 <li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a></li>
 <li>list of attributes to extract from the matching dataset</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>The Matching Service Adapter extracts the required attributes from the matching dataset (if available).</li>
-<li>The Matching Service Adapter sends the extracted attributes and the hashed persistent identifier to your service via the GOV.UK Verify hub.</li>
+<li>The MSA extracts the required attributes from the matching dataset (if available).</li>
+<li>The MSA sends the extracted attributes and the hashed PIDf to your service via the GOV.UK Verify hub.</li>
 </ol>
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The Matching Service Adapter must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:</p>
+<p>The MSA must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:</p>
 <ul class="simple">
 <li>user control  the user must give their informed consent to the information being sent</li>
 <li>data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>

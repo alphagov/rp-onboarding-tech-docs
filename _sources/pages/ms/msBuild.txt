@@ -5,7 +5,7 @@ Build a local matching service
 
 Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:
 
-* creates the :ref:`hashed persistent identifier <gloss_hashpid>` 
+* creates the :ref:`hashed persistent identifier <gloss_hashpid>`
 * creates and signs the final assertion sent to your service - for more information, see :ref:`samlWorks`
 * acts as the :ref:`trust anchor <gloss_trustanchor>` for your service because the final assertion is created in your service's security domain
 
@@ -61,13 +61,13 @@ When you define your matching strategy you need to:
 Respond to JSON matching requests
 ----------------------------------
 
-Your service must respond to JSON matching requests from the matching service adapter. The matching service adapter makes these requests to the following URLs specified in the :ref:`YAML configuration file <yamlfile>`:
+Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes these requests to the following URLs specified in the :ref:`YAML configuration file <yamlfile>`:
 
 * ``matchingServiceUri`` 
 * ``unknownUserCreationServiceUri`` (if you're :ref:`creating new user accounts <ms_cua>` when a match is not found)
 
 
-Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service:
+Below is a formatted example of a cycle 3 matching request that the MSA sends to your local matching service:
 
 ::
 

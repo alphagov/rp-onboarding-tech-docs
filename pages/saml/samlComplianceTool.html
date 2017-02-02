@@ -175,8 +175,8 @@
 <p>The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
 <p>Prerequisites:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your Matching Service Adapter</li>
+<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example of the JSON request</span></a> that the Matching Service Adapter (MSA) posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your MSA</li>
 </ul>
 <p>Use the SAML compliance test to:</p>
 <ul class="simple">
@@ -201,9 +201,9 @@
     &quot;assertionConsumerServiceUrl&quot;:&quot;[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]&quot;,
     &quot;signingPublicCert&quot;:&quot;[Base64-encoded X509 signing certificate for your service]&quot;,
     &quot;encryptionPublicCert&quot;:&quot;[Base64-encoded X509 encryption certificate for your service]&quot;,
-    &quot;expectedPID&quot;:&quot;[expected persistent identifier: this is the user id that the Matching Service Adapter returns in an assertion]&quot;,
-    &quot;matchingServiceEntityId&quot;:&quot;[entityID for your Matching Service Adapter]&quot;,
-    &quot;matchingServiceSigningPrivateCert&quot;:&quot;[Base64-encoded private signing key for the Matching Service Adapter, see below]&quot;,
+    &quot;expectedPID&quot;:&quot;[expected persistent identifier: this is the user id that the MSA returns in an assertion]&quot;,
+    &quot;matchingServiceEntityId&quot;:&quot;[entityID for your MSA]&quot;,
+    &quot;matchingServiceSigningPrivateCert&quot;:&quot;[Base64-encoded private signing key for the MSA, see below]&quot;,
     &quot;userAccountCreationAttributes&quot;:&quot;[optional list of attributes the government service requires for new user account creation, see below]&quot;
 }
 </pre></div>
@@ -215,7 +215,7 @@
 <ul>
 <li><p class="first">the keys and certificates in the configuration data must be single-line strings of Base64-encoded data without the header and footer <code class="docutils literal"><span class="pre">BEGIN</span> <span class="pre">CERTIFICATE</span></code> and <code class="docutils literal"><span class="pre">END</span> <span class="pre">CERTIFICATE</span></code></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateCert</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the Matching Service Adapter</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateCert</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA</p>
 <p>This key must be in PKCS#8 PEM format:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>cat server.crt server.key &gt; server.pem
 
@@ -362,13 +362,13 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your Matching Service Adapter. This corresponds to step 4 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
-<li>Your Matching Service Adapter validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
+<li>When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
+<li>Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
 </ol>
 </div>
 <div class="section" id="example-of-a-json-request-to-your-local-matching-service">
 <span id="samlct-jsoneg"></span><h2>Example of a JSON request to your local matching service<a class="headerlink" href="#example-of-a-json-request-to-your-local-matching-service" title="Permalink to this headline">¶</a></h2>
-<p>Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service:</p>
+<p>Below is a formatted example of a cycle 3 matching request that the MSA sends to your local matching service:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>

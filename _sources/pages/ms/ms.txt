@@ -5,7 +5,7 @@ Local Matching Service
 
 The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.
 
-Government services host their matching service within their security domain. A matching service is composed of the :ref:`Matching Service Adapter <msa>` and a local matching service.  
+Government services host their matching service within their security domain. A matching service is composed of the :ref:`Matching Service Adapter <msa>` (MSA) and a local matching service.  
 
 
 .. csv-table:: 
@@ -13,7 +13,7 @@ Government services host their matching service within their security domain. A 
    :name: flow-diagram
 
    ".. figure:: matchingserviceGraphics.svg
-     :alt: Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service.","For more details, see the diagrams:
+     :alt: Diagram showing that a matching service is composed of a MSA and a local matching service.","For more details, see the diagrams:
 
    * :ref:`GOV.UK architecture <arch>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`
@@ -30,7 +30,7 @@ As a government service, it's your responsibility to develop and :ref:`build you
 
 To help build your local matching service, you can use the:
 
-* :ref:`example of a JSON request<samlCT_JSONeg>` that the Matching Service Adapter posts to your service
+* :ref:`example of a JSON request<samlCT_JSONeg>` that the MSA posts to your service
 * :ref:`JSON schema <JSONschema>` for a matching request
 
 Some government services don't have experience of matching verified identities to government data sources. The process can be complex, so if you  need further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 

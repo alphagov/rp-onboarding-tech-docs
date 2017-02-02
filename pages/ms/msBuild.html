@@ -221,12 +221,12 @@
 </div>
 <div class="section" id="respond-to-json-matching-requests">
 <span id="respondjsonmr"></span><h2>Respond to JSON matching requests<a class="headerlink" href="#respond-to-json-matching-requests" title="Permalink to this headline">¶</a></h2>
-<p>Your service must respond to JSON matching requests from the matching service adapter. The matching service adapter makes these requests to the following URLs specified in the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>:</p>
+<p>Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes these requests to the following URLs specified in the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">matchingServiceUri</span></code></li>
 <li><code class="docutils literal"><span class="pre">unknownUserCreationServiceUri</span></code> (if you&#8217;re <a class="reference internal" href="msCua.html#ms-cua"><span>creating new user accounts</span></a> when a match is not found)</li>
 </ul>
-<p>Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service:</p>
+<p>Below is a formatted example of a cycle 3 matching request that the MSA sends to your local matching service:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>

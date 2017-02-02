@@ -173,8 +173,8 @@
 <ul class="simple">
 <li>government service encryption key</li>
 <li>government service signing key</li>
-<li>Matching Service Adapter encryption key</li>
-<li>Matching Service Adapter signing key</li>
+<li>Matching Service Adapter (MSA) encryption key</li>
+<li>MSA signing key</li>
 </ul>
 <p>The certificates for these keys are usually issued at the same time. You&#8217;ll probably need to renew them all together.</p>
 <div class="section" id="initial-steps-for-all-keys">
@@ -207,7 +207,7 @@
 <div class="section" id="rotate-your-matching-service-adapter-encryption-key">
 <h2>Rotate your Matching Service Adapter encryption key<a class="headerlink" href="#rotate-your-matching-service-adapter-encryption-key" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Install the new private encryption key and encryption certificate on the Matching Service Adapter. To do this, add the fields <code class="docutils literal"><span class="pre">privateSecondaryEncryptionKeyConfiguration</span></code> and <code class="docutils literal"><span class="pre">publicSecondaryEncryptionKeyConfiguration</span></code> to the  <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a> as indicated in the highlighted sections below:</li>
+<li>Install the new private encryption key and encryption certificate on the MSA. To do this, add the fields <code class="docutils literal"><span class="pre">privateSecondaryEncryptionKeyConfiguration</span></code> and <code class="docutils literal"><span class="pre">publicSecondaryEncryptionKeyConfiguration</span></code> to the  <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a> as indicated in the highlighted sections below:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
@@ -225,10 +225,10 @@
 </span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
 </span></pre></div>
 </div>
-<p>The Matching Service Adapter can now use both the new and old keys to decrypt SAML messages.</p>
+<p>The MSA can now use both the new and old keys to decrypt SAML messages.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">While both keys are in use, you may see error messages in the logs with the description &#8220;Unwrapping failed&#8221;. These messages appear because the Matching Service Adapter attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.</p>
+<p class="last">While both keys are in use, you may see error messages in the logs with the description &#8220;Unwrapping failed&#8221;. These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -248,15 +248,15 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="6">
-<li>Restart the Matching Service Adapter. The Matching Service Adapter can no longer use the old key to decrypt SAML messages.</li>
+<li>Restart the MSA. The MSA can no longer use the old key to decrypt SAML messages.</li>
 </ol>
 </div>
 <div class="section" id="rotate-your-matching-service-adapter-signing-key">
 <h2>Rotate your Matching Service Adapter signing key<a class="headerlink" href="#rotate-your-matching-service-adapter-signing-key" title="Permalink to this headline">¶</a></h2>
-<p id="pki-config-msa-2signkeys-samlmetadata">This procedure involves publishing 2 SAML signing certificates in the Matching Service Adapter SAML metadata.</p>
+<p id="pki-config-msa-2signkeys-samlmetadata">This procedure involves publishing 2 SAML signing certificates in the MSA SAML metadata.</p>
 <ol class="arabic simple">
 <li>Send the new signing certificate to the GOV.UK Verify operations team.</li>
-<li>Install the new signing certificate on the Matching Service Adapter. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>, as indicated in the highlighted section below:</li>
+<li>Install the new signing certificate on the MSA. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>, as indicated in the highlighted section below:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
@@ -273,7 +273,7 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Check that your service endpoint has loaded the newly generated Matching Service Adapter metadata from: /matching-service/SAML2/metadata. The service endpoint now trusts assertions signed with the new key.</li>
+<li>Check that your service endpoint has loaded the newly generated MSA metadata from: /matching-service/SAML2/metadata. The service endpoint now trusts assertions signed with the new key.</li>
 <li>Update the field <code class="docutils literal"><span class="pre">privateSigningKeyConfiguration</span></code> with the new private signing key.</li>
 <li>Promote the secondary signing certificate to the primary position.</li>
 <li>Remove the old signing certificate:</li>
@@ -289,7 +289,7 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Restart the Matching Service Adapter. SAML messages are now signed with the new key.</li>
+<li>Restart the MSA. SAML messages are now signed with the new key.</li>
 <li>Inform the GOV.UK Verify operations team that the new key is live.</li>
 </ol>
 </div>

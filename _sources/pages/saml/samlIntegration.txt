@@ -37,23 +37,23 @@ Contact your engagement lead if you need further information.
 Connect your service to the Matching Service Adapter metadata
 ----------------------------------------------------------------
 
-To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter metadata. 
+To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter (MSA) metadata. 
 
 
-The Matching Service Adapter metadata:
+The MSA metadata:
 
 * indicates the URL where your service will send users with their authentication requests - this is the GOV.UK Verify hub 
 
-* lists one or more Matching Service Adapter signing certificates, so your service can validate messages that are sent by your Matching Service Adapter
+* lists one or more MSA signing certificates, so your service can validate messages that are sent by your MSA
 
-* describes the Matching Service Adapter as an identity provider
-
-
+* describes the MSA as an identity provider
 
 
-The Matching Service Adapter metadata is located in your Matching Service Adapter at /matching-service/SAML2/metadata
 
-Your service must poll the Matching Service Adapter metadata every 10 minutes. 
+
+The MSA metadata is located in your MSA at /matching-service/SAML2/metadata
+
+Your service must poll the MSA metadata every 10 minutes. 
 
 
 
@@ -66,11 +66,11 @@ To consume SAML responses that are issued by the GOV.UK Verify hub:
  
 1. Decrypt the assertion.
 
-2. Validate the signature on the assertion contained in the response. This assertion is generated and signed by your Matching Service Adapter. 
+2. Validate the signature on the assertion contained in the response. This assertion is generated and signed by your MSA. 
 
-   You can use the X509 signing certificate contained in the Matching Service Adapter metadata to validate this signature.
+   You can use the X509 signing certificate contained in the MSA metadata to validate this signature.
 
-.. caution:: Use this procedure with care. You must trust assertions signed by the Matching Service Adapter only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s *not* possible to trust the hub to issue assertions.
+.. caution:: Use this procedure with care. You must trust assertions signed by the MSA only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s *not* possible to trust the hub to issue assertions.
 
 
 

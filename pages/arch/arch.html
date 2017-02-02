@@ -162,7 +162,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><div class="first last figure" id="id1">
-<img alt="Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter. Communication with the hub is via SAML with PKI. The Matching Service Adapter is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture." src="../../_images/arch_overviewGraphic.svg" /><p class="caption"><span class="caption-text">GOV.UK Verify architecture</span></p>
+<img alt="Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter (MSA). Communication with the hub is via SAML with PKI. The MSA is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture." src="../../_images/arch_overviewGraphic.svg" /><p class="caption"><span class="caption-text">GOV.UK Verify architecture</span></p>
 </div>
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
@@ -216,13 +216,13 @@
 </div>
 <p><strong>Matching Service</strong></p>
 <blockquote>
-<div>The function of finding a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter and the local matching service.</div></blockquote>
+<div>The function of finding a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the MSA and the local matching service.</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Matching Service Adapter</strong></p>
 <blockquote>
-<div>The <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The Matching Service Adapter converts SAML into JSON (JavaScript Object Notation) and vice versa.</div></blockquote>
+<div>The <a class="reference internal" href="../msa/msa.html#msa"><span>MSA</span></a> is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts SAML into JSON (JavaScript Object Notation) and vice versa.</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

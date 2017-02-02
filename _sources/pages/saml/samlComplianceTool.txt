@@ -15,8 +15,8 @@ The compliance tool provides clear error messages. These will help with iterativ
 
 Prerequisites: 
 
-* :ref:`build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <RespondJSONmr>` that the Matching Service Adapter posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request
-* :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your Matching Service Adapter
+* :ref:`build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <RespondJSONmr>` that the Matching Service Adapter (MSA) posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request
+* :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your MSA
 
 
 Use the SAML compliance test to: 
@@ -53,9 +53,9 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
         "assertionConsumerServiceUrl":"[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]",
         "signingPublicCert":"[Base64-encoded X509 signing certificate for your service]",
         "encryptionPublicCert":"[Base64-encoded X509 encryption certificate for your service]",
-        "expectedPID":"[expected persistent identifier: this is the user id that the Matching Service Adapter returns in an assertion]",
-        "matchingServiceEntityId":"[entityID for your Matching Service Adapter]",
-        "matchingServiceSigningPrivateCert":"[Base64-encoded private signing key for the Matching Service Adapter, see below]",
+        "expectedPID":"[expected persistent identifier: this is the user id that the MSA returns in an assertion]",
+        "matchingServiceEntityId":"[entityID for your MSA]",
+        "matchingServiceSigningPrivateCert":"[Base64-encoded private signing key for the MSA, see below]",
         "userAccountCreationAttributes":"[optional list of attributes the government service requires for new user account creation, see below]"
     }
 
@@ -63,7 +63,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
   *   the keys and certificates in the configuration data must be single-line strings of Base64-encoded data without the header and footer ``BEGIN CERTIFICATE`` and ``END CERTIFICATE``
 
-  * ``matchingServiceSigningPrivateCert``: this is required because the compliance tool sends a response to your service which contains an assertion signed by the Matching Service Adapter
+  * ``matchingServiceSigningPrivateCert``: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA
 
     This key must be in PKCS#8 PEM format:
   
@@ -203,9 +203,9 @@ Test your matching service with the SAML compliance tool
   * the ``uprn`` (Unique Property Reference Number) is a unique reference for each property in Great Britain, ensuring accuracy of address data. This is an optional attribute that can contain up to 12 characters and should not have any leading zeros
 
 
-4. When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your Matching Service Adapter. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`. 
+4. When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`. 
 
-5. Your Matching Service Adapter validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the :ref:`SAML message flow <samlWorks>`.  
+5. Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the :ref:`SAML message flow <samlWorks>`.  
 
 
 .. _samlCT_JSONeg:
@@ -214,7 +214,7 @@ Test your matching service with the SAML compliance tool
 Example of a JSON request to your local matching service
 ---------------------------------------------------------
 
-Below is a formatted example of a cycle 3 matching request that the Matching Service Adapter sends to your local matching service: 
+Below is a formatted example of a cycle 3 matching request that the MSA sends to your local matching service: 
 
 ::
 

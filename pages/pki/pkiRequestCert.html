@@ -176,7 +176,7 @@
 <p>To use an integration or production environment, you need to request 4 certificates from the IDAP certificate authority:</p>
 <ul class="simple">
 <li>encryption and signing certificates for your service</li>
-<li>encryption and signing certificates for your Matching Service Adapter</li>
+<li>encryption and signing certificates for your Matching Service Adapter (MSA)</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -236,7 +236,7 @@
 <li><code class="docutils literal"><span class="pre">2048</span></code> ensures that the private key meets the RSA 2048 standard required by the IDAP certificate authority</li>
 <li><code class="docutils literal"><span class="pre">&lt;file</span> <span class="pre">name&gt;</span></code> is a meaningful name, for example <code class="docutils literal"><span class="pre">MyserviceDevSamlSigning1.key</span></code> or <code class="docutils literal"><span class="pre">MyserviceUatMsaSamlEncryption3.key</span></code></li>
 </ul>
-<p>We advise you to establish a naming convention for all your PKI files. Typically, this includes the name of your service or the Matching Service Adapter and an incremental version number.</p>
+<p>We advise you to establish a naming convention for all your PKI files. Typically, this includes the name of your service or the MSA and an incremental version number.</p>
 <p>Generate a new private key for each certificate signing request file that you submit. This naturally retires any private keys that have been compromised; you should not re-use existing private keys.</p>
 <div class="section" id="store-private-keys">
 <span id="pki-store-private-key"></span><h3>Store private keys<a class="headerlink" href="#store-private-keys" title="Permalink to this headline">¶</a></h3>

@@ -176,10 +176,10 @@
             
   <div class="section" id="install-the-matching-service-adapter">
 <span id="msa-install-msa"></span><span id="msause"></span><h1>Install the Matching Service Adapter<a class="headerlink" href="#install-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
-<p><strong>Prerequisite:</strong> The Matching Service Adapter requires Java 8. Make sure you have the latest version of the JRE (Java Runtime Environment) installed.</p>
+<p><strong>Prerequisite:</strong> The Matching Service Adapter (MSA) requires Java 8. Make sure you have the latest version of the JRE (Java Runtime Environment) installed.</p>
 <ol class="arabic simple">
-<li>When you have successfully completed a gate review for <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3: Planning</a>, email <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> to request access to the secure site where you can download the Matching Service Adapter.</li>
-<li>Download the Matching Service Adapter to your host. It contains:</li>
+<li>When you have successfully completed a gate review for <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3: Planning</a>, email <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> to request access to the secure site where you can download the MSA.</li>
+<li>Download the MSA to your host. It contains:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -189,7 +189,7 @@
 </ul>
 </div></blockquote>
 <ol class="arabic" start="3">
-<li><p class="first">To extract the files and move the truststore files to the environment where you want to use the Matching Service Adapter, run the following commands:</p>
+<li><p class="first">To extract the files and move the truststore files to the environment where you want to use the MSA, run the following commands:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>tar -xf [filename].tar.gz
 unzip ida-msa-[xxx].zip
 mv prod_ida_truststore.ts prod_ida_metadata_truststore.ts [path to truststore directory in the production environment]
@@ -203,17 +203,17 @@ mv test_ida_truststore.ts test_ida_metadata_truststore.ts [path to truststore di
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">[filename]</span></code> is the name of the tar file</li>
 <li><code class="docutils literal"><span class="pre">[xxx]</span></code> is the build number</li>
-<li><code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when configuring the Matching Service Adapter (see the configuration options <code class="docutils literal"><span class="pre">storeUri:</span></code> and <code class="docutils literal"><span class="pre">trustStorePath:</span></code> in the <a class="reference internal" href="#yamlfile"><span>YAML file</span></a>)</li>
+<li><code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when configuring the MSA (see the configuration options <code class="docutils literal"><span class="pre">storeUri:</span></code> and <code class="docutils literal"><span class="pre">trustStorePath:</span></code> in the <a class="reference internal" href="#yamlfile"><span>YAML file</span></a>)</li>
 </ul>
 </div></blockquote>
 <div class="section" id="versioning">
 <h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h2>
-<p>Typically, GOV.UK Verify releases a new version of the Matching Service Adapter every 2 or 3 months. Some releases are essential updates, and we may remove support for older versions. To keep updated, contact the <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">GOV<span>&#46;</span>UK Verify support team</a> to ensure you are on the Matching Service Adapter email distribution list.</p>
+<p>Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates, and we may remove support for older versions. To keep updated, contact the <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">GOV<span>&#46;</span>UK Verify support team</a> to ensure you are on the MSA email distribution list.</p>
 </div>
 </div>
 <div class="section" id="obtain-certificates-for-your-matching-service-adapter">
 <span id="msa-certs"></span><h1>Obtain certificates for your Matching Service Adapter<a class="headerlink" href="#obtain-certificates-for-your-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
-<p>Your Matching Service Adapter needs a signing certificate and an encryption certificate. You must use different certificates for each environment.</p>
+<p>Your MSA needs a signing certificate and an encryption certificate. You must use different certificates for each environment.</p>
 <p>To obtain certificates:</p>
 <ul class="simple">
 <li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>generate self-signed certificates</span></a> for use with the compliance tool</li>
@@ -302,7 +302,7 @@ requireHubCertificates: false
 serviceInfo:
  name: matching-service-adapter
 
-# If you would like the Matching Service Adapter to report to a Graphite instance.
+# If you would like the MSA to report to a Graphite instance.
 metrics:
  reporters:
    - type: graphite
@@ -354,22 +354,22 @@ featureFlagConfiguration:
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If the Matching Service Adapter will be handling SSL termination (typically this will be handled by a proxy/load balancer like HAProxy), or if you don&#8217;t trust the network between the SSL termination endpoint and the Matching Service Adapter, then specify <code class="docutils literal"><span class="pre">https</span></code> rather than <code class="docutils literal"><span class="pre">http</span></code> for the type of connection. For more information, see the guidance in the <a class="reference external" href="http://dropwizard.github.io/dropwizard/0.8.2/docs/manual/configuration.html#https">DropWizard configuration manual</a>.</p>
+<p class="last">If the MSA will be handling SSL termination (typically this will be handled by a proxy/load balancer like HAProxy), or if you don&#8217;t trust the network between the SSL termination endpoint and the MSA, then specify <code class="docutils literal"><span class="pre">https</span></code> rather than <code class="docutils literal"><span class="pre">http</span></code> for the type of connection. For more information, see the guidance in the <a class="reference external" href="http://dropwizard.github.io/dropwizard/0.8.2/docs/manual/configuration.html#https">DropWizard configuration manual</a>.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Enter the URIs for your matching service and Matching Service Adapter in <code class="docutils literal"><span class="pre">matchingServiceUri:</span></code> and <code class="docutils literal"><span class="pre">matchingServiceAdapterLocation:</span></code> respectively.</li>
+<li>Enter the URIs for your matching service and MSA in <code class="docutils literal"><span class="pre">matchingServiceUri:</span></code> and <code class="docutils literal"><span class="pre">matchingServiceAdapterLocation:</span></code> respectively.</li>
 <li>If you&#8217;re creating new user accounts when a match is not found (see <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>Create user accounts</span></a>), enter the user account creation URI in <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code></li>
-<li>In <code class="docutils literal"><span class="pre">entity</span> <span class="pre">id</span></code>, enter the entityID for the Matching Service Adapter in URI format. You create your own URI, possibly to reflect the name of your service, for example: <code class="docutils literal"><span class="pre">https://&lt;service</span> <span class="pre">name&gt;/MSA</span></code></li>
+<li>In <code class="docutils literal"><span class="pre">entity</span> <span class="pre">id</span></code>, enter the entityID for the MSA in URI format. You create your own URI, possibly to reflect the name of your service, for example: <code class="docutils literal"><span class="pre">https://&lt;service</span> <span class="pre">name&gt;/MSA</span></code></li>
 </ol>
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It&#8217;s good practice to use the Matching Service Adapter&#8217;s URI (that is, the URI where the hub will send matching requests) as its entity ID, but this isn&#8217;t mandatory.</p>
+<p class="last">It&#8217;s good practice to use the MSA&#8217;s URI (that is, the URI where the hub will send matching requests) as its entity ID, but this isn&#8217;t mandatory.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li>In <code class="docutils literal"><span class="pre">metadata:</span></code>, use the <code class="docutils literal"><span class="pre">uri:</span></code> parameter to specify the location where the Matching Service Adapter accesses the SAML metadata:</li>
+<li>In <code class="docutils literal"><span class="pre">metadata:</span></code>, use the <code class="docutils literal"><span class="pre">uri:</span></code> parameter to specify the location where the MSA accesses the SAML metadata:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -397,7 +397,7 @@ featureFlagConfiguration:
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="8">
-<li>Enter the paths of the SAML signing and encryption private keys for your Matching Service Adapter:</li>
+<li>Enter the paths of the SAML signing and encryption private keys for your MSA:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -412,7 +412,7 @@ featureFlagConfiguration:
 <p>You will use different keys and certificates for the integration and production environments. See <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>Request certificates</span></a>.</p>
 </div></blockquote>
 <ol class="arabic simple" start="9">
-<li>Enter the paths and names of the SAML signing and encryption certificates for your Matching Service Adapter.  The names are used to identify the certificates in the metadata so should be meaningful and unique:  <code class="docutils literal"><span class="pre">signing_1</span></code> and <code class="docutils literal"><span class="pre">encryption_1</span></code> would be acceptable.</li>
+<li>Enter the paths and names of the SAML signing and encryption certificates for your MSA.  The names are used to identify the certificates in the metadata so should be meaningful and unique:  <code class="docutils literal"><span class="pre">signing_1</span></code> and <code class="docutils literal"><span class="pre">encryption_1</span></code> would be acceptable.</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -421,30 +421,30 @@ featureFlagConfiguration:
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="10">
-<li>If you want to use Graphite software to monitor the Matching Service Adapter’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.</li>
+<li>If you want to use Graphite software to monitor the MSA’s performance (optional), supply the required metrics: type, host, port, prefix and frequency of the reporter.</li>
 </ol>
 </div>
 </div>
 <div class="section" id="start-the-matching-service-adapter">
 <span id="msa-test-msa"></span><h1>Start the Matching Service Adapter<a class="headerlink" href="#start-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
-<p>To start using the Matching Service Adapter, run the following command, supplying the path to your configuration file:</p>
+<p>To start using the MSA, run the following command, supplying the path to your configuration file:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>java -jar [filename].jar server [path to configuration file].yml
 </pre></div>
 </div>
-<p>You can now run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>SAML compliance tests between the hub and your Matching Service Adapter</span></a>. To help <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a>, you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of the JSON request</span></a> that the Matching Service Adapter posts to your service.</p>
+<p>You can now run <a class="reference internal" href="../saml/samlComplianceTool.html#samlcthubmsa"><span>SAML compliance tests between the hub and your MSA</span></a>. To help <a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a>, you can use the <a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of the JSON request</span></a> that the MSA posts to your service.</p>
 </div>
 <div class="section" id="monitoring">
 <h1>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h1>
-<p>Health checks run every 60 seconds to ensure that the Matching Service Adapter is functioning correctly. They test:</p>
+<p>Health checks run every 60 seconds to ensure that the MSA is functioning correctly. They test:</p>
 <ul class="simple">
 <li>connectivity</li>
-<li>that the Matching Service Adapter accepts the hub signature</li>
-<li>that the hub accepts the Matching Service Adapter signature</li>
+<li>that the MSA accepts the hub signature</li>
+<li>that the hub accepts the MSA signature</li>
 </ul>
 </div>
 <div class="section" id="configure-https-proxies">
 <h1>Configure HTTPS Proxies<a class="headerlink" href="#configure-https-proxies" title="Permalink to this headline">¶</a></h1>
-<p>The Matching Service Adapter supports HTTP and HTTPS proxies configured by Java properties.</p>
+<p>The MSA supports HTTP and HTTPS proxies configured by Java properties.</p>
 <p>For information on configuring HTTPS proxies, see <a class="reference external" href="http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html">http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html</a>.</p>
 </div>
 <div class="section" id="secure-your-matching-service-adapter">
@@ -484,9 +484,9 @@ featureFlagConfiguration:
 </div>
 <div class="section" id="connect-your-matching-service-adapter-to-the-internet-securely">
 <h2>Connect your Matching Service Adapter to the internet securely<a class="headerlink" href="#connect-your-matching-service-adapter-to-the-internet-securely" title="Permalink to this headline">¶</a></h2>
-<p>Your Matching Service Adapter must only respond to matching requests from the GOV.UK Verify hub, otherwise there’s a risk of user data being compromised.</p>
-<p>The Matching Service Adapter checks that matching service requests are genuine by checking their cryptographic signatures.</p>
-<p>To ensure that only the GOV.UK Verify hub can access the Matching Service Adapter, make sure your Matching Service Adapter:</p>
+<p>Your MSA must only respond to matching requests from the GOV.UK Verify hub, otherwise there’s a risk of user data being compromised.</p>
+<p>The MSA checks that matching service requests are genuine by checking their cryptographic signatures.</p>
+<p>To ensure that only the GOV.UK Verify hub can access the MSA, make sure your MSA:</p>
 <ul>
 <li><p class="first">is only exposed as HTTPS endpoints</p>
 </li>
@@ -501,7 +501,7 @@ featureFlagConfiguration:
 <li><p class="first">allows requests and health checks only from the IP addresses of hub services provided by your engagement lead</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Each Matching Service Adapter should communicate with only 1 hub service (SAML compliance tool, integration environment, or production environment).</p>
+<p class="last">Each MSA should communicate with only 1 hub service (SAML compliance tool, integration environment, or production environment).</p>
 </div>
 </li>
 </ul>

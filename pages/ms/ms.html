@@ -159,7 +159,7 @@
   <div class="section" id="local-matching-service">
 <span id="ms"></span><h1>Local Matching Service<a class="headerlink" href="#local-matching-service" title="Permalink to this headline">¶</a></h1>
 <p>The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.</p>
-<p>Government services host their matching service within their security domain. A matching service is composed of the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and a local matching service.</p>
+<p>Government services host their matching service within their security domain. A matching service is composed of the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> (MSA) and a local matching service.</p>
 <table border="1" class="docutils" id="flow-diagram">
 <colgroup>
 <col width="50%" />
@@ -167,7 +167,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><div class="first last figure">
-<img alt="Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service." src="../../_images/matchingserviceGraphics.svg" /></div>
+<img alt="Diagram showing that a matching service is composed of a MSA and a local matching service." src="../../_images/matchingserviceGraphics.svg" /></div>
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
@@ -185,7 +185,7 @@
 <p>As a government service, it&#8217;s your responsibility to develop and <a class="reference internal" href="msBuild.html#msbuild"><span>build your local matching service</span></a>. You need to understand <a class="reference internal" href="msWorks.html#msworks"><span>how a matching service works</span></a>.</p>
 <p>To help build your local matching service, you can use the:</p>
 <ul class="simple">
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of a JSON request</span></a> that the Matching Service Adapter posts to your service</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlct-jsoneg"><span>example of a JSON request</span></a> that the MSA posts to your service</li>
 <li><a class="reference internal" href="msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
 </ul>
 <p>Some government services don&#8217;t have experience of matching verified identities to government data sources. The process can be complex, so if you  need further help with building a local matching service, contact your engagement lead or the <a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">GOV.UK Verify team</a>.</p>

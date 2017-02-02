@@ -10,8 +10,8 @@ As a government service you are responsible for maintaining the following keys:
 
 * government service encryption key
 * government service signing key
-* Matching Service Adapter encryption key
-* Matching Service Adapter signing key
+* Matching Service Adapter (MSA) encryption key
+* MSA signing key
 
 The certificates for these keys are usually issued at the same time. You'll probably need to renew them all together.
 
@@ -48,7 +48,7 @@ Rotate your service signing key
 Rotate your Matching Service Adapter encryption key
 -----------------------------------------------------
 
-1. Install the new private encryption key and encryption certificate on the Matching Service Adapter. To do this, add the fields ``privateSecondaryEncryptionKeyConfiguration`` and ``publicSecondaryEncryptionKeyConfiguration`` to the  :ref:`YAML configuration file <yamlfile>` as indicated in the highlighted sections below:
+1. Install the new private encryption key and encryption certificate on the MSA. To do this, add the fields ``privateSecondaryEncryptionKeyConfiguration`` and ``publicSecondaryEncryptionKeyConfiguration`` to the  :ref:`YAML configuration file <yamlfile>` as indicated in the highlighted sections below:
 
   .. code-block:: yaml
      :emphasize-lines: 4-5, 11-13
@@ -67,9 +67,9 @@ Rotate your Matching Service Adapter encryption key
       keyUri: deploy/keys/test_rp_msa_encryption_new.crt
       keyName: http://www.test-rp-ms.gov.uk/SAML2/MD
  
-  The Matching Service Adapter can now use both the new and old keys to decrypt SAML messages.
+  The MSA can now use both the new and old keys to decrypt SAML messages.
 
-  .. note:: While both keys are in use, you may see error messages in the logs with the description "Unwrapping failed". These messages appear because the Matching Service Adapter attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.
+  .. note:: While both keys are in use, you may see error messages in the logs with the description "Unwrapping failed". These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.
 
 2. Send the new certificate to the GOV.UK Verify operations team.
 3. The GOV.UK Verify operations team replaces the old certificate with the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.
@@ -86,7 +86,7 @@ Rotate your Matching Service Adapter encryption key
       keyUri: deploy/keys/test_rp_msa_encryption_new.crt
       keyName: http://www.test-rp-ms.gov.uk/SAML2/MD
 
-6. Restart the Matching Service Adapter. The Matching Service Adapter can no longer use the old key to decrypt SAML messages.
+6. Restart the MSA. The MSA can no longer use the old key to decrypt SAML messages.
 
 
 Rotate your Matching Service Adapter signing key
@@ -94,10 +94,10 @@ Rotate your Matching Service Adapter signing key
 
 .. _pki_config_msa_2signkeys_SAMLmetadata:
 
-This procedure involves publishing 2 SAML signing certificates in the Matching Service Adapter SAML metadata. 
+This procedure involves publishing 2 SAML signing certificates in the MSA SAML metadata. 
 
 1. Send the new signing certificate to the GOV.UK Verify operations team.
-2. Install the new signing certificate on the Matching Service Adapter. To do this, add the field ``publicSecondarySigningKeyConfiguration`` to the :ref:`YAML configuration file <yamlfile>`, as indicated in the highlighted section below:
+2. Install the new signing certificate on the MSA. To do this, add the field ``publicSecondarySigningKeyConfiguration`` to the :ref:`YAML configuration file <yamlfile>`, as indicated in the highlighted section below:
 
   .. code-block:: yaml
      :emphasize-lines: 8-10
@@ -113,7 +113,7 @@ This procedure involves publishing 2 SAML signing certificates in the Matching S
       keyUri: deploy/keys/test_rp_msa_signing_new_cert.crt
       keyName: http://www.test-rp-ms.gov.uk/SAML2/MD/Secondary
 
-3. Check that your service endpoint has loaded the newly generated Matching Service Adapter metadata from: /matching-service/SAML2/metadata. The service endpoint now trusts assertions signed with the new key.
+3. Check that your service endpoint has loaded the newly generated MSA metadata from: /matching-service/SAML2/metadata. The service endpoint now trusts assertions signed with the new key.
 4. Update the field ``privateSigningKeyConfiguration`` with the new private signing key.
 5. Promote the secondary signing certificate to the primary position. 
 6. Remove the old signing certificate:
@@ -127,5 +127,5 @@ This procedure involves publishing 2 SAML signing certificates in the Matching S
       keyUri: deploy/keys/test_rp_msa_signing_new.crt
       keyName: http://www.test-rp-ms.gov.uk/SAML2/MD
 
-7. Restart the Matching Service Adapter. SAML messages are now signed with the new key.
+7. Restart the MSA. SAML messages are now signed with the new key.
 8. Inform the GOV.UK Verify operations team that the new key is live.

@@ -6,7 +6,7 @@ Request certificates
 To use an integration or production environment, you need to request 4 certificates from the IDAP certificate authority: 
 
 * encryption and signing certificates for your service
-* encryption and signing certificates for your Matching Service Adapter
+* encryption and signing certificates for your Matching Service Adapter (MSA)
 
 
 .. note:: 
@@ -71,7 +71,7 @@ where:
 * ``2048`` ensures that the private key meets the RSA 2048 standard required by the IDAP certificate authority
 * ``<file name>`` is a meaningful name, for example ``MyserviceDevSamlSigning1.key`` or ``MyserviceUatMsaSamlEncryption3.key``
 
-We advise you to establish a naming convention for all your PKI files. Typically, this includes the name of your service or the Matching Service Adapter and an incremental version number.
+We advise you to establish a naming convention for all your PKI files. Typically, this includes the name of your service or the MSA and an incremental version number.
 
 Generate a new private key for each certificate signing request file that you submit. This naturally retires any private keys that have been compromised; you should not re-use existing private keys. 
 

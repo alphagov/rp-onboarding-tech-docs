@@ -3,16 +3,16 @@
 Matching Service Adapter
 ===========================
 
-The :ref:`Matching Service Adapter <gloss_msa>` is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub.
+The :ref:`Matching Service Adapter <gloss_msa>` (MSA) is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub.
 
-A matching service is composed of the Matching Service Adapter and a :ref:`local matching service <ms>`. Government services host their matching service within their security domain. 
+A matching service is composed of the MSA and a :ref:`local matching service <ms>`. Government services host their matching service within their security domain. 
 
  .. csv-table::
    :widths: 50, 50
    :name: flow-diagram
 
    ".. figure:: ../ms/matchingserviceGraphics.svg
-     :alt: Diagram showing that a matching service is composed of a Matching Service Adapter and a local matching service.","For more details, see the diagrams:
+     :alt: Diagram showing that a matching service is composed of a MSA and a local matching service.","For more details, see the diagrams:
 
    * :ref:`GOV.UK architecture <arch>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`
@@ -20,18 +20,18 @@ A matching service is composed of the Matching Service Adapter and a :ref:`local
 
 .. rubric:: Why does GOV.UK Verify use the Matching Service Adapter?
 
-The hub uses :ref:`Security Assertion Markup Language <saml>` (SAML) as its communication method. Government services usually use JSON (JavaScript Object Notation) for their local matching services. A SAML matching service interface is therefore required.  The Matching Service Adapter converts SAML into JSON and vice versa. It also performs encryption, decryption, and signing of SAML messages. For more information, see the :ref:`diagram showing the SAML message flow <samlWorks>` within the GOV.UK Verify federation.
+The hub uses :ref:`Security Assertion Markup Language <saml>` (SAML) as its communication method. Government services usually use JSON (JavaScript Object Notation) for their local matching services. A SAML matching service interface is therefore required.  The MSA converts SAML into JSON and vice versa. It also performs encryption, decryption, and signing of SAML messages. For more information, see the :ref:`diagram showing the SAML message flow <samlWorks>` within the GOV.UK Verify federation.
 
-It can be difficult and expensive to implement a SAML matching service interface. GOV.UK Verify provides the Matching Service Adapter so you can concentrate on the business logic and matching rules for your local matching service.
+It can be difficult and expensive to implement a SAML matching service interface. GOV.UK Verify provides the MSA so you can concentrate on the business logic and matching rules for your local matching service.
 
 .. rubric:: What do you need to do?
 
-We recommend that you use the Matching Service Adapter.  If you do not want to, please contact the `GOV.UK Verify support team <idasupport+onboarding@digital.cabinet-office.gov.uk>`_  to discuss your alternatives.
+We recommend that you use the MSA.  If you do not want to, please contact the `GOV.UK Verify support team <idasupport+onboarding@digital.cabinet-office.gov.uk>`_  to discuss your alternatives.
 
 
-To use the Matching Service Adapter, you need to:
+To use the MSA, you need to:
 
-#. :ref:`Build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the Matching Service Adapter posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request.
+#. :ref:`Build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the MSA posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request.
 #. :ref:`Install the Matching Service Adapter <msa_install_msa>`.
 #. :ref:`Configure the Matching Service Adapter <ConfigureMSA>`.
 
