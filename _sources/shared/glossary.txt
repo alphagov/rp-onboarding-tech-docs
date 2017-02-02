@@ -112,7 +112,7 @@ A service provided by a government department such as Check or update your compa
 
 .. _gloss_hashpid:
 
-**hashed persistent identifier**  
+**hashed persistent identifier (PID)**  
 
 A unique identifier which refers to a combination of: 
 
@@ -243,7 +243,7 @@ The function of finding a local identifier for the individual (for example, an i
 
 .. _gloss_msa:
 
-**Matching Service Adapter** 
+**Matching Service Adapter (MSA)** 
 
 A software tool provided by GOV.UK Verify that’s installed within the government service’s security domain. The Matching Service Adapter handles SAML requests for matching queries and sends responses to the GOV.UK Verify hub. The Matching Service Adapter and the :ref:`local matching service <gloss_lms>` together comprise the matching service.
 
@@ -254,7 +254,7 @@ The process through which new government services integrate with GOV.UK Verify. 
 
 .. _gloss_persid:
 
-**persistent identifier** 
+**persistent identifier (PID)** 
 
 A unique identifier which refers to a combination of 
 
