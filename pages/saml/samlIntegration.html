@@ -107,10 +107,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="">Build your service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#use-extended-validation-certificates">Use extended validation certificates</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#choose-a-product-and-framework">Choose a product and framework</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#connect-your-service-to-the-matching-service-adapter-metadata">Connect your service to the Matching Service Adapter metadata</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#handle-responses-using-saml-metadata">Handle responses using SAML metadata</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-your-service-to-the-matching-service-adapter-metadata">Connect your service to the Matching Service Adapter metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-a-saml-authentication-request-to-the-gov-uk-verify-hub">Send a SAML authentication request to the GOV.UK Verify hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handle-saml-responses-using-saml-metadata">Handle SAML responses using SAML metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
@@ -175,7 +174,7 @@
 <p>Using EV certificates is one of a range of measures to protect your users from sites pretending to be you. See best practices for <a class="reference external" href="https://www.ncsc.gov.uk/guidance/tls-external-facing-services">using TLS to protect data</a> from the National Cyber Security Centre (NCSC).</p>
 </div>
 <div class="section" id="choose-a-product-and-framework">
-<h2>Choose a product and framework<a class="headerlink" href="#choose-a-product-and-framework" title="Permalink to this headline">¶</a></h2>
+<span id="chooseproductframework"></span><h2>Choose a product and framework<a class="headerlink" href="#choose-a-product-and-framework" title="Permalink to this headline">¶</a></h2>
 <p>Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
 <p>You can choose from a wide range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.</p>
 <p>GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See <a class="reference external" href="https://www.gov.uk/service-manual/making-software/choosing-technology.html">Choosing technology</a> in the Government Service Design Manual.</p>
@@ -192,8 +191,47 @@
 </ul>
 <p>The MSA metadata is located in your MSA at /matching-service/SAML2/metadata</p>
 <p>Your service must poll the MSA metadata every 10 minutes.</p>
-<div class="section" id="handle-responses-using-saml-metadata">
-<span id="saml-consume-responses"></span><h3>Handle responses using SAML metadata<a class="headerlink" href="#handle-responses-using-saml-metadata" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="send-a-saml-authentication-request-to-the-gov-uk-verify-hub">
+<span id="saml-consume-responses"></span><h2>Send a SAML authentication request to the GOV.UK Verify hub<a class="headerlink" href="#send-a-saml-authentication-request-to-the-gov-uk-verify-hub" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Use your chosen <a class="reference internal" href="#chooseproductframework"><span>product and framework</span></a> to build a SAML authentication request in XML:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;saml2p:AuthnRequest ...&gt;</span>
+  <span class="l l-Scalar l-Scalar-Plain">&lt;saml2:Issuer xmlns:saml2=&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot; Format=&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&quot;&gt;http://www.test-rp.gov.uk/SAML2/MD&lt;/saml2:Issuer&gt;</span>
+  <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Signature xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot;&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;ds:SignedInfo&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">&lt;ds:CanonicalizationMethod Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;/&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">&lt;ds:SignatureMethod Algorithm=&quot;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&quot;/&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Reference URI=&quot;#_60f75dc5-f9eb-43cf-adfc-5814016a626c&quot;&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Transforms&gt;</span>
+          <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Transform Algorithm=&quot;http://www.w3.org/2000/09/xmldsig#enveloped-signature&quot;/&gt;</span>
+          <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Transform Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;/&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:Transforms&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;ds:DigestMethod Algorithm=&quot;http://www.w3.org/2001/04/xmlenc#sha256&quot;/&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">&lt;ds:DigestValue&gt;O+LkTbydEWNPSLThcblzSqd/BvlGAI0dWwGVgd6ixkE=&lt;/ds:DigestValue&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:Reference&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:SignedInfo&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;ds:SignatureValue&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">O8x8ILlqoiCKg8LMSqlajyX5JhLDxHSltUXYAalGnFb0L41Up5hQuFrEXBNxfNiUo3ChlZA+FIWw</span>
+<span class="l l-Scalar l-Scalar-Plain">WkK5OSSqqJQ9IqgUFUapDVZUewerOGLQ/Qw80linrbc24w21JIWDnpoT8qrdt+c9EgkQTvKrwDmf</span>
+<span class="l l-Scalar l-Scalar-Plain">JfXUcbTCvuhnOTVrG/5Fv64sruBu9CVTSnvj/Jvy1bwK2HsvMmxrAO8og+iFvMx1KB7YCG1Puj/Z</span>
+<span class="l l-Scalar l-Scalar-Plain">frJRKYU3QgAehUR0hrUj1ReVGV4cx1Yy7FhUKnYpdsYRVxpv1McwkDXHVs5iao+0vv7rLGLw9U1d</span>
+<span class="l l-Scalar l-Scalar-Plain">a7lBaFhC2AT1wi+ogaO8nzZ/d3G6p0tHrMSqQA==</span>
+    <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:SignatureValue&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/ds:Signature&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">&lt;/saml2p:AuthnRequest&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Send the authentication request to the URL indicated in the element <code class="docutils literal"><span class="pre">SingleSignonService</span></code> in the MSA metadata.</li>
+</ol>
+</div>
+<div class="section" id="handle-saml-responses-using-saml-metadata">
+<span id="saml-handle-responses"></span><h2>Handle SAML responses using SAML metadata<a class="headerlink" href="#handle-saml-responses-using-saml-metadata" title="Permalink to this headline">¶</a></h2>
 <p>To consume SAML responses that are issued by the GOV.UK Verify hub:</p>
 <ol class="arabic">
 <li><p class="first">Decrypt the assertion.</p>
@@ -205,7 +243,6 @@
 <div class="admonition caution">
 <p class="first admonition-title">Caution</p>
 <p class="last">Use this procedure with care. You must trust assertions signed by the MSA only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s <em>not</em> possible to trust the hub to issue assertions.</p>
-</div>
 </div>
 </div>
 </div>

@@ -160,6 +160,15 @@
 <span id="steps"></span><h1>Steps to integrate GOV.UK Verify into your service<a class="headerlink" href="#steps-to-integrate-gov-uk-verify-into-your-service" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="development">
 <h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
+<p>Prerequisites:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../saml/samlIntegration.html#chooseproductframework"><span>choose a product and framework</span></a> to integrate your service with GOV.UK Verify</li>
+<li>decide how to <a class="reference internal" href="../pki/pkiRequestCert.html#pki-store-private-key"><span>store and manage keys</span></a> and certificates so you can <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>rotate your keys</span></a> when needed</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You only need to deploy your code to an environment at the end of the development phase, when you test your matching service with the SAML compliance tool. You can do all development steps until this point on a development machine.</p>
+</div>
 <table border="1" class="docutils" id="stepsdev">
 <colgroup>
 <col width="9%" />
@@ -175,18 +184,17 @@
 <li></li>
 </ol>
 </td>
-<td><p class="first"><strong>Build a service that produces and consumes SAML.</strong></p>
+<td><p class="first"><strong>Set up the Matching Service Adapter for the SAML compliance tool.</strong></p>
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Read the SAML specifications described in the &#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216;.</li>
-<li><a class="reference internal" href="../saml/samlIntegration.html#samlintegrationtool"><span>Choose a product and framework</span></a> to integrate your service with GOV.UK Verify.</li>
-<li><a class="reference internal" href="../saml/samlIntegration.html#configureadapttechnology"><span>Connect your service to the Matching Service Adapter metadata</span></a>.</li>
-<li>Decide how to <a class="reference internal" href="../pki/pkiRequestCert.html#pki-store-private-key"><span>store and manage keys</span></a> and certificates so you can <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>rotate your keys</span></a> when needed.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>Generate self-signed certificates for the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
 </ol>
 </div></blockquote>
-<p>Outcome:  your service can send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
-<p class="last" id="step-build-lms">For more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works wth GOV.UK Verify</span></a>.</p>
+<p>Outcome:  you can start building your service.</p>
+<p class="last" id="step-build-lms">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="2">
@@ -209,17 +217,17 @@
 <li></li>
 </ol>
 </td>
-<td><p class="first"><strong>Set up the Matching Service Adapter for the SAML compliance tool.</strong></p>
+<td><p class="first"><strong>Build a service that produces and consumes SAML.</strong></p>
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>Generate self-signed certificates for the SAML compliance tool</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#configureadapttechnology"><span>Connect your service to the Matching Service Adapter metadata</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#saml-consume-responses"><span>Send an authentication request to the GOV.UK Verify hub</span></a>.</li>
+<li><a class="reference internal" href="../saml/samlIntegration.html#saml-handle-responses"><span>Handle the SAML response from the GOV.UK Verify hub</span></a> .</li>
 </ol>
 </div></blockquote>
 <p>Outcome: you&#8217;re ready to run SAML compliance tests.</p>
-<p class="last" id="step-run-saml-tests">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>.</p>
+<p class="last" id="step-run-saml-tests">For more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works wth GOV.UK Verify</span></a> and the &#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216; .</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="4">

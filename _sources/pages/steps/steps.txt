@@ -6,26 +6,33 @@ Steps to integrate GOV.UK Verify into your service
 Development
 ~~~~~~~~~~~~~~
 
+Prerequisites:
+
+*  :ref:`choose a product and framework <ChooseProductFramework>` to integrate your service with GOV.UK Verify
+*  decide how to :ref:`store and manage keys <pki_store_private_key>` and certificates so you can :ref:`rotate your keys <pkiRotate>` when needed
+
+.. note:: You only need to deploy your code to an environment at the end of the development phase, when you test your matching service with the SAML compliance tool. You can do all development steps until this point on a development machine. 
+
+
 .. csv-table:: 
    :header: "Step", "What you need to do"
    :name: "stepsdev"
    :widths: 1, 10
 
 
-   "1.", "**Build a service that produces and consumes SAML.** 
+   "1.", "**Set up the Matching Service Adapter for the SAML compliance tool.** 
 
    To do this: 
 
-    1. Read the SAML specifications described in the '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_'.
-    2. :ref:`Choose a product and framework <samlIntegrationtool>` to integrate your service with GOV.UK Verify.
-    3. :ref:`Connect your service to the Matching Service Adapter metadata <ConfigureAdaptTechnology>`.
-    4. Decide how to :ref:`store and manage keys <pki_store_private_key>` and certificates so you can :ref:`rotate your keys <pkiRotate>` when needed. 
+    1. :ref:`Download and install the Matching Service Adapter <msa_install_msa>`.
+    2. :ref:`Generate self-signed certificates for the SAML compliance tool <samlCTselfsigncert>`.
+    3. :ref:`Configure the Matching Service Adapter for the SAML compliance tool <ConfigureMSA>`.
 
-   Outcome:  your service can send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.
+   Outcome:  you can start building your service.
 
    .. _step-build-lms: 
 
-   For more information, see :ref:`samlWorks`."
+   For more information, see :ref:`msa`."
    "2.", "**Build a local matching service.** 
 
    To do this:
@@ -38,19 +45,19 @@ Development
    .. _step-setup-msaforsaml: 
 
    For more information, see :ref:`msWorks`."
-   "3.", "**Set up the Matching Service Adapter for the SAML compliance tool.** 
+   "3.", "**Build a service that produces and consumes SAML.** 
 
    To do this: 
 
-    1. :ref:`Download and install the Matching Service Adapter <msa_install_msa>`.
-    2. :ref:`Generate self-signed certificates for the SAML compliance tool <samlCTselfsigncert>`.
-    3. :ref:`Configure the Matching Service Adapter for the SAML compliance tool <ConfigureMSA>`.
+    1. :ref:`Connect your service to the Matching Service Adapter metadata <ConfigureAdaptTechnology>`.
+    2. :ref:`Send an authentication request to the GOV.UK Verify hub <saml_consume_responses>`.
+    3. :ref:`Handle the SAML response from the GOV.UK Verify hub <saml_handle_responses>` . 
 
    Outcome: you're ready to run SAML compliance tests.
 
    .. _step-run-saml-tests:
 
-   For more information, see :ref:`msa`."
+   For more information, see :ref:`samlWorks` and the '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_' ."
    "4.", "**Run SAML compliance tests.** 
 
    To do this: 
