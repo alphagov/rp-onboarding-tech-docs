@@ -235,12 +235,46 @@ openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
 </li>
 <li><p class="first">Consume the GOV.UK Verify hub&#8217;s metadata from the URL <code class="docutils literal"><span class="pre">compliance-tool.MetadataUri</span></code> provided by your GOV.UK Verify engagement lead. This metadata contains the compliance tool single sign-on (SSO) URI.</p>
 </li>
-<li><p class="first">Generate an authentication request and POST it to the compliance tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</p>
+<li><p class="first">Generate a SAML authentication request and POST it to the compliance tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SAML authentication requests signed by the government service must use RSA-SHA256 for the <a class="reference external" href="https://www.w3.org/TR/xmldsig-core/#sec-SignatureMethod">signature method algorithm</a> and SHA256 for the <a class="reference external" href="https://www.w3.org/TR/xmldsig-core/#sec-DigestMethod">digest method algorithm</a> . These are required to comply with the &#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216;.</p>
+</div>
+<p>Below is an example of a SAML authentication request:</p>
 </li>
-<li><p class="first">If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</p>
-</li>
-<li><p class="first">Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</p>
-</li>
+</ol>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span> <span class="l l-Scalar l-Scalar-Plain">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+ <span class="l l-Scalar l-Scalar-Plain">&lt;saml2p:AuthnRequest ...&gt;</span>
+   <span class="l l-Scalar l-Scalar-Plain">&lt;saml2:Issuer xmlns:saml2=&quot;urn:oasis:names:tc:SAML:2.0:assertion&quot; Format=&quot;urn:oasis:names:tc:SAML:2.0:nameid-format:entity&quot;&gt;http://www.test-rp.gov.uk/SAML2/MD&lt;/saml2:Issuer&gt;</span>
+   <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Signature xmlns:ds=&quot;http://www.w3.org/2000/09/xmldsig#&quot;&gt;</span>
+     <span class="l l-Scalar l-Scalar-Plain">&lt;ds:SignedInfo&gt;</span>
+       <span class="l l-Scalar l-Scalar-Plain">&lt;ds:CanonicalizationMethod Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;/&gt;</span>
+<span class="hll">       <span class="l l-Scalar l-Scalar-Plain">&lt;ds:SignatureMethod Algorithm=&quot;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&quot;/&gt;</span>
+</span>       <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Reference URI=&quot;#_60f75dc5-f9eb-43cf-adfc-5814016a626c&quot;&gt;</span>
+         <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Transforms&gt;</span>
+           <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Transform Algorithm=&quot;http://www.w3.org/2000/09/xmldsig#enveloped-signature&quot;/&gt;</span>
+           <span class="l l-Scalar l-Scalar-Plain">&lt;ds:Transform Algorithm=&quot;http://www.w3.org/2001/10/xml-exc-c14n#&quot;/&gt;</span>
+         <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:Transforms&gt;</span>
+<span class="hll">         <span class="l l-Scalar l-Scalar-Plain">&lt;ds:DigestMethod Algorithm=&quot;http://www.w3.org/2001/04/xmlenc#sha256&quot;/&gt;</span>
+</span>         <span class="l l-Scalar l-Scalar-Plain">&lt;ds:DigestValue&gt;O+LkTbydEWNPSLThcblzSqd/BvlGAI0dWwGVgd6ixkE=&lt;/ds:DigestValue&gt;</span>
+       <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:Reference&gt;</span>
+     <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:SignedInfo&gt;</span>
+     <span class="l l-Scalar l-Scalar-Plain">&lt;ds:SignatureValue&gt;</span>
+ <span class="l l-Scalar l-Scalar-Plain">O8x8ILlqoiCKg8LMSqlajyX5JhLDxHSltUXYAalGnFb0L41Up5hQuFrEXBNxfNiUo3ChlZA+FIWw</span>
+ <span class="l l-Scalar l-Scalar-Plain">WkK5OSSqqJQ9IqgUFUapDVZUewerOGLQ/Qw80linrbc24w21JIWDnpoT8qrdt+c9EgkQTvKrwDmf</span>
+ <span class="l l-Scalar l-Scalar-Plain">JfXUcbTCvuhnOTVrG/5Fv64sruBu9CVTSnvj/Jvy1bwK2HsvMmxrAO8og+iFvMx1KB7YCG1Puj/Z</span>
+ <span class="l l-Scalar l-Scalar-Plain">frJRKYU3QgAehUR0hrUj1ReVGV4cx1Yy7FhUKnYpdsYRVxpv1McwkDXHVs5iao+0vv7rLGLw9U1d</span>
+ <span class="l l-Scalar l-Scalar-Plain">a7lBaFhC2AT1wi+ogaO8nzZ/d3G6p0tHrMSqQA==</span>
+     <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:SignatureValue&gt;</span>
+ <span class="l l-Scalar l-Scalar-Plain">&lt;/ds:Signature&gt;</span>
+ <span class="l l-Scalar l-Scalar-Plain">&lt;/saml2p:AuthnRequest&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li>If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</li>
+<li>Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
