@@ -32,7 +32,7 @@
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
         <link rel="up" title="SAML" href="saml.html"/>
-        <link rel="next" title="Local Matching Service" href="../ms/ms.html"/>
+        <link rel="next" title="Generate self-signed certificates" href="generateSelfSignedCertificates.html"/>
         <link rel="prev" title="Build your service" href="samlIntegration.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -111,6 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#example-of-a-json-request-to-your-local-matching-service">Example of a JSON request to your local matching service</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="generateSelfSignedCertificates.html">Generate self-signed certificates</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
@@ -173,17 +174,13 @@
 </ul>
 <p>Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.</p>
 <p>The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
-<p>Prerequisites:</p>
-<ul class="simple">
-<li><a class="reference internal" href="../ms/msBuild.html#msbuild"><span>build your local matching service</span></a> – you can use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example of the JSON request</span></a> that the Matching Service Adapter (MSA) posts to your service and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your MSA</li>
-</ul>
+<p>Before running SAML compliance tests, <a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>configure</span></a> your MSA.</p>
 <p>Use the SAML compliance test to:</p>
 <ul class="simple">
 <li><a class="reference internal" href="#samlctservicehub"><span>test your service</span></a></li>
 <li><a class="reference internal" href="#samlcthubmsa"><span>test your matching service</span></a></li>
 </ul>
-<p>After SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
+<p>After running SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
 <div class="section" id="test-your-service-with-the-saml-compliance-tool">
 <span id="samlctservicehub"></span><h2>Test your service with the SAML compliance tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <p>To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.</p>
@@ -192,7 +189,7 @@
 <li>Send the IP addresses of your hosts to the GOV.UK Verify support team: <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>. We will add a firewall rule allowing access to the compliance tool.</li>
 </ol>
 <ol class="arabic" id="samlctselfsigncert" start="3">
-<li><p class="first">Generate self-signed certificates for use with the compliance tool only. You can use OpenSSL to generate self-signed certificates using the <a class="reference external" href="https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites">guidelines provided by the Heroku Dev Center</a>.</p>
+<li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the compliance tool only.</p>
 </li>
 <li><p class="first">POST the following JSON (via curl, or similar) to the <code class="docutils literal"><span class="pre">URI</span> <span class="pre">compliance-tool.RPPostUri</span></code> provided by your GOV.UK Verify engagement lead:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
@@ -487,7 +484,7 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ms/ms.html" class="btn btn-neutral float-right" title="Local Matching Service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generateSelfSignedCertificates.html" class="btn btn-neutral float-right" title="Generate self-signed certificates" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="samlIntegration.html" class="btn btn-neutral" title="Build your service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

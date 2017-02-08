@@ -42,4 +42,5 @@ The SAML profile used by GOV.UK Verify builds on the `OASIS documentation for th
    samlWorks
    samlIntegration
    samlComplianceTool
+   generateSelfSignedCertificates
    

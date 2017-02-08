@@ -13,10 +13,7 @@ Your service and matching service need to consume and produce SAML messages in a
 
 The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility. 
 
-Prerequisites: 
-
-* :ref:`build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <RespondJSONmr>` that the Matching Service Adapter (MSA) posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request
-* :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your MSA
+Before running SAML compliance tests, :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your MSA.
 
 
 Use the SAML compliance test to: 
@@ -24,7 +21,7 @@ Use the SAML compliance test to:
 * :ref:`test your service <samlCTservicehub>` 
 * :ref:`test your matching service <samlCThubMSA>` 
 
-After SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.  
+After running SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.  
 
 
 
@@ -37,12 +34,11 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
 
 1. On completion of a successful `Stage 3 <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_ gate review, your GOV.UK Verify engagement lead will give you access to the compliance tool.
- 
 2. Send the IP addresses of your hosts to the GOV.UK Verify support team: idasupport+onboarding@digital.cabinet-office.gov.uk. We will add a firewall rule allowing access to the compliance tool.
 
 .. _samlCTselfsigncert:
 
-3. Generate self-signed certificates for use with the compliance tool only. You can use OpenSSL to generate self-signed certificates using the `guidelines provided by the Heroku Dev Center <https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites>`_.
+3. :ref:`Generate self-signed certificates <generateSelfSignedCertificates>` for use with the compliance tool only.
 
 4. POST the following JSON (via curl, or similar) to the ``URI compliance-tool.RPPostUri`` provided by your GOV.UK Verify engagement lead::
 
