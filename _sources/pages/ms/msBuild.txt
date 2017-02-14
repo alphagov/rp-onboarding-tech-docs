@@ -44,7 +44,7 @@ When you define your matching strategy you need to:
 
   * synonyms for first names, for example, **William** and **Bill**
   * transpositions of multiple part names, for example, **Anna-Marie**, **Jane** and **Anna, Marie-Jane**
-  * transpositions errors of day and month in the date of birth, for example, **04/10/78** and **10/04/78**
+  * transpositions of errors of day and month in the date of birth, for example, **04/10/78** and **10/04/78**
 
 * define the level of 'fuzzy matching' that is acceptable when an exact match is not found – this allows a match that, although not 100%, is above a service-defined threshold
 * manage the risk of incorrect matching by defining what happens when:

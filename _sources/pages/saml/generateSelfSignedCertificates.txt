@@ -61,6 +61,6 @@ Keys and certificates for your service
 Your service must sign SAML messages and decrypt assertions, so at a minimum you need a private key and certificate
 for each of these roles. Your service should support multiple encryption keys :ref:`to allow for key rotations <pkiRotate>`.
 
-Depending on how your service is built you may need to provide keys and certificates in a different format, for example, .jks or .pem.
+Depending on how your service is built you may need to provide keys and certificates in a different format, for example .jks or .pem.
 
 

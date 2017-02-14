@@ -33,9 +33,9 @@
       <path d="M13.169,34.637 L139.212,34.637 L139.212,80.697 L13.169,80.697 z" fill="#CFD3D8"/>
       <path d="M13.169,34.637 L139.212,34.637 L139.212,80.697 L13.169,80.697 z" fill-opacity="0" stroke="#090D14" stroke-width="1.042" stroke-linecap="round" stroke-linejoin="round"/>
     </g>
-    <text transform="matrix(1, 0, 0, 1, 76.69, 57.903)">
+    <text transform="matrix(1, 0, 0, 1, 76.19, 57.903)">
       <tspan x="-20.957" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">Identity</tspan>
-      <tspan x="-27.095" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">Assertion</tspan>
+      <tspan x="-26.375" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">assertion</tspan>
     </text>
     <text transform="matrix(1, 0, 0, 1, 235.949, 57.903)">
       <tspan x="-29.266" y="-4.25" font-family="ArialMT" font-size="13" fill="#000000">Encrypted </tspan>
