@@ -88,7 +88,7 @@ This diagram shows the message flow for creating user accounts. The numbers iden
   * list of attributes to extract from the matching dataset
 
 5. The MSA extracts the required attributes from the matching dataset (if available). 
-6. The MSA sends the extracted attributes and the hashed PIDf to your service via the GOV.UK Verify hub.
+6. The MSA sends the extracted attributes and the hashed PID to your service via the GOV.UK Verify hub.
 
   .. note:: The MSA must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:
 

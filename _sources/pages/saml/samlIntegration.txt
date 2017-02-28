@@ -90,7 +90,7 @@ Send a SAML authentication request to the GOV.UK Verify hub
       frJRKYU3QgAehUR0hrUj1ReVGV4cx1Yy7FhUKnYpdsYRVxpv1McwkDXHVs5iao+0vv7rLGLw9U1d
       a7lBaFhC2AT1wi+ogaO8nzZ/d3G6p0tHrMSqQA==
           </ds:SignatureValue>
-      </ds:Signature>
+        </ds:Signature>
       </saml2p:AuthnRequest>
 
 

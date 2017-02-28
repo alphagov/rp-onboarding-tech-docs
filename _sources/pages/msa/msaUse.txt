@@ -19,7 +19,7 @@ Install the Matching Service Adapter
 
 3. To extract the files, run the following command::
 
-    unzip ida-msa-[MSA BUILD NUMBER].zip
+    unzip ida-msa-[MSA build number].zip
 
 4. Optionally, move the truststore files to the environment where you want to use the MSA::
 
@@ -32,7 +32,7 @@ Install the Matching Service Adapter
 Versioning
 -----------
 
-Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates, and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
+Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
 
 
 .. _msa_certs:
