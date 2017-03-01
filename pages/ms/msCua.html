@@ -170,29 +170,33 @@
 <p class="last">Before creating a user account you must request explicit user consent.</p>
 </div>
 <ol class="arabic simple">
-<li>Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The MSA then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
+<li>Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 3 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The MSA then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>[{
- &quot;hashedPid&quot;: &quot;&lt;some string value&gt;&quot;,
- &quot;levelOfAssurance&quot;: &quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;
-}]`
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[{</span>
+ <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;some string value&gt;&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;</span>
+<span class="p">}]</span>
 </pre></div>
 </div>
 <p>You must specify the MSA&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>request access to an environment</span></a>. This form is available from your engagement lead.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Make sure the local matching service&#8217;s user account creation URI endpoint returns the following JSON, choosing success or failure as appropriate:</li>
+<li>Make sure the local matching service&#8217;s user account creation URI endpoint returns the following JSON, choosing <code class="docutils literal"><span class="pre">success</span></code> or <code class="docutils literal"><span class="pre">failure</span></code> as appropriate:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>[{
- &quot;result&quot;: &quot;success | failure&quot;
-}]`
+<div><blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;{ &quot;result&quot;: &quot;success&quot; }&#39;</span>
 </pre></div>
 </div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;{ &quot;result&quot;: &quot;failure&quot; }&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">As shown in the above example, <code class="docutils literal"><span class="pre">success</span></code> and <code class="docutils literal"><span class="pre">failure</span></code> must be in lower case.</p>
+<p class="last">As shown above, <code class="docutils literal"><span class="pre">success</span></code> and <code class="docutils literal"><span class="pre">failure</span></code> must be in lower case.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">

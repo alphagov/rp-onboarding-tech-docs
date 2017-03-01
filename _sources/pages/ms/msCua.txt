@@ -7,26 +7,30 @@ You can create a new user account for the user based on the :ref:`hashed persist
 
 .. important:: Before creating a user account you must request explicit user consent. 
 
-1.	Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 4 in the :ref:`diagram showing user account creation <ms_cua_diagram>`). The MSA then POSTs the following JSON to the local matching service's user account creation URI endpoint:
+1.	Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 3 in the :ref:`diagram showing user account creation <ms_cua_diagram>`). The MSA then POSTs the following JSON to the local matching service's user account creation URI endpoint:
 
  ::
 
   [{
    "hashedPid": "<some string value>",
    "levelOfAssurance": "<the level of assurance, e.g. LEVEL_1>"
-  }]`
+  }]
 
  You must specify the MSA's user account creation URI endpoint on the form you fill in when you :ref:`request access to an environment <envRequestform>`. This form is available from your engagement lead.
 
-2.	Make sure the local matching service's user account creation URI endpoint returns the following JSON, choosing success or failure as appropriate:
+2.	Make sure the local matching service's user account creation URI endpoint returns the following JSON, choosing ``success`` or ``failure`` as appropriate:
 
- ::
+   ::
 
-  [{
-   "result": "success | failure"
-  }]`
+     '{ "result": "success" }'
 
- .. note:: As shown in the above example, ``success`` and ``failure`` must be in lower case.
+   or
+
+   ::
+
+     '{ "result": "failure" }'
+
+ .. note:: As shown above, ``success`` and ``failure`` must be in lower case.
 
 3.	Configure your MSA to create user accounts. To do this, supply the local matching service's user account creation URI for the attribute ``unknownUserCreationServiceUri:`` in the configuration file. See :ref:`ConfigureMSA` for more information.
 
