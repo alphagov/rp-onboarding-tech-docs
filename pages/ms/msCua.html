@@ -164,7 +164,7 @@
             
   <div class="section" id="create-user-accounts">
 <span id="ms-cua"></span><h1>Create user accounts<a class="headerlink" href="#create-user-accounts" title="Permalink to this headline">¶</a></h1>
-<p>You can create a new account for the user based on the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a> (PID) and a subset of attributes from the <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a>. It&#8217;s optional to set up your matching service to support the creation of new accounts.</p>
+<p>You can create a new user account for the user based on the <a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed persistent identifier</span></a> (PID) and a subset of attributes from the <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a>. It&#8217;s optional to set up your matching service to support the creation of user accounts.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">Before creating a user account you must request explicit user consent.</p>
@@ -196,7 +196,7 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Configure your MSA to create new user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
+<li>Configure your MSA to create user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
 <li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
 </ol>
 <blockquote id="list-cua-attributes">
@@ -246,49 +246,67 @@
 <p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
 </div>
 <ol class="arabic simple">
-<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the MSA.</li>
-<li>The MSA forwards the <code class="docutils literal"><span class="pre">no-match</span></code> response to the GOV.UK Verify hub.</li>
+<li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the hub via the MSA.</li>
 <li>The GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>checks that your matching service supports the creation of new user accounts</li>
-<li>identifies the attributes you previously specified as necessary to create a new user account</li>
+<li>checks that your matching service supports the creation of user accounts</li>
+<li>identifies the attributes you previously said your service needs to create a user account</li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="4">
-<li>If your service supports the creation of new user accounts, the hub sends an unknown user attribute query to the MSA. It contains the:</li>
+<ol class="arabic simple" start="3">
+<li>If your service supports the creation of user accounts, the hub sends a query to the MSA. It contains the:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed PID</span></a></li>
 <li><a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a></li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-hashpid"><span>hashed PID</span></a></li>
+<li><a class="reference internal" href="../../shared/glossary.html#gloss-loa"><span>level of assurance</span></a></li>
 <li>list of attributes to extract from the matching dataset</li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="5">
-<li>The MSA extracts the required attributes from the matching dataset (if available).</li>
-<li>The MSA sends the extracted attributes and the hashed PID to your service via the GOV.UK Verify hub.</li>
+<ol class="arabic" start="4">
+<li><p class="first">The MSA sends a query asking the local matching service if it wants to create a  user account. The query contains the hashed PID and the level of assurance.</p>
+</li>
+<li><p class="first">Optionally, the local matching service stores the hashed PID and level of assurance in the local matching datastore.</p>
+<p>You&#8217;ll need to create a correlation between the user account and the hashed PID, so a returning user can match with <a class="reference internal" href="msWorks.html#ms-mc0"><span>cycle 0</span></a>. You can chose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.</p>
+</li>
+<li><p class="first">The local matching service sends a JSON response to the MSA with <code class="docutils literal"><span class="pre">'{</span> <span class="pre">&quot;result&quot;:</span> <span class="pre">&quot;success&quot;</span> <span class="pre">}'</span></code> or <code class="docutils literal"><span class="pre">'{</span> <span class="pre">&quot;result&quot;:</span> <span class="pre">&quot;failure&quot;</span> <span class="pre">}'</span></code>.</p>
+</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A user account isn&#8217;t created at this point. The final response the hub sends to your service will contain the attributes you need to create a user account.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="7">
+<li>The MSA extracts the required attributes from the matching dataset.</li>
+<li>The MSA sends the extracted attributes, the hashed PID and the level of assurance to your service via the GOV.UK Verify hub.</li>
 </ol>
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>The MSA must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:</p>
 <ul class="simple">
-<li>user control  the user must give their informed consent to the information being sent</li>
+<li>user control - the user must give informed consent for their information to be used to create an account; they must also be allowed to check their information before you create the account</li>
 <li>data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>
 </ul>
 <p class="last">For more information see the <a class="reference external" href="https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles">Identity Assurance Principles</a>.</p>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="7">
-<li>Optionally, the government service creates a correlation between the matching dataset and hashed persistent identifier in its matching datastore. This will be used for matching cycle 0 when the same user returns.</li>
-<li>Optionally, the government service creates a new account based on the attributes extracted from the matching dataset.</li>
+<ol class="arabic simple" start="9">
+<li>The government service:<ul>
+<li>creates a user account using the attributes extracted from the matching dataset</li>
+<li>sets up a correlation between the user account and the user&#8217;s hashed PID</li>
+</ul>
+</li>
 </ol>
 <blockquote>
 <div><div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">If you create a new account you must gain consent from the user first.</p>
+<p class="last">If you create a user account you must gain consent from the user first.</p>
 </div>
 </div></blockquote>
 </div>
