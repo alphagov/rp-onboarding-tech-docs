@@ -80,7 +80,7 @@ This diagram shows the message flow for creating user accounts. The numbers iden
 
 5. Optionally, the local matching service stores the hashed PID and level of assurance in the local matching datastore. 
 
-   You'll need to create a correlation between the user account and the hashed PID, so a returning user can match with :ref:`cycle 0 <ms_mc0>`. You can chose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.
+   You'll need to create a correlation between the user account and the hashed PID, so a returning user can match with :ref:`cycle 0 <ms_mc0>`. You can choose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.
 
 6. The local matching service sends a JSON response to the MSA:
 
