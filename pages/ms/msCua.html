@@ -107,7 +107,8 @@
 <li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Create user accounts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#create-user-accounts-message-flow">Create user accounts: message flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-flow">Message flow</a></li>
 </ul>
 </li>
 </ul>
@@ -169,38 +170,10 @@
 <p class="first admonition-title">Important</p>
 <p class="last">Before creating a user account you must request explicit user consent.</p>
 </div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 3 in the <a class="reference internal" href="#ms-cua-diagram"><span>diagram showing user account creation</span></a>). The MSA then POSTs the following JSON to the local matching service&#8217;s user account creation URI endpoint:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[{</span>
- <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;some string value&gt;&quot;</span><span class="p">,</span>
- <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;</span>
-<span class="p">}]</span>
-</pre></div>
-</div>
-<p>You must specify the MSA&#8217;s user account creation URI endpoint on the form you fill in when you <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>request access to an environment</span></a>. This form is available from your engagement lead.</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li>Make sure the local matching service&#8217;s user account creation URI endpoint returns the following JSON, choosing <code class="docutils literal"><span class="pre">success</span></code> or <code class="docutils literal"><span class="pre">failure</span></code> as appropriate:</li>
-</ol>
-<blockquote>
-<div><blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;{ &quot;result&quot;: &quot;success&quot; }&#39;</span>
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;{ &quot;result&quot;: &quot;failure&quot; }&#39;</span>
-</pre></div>
-</div>
-</div></blockquote>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">As shown above, <code class="docutils literal"><span class="pre">success</span></code> and <code class="docutils literal"><span class="pre">failure</span></code> must be in lower case.</p>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Configure your MSA to create user accounts. To do this, supply the local matching service&#8217;s user account creation URI for the attribute <code class="docutils literal"><span class="pre">unknownUserCreationServiceUri:</span></code> in the configuration file. See <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter</span></a> for more information.</li>
+<li>Configure your MSA to create user accounts. To do this, supply the local matching service&#8217;s account creation URI in <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> in the <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>YAML configuration file</span></a>.</li>
 <li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
 </ol>
 <blockquote id="list-cua-attributes">
@@ -222,8 +195,9 @@
 <p class="last">You cannot use historical data to create user accounts.</p>
 </div>
 </div></blockquote>
-<div class="section" id="create-user-accounts-message-flow">
-<span id="ms-cua-diagram"></span><h2>Create user accounts: message flow<a class="headerlink" href="#create-user-accounts-message-flow" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="message-flow">
+<span id="ms-cua-diagram"></span><h2>Message flow<a class="headerlink" href="#message-flow" title="Permalink to this headline">¶</a></h2>
 <p>This diagram shows the message flow for creating user accounts. The numbers identify each stage in the flow. See below for explanations.</p>
 <table border="1" class="docutils" id="flow-diagram">
 <colgroup>
@@ -247,7 +221,7 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
+<p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> previously failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
 </div>
 <ol class="arabic simple">
 <li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the hub via the MSA.</li>
@@ -270,17 +244,37 @@
 <li>list of attributes to extract from the matching dataset</li>
 </ul>
 </div></blockquote>
-<ol class="arabic" start="4">
-<li><p class="first">The MSA sends a query asking the local matching service if it wants to create a  user account. The query contains the hashed PID and the level of assurance.</p>
-</li>
+<ol class="arabic simple" start="4">
+<li>The MSA POSTs the following JSON to the local matching service&#8217;s account creation URI endpoint:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[{</span>
+ <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;string value&gt;&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;the level of assurance, e.g. LEVEL_1&gt;&quot;</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic" start="5">
 <li><p class="first">Optionally, the local matching service stores the hashed PID and level of assurance in the local matching datastore.</p>
 <p>You&#8217;ll need to create a correlation between the user account and the hashed PID, so a returning user can match with <a class="reference internal" href="msWorks.html#ms-mc0"><span>cycle 0</span></a>. You can chose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.</p>
 </li>
-<li><p class="first">The local matching service sends a JSON response to the MSA with <code class="docutils literal"><span class="pre">'{</span> <span class="pre">&quot;result&quot;:</span> <span class="pre">&quot;success&quot;</span> <span class="pre">}'</span></code> or <code class="docutils literal"><span class="pre">'{</span> <span class="pre">&quot;result&quot;:</span> <span class="pre">&quot;failure&quot;</span> <span class="pre">}'</span></code>.</p>
+<li><p class="first">The local matching service sends a JSON response to the MSA:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;{ &quot;result&quot;: &quot;success&quot; }&#39;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="s1">&#39;{ &quot;result&quot;: &quot;failure&quot; }&#39;</span>
+</pre></div>
+</div>
 </li>
 </ol>
 <blockquote>
 <div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As shown above, <code class="docutils literal"><span class="pre">success</span></code> and <code class="docutils literal"><span class="pre">failure</span></code> must be in lower case.</p>
+</div>
+<div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A user account isn&#8217;t created at this point. The final response the hub sends to your service will contain the attributes you need to create a user account.</p>
 </div>
@@ -294,7 +288,7 @@
 <p class="first admonition-title">Note</p>
 <p>The MSA must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:</p>
 <ul class="simple">
-<li>user control - the user must give informed consent for their information to be used to create an account; they must also be allowed to check their information before you create the account</li>
+<li>user control - users must give informed consent for their information to be used to create an account; they must also be allowed to check their information before you create the account</li>
 <li>data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset.</li>
 </ul>
 <p class="last">For more information see the <a class="reference external" href="https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles">Identity Assurance Principles</a>.</p>

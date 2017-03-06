@@ -7,35 +7,13 @@ You can create a new user account for the user based on the :ref:`hashed persist
 
 .. important:: Before creating a user account you must request explicit user consent. 
 
-1.	Make sure your Matching Service Adapter (MSA) exposes its user account creation URI endpoint. This is the fully qualified URI to which the hub makes unknown user attribute queries (see step 3 in the :ref:`diagram showing user account creation <ms_cua_diagram>`). The MSA then POSTs the following JSON to the local matching service's user account creation URI endpoint:
+Prerequisites
+--------------------------------------
 
- ::
-
-  [{
-   "hashedPid": "<some string value>",
-   "levelOfAssurance": "<the level of assurance, e.g. LEVEL_1>"
-  }]
-
- You must specify the MSA's user account creation URI endpoint on the form you fill in when you :ref:`request access to an environment <envRequestform>`. This form is available from your engagement lead.
-
-2.	Make sure the local matching service's user account creation URI endpoint returns the following JSON, choosing ``success`` or ``failure`` as appropriate:
-
-   ::
-
-     '{ "result": "success" }'
-
-   or
-
-   ::
-
-     '{ "result": "failure" }'
-
- .. note:: As shown above, ``success`` and ``failure`` must be in lower case.
-
-3.	Configure your MSA to create user accounts. To do this, supply the local matching service's user account creation URI for the attribute ``unknownUserCreationServiceUri:`` in the configuration file. See :ref:`ConfigureMSA` for more information.
+1.	Configure your MSA to create user accounts. To do this, supply the local matching service's account creation URI in ``accountCreationUrl:`` in the :ref:`YAML configuration file <ConfigureMSA>`.
 
 
-4. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:
+2. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:
 
 .. _list_cua_attributes:
 
@@ -58,7 +36,7 @@ You can create a new user account for the user based on the :ref:`hashed persist
 
 .. _ms_cua_diagram:
 
-Create user accounts: message flow
+Message flow
 --------------------------------------
 
 This diagram shows the message flow for creating user accounts. The numbers identify each stage in the flow. See below for explanations.
@@ -76,7 +54,7 @@ This diagram shows the message flow for creating user accounts. The numbers iden
    * :ref:`SAML message flow <samlflow_diagram>`
    * :ref:`matching cycles <ms_matchcyles_diagram>`" 
 
-.. note:: In this example, all 3 :ref:`matching cycles <ms_matchcycles>` failed to find a match for the user in the government service records. See the :ref:`diagram for matching cycles <ms_matchcyles_diagram>`.
+.. note:: In this example, all 3 :ref:`matching cycles <ms_matchcycles>` previously failed to find a match for the user in the government service records. See the :ref:`diagram for matching cycles <ms_matchcyles_diagram>`.
 
 1.	Your local matching service sends a ``no-match`` response to the hub via the MSA.
 2.	The GOV.UK Verify hub:
@@ -91,12 +69,33 @@ This diagram shows the message flow for creating user accounts. The numbers iden
   * :ref:`level of assurance <gloss_loa>` 
   * list of attributes to extract from the matching dataset
 
-4. The MSA sends a query asking the local matching service if it wants to create a  user account. The query contains the hashed PID and the level of assurance. 
+4. The MSA POSTs the following JSON to the local matching service's account creation URI endpoint: 
+
+  ::
+
+   [{
+    "hashedPid": "<string value>",
+    "levelOfAssurance": "<the level of assurance, e.g. LEVEL_1>"
+   }]
+
 5. Optionally, the local matching service stores the hashed PID and level of assurance in the local matching datastore. 
 
    You'll need to create a correlation between the user account and the hashed PID, so a returning user can match with :ref:`cycle 0 <ms_mc0>`. You can chose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.
 
-6. The local matching service sends a JSON response to the MSA with ``'{ "result": "success" }'`` or ``'{ "result": "failure" }'``. 
+6. The local matching service sends a JSON response to the MSA:
+
+
+   ::
+
+     '{ "result": "success" }'
+
+   or
+
+   ::
+
+     '{ "result": "failure" }'
+
+  .. note:: As shown above, ``success`` and ``failure`` must be in lower case. 
 
   .. note:: A user account isn't created at this point. The final response the hub sends to your service will contain the attributes you need to create a user account. 
 
@@ -106,7 +105,7 @@ This diagram shows the message flow for creating user accounts. The numbers iden
 
   .. note:: The MSA must send this data via the GOV.UK Verify hub, to respect the following identity assurance principles:
 
-    * user control - the user must give informed consent for their information to be used to create an account; they must also be allowed to check their information before you create the account
+    * user control - users must give informed consent for their information to be used to create an account; they must also be allowed to check their information before you create the account
     * data minimisation – the service receives only the restricted set of attributes it needs, not the full matching dataset. 
 
     For more information see the `Identity Assurance Principles <https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles>`_.
