@@ -12,8 +12,9 @@ Prerequisites
 
 1.	Configure your MSA to create user accounts. To do this, supply the local matching service's account creation URI in ``accountCreationUrl:`` in the :ref:`YAML configuration file <ConfigureMSA>`.
 
+2. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the fully qualified URL to which the hub will make unknown user attribute query requests.
 
-2. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:
+3. On the ':ref:`Request access to an environment <envRequestform>`' form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:
 
 .. _list_cua_attributes:
 
@@ -98,6 +99,11 @@ This diagram shows the message flow for creating user accounts. The numbers iden
   .. note:: As shown above, ``success`` and ``failure`` must be in lower case. 
 
   .. note:: A user account isn't created at this point. The final response the hub sends to your service will contain the attributes you need to create a user account. 
+
+  The local matching service may return ``'{ "result": "failure" }'`` if:
+
+  * the level of assurance in the JSON request sent by the MSA is lower than the level of assurance required by the service
+  * there are exceptional circumstances, such as maintenance, when you want to suspend user account creation
 
 7. The MSA extracts the required attributes from the matching dataset. 
 

@@ -174,6 +174,7 @@
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Configure your MSA to create user accounts. To do this, supply the local matching service&#8217;s account creation URI in <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> in the <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>YAML configuration file</span></a>.</li>
+<li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the fully qualified URL to which the hub will make unknown user attribute query requests.</li>
 <li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
 </ol>
 <blockquote id="list-cua-attributes">
@@ -278,6 +279,11 @@
 <p class="first admonition-title">Note</p>
 <p class="last">A user account isn&#8217;t created at this point. The final response the hub sends to your service will contain the attributes you need to create a user account.</p>
 </div>
+<p>The local matching service may return <code class="docutils literal"><span class="pre">'{</span> <span class="pre">&quot;result&quot;:</span> <span class="pre">&quot;failure&quot;</span> <span class="pre">}'</span></code> if:</p>
+<ul class="simple">
+<li>the level of assurance in the JSON request sent by the MSA is lower than the level of assurance required by the service</li>
+<li>there are exceptional circumstances, such as maintenance, when you want to suspend user account creation</li>
+</ul>
 </div></blockquote>
 <ol class="arabic simple" start="7">
 <li>The MSA extracts the required attributes from the matching dataset.</li>
