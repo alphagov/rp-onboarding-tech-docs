@@ -33,7 +33,7 @@ Prerequisites
    CURRENT_ADDRESS_VERIFIED
    CYCLE_3
 
-  .. note:: You cannot use historical data to create user accounts.
+  .. note:: You can't use historical data to create user accounts.
 
 .. _ms_cua_diagram:
 
