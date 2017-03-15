@@ -23,4 +23,3 @@ Check the :ref:`version history <vershis>` for the latest changes to the guide.
    pages/env/env
    shared/glossary
    pages/vershis/vershis
-   Contact us <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>
