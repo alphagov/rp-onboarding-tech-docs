@@ -180,8 +180,8 @@ must be <a class="reference internal" href="../pki/pkiRequestCert.html#pkireques
 </ul>
 <p>Run the following commands in order, replacing:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">$name</span></code> with the filename of the key or certificate you&#8217;re generating (for exmple <code class="docutils literal"><span class="pre">test_primary_signing</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">$commonName</span></code> with a description of how the certificate will be used (for example &#8220;My Service MSA Signing Primary&#8221;).</li>
+<li><code class="docutils literal"><span class="pre">$name</span></code> with the filename of the key or certificate you&#8217;re generating (for example <code class="docutils literal"><span class="pre">test_primary_signing</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">$commonName</span></code> with a description of how the certificate will be used (for example &#8216;My Service MSA Signing Primary&#8217;).</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span></span># Generate a private key:
 openssl genrsa -des3 -passout pass:x -out &quot;$name.pass.key&quot; 2048
