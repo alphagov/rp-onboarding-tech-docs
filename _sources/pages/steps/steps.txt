@@ -11,7 +11,7 @@ Prerequisites:
 *  :ref:`choose a product and framework <ChooseProductFramework>` to integrate your service with GOV.UK Verify
 *  decide how to :ref:`store and manage keys <pki_store_private_key>` and certificates so you can :ref:`rotate your keys <pkiRotate>` when needed
 
-.. note:: You only need to deploy your code to an environment at the end of the development phase, when you test your matching service with the SAML compliance tool. You can do all development steps until this point on a development machine. 
+.. note:: You only need to deploy your code to a server at the end of the development phase, when you test your matching service with the SAML compliance tool. You can do all development steps until this point on a development machine. 
 
 
 .. csv-table:: 
