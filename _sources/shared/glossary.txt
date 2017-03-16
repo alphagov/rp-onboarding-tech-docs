@@ -108,7 +108,7 @@ Also known as Requirements for Secure Delivery of Online Public Services (RSDOPS
 
 **government service**
 
-A service provided by a government department such as Check or update your company car tax (HMRC) or Claim your redundancy payment (BIS), that needs proof of a user’s identity to complete a transaction.
+A service provided by a government organisation such as Check or update your company car tax (HMRC) or Claim your redundancy payment (BIS), that needs proof of a user’s identity to complete a transaction.
 
 .. _gloss_hashpid:
 
@@ -366,6 +366,9 @@ The person accessing the government service on GOV.UK.
 **whitelist (for IP addresses)**
 
 A list or register of those permitted access. Whitelisting is the reverse of blacklisting, the practice of identifying those that are denied access, typically used in spam filters in email applications. A whitelist of IP (Internet Protocol) addresses allows data-traffic from / to those IP addresses to access a network by appropriate firewall configuration.
+
+
+
 
 
 

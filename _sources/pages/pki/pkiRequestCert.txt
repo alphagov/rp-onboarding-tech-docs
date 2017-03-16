@@ -117,7 +117,7 @@ Some prompts appear in the terminal. Enter the following information:
 * **Country Name**: 2-letter code for your country, for example, GB for Great Britain
 * **State**: county or city
 * **Locality**: city or town
-* **Organisation Name**: the name of your government department, for example, DVLA
+* **Organisation Name**: the name of your government organisation, for example, DVLA
 * **Organisation Unit**: the name of your government service, for example, View your driving licence
 * **Common Name**: one of the following, depending on the type of certificate: 
 
