@@ -40,7 +40,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
 3. :ref:`Generate self-signed certificates <generateSelfSignedCertificates>` for use with the compliance tool only.
 
-4. POST the following JSON (via curl, or similar) to the ``URI compliance-tool.RPPostUri`` provided by your GOV.UK Verify engagement lead::
+4. POST the following JSON to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data>`_)::
 
 
     Content-Type: application/json
@@ -75,7 +75,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
     Status 200 Created
 
-6. Consume the GOV.UK Verify hub's metadata from the URL ``compliance-tool.MetadataUri`` provided by your GOV.UK Verify engagement lead. This metadata contains the compliance tool single sign-on (SSO) URI. 
+6. Make sure that your MSA is pointing at the URLs for the compliance tool (``metadata:`` ``url``) and and hub (``hub:`` ``ssoUrl``). These are the defaults in the ``test-config.yml`` file for non-production environments.
 
 7. Generate a SAML authentication request and POST it to the compliance tool's SSO URI. Follow the redirect in the response to retrieve the result. 
 

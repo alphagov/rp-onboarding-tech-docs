@@ -17,13 +17,13 @@ The GOV.UK Verify team generally use the OpenSSL tool to do this using the guida
 Install OpenSSL if it isn't already installed:
 
 * OS X (with homebrew) - ``brew install openssl``
-* Windows - download the "Complete package, except sources" from http://gnuwin32.sourceforge.net/packages/openssl.htm
+* Windows - download the 'Complete package, except sources' from http://gnuwin32.sourceforge.net/packages/openssl.htm
 * Ubuntu Linux - ``apt-get install openssl``
 
 Run the following commands in order, replacing:
 
-* ``$name`` with the filename of the key or certificate you're generating (for example ``test_primary_signing``) 
-* ``$commonName`` with a description of how the certificate will be used (for example 'My Service MSA Signing Primary').
+* ``$name`` with the filename of the key or certificate you're generating - see :ref:`Keys and certificates for your MSA<KeysandCertsforMSA>` and :ref:`Keys and certificates for your service<KeysandCertsforService>` 
+* ``$commonName`` with a description of how the certificate will be used - for example 'My Service MSA Signing Primary'
 
 ::
 
@@ -43,6 +43,9 @@ Run the following commands in order, replacing:
     # Clean up the files you don’t need anymore:
     rm "$name.pass.key" "$name.csr" "$name.key"
 
+
+.. _KeysandCertsforMSA:
+
 Keys and certificates for your MSA
 ---------------------------------------
 
@@ -54,6 +57,8 @@ With the default configuration in ``test-config.yml`` the MSA needs the followin
 * ``test_msa_encryption_2{.pk8,.crt}`` - secondary encryption private key and certificate
 
 .. Note:: The MSA needs primary and secondary keys to support :ref:`key rotations <pkiRotate>` without causing service downtime for users.
+
+.. _KeysandCertsforService:
 
 Keys and certificates for your service
 --------------------------------------------

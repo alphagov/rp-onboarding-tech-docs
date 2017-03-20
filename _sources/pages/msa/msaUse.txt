@@ -7,7 +7,7 @@ Install the Matching Service Adapter
 
 **Prerequisite:** The Matching Service Adapter (MSA) requires Java 8. Make sure you have the latest version of the Java Runtime Environment (JRE) installed.
 
-1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, email `idasupport+onboarding@digital.cabinet-office.gov.uk <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to request access to the secure site where you can download the MSA.
+1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, you can download and install the MSA. If you don't already have a link to the secure site where you can download the MSA, email `idasupport+onboarding@digital.cabinet-office.gov.uk <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_.
 
 2. Download the MSA zip file to your host. It contains:
 
@@ -254,7 +254,7 @@ You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCT
 Monitoring
 ============
 
-Health checks run every 60 seconds to ensure that the MSA is functioning correctly. They test:
+When the MSA is installed in your :ref:`integration or production environment <env>`, health checks run every 60 seconds to ensure that the MSA is functioning correctly. They test:
 
 * connectivity
 * that the MSA accepts the hub signature
@@ -275,7 +275,7 @@ Secure your Matching Service Adapter
 Matching Service Adapter TLS certificates
 -------------------------------------------
 
-GOV.UK Verify trusts the following root certificate authorities for HTTPS connections to your matching service:
+The table below shows the root certificate authorities that GOV.UK Verify trusts for HTTPS connections to your matching service in the :ref:`integration and production environments <env>`.
 
 +----------------------------+---------------------------+-------------------------------------------------------------+
 | Root certificate authority | Common name               | X509v3 subject key identifier                               |
@@ -286,6 +286,8 @@ GOV.UK Verify trusts the following root certificate authorities for HTTPS connec
 +----------------------------+---------------------------+-------------------------------------------------------------+
 | QuoVadis Root CA 2         | QuoVadis Root CA 2        | 1A:84:62:BC:48:4C:33:25:04:D4:EE:D0:F6:03:C4:19:46:D1:94:6B |
 +----------------------------+---------------------------+-------------------------------------------------------------+
+
+.. note:: For the SAML compliance tool, use :ref:`self-signed certificates <generateSelfSignedCertificates>`. 
 
 If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport+onboarding@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
 

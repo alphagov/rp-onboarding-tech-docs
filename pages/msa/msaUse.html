@@ -186,7 +186,7 @@
 <span id="msa-install-msa"></span><span id="msause"></span><h1>Install the Matching Service Adapter<a class="headerlink" href="#install-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <p><strong>Prerequisite:</strong> The Matching Service Adapter (MSA) requires Java 8. Make sure you have the latest version of the Java Runtime Environment (JRE) installed.</p>
 <ol class="arabic simple">
-<li>When you have successfully completed a gate review for <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3: Planning</a>, email <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> to request access to the secure site where you can download the MSA.</li>
+<li>When you have successfully completed a gate review for <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3: Planning</a>, you can download and install the MSA. If you don&#8217;t already have a link to the secure site where you can download the MSA, email <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</li>
 <li>Download the MSA zip file to your host. It contains:</li>
 </ol>
 <blockquote>
@@ -439,7 +439,7 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 </div>
 <div class="section" id="monitoring">
 <h1>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h1>
-<p>Health checks run every 60 seconds to ensure that the MSA is functioning correctly. They test:</p>
+<p>When the MSA is installed in your <a class="reference internal" href="../env/env.html#env"><span>integration or production environment</span></a>, health checks run every 60 seconds to ensure that the MSA is functioning correctly. They test:</p>
 <ul class="simple">
 <li>connectivity</li>
 <li>that the MSA accepts the hub signature</li>
@@ -455,7 +455,7 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 <h1>Secure your Matching Service Adapter<a class="headerlink" href="#secure-your-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="matching-service-adapter-tls-certificates">
 <h2>Matching Service Adapter TLS certificates<a class="headerlink" href="#matching-service-adapter-tls-certificates" title="Permalink to this headline">¶</a></h2>
-<p>GOV.UK Verify trusts the following root certificate authorities for HTTPS connections to your matching service:</p>
+<p>The table below shows the root certificate authorities that GOV.UK Verify trusts for HTTPS connections to your matching service in the <a class="reference internal" href="../env/env.html#env"><span>integration and production environments</span></a>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="24%" />
@@ -483,6 +483,10 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For the SAML compliance tool, use <a class="reference internal" href="../saml/generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>self-signed certificates</span></a>.</p>
+</div>
 <p>If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>. We’ll review your chosen root certificate authority before adding it to this list.</p>
 <p>When you raise a ticket, indicate the chain of trust with your SSL/TLS certificate. You&#8217;ll also need the chain of trust when you configure your server.</p>
 </div>

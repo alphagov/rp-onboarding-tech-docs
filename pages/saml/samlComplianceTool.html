@@ -190,7 +190,7 @@
 <ol class="arabic" id="samlctselfsigncert" start="3">
 <li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the compliance tool only.</p>
 </li>
-<li><p class="first">POST the following JSON (via curl, or similar) to the <code class="docutils literal"><span class="pre">URI</span> <span class="pre">compliance-tool.RPPostUri</span></code> provided by your GOV.UK Verify engagement lead:</p>
+<li><p class="first">POST the following JSON to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
 {
     &quot;rpEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
@@ -229,7 +229,7 @@ openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
 </pre></div>
 </div>
 </li>
-<li><p class="first">Consume the GOV.UK Verify hub&#8217;s metadata from the URL <code class="docutils literal"><span class="pre">compliance-tool.MetadataUri</span></code> provided by your GOV.UK Verify engagement lead. This metadata contains the compliance tool single sign-on (SSO) URI.</p>
+<li><p class="first">Make sure that your MSA is pointing at the URLs for the compliance tool (<code class="docutils literal"><span class="pre">metadata:</span></code> <code class="docutils literal"><span class="pre">url</span></code>) and and hub (<code class="docutils literal"><span class="pre">hub:</span></code> <code class="docutils literal"><span class="pre">ssoUrl</span></code>). These are the defaults in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file for non-production environments.</p>
 </li>
 <li><p class="first">Generate a SAML authentication request and POST it to the compliance tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</p>
 <div class="admonition note">

@@ -175,13 +175,13 @@ must be <a class="reference internal" href="../pki/pkiRequestCert.html#pkireques
 <p>Install OpenSSL if it isn&#8217;t already installed:</p>
 <ul class="simple">
 <li>OS X (with homebrew) - <code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">openssl</span></code></li>
-<li>Windows - download the &#8220;Complete package, except sources&#8221; from <a class="reference external" href="http://gnuwin32.sourceforge.net/packages/openssl.htm">http://gnuwin32.sourceforge.net/packages/openssl.htm</a></li>
+<li>Windows - download the &#8216;Complete package, except sources&#8217; from <a class="reference external" href="http://gnuwin32.sourceforge.net/packages/openssl.htm">http://gnuwin32.sourceforge.net/packages/openssl.htm</a></li>
 <li>Ubuntu Linux - <code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">openssl</span></code></li>
 </ul>
 <p>Run the following commands in order, replacing:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">$name</span></code> with the filename of the key or certificate you&#8217;re generating (for example <code class="docutils literal"><span class="pre">test_primary_signing</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">$commonName</span></code> with a description of how the certificate will be used (for example &#8216;My Service MSA Signing Primary&#8217;).</li>
+<li><code class="docutils literal"><span class="pre">$name</span></code> with the filename of the key or certificate you&#8217;re generating - see <a class="reference internal" href="#keysandcertsformsa"><span>Keys and certificates for your MSA</span></a> and <a class="reference internal" href="#keysandcertsforservice"><span>Keys and certificates for your service</span></a></li>
+<li><code class="docutils literal"><span class="pre">$commonName</span></code> with a description of how the certificate will be used - for example &#8216;My Service MSA Signing Primary&#8217;</li>
 </ul>
 <div class="highlight-python"><div class="highlight"><pre><span></span># Generate a private key:
 openssl genrsa -des3 -passout pass:x -out &quot;$name.pass.key&quot; 2048
@@ -202,7 +202,7 @@ rm &quot;$name.pass.key&quot; &quot;$name.csr&quot; &quot;$name.key&quot;
 </div>
 </div>
 <div class="section" id="keys-and-certificates-for-your-msa">
-<h2>Keys and certificates for your MSA<a class="headerlink" href="#keys-and-certificates-for-your-msa" title="Permalink to this headline">¶</a></h2>
+<span id="keysandcertsformsa"></span><h2>Keys and certificates for your MSA<a class="headerlink" href="#keys-and-certificates-for-your-msa" title="Permalink to this headline">¶</a></h2>
 <p>With the default configuration in <code class="docutils literal"><span class="pre">test-config.yml</span></code> the MSA needs the following keys and certificates:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">test_primary_signing{.pk8,.crt}</span></code> - primary signing private key and certificate</li>
@@ -216,7 +216,7 @@ rm &quot;$name.pass.key&quot; &quot;$name.csr&quot; &quot;$name.key&quot;
 </div>
 </div>
 <div class="section" id="keys-and-certificates-for-your-service">
-<h2>Keys and certificates for your service<a class="headerlink" href="#keys-and-certificates-for-your-service" title="Permalink to this headline">¶</a></h2>
+<span id="keysandcertsforservice"></span><h2>Keys and certificates for your service<a class="headerlink" href="#keys-and-certificates-for-your-service" title="Permalink to this headline">¶</a></h2>
 <p>Your service must sign SAML messages and decrypt assertions, so at a minimum you need a private key and certificate
 for each of these roles. Your service should support multiple encryption keys <a class="reference internal" href="../pki/pkiRotate.html#pkirotate"><span>to allow for key rotations</span></a>.</p>
 <p>Depending on how your service is built you may need to provide keys and certificates in a different format, for example .jks or .pem.</p>
