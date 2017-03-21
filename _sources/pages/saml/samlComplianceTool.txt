@@ -59,15 +59,14 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
   *   the keys and certificates in the configuration data must be single-line strings of Base64-encoded data without the header and footer ``BEGIN CERTIFICATE`` and ``END CERTIFICATE``
 
-  * ``matchingServiceSigningPrivateCert``: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA
+  * ``matchingServiceSigningPrivateCert``: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA.
 
-    This key must be in PKCS#8 PEM format:
+    This key must be a Base-64 encoded version of your PKCS#8 signing key. To convert a key named ``test_primary_signing.pk8``, run:
   
     ::
 
-     cat server.crt server.key > server.pem
+     base64 test_primary_signing.pk8
       
-     openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
 
   * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
 

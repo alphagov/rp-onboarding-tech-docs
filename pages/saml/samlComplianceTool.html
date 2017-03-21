@@ -211,11 +211,9 @@
 <ul>
 <li><p class="first">the keys and certificates in the configuration data must be single-line strings of Base64-encoded data without the header and footer <code class="docutils literal"><span class="pre">BEGIN</span> <span class="pre">CERTIFICATE</span></code> and <code class="docutils literal"><span class="pre">END</span> <span class="pre">CERTIFICATE</span></code></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateCert</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA</p>
-<p>This key must be in PKCS#8 PEM format:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>cat server.crt server.key &gt; server.pem
-
-openssl pkcs8 -nocrypt -in server.pem -out server.pk8.pem -outform PEM -topk8
+<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateCert</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA.</p>
+<p>This key must be a Base-64 encoded version of your PKCS#8 signing key. To convert a key named <code class="docutils literal"><span class="pre">test_primary_signing.pk8</span></code>, run:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>base64 test_primary_signing.pk8
 </pre></div>
 </div>
 </li>
