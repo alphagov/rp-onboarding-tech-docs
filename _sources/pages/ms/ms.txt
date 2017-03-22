@@ -30,7 +30,7 @@ As a government service, it's your responsibility to develop and :ref:`build you
 
 To help build your local matching service, you can use the:
 
-* :ref:`example of a JSON request<samlCT_JSONeg>` that the MSA posts to your service
+* :ref:`example of a JSON request<RespondJSONmr>` that the MSA posts to your service
 * :ref:`JSON schema <JSONschema>` for a matching request
 
 Some government services don't have experience of matching verified identities to government data sources. The process can be complex, so if you  need further help with building a local matching service, contact your engagement lead or the `GOV.UK Verify team <http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form>`_. 

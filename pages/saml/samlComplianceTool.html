@@ -108,7 +108,6 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="">Run SAML compliance tests</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-service-with-the-saml-compliance-tool">Test your service with the SAML compliance tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-matching-service-with-the-saml-compliance-tool">Test your matching service with the SAML compliance tool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-of-a-json-request-to-your-local-matching-service">Example of a JSON request to your local matching service</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="generateSelfSignedCertificates.html">Generate self-signed certificates</a></li>
@@ -393,84 +392,6 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 <li>When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
 <li>Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
 </ol>
-</div>
-<div class="section" id="example-of-a-json-request-to-your-local-matching-service">
-<span id="samlct-jsoneg"></span><h2>Example of a JSON request to your local matching service<a class="headerlink" href="#example-of-a-json-request-to-your-local-matching-service" title="Permalink to this headline">¶</a></h2>
-<p>Below is a formatted example of a cycle 3 matching request that the MSA sends to your local matching service:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;drivers_licence&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;matchId&quot;</span><span class="p">:</span> <span class="s2">&quot;default-request-id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;matchingDataset&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;fromDate&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24T00:00:00.000Z&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;123 George Street&quot;</span>
-                <span class="p">],</span>
-                <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;toDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14T00:00:00.000Z&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;7D68E096-5510-B3844C0BA3FD&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;fromDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14T00:00:00.000Z&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;10 George Street&quot;</span>
-                <span class="p">],</span>
-                <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;833F1187-9F33-A7E27B3F211E&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;middleNames&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob Rob&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24T00:00:00.000Z&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20T00:00:00.000Z&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20T00:00:00.000Z&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Dou&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>where the <code class="docutils literal"><span class="pre">matchId</span></code> field is unique to a user&#8217;s journey in the GOV.UK Verify hub – you can log this for future reference.</p>
-<p>Below is an example of a response from your local matching service:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>200 {
- result : match|no-match
- }`
-</pre></div>
-</div>
-<p>This response corresponds to step 6 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 </div>
 </div>
 

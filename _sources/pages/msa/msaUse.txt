@@ -258,7 +258,7 @@ To start using the MSA, run the following command, supplying the path to your co
 
  java -jar [filename].jar server [path to configuration file].yml
 
-You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the MMSA posts to your service.
+You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MMSA posts to your service.
 
 
 Monitoring

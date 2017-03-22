@@ -34,7 +34,7 @@ We recommend that you use the MSA.  If you do not want to, please contact the `G
 
 To use the MSA, you need to:
 
-#. :ref:`Build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <samlCT_JSONeg>` that the MSA posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request.
+#. :ref:`Build your local matching service <msBuild>` – you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MSA posts to your service and the :ref:`JSON schema <JSONschema>` for a matching request.
 #. :ref:`Install the Matching Service Adapter <msa_install_msa>`.
 #. :ref:`Configure the Matching Service Adapter <ConfigureMSA>`.
 
