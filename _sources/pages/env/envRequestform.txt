@@ -75,7 +75,7 @@ Fill in the form as indicated below:
     * ``CURRENT_ADDRESS``
     * ``CYCLE_3``
 
-Your content designer can provide the remaining information:
+Your web design team can provide the remaining information:
  
 13. **Service display name** 
 

@@ -170,7 +170,7 @@
 must be <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>issued by the IDAP certificate authority</span></a>. If you&#8217;re communicating with the compliance tool, generate self-signed certificates as described here.</p>
 <div class="section" id="generate-self-signed-certificates-with-openssl">
 <h2>Generate self-signed certificates with OpenSSL<a class="headerlink" href="#generate-self-signed-certificates-with-openssl" title="Permalink to this headline">¶</a></h2>
-<p>You can generate keys and self-signed certificates in whatever way is most convenient and familiar for you.</p>
+<p>You can generate keys and self-signed certificates in whatever way is most convenient and familiar for you. There are many different formats of keys and certificates. The Matching Service Adapter (MSA) uses PKCS#8 formatted keys (.pk8) and PEM encoded X509 certificates (.crt).</p>
 <p>The GOV.UK Verify team generally use the OpenSSL tool to do this using the guidance from the <a class="reference external" href="https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites">Heroku Dev Center</a>.</p>
 <p>Install OpenSSL if it isn&#8217;t already installed:</p>
 <ul class="simple">
