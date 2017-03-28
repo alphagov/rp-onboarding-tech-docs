@@ -103,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="saml.html">SAML</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works wth GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works with GOV.UK Verify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Generate self-signed certificates</a><ul>
@@ -197,7 +197,9 @@ openssl x509 -req -sha256 -in &quot;$name.csr&quot; -signkey &quot;$name.key&quo
 openssl pkcs8 -topk8 -inform PEM -outform DER -in &quot;$name.key&quot; -out &quot;$name.pk8&quot; -nocrypt
 
 # Clean up the files you don’t need anymore:
-rm &quot;$name.pass.key&quot; &quot;$name.csr&quot; &quot;$name.key&quot;
+rm &quot;$name.pass.key&quot;
+rm &quot;$name.csr&quot;
+rm &quot;$name.key&quot;
 </pre></div>
 </div>
 </div>

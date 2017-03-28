@@ -41,7 +41,9 @@ Run the following commands in order, replacing:
     openssl pkcs8 -topk8 -inform PEM -outform DER -in "$name.key" -out "$name.pk8" -nocrypt
 
     # Clean up the files you don’t need anymore:
-    rm "$name.pass.key" "$name.csr" "$name.key"
+    rm "$name.pass.key"
+    rm "$name.csr"
+    rm "$name.key"
 
 
 .. _KeysandCertsforMSA:

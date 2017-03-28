@@ -29,13 +29,7 @@ The main elements in GOV.UK Verify architecture are:
 
   The GOV.UK Verify hub is the infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service.
 
-  The hub is at the centre of the GOV.UK Verify federation, providing a clear divide between identity providers and government services, avoiding a complex many-many integration:
-
-  .. figure:: ../arch/manyintegration.svg    
-   :align: center
-   :alt: Diagram showing difference between GOV.UK Verify architecture and many-many integration. With GOV.UK Verify, the hub centralises communication between government services and identity providers. With many-many integration, there is no central hub. Each government service connects to each identity provider. 
-
-   Integration with GOV.UK Verify hub (left); many-many integration (right)
+  The hub is at the centre of the GOV.UK Verify federation, providing a clear divide between identity providers and government services. This means your service has to integrate with the GOV.UK Verify hub only. It doesn't have to integrate with several identity providers.
 
   The hub is stateless, which means that it doesn't store any part of the message exchange any longer than a session. Also, it ensures privacy as it doesn't hold any identity data.
 

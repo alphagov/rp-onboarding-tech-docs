@@ -1,6 +1,6 @@
 .. _samlWorks:
 
-How SAML works wth GOV.UK Verify
+How SAML works with GOV.UK Verify
 ---------------------------------- 
 
 SAML messages take the form of requests and responses. Messages can contain assertions about the user's identity. GOV.UK Verify uses the following types of assertion:
