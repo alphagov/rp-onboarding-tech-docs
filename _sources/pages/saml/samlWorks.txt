@@ -83,4 +83,4 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
 
  * assertion signed by the Matching Service Adapter and encrypted for the government service
 
-9. The government service retrieves the user's record from the datastore. This allows the government service to interact with the user.
+9. The government service gets the user's record from the datastore. This allows the government service to interact with the user.

@@ -136,6 +136,17 @@ Below is a formatted example of a cycle 3 matching request that the MSA sends to
       }
   }
 
+Below is an example of a response from your local matching service:
+
+::
+
+  200 {
+   result : match|no-match
+   }
+
+
+This response corresponds to step 6 in the :ref:`SAML message flow <samlWorks>`. 
+
 
 .. _JSONschema:
 
