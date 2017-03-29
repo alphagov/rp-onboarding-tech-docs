@@ -11,7 +11,7 @@ A matching service is composed of the MSA and a :ref:`local matching service <ms
    :widths: 50, 50
    :name: flow-diagram
 
-   ".. figure:: ../ms/matchingserviceGraphics.svg
+   ".. figure:: ../ms/matchingservice.svg
      :alt: Diagram showing that a matching service is composed of a MSA and a local matching service.","For more details, see the diagrams:
 
    * :ref:`GOV.UK architecture <arch>`

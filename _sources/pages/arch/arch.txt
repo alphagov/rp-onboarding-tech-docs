@@ -13,7 +13,7 @@ Below is a high-level diagram of the GOV.UK Verify architecture.
    :widths: 75, 20
    :name: flow-diagram
 
-   ".. figure:: ../arch/arch_overviewGraphic.svg
+   ".. figure:: ../arch/arch_overview.svg
      :alt: Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter (MSA). Communication with the hub is via SAML with PKI. The MSA is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture.
 
      GOV.UK Verify architecture","For more details, see the diagrams:

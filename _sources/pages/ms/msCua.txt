@@ -40,13 +40,13 @@ Prerequisites
 Message flow
 --------------------------------------
 
-This diagram shows the message flow for creating user accounts. In this example, the service has been set up to create user accounts when matching fails. The numbers identify each stage in the flow. See below for explanations.
+This diagram shows the message flow for creating user accounts. In this example, the service has been set up to create user accounts when matching fails.
 
 .. csv-table:: 
    :widths: 80, 15
    :name: flow-diagram
 
-   ".. figure:: accountcreationGraphic.svg
+   ".. figure:: createanaccount.svg
      :alt: Diagram showing user account creation. The MSA converts between SAML and JSON. The MSA contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps.
 
      User account creation","For more details, see the diagrams:

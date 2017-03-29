@@ -12,7 +12,7 @@ Government services host their matching service within their security domain. A 
    :widths: 50, 50
    :name: flow-diagram
 
-   ".. figure:: matchingserviceGraphics.svg
+   ".. figure:: matchingservice.svg
      :alt: Diagram showing that a matching service is composed of a MSA and a local matching service.","For more details, see the diagrams:
 
    * :ref:`GOV.UK architecture <arch>`
