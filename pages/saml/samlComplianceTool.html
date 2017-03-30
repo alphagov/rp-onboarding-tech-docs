@@ -221,10 +221,7 @@
 </ul>
 </div></blockquote>
 <ol class="arabic" start="5">
-<li><p class="first">You receive a response similar to the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Status 200 Created
-</pre></div>
-</div>
+<li><p class="first">You receive an empty response with <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> status.</p>
 </li>
 <li><p class="first">Make sure that your MSA is pointing at the URLs for the compliance tool (<code class="docutils literal"><span class="pre">metadata:</span></code> <code class="docutils literal"><span class="pre">url</span></code>) and and hub (<code class="docutils literal"><span class="pre">hub:</span></code> <code class="docutils literal"><span class="pre">ssoUrl</span></code>). These are the defaults in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file for non-production environments.</p>
 </li>
@@ -284,7 +281,7 @@
 <div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
 <span id="samlcthubmsa"></span><h2>Test your matching service with the SAML compliance tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the URL <code class="docutils literal"><span class="pre">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run</span></code> provided by your GOV.UK Verify engagement lead.</li>
+<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data</a>):</li>
 </ol>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json

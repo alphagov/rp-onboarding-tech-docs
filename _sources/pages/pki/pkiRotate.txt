@@ -69,7 +69,7 @@ Rotate your Matching Service Adapter encryption key
  
   The MSA can now use both the new and old keys to decrypt SAML messages.
 
-  .. note:: While both keys are in use, you may see error messages in the logs with the description "Unwrapping failed". These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.
+  .. note:: While both keys are in use, you may see error messages in the logs with the description 'Unwrapping failed'. These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.
 
 2. Send the new certificate to the GOV.UK Verify operations team.
 3. The GOV.UK Verify operations team replaces the old certificate with the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.

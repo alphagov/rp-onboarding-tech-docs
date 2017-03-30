@@ -61,10 +61,10 @@ When you define your matching strategy you need to:
 Respond to JSON matching requests
 ----------------------------------
 
-Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes these requests to the following URLs specified in the :ref:`YAML configuration file <yamlfile>`:
+Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes requests to the URLs specified in the :ref:`YAML configuration file <yamlfile>`:
 
-* ``matchingServiceUri`` 
-* ``unknownUserCreationServiceUri`` (if you're :ref:`creating new user accounts <ms_cua>` when a match is not found)
+* ``localMatchingService:`` ``matchUrl:`` 
+* ``localMatchingService:`` ``accountCreationUrl:`` (if you're :ref:`creating new user accounts <ms_cua>` when a match is not found)
 
 The MSA sends one matching request for both cycle 0 and cycle 1 to your local matching service. Below is a formatted example: 
 

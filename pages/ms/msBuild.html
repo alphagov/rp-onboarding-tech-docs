@@ -221,10 +221,10 @@
 </div>
 <div class="section" id="respond-to-json-matching-requests">
 <span id="respondjsonmr"></span><h2>Respond to JSON matching requests<a class="headerlink" href="#respond-to-json-matching-requests" title="Permalink to this headline">¶</a></h2>
-<p>Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes these requests to the following URLs specified in the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>:</p>
+<p>Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes requests to the URLs specified in the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">matchingServiceUri</span></code></li>
-<li><code class="docutils literal"><span class="pre">unknownUserCreationServiceUri</span></code> (if you&#8217;re <a class="reference internal" href="msCua.html#ms-cua"><span>creating new user accounts</span></a> when a match is not found)</li>
+<li><code class="docutils literal"><span class="pre">localMatchingService:</span></code> <code class="docutils literal"><span class="pre">matchUrl:</span></code></li>
+<li><code class="docutils literal"><span class="pre">localMatchingService:</span></code> <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> (if you&#8217;re <a class="reference internal" href="msCua.html#ms-cua"><span>creating new user accounts</span></a> when a match is not found)</li>
 </ul>
 <p>The MSA sends one matching request for both cycle 0 and cycle 1 to your local matching service. Below is a formatted example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
