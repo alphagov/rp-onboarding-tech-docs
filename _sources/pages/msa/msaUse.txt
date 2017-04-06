@@ -20,11 +20,20 @@ Install the Matching Service Adapter
  * a sample YAML configuration file for non-production environments  - ``test-config.yml``
  * a sample YAML configuration file for the production environment  - ``prod-config.yml``
 
-3. To extract the files, run the following command::
+3. Verify the shasum of the zipfile::
+
+  | On mac and linux: ``shasum -a 256 ida-msa-561.zip``
+  | On windows (powershell): ``Get-FileHash ida-msa-561.zip -Algorithm SHA256``
+
+   The sha256 for ``ida-msa-561.zip`` should be::
+  
+    381450a90fea16f4f179b02f5175ce43df5418c604838a1341ac801ada8bf27f
+
+4. To extract the files, run the following command::
 
     unzip ida-msa-[MSA build number].zip
 
-4. Optionally, move the truststore files to the environment where you want to use the MSA::
+5. Optionally, move the truststore files to the environment where you want to use the MSA::
 
     mv prod_ida_hub.ts prod_ida_metadata.ts [path to truststore directory in the production environment]
     mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the integration environment]

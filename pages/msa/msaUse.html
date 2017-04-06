@@ -202,7 +202,22 @@
 <li>a sample YAML configuration file for the production environment  - <code class="docutils literal"><span class="pre">prod-config.yml</span></code></li>
 </ul>
 </div></blockquote>
-<ol class="arabic" start="3">
+<ol class="arabic simple" start="3">
+<li>Verify the shasum of the zipfile:</li>
+</ol>
+<blockquote>
+<div><div class="line-block">
+<div class="line">On mac and linux: <code class="docutils literal"><span class="pre">shasum</span> <span class="pre">-a</span> <span class="pre">256</span> <span class="pre">ida-msa-561.zip</span></code></div>
+<div class="line">On windows (powershell): <code class="docutils literal"><span class="pre">Get-FileHash</span> <span class="pre">ida-msa-561.zip</span> <span class="pre">-Algorithm</span> <span class="pre">SHA256</span></code></div>
+</div>
+<blockquote>
+<div><p>The sha256 for <code class="docutils literal"><span class="pre">ida-msa-561.zip</span></code> should be:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>381450a90fea16f4f179b02f5175ce43df5418c604838a1341ac801ada8bf27f
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic" start="4">
 <li><p class="first">To extract the files, run the following command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>unzip ida-msa-[MSA build number].zip
 </pre></div>
