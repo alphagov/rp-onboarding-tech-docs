@@ -192,14 +192,14 @@
 <li><p class="first">POST the following JSON to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
 {
-    &quot;rpEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
+    &quot;serviceEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
     &quot;assertionConsumerServiceUrl&quot;:&quot;[assertion consumer service URL: this is the URL that will consume responses from the GOV.UK Verify hub]&quot;,
-    &quot;signingPublicCert&quot;:&quot;[Base64-encoded X509 signing certificate for your service]&quot;,
-    &quot;encryptionPublicCert&quot;:&quot;[Base64-encoded X509 encryption certificate for your service]&quot;,
+    &quot;signingCertificate&quot;:&quot;[Base64-encoded X509 signing certificate for your service]&quot;,
+    &quot;encryptionCertificate&quot;:&quot;[Base64-encoded X509 encryption certificate for your service]&quot;,
     &quot;expectedPID&quot;:&quot;[expected persistent identifier: this is the user id that the MSA returns in an assertion]&quot;,
     &quot;matchingServiceEntityId&quot;:&quot;[entityID for your MSA]&quot;,
-    &quot;matchingServiceSigningPrivateCert&quot;:&quot;[Base64-encoded private signing key for the MSA, see below]&quot;,
-    &quot;userAccountCreationAttributes&quot;:&quot;[optional list of attributes the government service requires for new user account creation, see below]&quot;
+    &quot;matchingServiceSigningPrivateKey&quot;:&quot;[Base64-encoded private signing key for the MSA, see below]&quot;,
+    &quot;userAccountCreationAttributes&quot;:[&quot;optional&quot;, &quot;list&quot;, &quot;of&quot;, &quot;attributes&quot;, &quot;the&quot;, &quot;government&quot;, &quot;service&quot;, &quot;requires&quot;, &quot;for&quot;, &quot;new&quot;, &quot;user&quot;, &quot;account&quot;, &quot;creation&quot;, &quot;see&quot;, &quot;below&quot;]
 }
 </pre></div>
 </div>
@@ -210,7 +210,7 @@
 <ul>
 <li><p class="first">the keys and certificates in the configuration data must be single-line strings of Base64-encoded data without the header and footer <code class="docutils literal"><span class="pre">BEGIN</span> <span class="pre">CERTIFICATE</span></code> and <code class="docutils literal"><span class="pre">END</span> <span class="pre">CERTIFICATE</span></code></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateCert</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateKey</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA.</p>
 <p>This key must be a Base-64 encoded version of your PKCS#8 signing key. To convert a key named <code class="docutils literal"><span class="pre">test_primary_signing.pk8</span></code>, run:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>base64 test_primary_signing.pk8
 </pre></div>
@@ -281,16 +281,16 @@
 <div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
 <span id="samlcthubmsa"></span><h2>Test your matching service with the SAML compliance tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data</a>):</li>
+<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run</a>):</li>
 </ol>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
  {
  &quot;matchingServiceEntityId&quot;: &quot;[entityID of the matching service]&quot;,
- &quot;transactionEntityId&quot;: &quot;[entityID of the transaction (service)]&quot;,
+ &quot;serviceEntityId&quot;: &quot;[entityID of the transaction (service)]&quot;,
  &quot;matchingServiceEndpoint&quot;: &quot;[the matching service&#39;s endpoint]&quot;,
- &quot;matchingServicePublicSigningCert&quot;: &quot;[signing certificate to verify the response]&quot;,
- &quot;matchingServicePublicEncryptionCert&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;
+ &quot;matchingServiceSigningCertificate&quot;: &quot;[signing certificate to verify the response]&quot;,
+ &quot;matchingServiceEncryptionCertificate&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;
  }
 </pre></div>
 </div>
