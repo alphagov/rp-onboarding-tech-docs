@@ -290,11 +290,13 @@
  &quot;serviceEntityId&quot;: &quot;[entityID of the transaction (service)]&quot;,
  &quot;matchingServiceEndpoint&quot;: &quot;[the matching service&#39;s endpoint]&quot;,
  &quot;matchingServiceSigningCertificate&quot;: &quot;[signing certificate to verify the response]&quot;,
- &quot;matchingServiceEncryptionCertificate&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;
+ &quot;matchingServiceEncryptionCertificate&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;,
+ &quot;userAccountCreationEndpoint&quot;: &quot;[optionally the matching service adapter&#39;s user account creation encpoint]&quot;
  }
 </pre></div>
 </div>
 </div></blockquote>
+<p>If your service <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>creates new user accounts</span></a> then you will need to provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code>.</p>
 <ol class="arabic" start="2">
 <li><p class="first">You receive a response similar to the following:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Status 201 Created
@@ -367,14 +369,18 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
     <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;drivers_licence&quot;</span><span class="p">,</span>
         <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
-    <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;userAccountCreationAttributes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;optional&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="s2">&quot;government&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">,</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> <span class="s2">&quot;creation&quot;</span><span class="p">,</span> <span class="s2">&quot;see&quot;</span><span class="p">,</span> <span class="s2">&quot;below&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <blockquote>
-<div><p>where:</p>
+<div><p>If you provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationAttributes&quot;</span></code> the compliance tool will make a user account creation request to the <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code> you configured in your ms-test-run post above.
+If you do not provide a value, the compliance tool will make a matching request to your <code class="docutils literal"><span class="pre">&quot;matchingServiceEndpoint&quot;</span></code>.</p>
+<p>You only need to test the user account creation requests if your service <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>creates new user accounts</span></a>.</p>
+<p>where:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">persistentId</span></code> is mandatory</li>
 <li>you must supply at least one other value in addition to <code class="docutils literal"><span class="pre">persistentId</span></code></li>
@@ -383,6 +389,7 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 <li>the <code class="docutils literal"><span class="pre">addresses</span></code> field that holds the current address contains a <code class="docutils literal"><span class="pre">fromDate</span></code> attribute for the date from which the address is valid; past addresses also contain the <code class="docutils literal"><span class="pre">toDate</span></code> attribute</li>
 <li>the <code class="docutils literal"><span class="pre">cycle3Dataset</span></code> field is only present for a cycle 3 matching attempt</li>
 <li>the <code class="docutils literal"><span class="pre">uprn</span></code> (Unique Property Reference Number) is a unique reference for each property in Great Britain, ensuring accuracy of address data. This is an optional attribute that can contain up to 12 characters and should not have any leading zeros</li>
+<li><code class="docutils literal"><span class="pre">userAccountCreationAttributes</span></code>: provide this only if you want to test <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>new user account creation</span></a> – select from the full <a class="reference internal" href="../ms/msCua.html#list-cua-attributes"><span>list of attributes</span></a></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="4">

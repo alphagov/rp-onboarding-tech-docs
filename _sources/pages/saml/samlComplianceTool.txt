@@ -139,8 +139,11 @@ Test your matching service with the SAML compliance tool
      "serviceEntityId": "[entityID of the transaction (service)]",
      "matchingServiceEndpoint": "[the matching service's endpoint]",
      "matchingServiceSigningCertificate": "[signing certificate to verify the response]",
-     "matchingServiceEncryptionCertificate": "[encryption certificate to encrypt the assertions]"
+     "matchingServiceEncryptionCertificate": "[encryption certificate to encrypt the assertions]",
+     "userAccountCreationEndpoint": "[optionally the matching service adapter's user account creation encpoint]"
      }
+
+If your service :ref:`creates new user accounts <ms_cua>` then you will need to provide a value for ``"userAccountCreationEndpoint"``.
 
 2. You receive a response similar to the following::
 
@@ -216,8 +219,14 @@ Test your matching service with the SAML compliance tool
           "cycle3Dataset": {
               "key": "drivers_licence",
               "value": "4C22DA90A18A4B88BE460E0A3D975F68"
-          }
+          },
+          "userAccountCreationAttributes": ["optional", "list", "of", "attributes", "the", "government", "service", "requires", "for", "new", "user", "account", "creation", "see", "below"]
       }
+
+  If you provide a value for ``"userAccountCreationAttributes"`` the compliance tool will make a user account creation request to the ``"userAccountCreationEndpoint"`` you configured in your ms-test-run post above.
+  If you do not provide a value, the compliance tool will make a matching request to your ``"matchingServiceEndpoint"``.
+
+  You only need to test the user account creation requests if your service :ref:`creates new user accounts <ms_cua>`.
 
   where:
 
@@ -228,6 +237,7 @@ Test your matching service with the SAML compliance tool
   * the ``addresses`` field that holds the current address contains a ``fromDate`` attribute for the date from which the address is valid; past addresses also contain the ``toDate`` attribute
   * the ``cycle3Dataset`` field is only present for a cycle 3 matching attempt
   * the ``uprn`` (Unique Property Reference Number) is a unique reference for each property in Great Britain, ensuring accuracy of address data. This is an optional attribute that can contain up to 12 characters and should not have any leading zeros
+  * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
 
 
 4. When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`. 
