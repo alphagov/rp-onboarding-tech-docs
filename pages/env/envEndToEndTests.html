@@ -110,7 +110,6 @@
 <li class="toctree-l2"><a class="reference internal" href="envRequestform.html">Request access to environments</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Run end-to-end testing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup-for-end-to-end-testing">Setup for end-to-end testing</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#create-your-authentication">Create your authentication</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-test-users">Create test users</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#view-test-users">View test users</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#delete-test-users">Delete test users</a></li>
@@ -186,37 +185,17 @@
 <p>The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during matching. Then, in the user administration application programming interface (API), create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.</p>
 <p>A test identity provider contains:</p>
 <ul class="simple">
-<li>the user administration API – you need basic authentication credentials to manage test user data</li>
+<li>the user administration API – you should have submitted your credentials when you <a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/env/envRequestform.html">requested access to the environment</a></li>
 <li>a connection to the hub in the integration environment, which is used for end-to-end testing – no authentication credentials are required</li>
 </ul>
 <p>Setup for end-to-end testing involves the following procedures:</p>
 <blockquote>
 <div><ul class="simple">
-<li><a class="reference internal" href="#createauth"><span>create your authentication to manage test users</span></a></li>
 <li><a class="reference internal" href="#createtestusers"><span>create test users</span></a></li>
 <li><a class="reference internal" href="#view-test-users"><span>view test users</span></a></li>
 <li><a class="reference internal" href="#delete-users"><span>delete test users</span></a></li>
 </ul>
 </div></blockquote>
-<div class="section" id="create-your-authentication">
-<span id="createauth"></span><h3>Create your authentication<a class="headerlink" href="#create-your-authentication" title="Permalink to this headline">¶</a></h3>
-<p>This procedure describes how to obtain a username and password so you can manage test users.</p>
-<ol class="arabic simple">
-<li>Request IP whitelisting for your hosts from GOV.UK Verify support at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</li>
-<li>Go to the password generation page: <a class="reference external" href="https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen">https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/password-gen</a></li>
-<li>Store the password securely.</li>
-<li>Email us the hash, along with a username of your choice.</li>
-</ol>
-<blockquote>
-<div><blockquote>
-<div><div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">Don&#8217;t email us the password. Send us the hash and your chosen username.</p>
-</div>
-</div></blockquote>
-<p>We&#8217;ll use this hash and username to configure your authentication credentials to the user administration API for the test identity provider.</p>
-</div></blockquote>
-</div>
 <div class="section" id="create-test-users">
 <span id="createtestusers"></span><h3>Create test users<a class="headerlink" href="#create-test-users" title="Permalink to this headline">¶</a></h3>
 <p>This procedure describes how to create test users in bulk and load them into the test identity provider. You must add the same test users to your local matching datastore in the integration environment.</p>
@@ -226,7 +205,7 @@
 </div>
 <p>where:</p>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a></p>
+<li><p class="first"><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your Stub Identity Provider API credentials</p>
 </li>
 <li><p class="first"><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</p>
 <div class="admonition note">
@@ -337,7 +316,7 @@
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider.</p>
-<p>The test users are returned in JSON format. To view the page you must provide your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a>.</p>
+<p>The test users are returned in JSON format. To view the page you must provide your Stub Identity Provider API credentials. You get the credentials by submitting the environment access form.</p>
 </div>
 <div class="section" id="delete-test-users">
 <span id="delete-users"></span><h3>Delete test users<a class="headerlink" href="#delete-test-users" title="Permalink to this headline">¶</a></h3>
@@ -348,7 +327,7 @@
 <p>where:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">user1</span></code> is the name of the test user you want to delete</li>
-<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your <a class="reference internal" href="#createauth"><span>basic authentication credentials</span></a></li>
+<li><code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> are your Stub Identity Provider API credentials username and password</li>
 <li><code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider</li>
 </ul>
 </div>
