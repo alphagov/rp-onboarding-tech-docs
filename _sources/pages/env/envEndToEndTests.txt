@@ -54,7 +54,7 @@ Make an HTTP POST to the user administration API with a JSON document containing
 
 where:
 
-* ``username`` and ``password`` are your Stub Identity Provider API credentials
+* ``username`` and ``password`` are your credentials for managing test users
 * ``idp-name`` is the name of the test identity provider
 
   .. note:: You can find the name of the test identity provider by accessing the test identity provider once your service is connected to the integration environment. 
@@ -114,7 +114,7 @@ To view existing test users, GET the users resource from the relevant test ident
     
 where ``idp-name`` is the name of the test identity provider. 
 
-The test users are returned in JSON format. To view the page you must provide your Stub Identity Provider API credentials. You get the credentials by submitting the environment access form.
+The test users are returned in JSON format. To view the page you must provide your credentials for managing test users. You create the credentials by submitting the environment access form.
 
 .. _delete-users:
 
@@ -130,7 +130,7 @@ To delete test users from the test identity provider, POST a JSON document to th
 where:
 
 * ``user1`` is the name of the test user you want to delete
-* ``username`` and ``password`` are your Stub Identity Provider API credentials username and password
+* ``username`` and ``password`` are your credentials for managing test users
 * ``idp-name`` is the name of the test identity provider
 
 .. _RunEtoEtest:
