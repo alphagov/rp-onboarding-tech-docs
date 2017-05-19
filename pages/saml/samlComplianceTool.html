@@ -189,7 +189,7 @@
 <ol class="arabic" id="samlctselfsigncert" start="3">
 <li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the compliance tool only.</p>
 </li>
-<li><p class="first">POST the following JSON to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data</a>):</p>
+<li><p class="first">POST the following JSON to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
 {
     &quot;serviceEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
@@ -274,6 +274,7 @@
 <li>Authentication failed</li>
 <li>Requester error (this is when the request is invalid)</li>
 <li>Account creation</li>
+<li>Fraudulent match response with assertions signed by hub</li>
 </ul>
 <p>The above scenarios are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 </div></blockquote>
@@ -281,7 +282,7 @@
 <div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
 <span id="samlcthubmsa"></span><h2>Test your matching service with the SAML compliance tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run</a>):</li>
+<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run</a>):</li>
 </ol>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
@@ -300,11 +301,11 @@
 <ol class="arabic" start="2">
 <li><p class="first">You receive a response similar to the following:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Status 201 Created
-Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
+Location: .../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 </pre></div>
 </div>
 </li>
-<li><p class="first">POST your test <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> (see example below) to the <code class="docutils literal"><span class="pre">Location</span></code> field in the above response (<code class="docutils literal"><span class="pre">.../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19</span></code> in the above example).</p>
+<li><p class="first">POST your test <a class="reference internal" href="../../shared/glossary.html#gloss-mds"><span>matching dataset</span></a> (see example below) to the <code class="docutils literal"><span class="pre">Location</span></code> field in the above response (<code class="docutils literal"><span class="pre">.../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19</span></code> in the above example).</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
     <span class="s2">&quot;persistentId&quot;</span><span class="p">:</span> <span class="s2">&quot;93E5910B-F4C2-4561-AEC5-C878AFEF25A3&quot;</span><span class="p">,</span>
@@ -377,7 +378,7 @@ Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 </li>
 </ol>
 <blockquote>
-<div><p>If you provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationAttributes&quot;</span></code> the compliance tool will make a user account creation request to the <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code> you configured in your ms-test-run post above.
+<div><p>If you provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationAttributes&quot;</span></code> the compliance tool will make a user account creation request to the <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code> configured in the POST request to /matching-service-test-run.
 If you do not provide a value, the compliance tool will make a matching request to your <code class="docutils literal"><span class="pre">&quot;matchingServiceEndpoint&quot;</span></code>.</p>
 <p>You only need to test the user account creation requests if your service <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>creates new user accounts</span></a>.</p>
 <p>where:</p>

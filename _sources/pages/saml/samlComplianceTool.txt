@@ -40,7 +40,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
 3. :ref:`Generate self-signed certificates <generateSelfSignedCertificates>` for use with the compliance tool only.
 
-4. POST the following JSON to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/rp-test-data>`_)::
+4. POST the following JSON to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data>`_)::
 
 
     Content-Type: application/json
@@ -119,6 +119,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
   * Authentication failed
   * Requester error (this is when the request is invalid)
   * Account creation
+  * Fraudulent match response with assertions signed by hub
 
   The above scenarios are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
 
@@ -128,7 +129,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 Test your matching service with the SAML compliance tool 
 --------------------------------------------------------------------
 
-1. To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/ms-test-run>`_):
+1. To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run>`_):
 
   ::
 
@@ -148,10 +149,10 @@ If your service :ref:`creates new user accounts <ms_cua>` then you will need to 
 2. You receive a response similar to the following::
 
      Status 201 Created
-     Location: .../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
+     Location: .../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 
 
-3. POST your test :ref:`matching dataset <gloss_mds>` (see example below) to the ``Location`` field in the above response (``.../ms-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19`` in the above example). 
+3. POST your test :ref:`matching dataset <gloss_mds>` (see example below) to the ``Location`` field in the above response (``.../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19`` in the above example). 
 
    ::
 
@@ -223,7 +224,7 @@ If your service :ref:`creates new user accounts <ms_cua>` then you will need to 
           "userAccountCreationAttributes": ["optional", "list", "of", "attributes", "the", "government", "service", "requires", "for", "new", "user", "account", "creation", "see", "below"]
       }
 
-  If you provide a value for ``"userAccountCreationAttributes"`` the compliance tool will make a user account creation request to the ``"userAccountCreationEndpoint"`` you configured in your ms-test-run post above.
+  If you provide a value for ``"userAccountCreationAttributes"`` the compliance tool will make a user account creation request to the ``"userAccountCreationEndpoint"`` configured in the POST request to /matching-service-test-run.
   If you do not provide a value, the compliance tool will make a matching request to your ``"matchingServiceEndpoint"``.
 
   You only need to test the user account creation requests if your service :ref:`creates new user accounts <ms_cua>`.
