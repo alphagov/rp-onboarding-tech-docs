@@ -55,11 +55,7 @@ Make an HTTP POST to the user administration API with a JSON document containing
 where:
 
 * ``username`` and ``password`` are your credentials for managing test users
-* ``idp-name`` is the name of the test identity provider
-
-  .. note:: You can find the name of the test identity provider by accessing the test identity provider once your service is connected to the integration environment. 
-
-
+* ``idp-name`` is the name of the test identity provider. You can find this by going through a journey in the integration environment. Once you arrive at the identity provider page, you see your designated ``idp-name`` in the url.
 * ``create-user.json`` is the name of the file containing an array of test user data in JSON format, for example:
 
   ::
