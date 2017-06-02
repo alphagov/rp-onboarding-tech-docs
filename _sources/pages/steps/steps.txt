@@ -81,19 +81,9 @@ Integration
 
    To do this:
 
-    1. Send the GOV.UK Verify operations team the IP address where you'll host the Matching Service Adapter. 
-      
-     This allows GOV.UK Verify to put in place firewall rules so the hub can communicate with the Matching Service Adapter. 
+    1. Obtain :ref:`signed certificates <pkiRequestCert>` for the integration environment from the IDAP test certificate authority. 
 
-    2. Send the GOV.UK Verify operations team the IP addresses of the browsers you'll use when testing in the integration environment. 
-
-      Access to the hub and the test identity providers in the integration environment is restricted by IP address.
-
-    3. Obtain :ref:`signed certificates <pkiRequestCert>` for the integration environment from the IDAP test certificate authority. 
-
-    4. Send the GOV.UK Verify operations team your signed certificates for the integration environment. 
-
-    5. Fill in the ':ref:`Request access to an environment <envRequestform>`' form.
+    2. Fill in the ':ref:`Request access to an environment <envRequestform>`' form.
 
    Outcome: you're ready to connect the Matching Service Adapter and your service to the integration environment.
  
@@ -129,15 +119,9 @@ Integration
 
    To do this:
 
-    1. Send the GOV.UK Verify operations team the IP address where you'll host the Matching Service Adapter. 
+    1. Obtain :ref:`signed certificates <pkiRequestCert>` for the production environment from the IDAP certificate authority. 
 
-      This allows GOV.UK Verify to put in place firewall rules so the hub can communicate with the Matching Service Adapter. 
-
-    2. Obtain :ref:`signed certificates <pkiRequestCert>` for the production environment from the IDAP certificate authority. 
-
-    3. Send the GOV.UK Verify operations team your signed certificates for the production environment. 
-
-    4. Fill in the ':ref:`Request access to an environment <envRequestform>`' form.
+    2. Fill in the ':ref:`Request access to an environment <envRequestform>`' form.
 
    Outcome: you're ready to connect the Matching Service Adapter and your service to the production environment.
 
@@ -170,16 +154,4 @@ Maintenance
     Outcome: the encryption and signing certificates for your service and Matching Service Adapter are up to date.
 
     For more information, see :ref:`pkiWorks`."
-
-
-
-
-
-
-
-   
-
-
-
-
 
