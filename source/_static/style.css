@@ -1,0 +1,91 @@
+#ida-cookie-message {
+  background-color: teal;
+  color: white;
+  margin-left: 300px;
+  padding: 10px;
+}
+@media screen and (max-width: 768px) {
+  #ida-cookie-message {
+    margin-left: 0;
+  }
+}
+#ida-cookie-message p {
+  margin-bottom: 0;
+  text-align: center;
+}
+#ida-cookie-message a {
+  color: white;
+  text-decoration: underline;
+}
+#ida-cookie-message-body, #cookie-message-close {
+  display: inline-block;
+}
+#cookie-message-close {
+  margin: 0 0.4em 0 0;
+}
+#cookie-message-close a {
+  text-decoration: none;
+}
+.rst-content p.rubric {
+  font-family: "Roboto Slab","ff-tisa-web-pro","Georgia",Arial,sans-serif;
+  font-size: 150%;
+}
+.wy-menu-vertical > ul > li {
+  border-bottom: 1px solid teal;
+}
+.wy-menu-vertical > ul > li:nth-last-child(4), .wy-menu-vertical > ul > li:last-child {
+  border-bottom: 1px solid white;
+}
+.xref.download.docutils.literal {
+	font-size:16px;
+}
+.wy-menu-vertical,.wy-nav-side {
+	background-color: #06094E;
+}
+.wy-nav-side a.reference {
+	color: white;
+}
+.wy-menu-vertical li.current {
+	color: teal;
+}
+.wy-side-nav-search {
+    background-color: black;
+    text-align: left;
+}
+.wy-menu-vertical li span.toctree-expand {
+    color: #C7E7FF;
+}
+
+.wy-menu-vertical li.toctree-l2.current>a {
+    background: #D7F9F9;
+    padding: 0.4045em 2.427em;
+}
+.wy-nav-content-wrap {
+    background: #fcfcfc;
+    min-height: 100%;
+}
+.wy-nav-content {
+    height: 100%;
+    max-width: none; 
+}
+.wy-nav-top {
+    background: black;
+    color: #fff;
+    padding: 0.4045em 0.809em;
+    position: relative;
+    line-height: 50px;
+    text-align: right;
+    font-size: 100%;
+}
+
+table#flow-diagram {
+ border: none;
+}
+table#flow-diagram td {
+ background: none;
+ border: none;
+}
+table#flow-diagram td:first-of-type {
+ text-align: center;
+}
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="750" height="50" viewBox="0, 0, 750, 50">
+  <g id="Layer_1">
+    <g id="rect56153">
+      <path d="M301.516,4.09 L373.496,4.09 L373.496,45.91 L301.516,45.91 z" fill="#9FC5FF"/>
+      <path d="M301.516,4.09 L373.496,4.09 L373.496,45.91 L301.516,45.91 z" fill-opacity="0" stroke="#090D14" stroke-width="0.676" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="rect56155">
+      <path d="M5.881,4.069 L301.516,4.069 L301.516,45.931 L5.881,45.931 z" fill="#627180" fill-opacity="0.549"/>
+      <path d="M5.881,4.069 L301.516,4.069 L301.516,45.931 L5.881,45.931 z" fill-opacity="0" stroke="#090D14" stroke-width="0.655" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 110.06, 25)">
+      <tspan x="-83.227" y="3" font-family="ArialMT" font-size="13" fill="#000000">SAML authentication request</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 337.506, 25)">
+      <tspan x="-29.515" y="-3.5" font-family="ArialMT" font-size="13" fill="#000000">signed by </tspan>
+      <tspan x="-10.845" y="11.5" font-family="ArialMT" font-size="13" fill="#000000">hub</tspan>
+    </text>
+  </g>
+</svg>

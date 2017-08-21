@@ -1,0 +1,3 @@
+[submodule "source/shared"]
+	path = source/shared
+	url = git@github.gds:gds/onboarding-guide-shared.git

@@ -1,0 +1,47 @@
+Attribute, Value
+levelOfAssurance,"Level of assurance must be one of the following values:
+
+* LEVEL_X
+
+* LEVEL_1
+
+* LEVEL_2
+
+* LEVEL_3
+
+* LEVEL_4"
+"firstName 
+
+surnames
+
+dateOfBirth","These attributes can contain the following fields:
+
+* value (variable type)
+
+* DateTime from (the time when this value started - eg changed name to this - Optional)
+
+* DateTime to (The time after which this value ended - eg changed name from this - Optional)
+
+* boolean verified"
+gender,"Gender must be one of the following values:
+
+* FEMALE
+
+* MALE
+
+* NOT_SPECIFIED"
+address,"Address consists of:
+
+* boolean verified
+
+* DateTime fromDate
+
+* DateTime toDate (Optional)
+
+* String postCode (Optional)
+
+* List<String> lines
+
+* String internationalPostCode (Optional)
+
+* String uprn (Optional)"

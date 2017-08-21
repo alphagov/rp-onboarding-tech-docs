@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="300" height="150" viewBox="0, 0, 300, 150">
+  <g id="Layer_1">
+    <g id="rect43929">
+      <path d="M25.854,3.154 L265.82,3.154 C271.717,3.154 276.497,8.215 276.497,14.458 L276.497,136.195 C276.497,142.439 271.717,147.5 265.82,147.5 L25.854,147.5 C19.957,147.5 15.177,142.439 15.177,136.195 L15.177,14.458 C15.177,8.215 19.957,3.154 25.854,3.154 z" fill="#A7A9AB"/>
+      <path d="M25.854,3.154 L265.82,3.154 C271.717,3.154 276.497,8.215 276.497,14.458 L276.497,136.195 C276.497,142.439 271.717,147.5 265.82,147.5 L25.854,147.5 C19.957,147.5 15.177,142.439 15.177,136.195 L15.177,14.458 C15.177,8.215 19.957,3.154 25.854,3.154 z" fill-opacity="0" stroke="#6E757E" stroke-width="0.644" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g>
+      <path d="M93.804,2.749 L263.646,2.637 C270.726,2.633 276.468,8.211 276.472,15.097 L276.5,61.851 C276.504,68.737 270.769,74.323 263.689,74.328 L93.847,74.439 C86.768,74.443 81.026,68.865 81.021,61.979 L80.993,15.225 C80.989,8.339 86.725,2.753 93.804,2.749 z" fill="#9B9B9B"/>
+      <path d="M93.804,2.749 L263.646,2.637 C270.726,2.633 276.468,8.211 276.472,15.097 L276.5,61.851 C276.504,68.737 270.769,74.323 263.689,74.328 L93.847,74.439 C86.768,74.443 81.026,68.865 81.021,61.979 L80.993,15.225 C80.989,8.339 86.725,2.753 93.804,2.749 z" fill-opacity="0" stroke="#4F4F4F" stroke-width="1"/>
+    </g>
+    <g>
+      <path d="M93.844,74.439 L263.68,74.439 C270.759,74.439 276.498,80.128 276.498,87.145 L276.498,134.794 C276.498,141.811 270.759,147.5 263.68,147.5 L93.844,147.5 C86.764,147.5 81.026,141.811 81.026,134.794 L81.026,87.145 C81.026,80.128 86.764,74.439 93.844,74.439 z" fill="#9B9B9B"/>
+      <path d="M93.844,74.439 L263.68,74.439 C270.759,74.439 276.498,80.128 276.498,87.145 L276.498,134.794 C276.498,141.811 270.759,147.5 263.68,147.5 L93.844,147.5 C86.764,147.5 81.026,141.811 81.026,134.794 L81.026,87.145 C81.026,80.128 86.764,74.439 93.844,74.439 z" fill-opacity="0" stroke="#4F4F4F" stroke-width="1"/>
+    </g>
+    <text transform="matrix(1, 0, 0, 1, 179.685, 32.368)">
+      <tspan x="-61.688" y="-3.5" font-family="Arial-BoldMT" font-size="15" fill="#000000">Matching Service </tspan>
+      <tspan x="-28.337" y="13.5" font-family="Arial-BoldMT" font-size="15" fill="#000000">Adapter</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 178.262, 112.883)">
+      <tspan x="-55.009" y="-10.5" font-family="Arial-BoldMT" font-size="15" fill="#000000">Local matching </tspan>
+      <tspan x="-25.858" y="6.5" font-family="Arial-BoldMT" font-size="15" fill="#000000">service</tspan>
+    </text>
+    <text transform="matrix(-0, -1, 1, -0, 52.9, 72.478)">
+      <tspan x="-32.915" y="-13.626" font-family="Arial-BoldMT" font-size="15" fill="#000000">Matching </tspan>
+      <tspan x="-25.858" y="3.374" font-family="Arial-BoldMT" font-size="15" fill="#000000">service</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 178.247, 52.5)">
+      <tspan x="-84.135" y="11.5" font-family="Arial-BoldMT" font-size="12" fill="#000000">(GOV.UK Verify provides this)</tspan>
+    </text>
+    <text transform="matrix(1, 0, 0, 1, 179.685, 135.319)">
+      <tspan x="-42.993" y="3.5" font-family="Arial-BoldMT" font-size="12" fill="#000000">(you build this)</tspan>
+    </text>
+  </g>
+</svg>
