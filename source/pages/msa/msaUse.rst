@@ -22,12 +22,12 @@ Install the Matching Service Adapter
 
 3. Verify the shasum of the zipfile::
 
-  | On mac and linux: ``shasum -a 256 ida-msa-2.0.0-580``
-  | On windows (powershell): ``Get-FileHash ida-msa-561.zip -Algorithm SHA256``
+  | On mac and linux: ``shasum -a 256 ida-msa-2.1.0-592``
+  | On windows (powershell): ``Get-FileHash ida-msa-2.1.0-592.zip -Algorithm SHA256``
 
-   The sha256 for ``ida-msa-2.0.0-580`` should be::
+   The sha256 for ``ida-msa-2.1.0-592`` should be::
   
-    50b8d91286ab5d6a5a4bde8844a8569c6e20ecdabe39e5df8d284c73b9b3b415
+    a6cc1534cbd0d4b5f3e69b8dc6131c27fe999050420595e5e845a7739ae37981
 
 4. To extract the files, run the following command::
 
