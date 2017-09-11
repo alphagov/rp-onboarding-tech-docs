@@ -136,7 +136,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../shared/glossary.html">Glossary of terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
 </ul>
 
@@ -196,7 +195,7 @@
 <blockquote>
 <div><ul class="simple">
 <li>a jar (java archive) file</li>
-<li><a class="reference internal" href="../../shared/glossary.html#gloss-truststore"><span>truststore</span></a> files for non-production environments (the SAML compliance tool and the integration environment) - <code class="docutils literal"><span class="pre">test_ida_hub.ts</span></code> and <code class="docutils literal"><span class="pre">test_ida_metadata.ts</span></code></li>
+<li><span class="xref std std-ref">truststore</span> files for non-production environments (the SAML compliance tool and the integration environment) - <code class="docutils literal"><span class="pre">test_ida_hub.ts</span></code> and <code class="docutils literal"><span class="pre">test_ida_metadata.ts</span></code></li>
 <li>truststore files for the production environment - <code class="docutils literal"><span class="pre">prod_ida_hub.ts</span></code> and <code class="docutils literal"><span class="pre">prod_ida_metadata.ts</span></code></li>
 <li>a sample YAML configuration file for non-production environments  - <code class="docutils literal"><span class="pre">test-config.yml</span></code></li>
 <li>a sample YAML configuration file for the production environment  - <code class="docutils literal"><span class="pre">prod-config.yml</span></code></li>
@@ -207,12 +206,12 @@
 </ol>
 <blockquote>
 <div><div class="line-block">
-<div class="line">On mac and linux: <code class="docutils literal"><span class="pre">shasum</span> <span class="pre">-a</span> <span class="pre">256</span> <span class="pre">ida-msa-2.0.0-580</span></code></div>
-<div class="line">On windows (powershell): <code class="docutils literal"><span class="pre">Get-FileHash</span> <span class="pre">ida-msa-561.zip</span> <span class="pre">-Algorithm</span> <span class="pre">SHA256</span></code></div>
+<div class="line">On mac and linux: <code class="docutils literal"><span class="pre">shasum</span> <span class="pre">-a</span> <span class="pre">256</span> <span class="pre">ida-msa-2.1.0-592</span></code></div>
+<div class="line">On windows (powershell): <code class="docutils literal"><span class="pre">Get-FileHash</span> <span class="pre">ida-msa-2.1.0-592.zip</span> <span class="pre">-Algorithm</span> <span class="pre">SHA256</span></code></div>
 </div>
 <blockquote>
-<div><p>The sha256 for <code class="docutils literal"><span class="pre">ida-msa-2.0.0-580</span></code> should be:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>50b8d91286ab5d6a5a4bde8844a8569c6e20ecdabe39e5df8d284c73b9b3b415
+<div><p>The sha256 for <code class="docutils literal"><span class="pre">ida-msa-2.1.0-592</span></code> should be:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a6cc1534cbd0d4b5f3e69b8dc6131c27fe999050420595e5e845a7739ae37981</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -372,7 +371,7 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 <div class="section" id="in-the-field-matchingserviceadapter">
 <h3>In the field <code class="docutils literal"><span class="pre">matchingServiceAdapter:</span></code><a class="headerlink" href="#in-the-field-matchingserviceadapter" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple" start="2">
-<li>Enter the <a class="reference internal" href="../../shared/glossary.html#gloss-entityid"><span>entityID</span></a> for the MSA in <code class="docutils literal"><span class="pre">entityId</span></code>. This should reflect the name of your service, for example <code class="docutils literal"><span class="pre">https://&lt;service</span> <span class="pre">name&gt;/MSA</span></code></li>
+<li>Enter the <span class="xref std std-ref">entityID</span> for the MSA in <code class="docutils literal"><span class="pre">entityId</span></code>. This should reflect the name of your service, for example <code class="docutils literal"><span class="pre">https://&lt;service</span> <span class="pre">name&gt;/MSA</span></code></li>
 </ol>
 <blockquote>
 <div><div class="admonition note">
