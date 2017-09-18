@@ -31,9 +31,10 @@ Prerequisites
    DATE_OF_BIRTH_VERIFIED
    CURRENT_ADDRESS
    CURRENT_ADDRESS_VERIFIED
+   ADDRESS_HISTORY
    CYCLE_3
 
-  .. note:: You can't use historical data to create user accounts. For example, you can't use an out of date address to create a new user account. 
+  .. note:: You can't use historical data other than address history to create user accounts. For example, you can't use an out of date surname to create a new user account.
 
 .. _ms_cua_diagram:
 
