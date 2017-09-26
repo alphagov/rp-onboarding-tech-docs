@@ -163,18 +163,31 @@
             
   <div class="section" id="create-user-accounts">
 <span id="ms-cua"></span><h1>Create user accounts<a class="headerlink" href="#create-user-accounts" title="Permalink to this headline">¶</a></h1>
-<p>You can create a new user account for the user based on the <span class="xref std std-ref">hashed persistent identifier</span> (PID) and a subset of attributes from the <span class="xref std std-ref">matching dataset</span>. It&#8217;s optional to set up your matching service to support the creation of user accounts.</p>
+<p>If Verify fails to identify the user, you can enable your service to create a new user account.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">Before creating a user account you must request explicit user consent.</p>
+<p class="last">You must obtain explicit user consent before creating a user account.</p>
 </div>
+<p>Create new user accounts using the &#8216;<span class="xref std std-ref">hashed persistent identifier</span>&#8216; (PID) and a subset of attributes from the &#8216;<span class="xref std std-ref">matching dataset</span>&#8216;, listed below.</p>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Configure your MSA to create user accounts. To do this, supply the local matching service&#8217;s account creation URI in <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> in the <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>YAML configuration file</span></a>.</li>
-<li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the fully qualified URL to which the hub will make unknown user attribute query requests.</li>
-<li>On the &#8216;<a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a>&#8216; form, enter the list of attributes you want the hub to return to your service when creating new user accounts. The options are:</li>
+<li>Configure your MSA to create user accounts.</li>
 </ol>
+<blockquote>
+<div><ul class="simple">
+<li>In the <a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>YAML configuration file</span></a>, enter your local matching service &#8216;<cite>accountCreationUrl:</cite>&#8216;</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>On the <a class="reference internal" href="../env/envRequestform.html#envrequestform"><span>Request access to an environment</span></a> form:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Enter the fully qualified URL that will receive your <em>Unknown User Attribute</em> requests from the environment</li>
+<li>Select any of the following user attributes you require for your service</li>
+</ul>
+</div></blockquote>
 <blockquote id="list-cua-attributes">
 <div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FIRST_NAME</span>
 <span class="n">FIRST_NAME_VERIFIED</span>
@@ -186,12 +199,13 @@
 <span class="n">DATE_OF_BIRTH_VERIFIED</span>
 <span class="n">CURRENT_ADDRESS</span>
 <span class="n">CURRENT_ADDRESS_VERIFIED</span>
+<span class="n">ADDRESS_HISTORY</span>
 <span class="n">CYCLE_3</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can&#8217;t use historical data to create user accounts. For example, you can&#8217;t use an out of date address to create a new user account.</p>
+<p class="last">User Accounts can only be created with the user&#8217;s current &#8216;NAME&#8217; and &#8216;Date of Birth&#8217; data.  ADDRESS_HISTORY will return any address known to be associated with the user, within the last three years.</p>
 </div>
 </div></blockquote>
 </div>
