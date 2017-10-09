@@ -65,7 +65,7 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
   
     ::
 
-     base64 test_primary_signing.pk8
+     openssl base64 -A -in test_primary_signing.pk8
       
 
   * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
