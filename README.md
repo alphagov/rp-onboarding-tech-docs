@@ -16,7 +16,6 @@ You can either make changes directly to files using Github's built-in editing fa
 In order to fetch and build the documenation locally, you will need the following:
 
 1. Git
-1. LDAP access to github enterprise (also required for editing via the web interface!)
 1. Python
 
 ### Git
