@@ -47,7 +47,7 @@ This guide assumes you'll be working on the `master` branch of the repository.  
 
  1. Clone the repository using the command below.  Note the `--recursive` argument is required because some shared content is included from the [onboarding-guide-shared repo](https://github.gds/gds/onboarding-guide-shared) by including it as a submodule.
 ```
-git clone --recursive git@github.com:alphagov/rp-onboarding-technical-guide.git
+git clone --recursive git@github.com:alphagov/rp-onboarding-tech-docs.git
 ```
  2. Edit the documentation in the _source_ folder - this is the root folder for the reStructuredText documentation, which is used to build the HTML pages of the guide.  At this point you can feel free to modify the documentation as you see fit.  The documents must be in [reStructuredText](http://sphinx-doc.org/rest.html#rst-primer) format.
 
