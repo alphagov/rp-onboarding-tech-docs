@@ -45,9 +45,9 @@ Pip can then install the remaining dependencies for us:
 
 This guide assumes you'll be working on the `master` branch of the repository.  If you're going to be working on a fork and submitting changes as pull requests, you'll need to create a fork (more information [here](https://help.github.com/articles/fork-a-repo) ) and work with that instead.
 
- 1. Clone the repository using the command below.  Note the `--recursive` argument is required because some shared content is included from the [onboarding-guide-shared repo](https://github.gds/gds/onboarding-guide-shared) by including it as a submodule.
+ 1. Clone the repository using the command below.
 ```
-git clone --recursive git@github.com:alphagov/rp-onboarding-tech-docs.git
+git clone git@github.com:alphagov/rp-onboarding-tech-docs.git
 ```
  2. Edit the documentation in the _source_ folder - this is the root folder for the reStructuredText documentation, which is used to build the HTML pages of the guide.  At this point you can feel free to modify the documentation as you see fit.  The documents must be in [reStructuredText](http://sphinx-doc.org/rest.html#rst-primer) format.
 
@@ -74,14 +74,6 @@ git add .                                       # adds any new files to your git
 git commit -m "<enter change description here>" # creates a new 'commit' which contains your changes
 git push origin master                          # pushes your changes to your forked repository
 ```
-
-### Making changes to shared content
-
-If you need to change some content in the [onboarding-guide-shared repo](https://github.gds/gds/onboarding-guide-shared), make the required changes in that repository and commit as normal, then run
-
-`git submodule update --remote`
-
-in this repository, commit and push as usual.  The changes will be reflected the next time you perform a `make html`.
 
 # Publishing the guide
 

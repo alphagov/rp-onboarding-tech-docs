@@ -1,3 +1,0 @@
-[submodule "source/shared"]
-	path = source/shared
-	url = git@github.com:alphagov/rp-onboarding-tech-docs.git
