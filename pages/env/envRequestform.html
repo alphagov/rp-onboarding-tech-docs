@@ -158,14 +158,48 @@
             
   <div class="section" id="request-access-to-environments">
 <span id="envrequestform"></span><h1>Request access to environments<a class="headerlink" href="#request-access-to-environments" title="Permalink to this headline">¶</a></h1>
-<p>To access the integration and production environments, fill in the &#8216;Request access to an environment&#8217; form. Your GOV.UK Verify engagement lead provides this form subject to successful gate reviews. You&#8217;ll access the integration environment during <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html">Stage 4</a>  and the production environment during <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage5/Stage5.html">Stage 5</a>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Please allow up to 5 working days for the GOV.UK Verify team to set up and configure access to an environment.</p>
-</div>
-<p>Before filling in the form, you must <a class="reference internal" href="../pki/pkiRequestCert.html#pkirequestcert"><span>obtain signed certificates</span></a> from the appropriate certificate authority.</p>
-<p>First select the environment you want to access: integration or production. If you&#8217;re requesting access to the production environment, you need to fill in the entire form again as information from your integration environment will differ and is not carried over.</p>
-<p>The form provides guidance on what&#8217;s required by the service.</p>
+<p>GOV.UK Verify provides 2 identical, secure environments:</p>
+<ul class="simple">
+<li>Integration</li>
+<li>Production</li>
+</ul>
+<p>Integration allows you to test your prototype service with dummy user data.</p>
+<p>Production allows you to host your fully-developed beta or live service with real user data.</p>
+<p>You must complete a short form with information about your service so GOV.UK Verify can set up each environment for you. This can take up to 5 working days.</p>
+<p>You’ll need to submit a form for each environment you need.</p>
+<p><a class="reference external" href="https://verify-environment-access.cloudapps.digital/">Submit form.</a></p>
+<p><strong>Before you start</strong></p>
+<p>The form does not store data between sessions. You must make sure you have all the information available to submit the form within a single session.</p>
+<p>To complete the form you’ll need to share URLs for your:</p>
+<ul class="simple">
+<li>service and <a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/msa/msa.html?highlight=matching%20service%20adapter">Matching Service Adapter</a></li>
+<li>service start point or page, <a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/saml/samlIntegration.html?highlight=saml%20response">Verify SAML response</a> and Matching Service</li>
+</ul>
+<p>You’ll need to provide web content to personalise the Verify Hub for your end users, including:</p>
+<ul class="simple">
+<li>your agency or department name (as you need it to appear to the user)</li>
+<li>a display name for your Verify service (as you need it to appear to the user)</li>
+<li>contact details for your service</li>
+<li>a description of other ways users can access your service</li>
+</ul>
+<p>You’ll need to provide <a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/pki/pkiRequestCert.html#pkirequestcert">valid, signed IDAP X.509 Public certificates</a> for:</p>
+<ul class="simple">
+<li>service signature validation</li>
+<li>service encryption</li>
+<li>Matching Service Adapter signature validation</li>
+<li>Matching Service Adapter encryption</li>
+</ul>
+<p>If applicable to your service, you’ll need to provide:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/ms/msWorks.html?highlight=cycle#ms-mc3">Cycle 3 attributes</a>, for example driving licence or passport number</li>
+<li><a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/ms/msWorks.html?highlight=cycle#ms-mc3">‘New User’ account</a> attributes, for example first name, middle name, surname, date of birth, current address</li>
+</ul>
+<p>For Integration environments only, you’ll also need to provide:</p>
+<ul class="simple">
+<li>an IP address for your Matching Service Adapter and test device browser</li>
+<li>a username and 8-character password (to manage the test user data)</li>
+</ul>
+<p><a class="reference external" href="https://verify-environment-access.cloudapps.digital/">Submit form to request an environment.</a></p>
 </div>
 
 
