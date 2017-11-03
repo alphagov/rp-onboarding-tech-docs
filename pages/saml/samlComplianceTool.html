@@ -181,11 +181,7 @@
 <div class="section" id="test-your-service-with-the-saml-compliance-tool">
 <span id="samlctservicehub"></span><h2>Test your service with the SAML compliance tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <p>To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.</p>
-<ol class="arabic simple">
-<li>On completion of a successful <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3</a> gate review, your GOV.UK Verify engagement lead will give you access to the compliance tool.</li>
-<li>Send the IP addresses of your hosts to the GOV.UK Verify support team: <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>. We will add a firewall rule allowing access to the compliance tool.</li>
-</ol>
-<ol class="arabic" id="samlctselfsigncert" start="3">
+<ol class="arabic" id="samlctselfsigncert">
 <li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the compliance tool only.</p>
 </li>
 <li><p class="first">POST the following JSON to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data</a>):</p>
@@ -219,7 +215,7 @@
 </li>
 </ul>
 </div></blockquote>
-<ol class="arabic" start="5">
+<ol class="arabic" start="3">
 <li><p class="first">You receive an empty response with <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> status.</p>
 </li>
 <li><p class="first">Make sure that your MSA is pointing at the URLs for the compliance tool (<code class="docutils literal"><span class="pre">metadata:</span></code> <code class="docutils literal"><span class="pre">url</span></code>) and and hub (<code class="docutils literal"><span class="pre">hub:</span></code> <code class="docutils literal"><span class="pre">ssoUrl</span></code>). These are the defaults in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file for non-production environments.</p>
@@ -261,7 +257,7 @@
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple" start="6">
 <li>If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</li>
 <li>Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</li>
 </ol>

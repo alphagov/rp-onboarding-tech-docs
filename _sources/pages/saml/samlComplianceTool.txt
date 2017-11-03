@@ -33,14 +33,11 @@ Test your service with the SAML compliance tool
 To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.
 
 
-1. On completion of a successful `Stage 3 <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_ gate review, your GOV.UK Verify engagement lead will give you access to the compliance tool.
-2. Send the IP addresses of your hosts to the GOV.UK Verify support team: idasupport+onboarding@digital.cabinet-office.gov.uk. We will add a firewall rule allowing access to the compliance tool.
-
 .. _samlCTselfsigncert:
 
-3. :ref:`Generate self-signed certificates <generateSelfSignedCertificates>` for use with the compliance tool only.
+1. :ref:`Generate self-signed certificates <generateSelfSignedCertificates>` for use with the compliance tool only.
 
-4. POST the following JSON to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data>`_)::
+2. POST the following JSON to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data>`_)::
 
 
     Content-Type: application/json
@@ -70,11 +67,11 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
 
   * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
 
-5. You receive an empty response with ``200 OK`` status.
+3. You receive an empty response with ``200 OK`` status.
 
-6. Make sure that your MSA is pointing at the URLs for the compliance tool (``metadata:`` ``url``) and and hub (``hub:`` ``ssoUrl``). These are the defaults in the ``test-config.yml`` file for non-production environments.
+4. Make sure that your MSA is pointing at the URLs for the compliance tool (``metadata:`` ``url``) and and hub (``hub:`` ``ssoUrl``). These are the defaults in the ``test-config.yml`` file for non-production environments.
 
-7. Generate a SAML authentication request and POST it to the compliance tool's SSO URI. Follow the redirect in the response to retrieve the result. 
+5. Generate a SAML authentication request and POST it to the compliance tool's SSO URI. Follow the redirect in the response to retrieve the result. 
 
    .. note:: The SAML authentication requests signed by the government service must use RSA-SHA256 for the `signature method algorithm <https://www.w3.org/TR/xmldsig-core/#sec-SignatureMethod>`_ and SHA256 for the `digest method algorithm <https://www.w3.org/TR/xmldsig-core/#sec-DigestMethod>`_ . These are required to comply with the '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_'.
 
@@ -110,8 +107,8 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
       </saml2p:AuthnRequest>
 
 
-8. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
-9. Access the ``executeUri`` for each test scenario you want to execute. The following test scenarios are provided:
+6. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
+7. Access the ``executeUri`` for each test scenario you want to execute. The following test scenarios are provided:
 
   * Basic successful match
   * Basic no match
