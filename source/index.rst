@@ -7,8 +7,6 @@ This guide is for technical teams in government who are building secure digital 
 
 Use it together with the `GOV.UK Verify Onboarding Guide <http://alphagov.github.io/identity-assurance-documentation/#>`_. 
 
-Check the :ref:`version history <vershis>` for the latest changes to the guide. 
-
 
 .. toctree::
    :hidden:
