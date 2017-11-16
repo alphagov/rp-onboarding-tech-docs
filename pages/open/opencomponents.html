@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Open components and contribution &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-54060634-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">About this guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vershis/vershis.html">Version history</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Open components and contribution</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="open-components-and-contribution">
+<h1>Open components and contribution<a class="headerlink" href="#open-components-and-contribution" title="Permalink to this headline">¶</a></h1>
+<p>The majority of GOV.UK Verify&#8217;s code is public and freely available under an MIT Licence. Wherever possible, the GOV.UK Verify team codes in the open on GitHub under the <a class="reference external" href="https://github.com/alphagov/">alphagov organisation</a>.</p>
+<p>We welcome contributions from outside the GOV.UK Verify team. You can raise a pull request or submit an issue against any open repository. To discuss more detailed feature requests or feedback, contact the GOV.UK Verify team at <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>.</p>
+<p><strong>Responsible disclosure of security issues</strong></p>
+<p>If you think you&#8217;ve discovered a security issue in any Verify code please email <a class="reference external" href="mailto:disclosure&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">disclosure<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> with details.</p>
+<div class="section" id="for-open-use">
+<h2>For open use<a class="headerlink" href="#for-open-use" title="Permalink to this headline">¶</a></h2>
+<p><strong>Frontend</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-frontend">verify-frontend</a></td>
+<td>The frontend service for GOV.UK Verify</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Connecting to Verify</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/passport-verify-stub-relying-party">passport-verify-stub-relying-party</a></td>
+<td>A test Relying Party that integrates with Verify using the passport-verify library</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/passport-verify">passport-verify</a></td>
+<td>A passport.js strategy for GOV.UK Verify Implementation in node.js and passport.js to integrate with GOV.UK Verify</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-compliance-tool-gui">verify-compliance-tool-gui</a></td>
+<td>A graphical user interface for the Verify compliance tool</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter">verify-matching-service-adapter</a></td>
+<td>An application that a Relying Party must operate to facilitate user matching requests from Verify</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-service-provider">verify-service-provider</a></td>
+<td>A Dropwizard application to generate and translate SAML requests and responses</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-stub-matching-service">verify-stub-matching-service</a></td>
+<td>A test implementation of a local matching service</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Libraries</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/dropwizard-logstash">dropwizard-logstash</a></td>
+<td>Dropwizard extension that supports logstash format with various appenders</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/dropwizard-jade">dropwizard-jade</a></td>
+<td>Dropwizard extension to use Jade templating engine in Views used by GOV.UK Verify code</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/dropwizard-infinispan">dropwizard-infinispan</a></td>
+<td>Dropwizard bundle and configuration for Infinispan</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/eager-dropwizard-guice">eager-dropwizard-guice</a></td>
+<td>Dropwizard-guice library</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="for-information-only">
+<h2>For information only<a class="headerlink" href="#for-information-only" title="Permalink to this headline">¶</a></h2>
+<p>The code listed below is provided for informational purposes only and not yet intended for use outside GOV.UK Verify.</p>
+<p><strong>Connecting to Verify</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-sample-local-matching-services">verify-sample-local-matching-services</a></td>
+<td>A test project with a variety of sample local matching services in various languages</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SAML Libraries</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-hub-saml">verify-hub-saml</a></td>
+<td>SAML behaviours specific to the Verify Hub</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-domain-objects">verify-saml-domain-objects</a></td>
+<td>Library of Java classes that represent Verify domain objects and transformations (deprecated)</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-extensions">verify-saml-extensions</a></td>
+<td>Libraries containing implementations of the SAML extensions defined in the IDA SAML profile</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-metadata-bindings">verify-saml-metadata-bindings</a></td>
+<td>Library for consuming SAML metadata</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-security">verify-saml-security</a></td>
+<td>Library for security-related SAML operations</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-serializers">verify-saml-serializers</a></td>
+<td>Library for (de)serialization of SAML objects</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-test-utils">verify-saml-test-utils</a></td>
+<td>Utility libraries for testing SAML</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-saml-utils">verify-saml-utils</a></td>
+<td>SAML Libraries used for SAML transformation, validation, generation and error formatting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Libraries</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-test-utils">verify-test-utils</a></td>
+<td>Libraries to help write Java Unit and Integration tests</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-utils-libs">verify-utils-libs</a></td>
+<td>Libraries used for REST, security and common utilities</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/alphagov/verify-dev-pki">verify-dev-pki</a></td>
+<td>Contains keys and certificates for GOV.UK Verify integration tests</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-stub-idp-saml">verify-stub-idp-saml</a></td>
+<td>SAML library for a dummy Identity Provider IDP</td>
+</tr>
+<tr class="row-even"><td><a href="#id1"><span class="problematic" id="id2">verify-shibboleth-sp-example_</span></a></td>
+<td>An example configuration for a Shibboleth SP instance that works with GOV.UK Verify</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/alphagov/verify-dropwizard-saml">verify-dropwizard-saml</a></td>
+<td>Library for providing a SAML configuration object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
