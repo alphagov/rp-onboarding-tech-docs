@@ -21,5 +21,4 @@ Check the :ref:`version history <vershis>` for the latest changes to the guide.
    pages/msa/msa
    pages/pki/pki
    pages/env/env
-   shared/glossary
-   pages/vershis/vershis
+   pages/open/opencomponents
