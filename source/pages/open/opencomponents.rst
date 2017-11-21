@@ -135,5 +135,5 @@ The code listed below is provided for informational purposes only and not yet in
 .. _verify-utils-libs: https://github.com/alphagov/verify-utils-libs
 .. _verify-dev-pki: https://github.com/alphagov/verify-dev-pki
 .. _verify-stub-idp-saml: https://github.com/alphagov/verify-stub-idp-saml
-.. _vverify-shibboleth-sp-example: https://github.com/alphagov/verify-shibboleth-sp-example
+.. _verify-shibboleth-sp-example: https://github.com/alphagov/verify-shibboleth-sp-example
 .. _verify-dropwizard-saml: https://github.com/alphagov/verify-dropwizard-saml
