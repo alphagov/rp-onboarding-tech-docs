@@ -268,7 +268,7 @@ You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCT
 
 **Signature verification failed**  
 
-When starting the MSA, you may receive an error message with the phrase ‘signature verification failed’. This is expected behaviour.
+When starting the MSA, you may receive an error message with the phrase ‘signature verification failed’. This is expected behaviour and is logged from a third-party library. 
 
 The Verify hub metadata contains multiple signing certificates, but only one private key is in use at a time. The metadata refreshes automatically approximately every 10 minutes. 
 
