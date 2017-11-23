@@ -264,8 +264,15 @@ To start using the MSA, run the following command, supplying the path to your co
 
  java -jar [filename].jar server [path to configuration file].yml
 
-You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MMSA posts to your service.
+You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MSA posts to your service.
 
+**Signature verification failed**  
+
+When starting the MSA, you may receive an error message with the phrase ‘signature verification failed’. This is expected behaviour and is logged from a third-party library. 
+
+The Verify hub metadata contains multiple signing certificates, but only one private key is in use at a time. The metadata refreshes automatically approximately every 10 minutes. 
+
+The MSA checks each of the certificates in turn. The MSA will return ‘Signature verification failed’ if it checks an unused certificate. It will then continue to check each certificate until it finds a valid certificate.
 
 Monitoring
 ============
@@ -316,7 +323,6 @@ Connect your Matching Service Adapter to the internet securely
 Your MSA must only respond to matching requests from the GOV.UK Verify hub, otherwise there’s a risk of user data being compromised.
 
 The MSA checks that matching service requests are genuine by checking their cryptographic signatures.
-
 
 To ensure that only the GOV.UK Verify hub can access the MSA, make sure your MSA:
 
