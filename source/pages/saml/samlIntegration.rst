@@ -10,10 +10,9 @@ Build your service
 Use extended validation certificates
 -------------------------------------
 
-You must use extended validation (EV) certificates for all public interactions with your service. When you use EV certificates, the user's web browser clearly indicates the name of the organisation they are interacting with.
+You should use extended validation (EV) certificates for all public interactions with your service. This will protect your users from fraudulent sites imitating your service. 
 
-
-Using EV certificates is one of a range of measures to protect your users from sites pretending to be you. See best practices for `using TLS to protect data <https://www.ncsc.gov.uk/guidance/tls-external-facing-services>`_ from the National Cyber Security Centre (NCSC).
+You should also follow recommendations from the National Cyber Security Centre (NCSC) to keep your service secure, including  `using TLS to protect data <https://www.ncsc.gov.uk/guidance/tls-external-facing-services>`_.
 
 
 .. _ChooseProductFramework:
