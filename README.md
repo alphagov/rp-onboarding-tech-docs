@@ -10,7 +10,7 @@ This project uses a documentation tool called [Sphinx](http://sphinx-doc.org/ "s
 
 To build the documentation locally you will need:
 * [Git](https://help.github.com/articles/set-up-git) to manage versions
-* [Python](https://www.python.org/downloads/) to use Sphinx
+* [Python 2.7](https://www.python.org/downloads/) to use Sphinx
 
 If you're using a Mac, you should already have Python installed. You can check by running `python --version` in Terminal which should return which version of Python you have installed. For example, `Python 2.7.10`.  
 
