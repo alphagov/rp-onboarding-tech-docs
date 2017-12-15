@@ -13,6 +13,8 @@ You can either:
 - configure an off-the-shelf product to use as a Service Provider
 - build your own Service Provider
 
+Whatever option you choose, you must :ref:`run SAML compliance tests <samlComplianceTool>` to check you can send and receive SAML messages successfully. 
+
 .. _saml_docs:
 
 .. rubric:: Verify Service Provider
@@ -43,8 +45,6 @@ You must also follow:
 * '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_' – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub
 * '`Identity Assurance Hub Service Profile – Authentication Contexts <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts>`_' – describes how the level of assurance is specified
 * '`Identity Assurance Hub Service Profile – SAML Attributes <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes>`_' – describes the matching dataset attributes and fraud event assertion attributes
-
-You must also :ref:`run SAML compliance tests <samlComplianceTool>`.
 
 The SAML profile used by GOV.UK Verify builds on the `OASIS documentation for the SAML 2.0 standard <https://www.oasis-open.org/standards#samlv2.0>`_.
 
