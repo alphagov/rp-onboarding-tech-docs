@@ -157,21 +157,39 @@
             
   <div class="section" id="saml">
 <span id="id1"></span><h1>SAML<a class="headerlink" href="#saml" title="Permalink to this headline">¶</a></h1>
-<p><span class="xref std std-ref">Security Assertion Markup Language</span> (SAML) is an XML-based, open-standard data format for securely exchanging information about identities.</p>
-<p>SAML can be used as the basis of a system of federated identity. This allows entities within a federation to refer to a user&#8217;s electronic identity, even if it is managed differently by each entity.</p>
-<p class="rubric">Why does GOV.UK Verify use SAML?</p>
-<p>GOV.UK Verify uses SAML to securely exchange information within a federated system of identity.</p>
-<p>SAML is a mature standard and is widely used by industry.  SAML libraries and components are available for most programming languages and platforms.</p>
-<p class="rubric">What do you need to do?</p>
-<p>You must <a class="reference internal" href="samlIntegration.html#samlintegration"><span>build a government service</span></a> that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand <a class="reference internal" href="samlWorks.html#samlworks"><span>how SAML works with GOV.UK Verify</span></a> and <a class="reference internal" href="samlIntegration.html#chooseproductframework"><span>decide how to add the SAML funcionality to your service</span></a>.</p>
-<p>When you build your service, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a>.</p>
-<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span>Steps to integrate GOV.UK Verify into your service</span></a>.</p>
-<p id="saml-docs">You must adhere to the following specifications and guidance:</p>
+<p><span class="xref std std-ref">Security Assertion Markup Language</span> (SAML) is an open standard for securely exchanging information about identities.</p>
+<p>Your service must use a system to send SAML messages to the Verify Hub and receive SAML responses in return. This system is known as a Service Provider.</p>
+<p>You can either:</p>
+<ul class="simple">
+<li>use a Service Provider built by Verify, known as the <a class="reference external" href="https://github.com/alphagov/verify-service-provider">Verify Service Provider</a> (recommended)</li>
+<li>configure an off-the-shelf product to use as a Service Provider</li>
+<li>build your own Service Provider</li>
+</ul>
+<p>Whatever option you choose, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a> to check you can send and receive SAML messages successfully.</p>
+<p class="rubric" id="saml-docs">Verify Service Provider</p>
+<p>Refer to the <a class="reference external" href="https://github.com/alphagov/verify-service-provider">documentation on GitHub to find out how to download, configure and use the Verify Service Provider</a>.</p>
+<p>You can use the Verify Service Provider to:</p>
+<ul class="simple">
+<li>generate a SAML (AuthnRequest) request to send to the Verify Hub</li>
+<li>translate the SAML response from the Verify Hub into JSON</li>
+</ul>
+<p>You must host the Verify Service Provider on your own infrastructure. You can connect multiple services to one instance.</p>
+<p>To use the Verify Service Provider, you need to have:</p>
+<ul class="simple">
+<li>Java 8</li>
+<li>a working <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a></li>
+</ul>
+<p class="rubric">Use or build a different Service Provider</p>
+<p>If you choose to configure an off-the-shelf product or build your own Service Provider, you need to:</p>
+<ul class="simple">
+<li>understand <a class="reference internal" href="samlWorks.html#samlworks"><span>how SAML works with GOV.UK Verify</span></a></li>
+<li>decide how to <a class="reference internal" href="samlIntegration.html#chooseproductframework"><span>add the SAML functionality to your service</span></a></li>
+</ul>
+<p>You must also follow:</p>
 <ul class="simple">
 <li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216; – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub</li>
 <li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts">Identity Assurance Hub Service Profile – Authentication Contexts</a>&#8216; – describes how the level of assurance is specified</li>
 <li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes">Identity Assurance Hub Service Profile – SAML Attributes</a>&#8216; – describes the matching dataset attributes and fraud event assertion attributes</li>
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/service-manual/identity-assurance/index.html">GOV.UK Verify guidance</a>&#8216;</li>
 </ul>
 <p>The SAML profile used by GOV.UK Verify builds on the <a class="reference external" href="https://www.oasis-open.org/standards#samlv2.0">OASIS documentation for the SAML 2.0 standard</a>.</p>
 <div class="toctree-wrapper compound">
