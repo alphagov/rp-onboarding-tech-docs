@@ -18,28 +18,30 @@ For open use
 +-------------------+----------------------------------------+
 | Component         | Description                            |
 +===================+========================================+
-| verify-frontend_  | The frontend service for GOV.UK Verify |
+| verify-frontend_  | The frontend service for Verify        |
 +-------------------+----------------------------------------+
 
 .. _verify-frontend: https://github.com/alphagov/verify-frontend
 
 **Connecting to Verify**
 
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| Component                            | Description                                                                                                        |
-+======================================+====================================================================================================================+
-| passport-verify-stub-relying-party_  | A test Relying Party that integrates with Verify using the passport-verify library                                 |
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| passport-verify_                     | A passport.js strategy for GOV.UK Verify Implementation in node.js and passport.js to integrate with GOV.UK Verify |
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| verify-compliance-tool-gui_          | A graphical user interface for the Verify compliance tool                                                          |
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| verify-matching-service-adapter_     | An application that a Relying Party must operate to facilitate user matching requests from Verify                  |
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| verify-service-provider_             | A Dropwizard application to generate and translate SAML requests and responses                                     |
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-| verify-stub-matching-service_        | A test implementation of a local matching service                                                                  |
-+--------------------------------------+--------------------------------------------------------------------------------------------------------------------+
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| Component                             | Description                                                                                                                    |
++=======================================+================================================================================================================================+
+| passport-verify-stub-relying-party_   | A test Relying Party that integrates with Verify using the passport-verify library                                             |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| passport-verify_                      | A passport.js strategy for Verify implementation in node.js and passport.js to integrate with Verify                           |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-compliance-tool-gui_           | A graphical user interface for the Verify compliance tool                                                                      |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-matching-service-adapter_      | An application that a Relying Party must operate to facilitate user matching requests from Verify                              |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-service-provider_              | A Dropwizard application to generate and translate SAML requests and responses                                                 |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-stub-matching-service_         | A test implementation of a local matching service                                                                              |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-hub_                           | A system of microservices to manage interactions between users, government services, identity providers, and matching services |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 .. _passport-verify-stub-relying-party: https://github.com/alphagov/passport-verify-stub-relying-party
 .. _passport-verify: https://github.com/alphagov/passport-verify
@@ -47,6 +49,7 @@ For open use
 .. _verify-matching-service-adapter: https://github.com/alphagov/verify-matching-service-adapter
 .. _verify-service-provider: https://github.com/alphagov/verify-service-provider
 .. _verify-stub-matching-service: https://github.com/alphagov/verify-stub-matching-service
+.. _verify-hub: https://github.com/alphagov/verify-hub
 
 **Libraries**
 
@@ -55,7 +58,7 @@ For open use
 +==========================+========================================================================================+
 | dropwizard-logstash_     | Dropwizard extension that supports logstash format with various appenders              |
 +--------------------------+----------------------------------------------------------------------------------------+
-| dropwizard-jade_         | Dropwizard extension to use Jade templating engine in Views used by GOV.UK Verify code |
+| dropwizard-jade_         | Dropwizard extension to use Jade templating engine in Views used by Verify code        |
 +--------------------------+----------------------------------------------------------------------------------------+
 | dropwizard-infinispan_   | Dropwizard bundle and configuration for Infinispan                                     |
 +--------------------------+----------------------------------------------------------------------------------------+
@@ -122,11 +125,11 @@ The code listed below is provided for informational purposes only and not yet in
 +--------------------------------+-------------------------------------------------------------------------------------+
 | verify-utils-libs_             | Libraries used for REST, security and common utilities                              |
 +--------------------------------+-------------------------------------------------------------------------------------+
-| verify-dev-pki_                | Contains keys and certificates for GOV.UK Verify integration tests                  |
+| verify-dev-pki_                | Contains keys and certificates for Verify integration tests                         |
 +--------------------------------+-------------------------------------------------------------------------------------+
 | verify-stub-idp-saml_          | SAML library for a dummy Identity Provider IDP                                      |
 +--------------------------------+-------------------------------------------------------------------------------------+
-| verify-shibboleth-sp-example_  | An example configuration for a Shibboleth SP instance that works with GOV.UK Verify |
+| verify-shibboleth-sp-example_  | An example configuration for a Shibboleth SP instance that works with Verify        |
 +--------------------------------+-------------------------------------------------------------------------------------+
 | verify-dropwizard-saml_        | Library for providing a SAML configuration object                                   |
 +--------------------------------+-------------------------------------------------------------------------------------+
