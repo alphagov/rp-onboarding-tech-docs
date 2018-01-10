@@ -30,14 +30,14 @@ After running SAML compliance tests, you can run :ref:`end-to-end testing <envEn
 Test your service with the SAML compliance tool
 -----------------------------------------------------------------
 
-To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.
+To use the compliance tool:
 
 
 .. _samlCTselfsigncert:
 
 1. :ref:`Generate self-signed certificates <generateSelfSignedCertificates>` for use with the compliance tool only.
 
-2. POST the following JSON to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data>`_)::
+2. POST the following JSON to the SAML compliance tool URL before every test run (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data>`_)::
 
 
     Content-Type: application/json
@@ -66,6 +66,8 @@ To use the compliance tool, you need configuration data (see step 4). Generate a
       
 
   * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
+  
+The compliance tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests. 
 
 3. You receive an empty response with ``200 OK`` status.
 
