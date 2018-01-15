@@ -180,11 +180,11 @@
 <p>After running SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
 <div class="section" id="test-your-service-with-the-saml-compliance-tool">
 <span id="samlctservicehub"></span><h2>Test your service with the SAML compliance tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
-<p>To use the compliance tool, you need configuration data (see step 4). Generate a new set of configuration data for every test run.</p>
+<p>To use the compliance tool:</p>
 <ol class="arabic" id="samlctselfsigncert">
 <li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the compliance tool only.</p>
 </li>
-<li><p class="first">POST the following JSON to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data</a>):</p>
+<li><p class="first">POST the following JSON to the SAML compliance tool URL before every test run (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
 {
     &quot;serviceEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
@@ -215,6 +215,7 @@
 </li>
 </ul>
 </div></blockquote>
+<p>The compliance tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests.</p>
 <ol class="arabic" start="3">
 <li><p class="first">You receive an empty response with <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> status.</p>
 </li>
