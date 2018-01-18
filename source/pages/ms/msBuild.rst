@@ -3,11 +3,21 @@
 Build a local matching service
 ================================
 
+You must build a local matching service and host it on your own infrastructure.
+
 Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:
 
 * creates the :ref:`hashed persistent identifier <gloss_hashpid>`
 * creates and signs the final assertion sent to your service - for more information, see :ref:`samlWorks`
 * acts as the :ref:`trust anchor <gloss_trustanchor>` for your service because the final assertion is created in your service's security domain
+
+As well as following this guidance, you can refer to the `example local matching service <https://github.com/alphagov/verify-local-matching-service-example>`_ built by the Verify team. It uses a simplified version of a matching strategy from DWP.
+
+You can also use a `matching service test tool built by Verify <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ to make sure your local matching service can:
+
+* handle matching datasets
+* find and match records correctly
+* handle matching failures
 
 .. _ms_strat:
 
