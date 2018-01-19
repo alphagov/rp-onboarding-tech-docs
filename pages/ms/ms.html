@@ -177,17 +177,18 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">Why does GOV.UK Verify use a matching service?</p>
-<p>UK citizens do not have a unique identifier. Government services need to match other information about the user, for example address or date of birth, against their data sources.</p>
-<p class="rubric">What do you need to do?</p>
-<p>As a government service, it&#8217;s your responsibility to develop and <a class="reference internal" href="msBuild.html#msbuild"><span>build your local matching service</span></a>. You need to understand <a class="reference internal" href="msWorks.html#msworks"><span>how a matching service works</span></a>.</p>
-<p>To help build your local matching service, you can use the:</p>
-<ul class="simple">
-<li><a class="reference internal" href="msBuild.html#respondjsonmr"><span>example of a JSON request</span></a> that the MSA posts to your service</li>
-<li><a class="reference internal" href="msBuild.html#jsonschema"><span>JSON schema</span></a> for a matching request</li>
+<p class="rubric">Building a local matching service</p>
+<p>You must build a local matching service to help you find a match between a user’s verified identity and a record in your existing database(s).</p>
+<p>You must build a local matching service even if your connecting service does not need to match identities to existing records.</p>
+<p>Follow the <a class="reference internal" href="msBuild.html#msbuild"><span>guidance on building a local matching service</span></a> to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>define your matching strategy</li>
+<li>respond to JSON matching requests</li>
 </ul>
-<p>Some government services don&#8217;t have experience of matching verified identities to government data sources. The process can be complex, so if you  need further help with building a local matching service, contact your engagement lead or the <a class="reference external" href="http://rp-environment-request.ida.digital.cabinet-office.gov.uk/contact_form">GOV.UK Verify team</a>.</p>
-<p>For more information, see <a class="reference internal" href="../steps/steps.html#steps"><span>Steps to integrate GOV.UK Verify into your service</span></a>.</p>
+</div></blockquote>
+<p>You can also refer to the <a class="reference external" href="https://github.com/alphagov/verify-local-matching-service-example">example local matching service built by the Verify team</a> and use the <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">local matching service test tool</a> to check your local matching service can handle matching effectively.</p>
+<p>The Verify team can help you build and configure your local matching service. Contact <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> for help.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

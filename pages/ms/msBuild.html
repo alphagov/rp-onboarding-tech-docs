@@ -167,11 +167,19 @@
             
   <div class="section" id="build-a-local-matching-service">
 <span id="msbuild"></span><h1>Build a local matching service<a class="headerlink" href="#build-a-local-matching-service" title="Permalink to this headline">¶</a></h1>
+<p>You must build a local matching service and host it on your own infrastructure.</p>
 <p>Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:</p>
 <ul class="simple">
 <li>creates the <span class="xref std std-ref">hashed persistent identifier</span></li>
 <li>creates and signs the final assertion sent to your service - for more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works with GOV.UK Verify</span></a></li>
 <li>acts as the <span class="xref std std-ref">trust anchor</span> for your service because the final assertion is created in your service&#8217;s security domain</li>
+</ul>
+<p>As well as following this guidance, you can refer to the <a class="reference external" href="https://github.com/alphagov/verify-local-matching-service-example">example local matching service</a> built by the Verify team. It uses a simplified version of a matching strategy from DWP.</p>
+<p>You can also use a <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">matching service test tool built by Verify</a> to make sure your local matching service can:</p>
+<ul class="simple">
+<li>handle matching datasets</li>
+<li>find and match records correctly</li>
+<li>handle matching failures</li>
 </ul>
 <div class="section" id="define-your-matching-strategy">
 <span id="ms-strat"></span><h2>Define your matching strategy<a class="headerlink" href="#define-your-matching-strategy" title="Permalink to this headline">¶</a></h2>
