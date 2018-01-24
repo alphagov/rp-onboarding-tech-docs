@@ -10,7 +10,7 @@ Install the Matching Service Adapter
 * Java Runtime Environment (JRE) version 8
 * 512 MB to 1 GB of RAM, on top of what you need to run your operating system
 
-1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, you can [download and install the MSA](https://github.com/alphagov/verify-matching-service-adapter/releases/tag/build_620). 
+1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, you can [download and install the MSA](https://github.com/alphagov/verify-matching-service-adapter/releases/latest). 
 
 2. Download the MSA zip file to your host. It contains:
 
