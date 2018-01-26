@@ -5,27 +5,29 @@
 Install the Matching Service Adapter
 ======================================
 
-**Prerequisites** - to run the Matching Service Adapter (MSA) you need:
+**Prerequisites**
+
+To run the Matching Service Adapter (MSA) you need:
 
 * Java Runtime Environment (JRE) version 8
 * 512 MB to 1 GB of RAM, on top of what you need to run your operating system
 
-1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, you can [download and install the MSA](https://github.com/alphagov/verify-matching-service-adapter/releases/latest). 
+1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, you can `download and install the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_.
 
 2. Download the MSA zip file to your host. It contains:
 
- * a jar (java archive) file
+ * a JAR (Java Archive) file
  * :ref:`truststore <gloss_truststore>` files for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_hub.ts`` and ``test_ida_metadata.ts``
  * truststore files for the production environment - ``prod_ida_hub.ts`` and ``prod_ida_metadata.ts``
  * a sample YAML configuration file for non-production environments  - ``test-config.yml``
  * a sample YAML configuration file for the production environment  - ``prod-config.yml``
 
-3. Verify the shasum of the zipfile::
+3. Check the shasum of the zipfile::
 
-  | On mac and linux: ``shasum -a 256 ida-msa-2.1.0-592.zip``
-  | On windows (powershell): ``Get-FileHash ida-msa-2.1.0-592.zip -Algorithm SHA256``
+  | On Mac and Linux: ``shasum -a 256 ida-msa-2.1.0-592.zip``
+  | On Windows (PowerShell): ``Get-FileHash ida-msa-2.1.0-592.zip -Algorithm SHA256``
 
-   The sha256 for ``ida-msa-2.1.0-592.zip`` should be::
+   The sha-256 for ``ida-msa-2.1.0-592.zip`` should be::
 
     a6cc1534cbd0d4b5f3e69b8dc6131c27fe999050420595e5e845a7739ae37981
 
@@ -69,12 +71,12 @@ Create a YAML configuration file
 
 When you :ref:`start the MSA <msa_test_msa>`, you need to supply a YAML configuration file.
 
-The MSA zip file contains two sample YAML configuration files: 
+The MSA zip file contains two sample YAML configuration files:
 
 * ``test-config.yml`` for the SAML compliance tool and the integration environment
-* ``prod-config.yml`` for the production environment 
+* ``prod-config.yml`` for the production environment
 
-:ref:`Adapt the YAML configuration file <msa_adapt_YAML>` where required. 
+:ref:`Adapt the YAML configuration file <msa_adapt_YAML>` where required.
 
 
 
@@ -85,7 +87,7 @@ Below is the ``test-config.yml`` file:
 .. code-block:: yaml
 
     # Configure the matching service adapter's server settings here.
-    # See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#servers 
+    # See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#servers
     # for more information.
     server:
       # Ports on which to listen for normal connections.
@@ -126,7 +128,7 @@ Below is the ``test-config.yml`` file:
         privateKey:
           # The PK8 (.pk8) containing the primary private signing key:
           keyFile: test_primary_signing.pk8
-      # The public part of the secondary signing key is published in the MSA's metadata 
+      # The public part of the secondary signing key is published in the MSA's metadata
       # during key rollovers but is otherwise unused by the MSA.
       secondary:
         publicKey:
@@ -266,11 +268,11 @@ To start using the MSA, run the following command, supplying the path to your co
 
 You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MSA posts to your service.
 
-**Signature verification failed**  
+**Signature verification failed**
 
-When starting the MSA, you may receive an error message with the phrase ‘signature verification failed’. This is expected behaviour and is logged from a third-party library. 
+When starting the MSA, you may receive an error message with the phrase ‘signature verification failed’. This is expected behaviour and is logged from a third-party library.
 
-The Verify hub metadata contains multiple signing certificates, but only one private key is in use at a time. The metadata refreshes automatically approximately every 10 minutes. 
+The Verify hub metadata contains multiple signing certificates, but only one private key is in use at a time. The metadata refreshes automatically approximately every 10 minutes.
 
 The MSA checks each of the certificates in turn. The MSA will return ‘Signature verification failed’ if it checks an unused certificate. It will then continue to check each certificate until it finds a valid certificate.
 
@@ -310,7 +312,7 @@ The table below shows the root certificate authorities that GOV.UK Verify trusts
 | QuoVadis Root CA 2         | QuoVadis Root CA 2        | 1A:84:62:BC:48:4C:33:25:04:D4:EE:D0:F6:03:C4:19:46:D1:94:6B |
 +----------------------------+---------------------------+-------------------------------------------------------------+
 
-.. note:: For the SAML compliance tool, use :ref:`self-signed certificates <generateSelfSignedCertificates>`. 
+.. note:: For the SAML compliance tool, use :ref:`self-signed certificates <generateSelfSignedCertificates>`.
 
 If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport+onboarding@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
 
