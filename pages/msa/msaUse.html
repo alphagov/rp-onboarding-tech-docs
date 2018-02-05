@@ -190,8 +190,7 @@
 <li>512 MB to 1 GB of RAM, on top of what you need to run your operating system</li>
 </ul>
 <ol class="arabic simple">
-<li>When you have successfully completed a gate review for <a class="reference external" href="http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html">Stage 3: Planning</a>, you can <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/releases/latest">download and install the MSA</a>.</li>
-<li>Download the MSA zip file to your host. It contains:</li>
+<li><a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/releases/latest">Download the latest release of the MSA</a>. It contains:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -202,24 +201,9 @@
 <li>a sample YAML configuration file for the production environment  - <code class="docutils literal"><span class="pre">prod-config.yml</span></code></li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="3">
-<li>Check the shasum of the zipfile:</li>
-</ol>
-<blockquote>
-<div><div class="line-block">
-<div class="line">On Mac and Linux: <code class="docutils literal"><span class="pre">shasum</span> <span class="pre">-a</span> <span class="pre">256</span> <span class="pre">ida-msa-2.1.0-592.zip</span></code></div>
-<div class="line">On Windows (PowerShell): <code class="docutils literal"><span class="pre">Get-FileHash</span> <span class="pre">ida-msa-2.1.0-592.zip</span> <span class="pre">-Algorithm</span> <span class="pre">SHA256</span></code></div>
-</div>
-<blockquote>
-<div><p>The sha-256 for <code class="docutils literal"><span class="pre">ida-msa-2.1.0-592.zip</span></code> should be:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a6cc1534cbd0d4b5f3e69b8dc6131c27fe999050420595e5e845a7739ae37981</span>
-</pre></div>
-</div>
-</div></blockquote>
-</div></blockquote>
-<ol class="arabic" start="4">
+<ol class="arabic" start="2">
 <li><p class="first">To extract the files, run the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>unzip ida-msa-[MSA build number].zip
+<div class="highlight-python"><div class="highlight"><pre><span></span>unzip verify-matching-service-adapter-[build number].zip
 </pre></div>
 </div>
 </li>
