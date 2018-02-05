@@ -12,9 +12,7 @@ To run the Matching Service Adapter (MSA) you need:
 * Java Runtime Environment (JRE) version 8
 * 512 MB to 1 GB of RAM, on top of what you need to run your operating system
 
-1. When you have successfully completed a gate review for `Stage 3: Planning <http://alphagov.github.io/identity-assurance-documentation/stage3/Stage3.html>`_, you can `download and install the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_.
-
-2. Download the MSA zip file to your host. It contains:
+1. `Download the latest release of the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_. It contains:
 
  * a JAR (Java Archive) file
  * :ref:`truststore <gloss_truststore>` files for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_hub.ts`` and ``test_ida_metadata.ts``
@@ -22,20 +20,11 @@ To run the Matching Service Adapter (MSA) you need:
  * a sample YAML configuration file for non-production environments  - ``test-config.yml``
  * a sample YAML configuration file for the production environment  - ``prod-config.yml``
 
-3. Check the shasum of the zipfile::
+2. To extract the files, run the following command::
 
-  | On Mac and Linux: ``shasum -a 256 ida-msa-2.1.0-592.zip``
-  | On Windows (PowerShell): ``Get-FileHash ida-msa-2.1.0-592.zip -Algorithm SHA256``
+    unzip verify-matching-service-adapter-[build number].zip
 
-   The sha-256 for ``ida-msa-2.1.0-592.zip`` should be::
-
-    a6cc1534cbd0d4b5f3e69b8dc6131c27fe999050420595e5e845a7739ae37981
-
-4. To extract the files, run the following command::
-
-    unzip ida-msa-[MSA build number].zip
-
-5. Optionally, move the truststore files to the environment where you want to use the MSA::
+3. Optionally, move the truststore files to the environment where you want to use the MSA::
 
     mv prod_ida_hub.ts prod_ida_metadata.ts [path to truststore directory in the production environment]
     mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the integration environment]
