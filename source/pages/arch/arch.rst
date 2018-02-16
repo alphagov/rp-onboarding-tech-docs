@@ -35,8 +35,6 @@ The main elements in GOV.UK Verify architecture are:
 
   The hub ensures that the required :ref:`level of assurance <gloss_loa>` is observed. 
 
-  .. note:: GOV.UK Verify currently supports :ref:`level of assurance 2 <gloss_loa2>` only. 
-
 |
 
 **Identity provider**
