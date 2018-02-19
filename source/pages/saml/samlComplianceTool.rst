@@ -66,6 +66,8 @@ To use the compliance tool:
       
 
   * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
+
+  * ``useSimpleProfile``: set this to true only if you use Shibboleth-SP (Service Provider). By default this is set to false.
   
 The compliance tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests. 
 
