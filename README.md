@@ -63,7 +63,7 @@ Then install the remaining dependencies using:
 Before editing any files, you should create a git branch so that your changes are bundled together and can later be merged by an editor (see 'pull requests' later):
 
 ```
-  git branch the-name-of-the-branch
+  git branch <the-name-of-the-branch>
 ```
 Where `the-name-of-the-branch` should be a description of the changes you're making, usually a reference to the Jira ticket to which the change relates. Note that you should not use spaces.
 
@@ -76,10 +76,10 @@ Edit the documentation in the `source` folder - this is the root folder for the 
 
 #### Previewing your work
 
-You can preview any changes before you publish them. From the root folder `identity\_assurance\_documentation` execute the following command:
+You can preview any changes before you publish them. From the root folder, execute the following command:
 
 ```
-make clean html
+make html
 ```
 
 If there are any incompatible changes, the output will display warning messages to explain what has gone wrong. 
@@ -95,10 +95,20 @@ You can do this using the commands below or using the GitHub UI.
 ```
 git add .                                       # adds any new files to your git repo
 git commit -m "<enter change description here>" # creates a new 'commit' which contains your changes
-git push origin master                          # pushes your changes to your forked repository
+git push -u origin <the-name-of-the-branch>     # pushes your changes to your forked repository
 ```
 
+> Any future changes you make on this branch can be pushed with just
+> ```
+> git push
+> ```
+
 ## Publishing the documentation
+
+All changes to documentation must be reviewed before publishing.
+This is done by issuing a **Pull Request**, which alerts subscribers to the repository that there is a change to be reviewed and *merged* into the master branch.
+
+
 
 When you push changes to the master branch, a [Jenkins job](https://build.ida.digital.cabinet-office.gov.uk/job/rp-onboarding-tech-docs-build/) will automatically build the documentation. 
 
