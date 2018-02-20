@@ -62,10 +62,17 @@ Then install the remaining dependencies using:
 
 Before editing any files, you should create a git branch so that your changes are bundled together and can later be merged by an editor (see 'pull requests' later):
 
+Using the Git Desktop Client:
+1. Click on "Current branch"
+2. Enter `the-name-of-the-branch` you wish to create (see below for convention)
+3. Click on the blue "Create new branch" button
+
+Using the command line:
 ```
   git branch <the-name-of-the-branch>
 ```
-Where `the-name-of-the-branch` should be a description of the changes you're making, usually a reference to the Jira ticket to which the change relates. Note that you should not use spaces.
+Where `the-name-of-the-branch` should be a description of the changes you're making, usually a reference to the Jira ticket to which the change relates, e.g. "TT-1992-Revise-documentation". Note that you should not use spaces.
+
 
 #### Editing pages
 When editing or writing new content, you must follow the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide). 
@@ -90,7 +97,7 @@ You can then open the output file in your browser from the `build/html/` folder 
 
 Once you're happy with your changes, you'll need to commit them to this repository.
 
-You can do this using the commands below or using the GitHub UI. 
+You can do this using the commands below or using the GitHub Desktop Client (by pressing the "Commit to <the-name-of-the-branch>" button at the bottom of the "changes" panel). 
 
 ```
 git add .                                       # adds any new files to your git repo
@@ -103,20 +110,22 @@ git push -u origin <the-name-of-the-branch>     # pushes your changes to your fo
 > git push
 > ```
 
-## Publishing the documentation
+## Sending the documentation for review
 
 All changes to documentation must be reviewed before publishing.
-This is done by issuing a **Pull Request**, which alerts subscribers to the repository that there is a change to be reviewed and *merged* into the master branch.
+This is done by issuing a **pull request**, which alerts subscribers to the repository that there is a change to be reviewed and *merged* into the master branch for publication.
+
+1. Go to [the GitHub repository](https://github.com/alphagov/rp-onboarding-tech-docs). 
+2. You should see your branch near the top of the page in a box labeled "Your recently pushed branches".
+3. There will be a big green button next to it saying "Compare & pull request". Press that button.
+4. Enter any (optional) comments and press the green "Create pull request" button.
 
 
+## Publishing the documentation
 
-When you push changes to the master branch, a [Jenkins job](https://build.ida.digital.cabinet-office.gov.uk/job/rp-onboarding-tech-docs-build/) will automatically build the documentation. 
+Once accepted and merged into the *master* branch, your document(s) will be automatically placed in the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/) and be automatically processed. 
 
-To publish, navigate to the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/). 
-
-You'll can then trigger another [Jenkins job](https://build.ida.digital.cabinet-office.gov.uk/job/rp-onboarding-tech-docs-publish/) to publish the changes onto GitHub pages. 
-
-Your changes will be visible in the [published documentation](http://alphagov.github.io/rp-onboarding-tech-docs/). 
+Once built, your changes will be visible in the [published documentation](http://alphagov.github.io/rp-onboarding-tech-docs/). 
 
 ## Support and raising issues
 
