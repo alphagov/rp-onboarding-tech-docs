@@ -35,15 +35,13 @@ The main elements in GOV.UK Verify architecture are:
 
   The hub ensures that the required :ref:`level of assurance <gloss_loa>` is observed. 
 
-  .. note:: GOV.UK Verify currently supports :ref:`level of assurance 2 <gloss_loa2>` only. 
-
 |
 
 **Identity provider**
 
   A private sector organisation paid by government to verify a user’s identity and assert verified data that identifies them to the government service.
 
-  The organisations are certified as meeting relevant industry security standards and the `Identity Assurnce Principles <https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles>`_ published by the Cabinet Office and the `National Cyber Security Centre <https://www.ncsc.gov.uk/>`_ (NCSC).
+  The organisations are certified as meeting relevant industry security standards and the `Identity Assurance Principles <https://www.gov.uk/government/consultations/draft-identity-assurance-principles/privacy-and-consumer-advisory-group-draft-identity-assurance-principles#the-nine-identity-assurance-principles>`_ published by the Cabinet Office and the `National Cyber Security Centre <https://www.ncsc.gov.uk/>`_ (NCSC).
 
 |
 
