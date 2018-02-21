@@ -1,6 +1,6 @@
 # Verify technical documentation for connecting services
 
-This is the technical documentation for government services connecting to GOV.UK Verify. It is [open to the public and published using GitHub pages](http://alphagov.github.io/rp-onboarding-tech-docs/).
+This is the technical documentation for government services connecting to GOV.UK Verify. It's [open to the public and published using GitHub pages](http://alphagov.github.io/rp-onboarding-tech-docs/).
 
 A general overview of how a government service can connect to Verify is detailed in the the [Onboarding Guide](http://alphagov.github.io/identity-assurance-documentation/#) which is [published and managed separately](https://github.com/alphagov/identity-assurance-documentation). 
 
@@ -9,16 +9,29 @@ This project uses a documentation tool called [Sphinx](http://sphinx-doc.org/ "s
 ## Prerequisites 
 
 To build the documentation locally you will need:
-* [Git](https://help.github.com/articles/set-up-git) to manage versions
+* [Git](https://help.github.com/articles/set-up-git) to manage versions (you may wish to install the [GitHub Desktop](https://desktop.github.com/) GUI)
 * [Python 2.7](https://www.python.org/downloads/) to use Sphinx
 
 If you're using a Mac, you should already have Python installed. You can check by running `python --version` in Terminal which should return which version of Python you have installed. For example, `Python 2.7.10`.  
 
 To publish changes to the public documentation, you'll need access to Jenkins. Contact the Verify development team for access.
 
-## Installation 
+## Get a local copy of the files
 
-Once you have Python up and running, you'll need to install the [Pip package manager](http://pip.readthedocs.org/en/stable/installing/), which will take care of fetching and installing the remaining dependencies. 
+While it's possible to make changes directly to the content files using GitHub's built-in editing facilities, checking out the source materials to your local machine has the advantage that you can see any warnings generated when the source reStructuredText files are compiled into HTML. It's also the only way to add binary files such as images. 
+
+Clone the repository using the command below.
+```
+git clone git@github.com:alphagov/rp-onboarding-tech-docs.git
+```
+...or if you're using the desktop client, pick File->Clone Repository and enter the URL: 
+```
+https://github.com/alphagov/rp-onboarding-tech-docs.git
+```
+ 
+## Install Sphinx 
+
+Once you have Python up and running and a copy of the documentation files, you'll need to install the [Pip package manager](http://pip.readthedocs.org/en/stable/installing/), which will take care of fetching and installing the remaining dependencies. 
 
 Run:
 
@@ -34,60 +47,86 @@ Then install the remaining dependencies using:
 ```
     pip install -r requirements.txt
 ```
+> If this fails, it is most likely due to a conflict with the "six" library. This can be cured by running:
+>
+> ```
+>   pip install --ignore-installed six
+> ```
+>
+> then re-running
+> ```
+>   pip install -r requirements.txt
+> ```
 
-## Making changes to the documentation
+### Create a branch 
 
-You can either make changes directly to the content files using GitHub's built-in editing facilities, or check out the source materials to your local machine. Working on a local copy has the advantage that you can see any warnings generated when the source reStructuredText files are compiled into HTML. It's also the only way to add binary files such as images. 
+Before editing any files, you should create a git branch so that your changes are bundled together and can later be merged by an editor (see 'pull requests' later):
+
+Using the Git Desktop Client:
+1. Click on "Current branch"
+2. Enter `the-name-of-the-branch` you wish to create (see below for convention)
+3. Click on the blue "Create new branch" button
+
+Using the command line:
+```
+  git branch <the-name-of-the-branch>
+```
+Where `the-name-of-the-branch` should be a description of the changes you're making, usually a reference to the Jira ticket to which the change relates, for example "TT-1992-Revise-documentation". You should not use spaces.
+
+#### Editing pages
 
 When editing or writing new content, you must follow the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide). 
 
-### Editing content 
+The documents must be in [reStructuredText](http://sphinx-doc.org/rest.html#rst-primer) format.
 
-This guide assumes you'll be working on the `master` branch of the repository. If you'd prefer to work separately, you can [fork this repository](https://help.github.com/articles/fork-a-repo) instead. 
-
- 1. Clone the repository using the command below.
-```
-git clone git@github.com:alphagov/rp-onboarding-tech-docs.git
-```
- 2. Edit the documentation in the `source` folder - this is the root folder for the reStructuredText documentation, which is used to build the HTML pages. You can then edit the documentation content. The documents must be in [reStructuredText](http://sphinx-doc.org/rest.html#rst-primer) format.
-
-#### Adding new pages
-
-All documents must exist within a [toctree directive](http://sphinx-doc.org/markup/toctree.html) so users can navigate to the new files. Once you have decided where you want your new page, create the file and add it to the relevant toctree where you would like the user to be able to access the content. 
+Edit the documentation in the `source` folder - this is the root folder for the reStructuredText documentation, which is used to build the HTML pages. 
 
 #### Previewing your work
 
-You can preview any changes before you publish them. From the root folder `identity\_assurance\_documentation` execute the following command:
+You can preview any changes before you publish them. From the root folder, execute the following command:
 
 ```
-make clean html
+make html
 ```
 
 If there are any incompatible changes, the output will display warning messages to explain what has gone wrong. 
 
-You can then open the `build/html/index.html` file on your machine to preview your changes. 
+You can then open the output file in your browser from the `build/html/` folder to preview your changes. 
 
 #### Committing your changes
 
 Once you're happy with your changes, you'll need to commit them to this repository.
 
-You can do this using the commands below or using the GitHub UI. 
+You can do this using the commands below or using the GitHub Desktop Client (by pressing the "Commit to <the-name-of-the-branch>" button at the bottom of the "changes" panel). 
 
 ```
 git add .                                       # adds any new files to your git repo
 git commit -m "<enter change description here>" # creates a new 'commit' which contains your changes
-git push origin master                          # pushes your changes to your forked repository
+git push -u origin <the-name-of-the-branch>     # pushes your changes to your forked repository
 ```
+
+> Any future changes you make on this branch can be pushed with 
+> ```
+> git push
+> ```
+
+## Sending the documentation for review
+
+All changes to documentation must be reviewed before publishing.
+
+This is done by issuing a **pull request**, which alerts subscribers to the repository that there is a change to be reviewed and *merged* into the master branch for publication.
+
+1. Go to [the GitHub repository](https://github.com/alphagov/rp-onboarding-tech-docs). 
+2. You should see your branch near the top of the page in a box labeled "Your recently pushed branches".
+3. There will be a big green button next to it saying "Compare & pull request". Press that button.
+4. Enter any (optional) comments and press the green "Create pull request" button.
+
 
 ## Publishing the documentation
 
-When you push changes to the master branch, a [Jenkins job](https://build.ida.digital.cabinet-office.gov.uk/job/rp-onboarding-tech-docs-build/) will automatically build the documentation. 
+Once accepted and merged into the master branch, your document(s) will be automatically placed in the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/). You, or someone with access to the build pipeline, will then need to trigger the build. 
 
-To publish, navigate to the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/). 
-
-You'll can then trigger another [Jenkins job](https://build.ida.digital.cabinet-office.gov.uk/job/rp-onboarding-tech-docs-publish/) to publish the changes onto GitHub pages. 
-
-Your changes will be visible in the [published documentation](http://alphagov.github.io/rp-onboarding-tech-docs/). 
+Once built, your changes will be visible in the [published documentation](http://alphagov.github.io/rp-onboarding-tech-docs/). 
 
 ## Support and raising issues
 
