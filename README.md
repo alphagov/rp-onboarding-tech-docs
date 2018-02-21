@@ -1,6 +1,6 @@
 # Verify technical documentation for connecting services
 
-This is the technical documentation for government services connecting to GOV.UK Verify. It is [open to the public and published using GitHub pages](http://alphagov.github.io/rp-onboarding-tech-docs/).
+This is the technical documentation for government services connecting to GOV.UK Verify. It's [open to the public and published using GitHub pages](http://alphagov.github.io/rp-onboarding-tech-docs/).
 
 A general overview of how a government service can connect to Verify is detailed in the the [Onboarding Guide](http://alphagov.github.io/identity-assurance-documentation/#) which is [published and managed separately](https://github.com/alphagov/identity-assurance-documentation). 
 
@@ -18,7 +18,7 @@ To publish changes to the public documentation, you'll need access to Jenkins. C
 
 ## Get a local copy of the files
 
-Whilst it's possible to make changes directly to the content files using GitHub's built-in editing facilities, checking out the source materials to your local machine has the advantage that you can see any warnings generated when the source reStructuredText files are compiled into HTML. It's also the only way to add binary files such as images. 
+While it's possible to make changes directly to the content files using GitHub's built-in editing facilities, checking out the source materials to your local machine has the advantage that you can see any warnings generated when the source reStructuredText files are compiled into HTML. It's also the only way to add binary files such as images. 
 
 Clone the repository using the command below.
 ```
@@ -71,15 +71,15 @@ Using the command line:
 ```
   git branch <the-name-of-the-branch>
 ```
-Where `the-name-of-the-branch` should be a description of the changes you're making, usually a reference to the Jira ticket to which the change relates, e.g. "TT-1992-Revise-documentation". Note that you should not use spaces.
-
+Where `the-name-of-the-branch` should be a description of the changes you're making, usually a reference to the Jira ticket to which the change relates, for example "TT-1992-Revise-documentation". You should not use spaces.
 
 #### Editing pages
+
 When editing or writing new content, you must follow the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide). 
 
 The documents must be in [reStructuredText](http://sphinx-doc.org/rest.html#rst-primer) format.
 
-Edit the documentation in the `source` folder - this is the root folder for the reStructuredText documentation, which is used to build the HTML pages. You can then edit the documentation content. 
+Edit the documentation in the `source` folder - this is the root folder for the reStructuredText documentation, which is used to build the HTML pages. 
 
 #### Previewing your work
 
@@ -105,7 +105,7 @@ git commit -m "<enter change description here>" # creates a new 'commit' which c
 git push -u origin <the-name-of-the-branch>     # pushes your changes to your forked repository
 ```
 
-> Any future changes you make on this branch can be pushed with just
+> Any future changes you make on this branch can be pushed with 
 > ```
 > git push
 > ```
@@ -113,6 +113,7 @@ git push -u origin <the-name-of-the-branch>     # pushes your changes to your fo
 ## Sending the documentation for review
 
 All changes to documentation must be reviewed before publishing.
+
 This is done by issuing a **pull request**, which alerts subscribers to the repository that there is a change to be reviewed and *merged* into the master branch for publication.
 
 1. Go to [the GitHub repository](https://github.com/alphagov/rp-onboarding-tech-docs). 
@@ -123,7 +124,7 @@ This is done by issuing a **pull request**, which alerts subscribers to the repo
 
 ## Publishing the documentation
 
-Once accepted and merged into the *master* branch, your document(s) will be automatically placed in the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/) and be automatically processed. 
+Once accepted and merged into the master branch, your document(s) will be automatically placed in the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/). You, or someone with access to the build pipeline, will then need to trigger the build. 
 
 Once built, your changes will be visible in the [published documentation](http://alphagov.github.io/rp-onboarding-tech-docs/). 
 
