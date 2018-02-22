@@ -22,9 +22,11 @@ Choose a product and framework
 
 Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub. 
 
-You can choose from a wide range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify. 
+By far the best solution is to use the `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`.
 
-GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See `Choosing technology <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ in the Government Service Design Manual. 
+If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use one of a range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.
+
+GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See `Choosing technology <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ in the Government Service Design Manual.
 
 Contact your engagement lead if you need further information.
 
