@@ -39,6 +39,12 @@ If you choose to configure an off-the-shelf product or build your own Service Pr
 
 - understand :ref:`how SAML works with GOV.UK Verify <samlWorks>`
 - decide how to :ref:`add the SAML functionality to your service <ChooseProductFramework>`
+- implement certain functionality to ensure smooth interoperability with Verify
+   * MUST consume Verify hub signing certificates directly from the Verify hub metadata
+   * MUST consume MSA signing certificates metadata from your MSA's metadata (_OR_ support multiple MSA signing certs directly in your service)
+   * MUST support multiple encryption _keys_ for your service
+   * SHOULD NOT use the simple saml profile as it is now being deprecated
+   * SHOULD speak to Verify before starting any implementation work
 
 You must also follow:
 
