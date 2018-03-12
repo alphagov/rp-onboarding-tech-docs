@@ -11,7 +11,7 @@ SAML messages take the form of requests and responses. Messages can contain asse
 
 The SAML profile defines these assertions. See the :ref:`list of documents defining the SAML profile <saml_docs>`.
 
-All SAML messages that pass between the government service, the hub, and identity providers are sent via the user's browser. 
+All SAML messages that pass between the government service, the hub, and identity providers are sent via the user's browser.
 
 This diagram shows the SAML message flow within the GOV.UK Verify federation. The numbers identify each stage in the flow. See below for explanations.
 
@@ -30,19 +30,23 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
    * :ref:`matching cycles <ms_matchcyles_diagram>`
    * :ref:`create user accounts <ms_cua_diagram>`"
 
-1. The government service sends a SAML authentication request to the GOV.UK Verify hub. The request indicates that a user wants to access the service and needs to prove their identity using GOV.UK Verify.
+1. The user initiates the Verify process from their browser.
+
+2. The government service sends a JSON authentication request to the Verify Service Provider (VSP)
+
+3. The VSP returns a SAML authentication request to the government service, which forwards it to the GOV.UK Verify hub. The request indicates that a user wants to access the service and needs to prove their identity using GOV.UK Verify.
 
  .. image:: step1.svg
      :alt: Diagram showing a SAML authentication request signed by the government service
 
 
-2. The GOV.UK Verify hub prompts the user to select an identity provider to authenticate them. The GOV.UK Verify hub forwards the SAML authentication request to the chosen identity provider.
+4. The GOV.UK Verify hub prompts the user to select an identity provider to authenticate them. The GOV.UK Verify hub forwards the SAML authentication request to the chosen identity provider.
 
  .. image:: step2.svg
       :alt: Diagram showing a SAML authentication request signed by the hub
 
 
-3. The chosen identity provider authenticates the user based on the required :ref:`level of assurance <gloss_loa>`. The identity provider then sends a SAML response to the GOV.UK Verify hub:
+5. The chosen identity provider authenticates the user based on the required :ref:`level of assurance <gloss_loa>`. The identity provider then sends a SAML response to the GOV.UK Verify hub:
 
  .. image:: step3.svg
       :alt: Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub. 
@@ -53,7 +57,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
 
  .. note:: For more information on the contents of the assertions, see the diagrams for :ref:`matching cycles <ms_matchcyles_diagram>` and :ref:`user account creation <ms_cua_diagram>`.
 
-4. The GOV.UK Verify hub sends a SAML attribute query to the government service’s Matching Service Adapter:
+6. The GOV.UK Verify hub sends a SAML attribute query to the government service’s Matching Service Adapter:
  
  .. image:: step4.svg
       :alt: Diagram showing a SAML attribute query signed by the hub. It contains an identity assertion signed by the identity provider and encrypted for the Matching Service Adapter.
@@ -61,13 +65,13 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
  * SAML attribute query signed by the GOV.UK Verify hub
  * identity assertion signed by identity provider and encrypted for the Matching Service Adapter
 
-5. The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching request and forwards it to the service’s local matching service. 
+7. The Matching Service Adapter translates the SAML attribute query into a JSON (JavaScript Object Notation) matching request and forwards it to the service’s local matching service.
 
  The local matching service tries to match the user with a record in the government service’s database.
 
 
-6. The local matching service returns a JSON response (``match`` or ``no match``) to the Matching Service Adapter.
-7. In the case of a ``match`` response, the Matching Service Adapter translates the JSON response into a SAML attribute query response and forwards it to the GOV.UK Verify hub:
+8. The local matching service returns a JSON response (``match`` or ``no match``) to the Matching Service Adapter.
+9. In the case of a ``match`` response, the Matching Service Adapter translates the JSON response into a SAML attribute query response and forwards it to the GOV.UK Verify hub:
 
  .. image:: step7.svg
        :alt: Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub.
@@ -76,11 +80,13 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
  * assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the :ref:`hashed persistent identifier <gloss_hashpid>`
 
 
-8. The GOV.UK Verify hub sends a SAML response to the service, authenticating the user:
+10. The GOV.UK Verify hub sends a SAML response to the service, authenticating the user; the service hands it to the VSP for verification and translation to JSON:
 
  .. image:: step8.svg
       :alt: Diagram showing a SAML response signed by the hub. It contains an assertion signed by the Matching Service Adapter and encrypted for the government service.
 
  * assertion signed by the Matching Service Adapter and encrypted for the government service
 
-9. The government service gets the user's record from the datastore. This allows the government service to interact with the user.
+11. The VSP returns a JSON response to the service authenticating the user.
+
+12. The government service gets the user's record from the datastore. This allows the government service to interact with the user.
