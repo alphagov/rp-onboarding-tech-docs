@@ -22,7 +22,14 @@ Choose a product and framework
 
 Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub. 
 
-By far the best solution is to use the `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`.
+By far the best way to achieve this is to integrate the `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`_ into your system.
+Using Verify Service Provider will make it easier to:
+
+* connect multiple services with GOV.UK Verify - you only need one instance of Verify Service Provider
+
+* handle certificate rotations - you can host multiple certificates at a time
+
+You will need to host Verify Service Provider on your own infrastructure.
 
 If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use one of a range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.
 
