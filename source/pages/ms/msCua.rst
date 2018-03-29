@@ -1,19 +1,18 @@
-.. _ms_cua:
 
-Create user accounts
-===============================
+.. rubric:: Create user accounts
+
+.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation on creating user accounts. <createnewaccounts>`.
 
 If Verify fails to identify the user, you can enable your service to create a new user account.
 
-.. important:: You must obtain explicit user consent before creating a user account.
+You must obtain explicit user consent before creating a user account.
 
 Create new user accounts using the ':ref:`hashed persistent identifier <gloss_hashpid>`' (PID) and a subset of attributes from the ':ref:`matching dataset <gloss_mds>`', listed below.
 
 
 
 
-Prerequisites
---------------------------------------
+..rubric:: Prerequisites
 
 1.	Configure your MSA to create user accounts.
 
@@ -24,8 +23,6 @@ Prerequisites
   - Enter the fully qualified URL that will receive your *Unknown User Attribute* requests from the environment
 
   - Select any of the following user attributes you require for your service
-
-.. _list_cua_attributes:
 
 
   ::
@@ -45,10 +42,7 @@ Prerequisites
 
   .. note:: User Accounts can only be created with the user's current 'NAME' and 'Date of Birth' data.  ADDRESS_HISTORY will return any address known to be associated with the user, within the last three years.
 
-.. _ms_cua_diagram:
-
-Message flow
---------------------------------------
+..rubric:: Message flow
 
 This diagram shows the message flow for creating user accounts. In this example, the service has been set up to create user accounts when matching fails.
 
