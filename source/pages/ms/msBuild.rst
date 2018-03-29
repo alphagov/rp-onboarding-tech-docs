@@ -1,7 +1,8 @@
 .. _msBuild:
 
-Build a local matching service
-================================
+.. rubric:: Build a local matching service
+
+.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for building a matching service. <buildmatchingservice>`.
 
 You must build a local matching service and host it on your own infrastructure.
 
@@ -21,15 +22,14 @@ You can also use a `matching service test tool built by Verify <https://github.c
 
 .. _ms_strat:
 
-Define your matching strategy
---------------------------------
+.. rubric:: Define your matching strategy
 
 A matching strategy defines the most efficient and effective way of matching assured identities to your service records. The strategy depends on the quality and completeness of available data sources and the types of evidence users can provide.
 
 A local matching service carries out a risk-based match to find the local record. Exact matching of identity data is rarely possible for many reasons:
 
-* transcription errors 
-* spelling mistakes 
+* transcription errors
+* spelling mistakes
 * incorrect data in your service's data sources, for example, if someone has moved house but not informed the service
 * use of shortened names or nicknames which refer to the same person, for example, William Smith, Bill Smith and David William Smith
 
@@ -37,17 +37,16 @@ Your local matching service must be able to handle these issues. You may decide 
 
 * widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, search for last name, date of birth, and postcode, then run further matching on the results and apply a confidence score
 * try synonym matching against combinations of first name and last name, possibly transposing them to maximise the chances of finding a match
- 
-Matching considerations
-~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rubric:: Matching considerations
 
 When you define your matching strategy you need to:
 
-* prepare for matching with customer data aggregation and data cleansing 
+* prepare for matching with customer data aggregation and data cleansing
 * define the confidence level required for a successful match and how to score the confidence level, for example:
 
-  * 100% match confidence means that all elements from the matching dataset fully match the local record 
-  * 80% match confidence might mean that the first name, last name, and date of birth match, but the address is showing a mismatch 
+  * 100% match confidence means that all elements from the matching dataset fully match the local record
+  * 80% match confidence might mean that the first name, last name, and date of birth match, but the address is showing a mismatch
 
 
 * define the rules for successful matching, which may include what to do with:
@@ -58,7 +57,7 @@ When you define your matching strategy you need to:
 
 * define the level of 'fuzzy matching' that is acceptable when an exact match is not found – this allows a match that, although not 100%, is above a service-defined threshold
 * manage the risk of incorrect matching by defining what happens when:
- 
+
   * there's no match – you can :ref:`create a new account <ms_cua>` for the user
   * there are multiple matches – you can implement :ref:`matching cycle 3 <ms_mc3>`
 
@@ -66,17 +65,14 @@ When you define your matching strategy you need to:
 
 .. note:: We recommend that you discuss your matching strategy with your engagement lead. They can organise technical support if needed.
 
-.. _RespondJSONmr:
-
-Respond to JSON matching requests
-----------------------------------
+ .. rubric:: Respond to JSON matching requests
 
 Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes requests to the URLs specified in the :ref:`YAML configuration file <yamlfile>`:
 
-* ``localMatchingService:`` ``matchUrl:`` 
+* ``localMatchingService:`` ``matchUrl:``
 * ``localMatchingService:`` ``accountCreationUrl:`` (if you're :ref:`creating new user accounts <ms_cua>` when a match is not found)
 
-The MSA sends one matching request for both cycle 0 and cycle 1 to your local matching service. Below is a formatted example: 
+The MSA sends one matching request for both cycle 0 and cycle 1 to your local matching service. Below is a formatted example:
 
 ::
 
@@ -224,17 +220,14 @@ If you're using cycle 3 and your local matching service returned a ``no-match`` 
       }
   }
 
-Your local matching service sends either a ``match`` or a ``no-match`` response to the MSA. This response corresponds to step 6 in the :ref:`SAML message flow <samlWorks>`. 
+Your local matching service sends either a ``match`` or a ``no-match`` response to the MSA. This response corresponds to step 6 in the :ref:`SAML message flow <samlWorks>`.
 
 If no match is found on cycles 0, 1 and 3, you can :ref:`create a new account <ms_cua>` for the user.
 
 
-Use a JSON schema
-----------------------------------
+.. rubric:: Use a JSON schema
 
-.. _JSONschema:
-
-Below is a `JSON schema <http://json-schema.org/>`_ for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service. 
+Below is a `JSON schema <http://json-schema.org/>`_ for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service.
 
 .. note:: The elements in ``matchingDataset`` are optional, so the code handling this in your local matching service must be appropriately flexible.
 
@@ -415,5 +408,3 @@ Below is a `JSON schema <http://json-schema.org/>`_ for a matching request. You 
       "type": "object",
       "required": [ "matchId", "levelOfAssurance", "hashedPid", "matchingDataset" ]
   }
-
-
