@@ -137,7 +137,7 @@ You must not use the matching dataset for anything other than matching. If you d
 
 The `eIDAS regulation <https://ico.org.uk/for-organisations/guide-to-eidas/what-is-the-eidas-regulation/>`_, coming into force in late 2018, says that European citizens must be able to use their national electronic IDs to access public services provided by another EU member state.
 
-In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services. The JSON you receive from the GOV.UK Verify Hub will look similar for a European identity, but will include:
+In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services. The data you receive from the GOV.UK Verify Hub will look similar for a European identity, but will include:
 
 - name
 - date of birth
@@ -147,7 +147,7 @@ It will not include any historical attributes.
 
 The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.
 
-The JSON will include an additional tag with a Latin equivalent if any names use non-Latin characters.
+The data will include an additional tag with a Latin equivalent if any names use non-Latin characters.
 
 **Unverified attributes**
 
