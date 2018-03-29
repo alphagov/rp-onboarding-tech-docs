@@ -1,6 +1,7 @@
 .. _ms:
 
-.. rubric:: Local Matching Service
+Local Matching Service
+======================
 
 .. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for building a matching service. <buildmatchingservice>`.
 
@@ -20,7 +21,8 @@ Government services host their matching service within their security domain. A 
    * :ref:`matching cycles <ms_matchcyles_diagram>`
    * :ref:`create user accounts <ms_cua_diagram>`"
 
-.. rubric:: Building a local matching service
+Building a local matching service
+---------------------------------
 
 You must build a local matching service to help you find a match between a user’s verified identity and a record in your existing database(s).
 

@@ -1,5 +1,6 @@
 
-.. rubric:: Create user accounts
+Create user accounts
+====================
 
 .. caution:: This documentation is no longer maintained. :ref:`View the latest documentation on creating user accounts. <createnewaccounts>`.
 
@@ -12,7 +13,8 @@ Create new user accounts using the ':ref:`hashed persistent identifier <gloss_ha
 
 
 
-..rubric:: Prerequisites
+Prerequisites
+-------------
 
 1.	Configure your MSA to create user accounts.
 
@@ -42,7 +44,8 @@ Create new user accounts using the ':ref:`hashed persistent identifier <gloss_ha
 
   .. note:: User Accounts can only be created with the user's current 'NAME' and 'Date of Birth' data.  ADDRESS_HISTORY will return any address known to be associated with the user, within the last three years.
 
-..rubric:: Message flow
+Message flow
+------------
 
 This diagram shows the message flow for creating user accounts. In this example, the service has been set up to create user accounts when matching fails.
 

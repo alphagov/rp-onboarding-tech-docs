@@ -1,6 +1,7 @@
 .. _msa:
 
-..rubric:: Matching Service Adapter
+Matching Service Adapter
+========================
 
 .. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for the Matching Service Adapter. <matchingserviceadapter>`.
 
@@ -22,13 +23,15 @@ A matching service is composed of the MSA and a :ref:`local matching service <ms
 The MSA is a stateless service. It runs on Java 8 using `Dropwizard <http://www.dropwizard.io/>`_.
 
 
-.. rubric:: Why does GOV.UK Verify use the Matching Service Adapter?
+Why does GOV.UK Verify use the Matching Service Adapter?
+--------------------------------------------------------
 
 The hub uses :ref:`Security Assertion Markup Language <saml>` (SAML) as its communication method. Government services usually use JSON (JavaScript Object Notation) for their local matching services. A SAML matching service interface is therefore required.  The MSA converts SAML into JSON and vice versa. It also performs encryption, decryption, and signing of SAML messages. For more information, see the :ref:`diagram showing the SAML message flow <samlWorks>` within the GOV.UK Verify federation.
 
 It can be difficult and expensive to implement a SAML matching service interface. GOV.UK Verify provides the MSA so you can concentrate on the business logic and matching rules for your local matching service.
 
-.. rubric:: What do you need to do?
+What do you need to do?
+-----------------------
 
 We recommend that you use the MSA.  If you do not want to, please contact the `GOV.UK Verify support team <idasupport+onboarding@digital.cabinet-office.gov.uk>`_  to discuss your alternatives.
 

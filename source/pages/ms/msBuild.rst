@@ -1,6 +1,7 @@
 .. _msBuild:
 
-.. rubric:: Build a local matching service
+Build a local matching service
+==============================
 
 .. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for building a matching service. <buildmatchingservice>`.
 
@@ -22,7 +23,8 @@ You can also use a `matching service test tool built by Verify <https://github.c
 
 .. _ms_strat:
 
-.. rubric:: Define your matching strategy
+Define your matching strategy
+-----------------------------
 
 A matching strategy defines the most efficient and effective way of matching assured identities to your service records. The strategy depends on the quality and completeness of available data sources and the types of evidence users can provide.
 
@@ -38,7 +40,8 @@ Your local matching service must be able to handle these issues. You may decide 
 * widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, search for last name, date of birth, and postcode, then run further matching on the results and apply a confidence score
 * try synonym matching against combinations of first name and last name, possibly transposing them to maximise the chances of finding a match
 
-.. rubric:: Matching considerations
+Matching considerations
+-----------------------
 
 When you define your matching strategy you need to:
 
@@ -65,7 +68,8 @@ When you define your matching strategy you need to:
 
 .. note:: We recommend that you discuss your matching strategy with your engagement lead. They can organise technical support if needed.
 
- .. rubric:: Respond to JSON matching requests
+Respond to JSON matching requests
+---------------------------------
 
 Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes requests to the URLs specified in the :ref:`YAML configuration file <yamlfile>`:
 
@@ -225,7 +229,8 @@ Your local matching service sends either a ``match`` or a ``no-match`` response 
 If no match is found on cycles 0, 1 and 3, you can :ref:`create a new account <ms_cua>` for the user.
 
 
-.. rubric:: Use a JSON schema
+Use a JSON schema
+-----------------
 
 Below is a `JSON schema <http://json-schema.org/>`_ for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service.
 

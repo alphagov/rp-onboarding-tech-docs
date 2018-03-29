@@ -1,12 +1,14 @@
 .. _msWorks:
 
-.. rubric:: How a matching service works
+How a matching service works
+============================
 
 .. caution:: This documentation is no longer maintained. :ref:`View the latest documentation on matching. <matching>`.
 
 .. _ms_matchcycles:
 
-.. rubric:: Matching cycles
+Matching cycles
+---------------
 
 The matching process consists of 3 matching cycles. The cycles are progressive attempts to match the user to the correct record in the government service's data sources:
 
@@ -25,7 +27,8 @@ When an identity provider verifies a user's identity, they send an assertion to 
 
 .. _ms_mc0:
 
-.. rubric:: Cycle 0: persistent identifier match
+Cycle 0: persistent identifier match
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This cycle works when a user has previously verified their identity with the same identity provider.
 
@@ -36,7 +39,8 @@ Cycle 0 matches the user's :ref:`hashed PID <gloss_hashpid>` to an existing hash
 
 .. _ms_mc1:
 
-.. rubric:: Cycle 1: matching dataset match
+Cycle 1: matching dataset match
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This cycle uses a limited set of information called the :ref:`matching dataset <gloss_mds>` to check for a match between the user and the correct record.
 
@@ -47,7 +51,8 @@ The identity provider that verified the user’s identity provides the matching 
 If the local matching service finds a match, it creates a correlation between the hashed PID and the existing record. This enables cycle 0 matching to occur during subsequent transactions.
 
 
-.. rubric:: Cycle 2: (not used)
+Cycle 2: (not used)
+^^^^^^^^^^^^^^^^^^^
 
 Cycle 2 uses trusted attributes related to identity, for example, being a disabled badge holder, to enhance the matching process.
 
@@ -56,7 +61,8 @@ Cycle 2 uses trusted attributes related to identity, for example, being a disabl
 
 .. _ms_mc3:
 
-.. rubric:: Cycle 3: additional information match
+Cycle 3: additional information match
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If cycle 1 finds more than 1 potential match, cycle 3 asks the user for some additional information, for example driving licence number. The hub collects the additional information and sends it to the matching service. The local matching service then uses it to refine the match. When the local matching service finds a match, it saves the hashed PID in the matching datastore.
 
@@ -65,7 +71,8 @@ This cycle is defined in the government service policy and may not be required f
 Use this cycle to enhance cycle 1 and not as an alternative to cycle 1.
 
 
-.. rubric:: Matching cycles: message flow
+Matching cycles: message flow
+-----------------------------
 
 This diagram shows the message flow for matching cycles 0, 1, and 3. The numbers identify each stage in the flow. See below for explanations.
 
