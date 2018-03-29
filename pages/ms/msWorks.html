@@ -31,9 +31,6 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="up" title="Local Matching Service" href="ms.html"/>
-        <link rel="next" title="Build a local matching service" href="msBuild.html"/>
-        <link rel="prev" title="Local Matching Service" href="ms.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
@@ -98,28 +95,12 @@
           
             
             
-                <ul class="current">
+                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="ms.html">Local Matching Service</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">How a matching service works</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#matching-cycles">Matching cycles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#cycle-0-persistent-identifier-match">Cycle 0: persistent identifier match</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cycle-1-matching-dataset-match">Cycle 1: matching dataset match</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cycle-2-not-used">Cycle 2: (not used)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cycle-3-additional-information-match">Cycle 3: additional information match</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#matching-cycles-message-flow">Matching cycles: message flow</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="msCua.html">Create user accounts</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -153,8 +134,6 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="ms.html">Local Matching Service</a> &raquo;</li>
-      
     <li>How a matching service works</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -169,23 +148,21 @@
             
   <div class="section" id="how-a-matching-service-works">
 <span id="msworks"></span><h1>How a matching service works<a class="headerlink" href="#how-a-matching-service-works" title="Permalink to this headline">¶</a></h1>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">This documentation is no longer maintained. <a class="reference internal" href="../matching/matching.html#matching"><span>View the latest documentation on matching.</span></a>.</p>
+</div>
 <div class="section" id="matching-cycles">
 <span id="ms-matchcycles"></span><h2>Matching cycles<a class="headerlink" href="#matching-cycles" title="Permalink to this headline">¶</a></h2>
 <p>The matching process consists of 3 matching cycles. The cycles are progressive attempts to match the user to the correct record in the government service&#8217;s data sources:</p>
-<ul>
-<li><p class="first"><a class="reference internal" href="#ms-mc0"><span>Cycle 0: persistent identifier match</span></a></p>
-</li>
-<li><p class="first"><a class="reference internal" href="#ms-mc1"><span>Cycle 1: matching dataset match</span></a></p>
-</li>
-<li><p class="first"><a class="reference internal" href="#ms-mc3"><span>Cycle 3: additional information match</span></a></p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Cycle 2 is not currently implemented.</p>
-</div>
-</li>
+<ul class="simple">
+<li><a class="reference internal" href="#ms-mc0"><span>Cycle 0: persistent identifier match</span></a></li>
+<li><a class="reference internal" href="#ms-mc1"><span>Cycle 1: matching dataset match</span></a></li>
+<li><a class="reference internal" href="#ms-mc3"><span>Cycle 3: additional information match</span></a></li>
 </ul>
+<p>Cycle 2 is not currently implemented.</p>
 <p>The GOV.UK Verify hub issues a single call for matching cycles 0 and 1, then a subsequent call for matching cycle 3. In your <a class="reference internal" href="msBuild.html#ms-strat"><span>matching strategy</span></a>, you can run cycle 0 first. Then, if there is no match, you can run cycle  1 before returning the response to the Matching Service Adapter.</p>
-<p>If there&#8217;s no match after the 3 cycles, you can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user. Some services may decide to create a new account after only 1 matching cycle. This applies to services where users are creating new digital accounts rather than relying on existing government service data sources.</p>
+<p>If there&#8217;s no match after the 3 cycles, you can <span class="xref std std-ref">create a new account</span> for the user. Some services may decide to create a new account after only 1 matching cycle. This applies to services where users are creating new digital accounts rather than relying on existing government service data sources.</p>
 <p>When an identity provider verifies a user&#8217;s identity, they send an assertion to the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> via the hub. This assertion contains information about the user&#8217;s identity used in the different matching cycles, including the <span class="xref std std-ref">persistent identifier</span> (PID) and the <span class="xref std std-ref">matching dataset</span>.</p>
 <div class="section" id="cycle-0-persistent-identifier-match">
 <span id="ms-mc0"></span><h3>Cycle 0: persistent identifier match<a class="headerlink" href="#cycle-0-persistent-identifier-match" title="Permalink to this headline">¶</a></h3>
@@ -232,7 +209,7 @@
 <ul class="last simple">
 <li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
 <li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
-<li><a class="reference internal" href="msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+<li><a class="reference internal" href="../matching/createnewaccounts.html#ms-cua-diagram"><span>user account creation</span></a></li>
 </ul>
 </td>
 </tr>
@@ -288,7 +265,7 @@
 <ol class="arabic simple" start="11">
 <li>The local matching service saves the hashed PID in a datastore along with the user&#8217;s record. Future matches with cycle 0 will use this data when the same user returns, having been verified by the same identity provider.</li>
 <li>The local matching service sends a <cite>match</cite> response to the MSA, which forwards it and the hashed PID to the government service via the GOV.UK Verify hub.</li>
-<li>The local matching service sends a <cite>no-match</cite> response to the MSA, which forwards it to the GOV.UK Verify hub.  In this case, the matching service can <a class="reference internal" href="msCua.html#ms-cua"><span>create a new account</span></a> for the user, provided your matching service supports this feature and your user journey seeks explicit user consent.</li>
+<li>The local matching service sends a <cite>no-match</cite> response to the MSA, which forwards it to the GOV.UK Verify hub.  In this case, the matching service can <span class="xref std std-ref">create a new account</span> for the user, provided your matching service supports this feature and your user journey seeks explicit user consent.</li>
 </ol>
 </div>
 </div>
@@ -297,15 +274,6 @@
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="msBuild.html" class="btn btn-neutral float-right" title="Build a local matching service" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="ms.html" class="btn btn-neutral" title="Local Matching Service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -337,7 +305,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

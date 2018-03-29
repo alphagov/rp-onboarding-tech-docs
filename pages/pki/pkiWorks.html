@@ -103,8 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">How a PKI works</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#public-keys-private-keys-and-certificates">Public keys, private keys, and certificates</a></li>
@@ -178,7 +177,7 @@
 <li>information about the identity of the certificate owner</li>
 <li>an indication of the purpose of the certificate, for example, encryption or signing</li>
 </ul>
-<p>Certificates are issued and signed by a certificate authority. The certificate authority acts as the <span class="xref std std-ref">trust anchor</span> in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party&#8217;s certificate is valid.</p>
+<p>Certificates are issued and signed by a certificate authority. The certificate authority acts as the trust anchor in the PKI. An entity that receives data from a third party can request confirmation from the certificate authority that the third party&#8217;s certificate is valid.</p>
 </div>
 <div class="section" id="keys-and-certificates-in-the-gov-uk-verify-federation">
 <span id="pki-keys-certs-govuk"></span><h2>Keys and certificates in the GOV.UK Verify federation<a class="headerlink" href="#keys-and-certificates-in-the-gov-uk-verify-federation" title="Permalink to this headline">¶</a></h2>
@@ -274,7 +273,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

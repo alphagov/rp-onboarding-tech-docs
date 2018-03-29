@@ -107,8 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -186,13 +185,13 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Download and install the Matching Service Adapter</span></a>.</li>
 <li><a class="reference internal" href="../saml/samlComplianceTool.html#samlctselfsigncert"><span>Generate self-signed certificates for the SAML compliance tool</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
+<li><a class="reference internal" href="../matching/matchingserviceadapter.html#configuremsa"><span>Configure the Matching Service Adapter for the SAML compliance tool</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome:  you can start building your service.</p>
-<p class="last" id="step-build-lms">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a>.</p>
+<p class="last" id="step-build-lms">For more information, see <a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Install and configure the Matching Service Adapter</span></a>.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><ol class="first last arabic simple" start="2">
@@ -203,12 +202,12 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../ms/msBuild.html#ms-strat"><span>Define your matching strategy</span></a> with your service manager.</li>
-<li>Use the <a class="reference internal" href="../ms/msBuild.html#respondjsonmr"><span>example JSON matching request</span></a> and the <a class="reference internal" href="../ms/msBuild.html#jsonschema"><span>JSON schema</span></a> to help build your local matching service.</li>
+<li><a class="reference internal" href="../matching/matchingstrategy.html#matchingstrategy"><span>Define your matching strategy</span></a> with your service manager.</li>
+<li>Use the <a class="reference internal" href="../matching/buildmatchingservice.html#respondjsonmr"><span>example JSON matching request</span></a> and the <a class="reference internal" href="../matching/buildmatchingservice.html#jsonschema"><span>JSON schema</span></a> to help build your local matching service.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: your service can match users’ verified identities to your data sources.</p>
-<p class="last" id="step-setup-msaforsaml">For more information, see <a class="reference internal" href="../ms/msWorks.html#msworks"><span>How a matching service works</span></a>.</p>
+<p class="last" id="step-setup-msaforsaml">For more information, see <a class="reference internal" href="../matching/buildmatchingservice.html#buildmatchingservice"><span>Build a matching service</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><ol class="first last arabic simple" start="3">
@@ -284,12 +283,12 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the integration environment</span></a>.</li>
+<li><a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../matching/matchingserviceadapter.html#configuremsa"><span>Configure the Matching Service Adapter for the integration environment</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: you&#8217;re ready to run end-to-end testing with test users.</p>
-<p class="last" id="step-run-end-to-end-tests">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
+<p class="last" id="step-run-end-to-end-tests">For more information, see <a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Install and configure the Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><ol class="first last arabic simple" start="3">
@@ -300,7 +299,7 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><span class="xref std std-ref">Set up authentication to manage test users</span>.</li>
+<li><a class="reference internal" href="../env/envEndToEndTests.html#setupetoe"><span>Set up authentication to manage test users</span></a>.</li>
 <li><a class="reference internal" href="../env/envEndToEndTests.html#createtestusers"><span>Create test users</span></a>.</li>
 <li><a class="reference internal" href="../env/envEndToEndTests.html#runetoetest"><span>Run end-to-end tests</span></a>.</li>
 </ol>
@@ -333,12 +332,12 @@
 <p>To do this:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><a class="reference internal" href="../msa/msaUse.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
-<li><a class="reference internal" href="../msa/msaUse.html#configuremsa"><span>Configure the Matching Service Adapter for the production environment</span></a>.</li>
+<li><a class="reference internal" href="../matching/matchingserviceadapter.html#msa-install-msa"><span>Download and install the Matching Service Adapter</span></a>.</li>
+<li><a class="reference internal" href="../matching/matchingserviceadapter.html#configuremsa"><span>Configure the Matching Service Adapter for the production environment</span></a>.</li>
 </ol>
 </div></blockquote>
 <p>Outcome: your service is ready to go live.</p>
-<p class="last">For more information, see <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
+<p class="last">For more information, see <a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Install and configure the Matching Service Adapter</span></a> and <a class="reference internal" href="../env/env.html#env"><span>GOV.UK Verify environments</span></a>.</p>
 </td>
 </tr>
 </tbody>
@@ -418,7 +417,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

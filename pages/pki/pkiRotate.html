@@ -103,8 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pkiWorks.html">How a PKI works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pkiRequestCert.html">Request certificates</a></li>
@@ -205,7 +204,7 @@
 <div class="section" id="rotate-your-matching-service-adapter-encryption-key">
 <h2>Rotate your Matching Service Adapter encryption key<a class="headerlink" href="#rotate-your-matching-service-adapter-encryption-key" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Install the new private encryption key and encryption certificate on the MSA. To do this, add the fields <code class="docutils literal"><span class="pre">privateSecondaryEncryptionKeyConfiguration</span></code> and <code class="docutils literal"><span class="pre">publicSecondaryEncryptionKeyConfiguration</span></code> to the  <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a> as indicated in the highlighted sections below:</li>
+<li>Install the new private encryption key and encryption certificate on the MSA. To do this, add the fields <code class="docutils literal"><span class="pre">privateSecondaryEncryptionKeyConfiguration</span></code> and <code class="docutils literal"><span class="pre">publicSecondaryEncryptionKeyConfiguration</span></code> to the  <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>YAML configuration file</span></a> as indicated in the highlighted sections below:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
@@ -254,7 +253,7 @@
 <p id="pki-config-msa-2signkeys-samlmetadata">This procedure involves publishing 2 SAML signing certificates in the MSA SAML metadata.</p>
 <ol class="arabic simple">
 <li>Send the new signing certificate to the GOV.UK Verify operations team.</li>
-<li>Install the new signing certificate on the MSA. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the <a class="reference internal" href="../msa/msaUse.html#yamlfile"><span>YAML configuration file</span></a>, as indicated in the highlighted section below:</li>
+<li>Install the new signing certificate on the MSA. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>YAML configuration file</span></a>, as indicated in the highlighted section below:</li>
 </ol>
 <blockquote>
 <div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
@@ -337,7 +336,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

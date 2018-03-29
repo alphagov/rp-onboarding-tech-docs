@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SAML &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  <title>Evaluate datasources &mdash; GOV.UK Verify Technical Guide  documentation</title>
   
 
   
@@ -31,8 +31,9 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="next" title="How SAML works with GOV.UK Verify" href="samlWorks.html"/>
-        <link rel="prev" title="Steps to integrate GOV.UK Verify into your service" href="../steps/steps.html"/>
+        <link rel="up" title="Matching" href="matching.html"/>
+        <link rel="next" title="Decide your matching strategy" href="matchingstrategy.html"/>
+        <link rel="prev" title="How matching works with GOV.UK Verify" href="matchingverify.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
@@ -101,14 +102,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">SAML</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works with GOV.UK Verify</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="samlComplianceTool.html">Run SAML compliance tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generateSelfSignedCertificates.html">Generate self-signed certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="matching.html">Matching</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matchingverify.html">How matching works with GOV.UK Verify</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Evaluate datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingstrategy.html">Decide your matching strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparedata.html">Prepare local datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buildmatchingservice.html">Build a matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingserviceadapter.html">Install and configure the Matching Service Adapter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createnewaccounts.html">Create new user accounts (optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -142,7 +146,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>SAML</li>
+          <li><a href="matching.html">Matching</a> &raquo;</li>
+      
+    <li>Evaluate datasources</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -154,45 +160,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="saml">
-<span id="id1"></span><h1>SAML<a class="headerlink" href="#saml" title="Permalink to this headline">¶</a></h1>
-<p>Security Assertion Markup Language (SAML) is an open standard for securely exchanging information about identities.</p>
-<p>Your service must use a system to send SAML messages to the Verify Hub and receive SAML responses in return. This system is known as a Service Provider.</p>
-<p>You can either:</p>
+  <div class="section" id="evaluate-datasources">
+<span id="evaluatedata"></span><h1>Evaluate datasources<a class="headerlink" href="#evaluate-datasources" title="Permalink to this headline">¶</a></h1>
+<p id="datacriteria">The accuracy and cleanliness of your datasource(s) will affect your ability to match effectively. Before deciding your matching strategy, you should check:</p>
 <ul class="simple">
-<li>use a Service Provider built by Verify, known as the <a class="reference external" href="https://github.com/alphagov/verify-service-provider">Verify Service Provider</a> (recommended)</li>
-<li>configure an off-the-shelf product to use as a Service Provider</li>
-<li>build your own Service Provider</li>
+<li>the accuracy and source of the data</li>
+<li>what attributes you have</li>
+<li>if there are any duplicate records</li>
+<li>what demographics are included</li>
 </ul>
-<p>Whatever option you choose, you must <a class="reference internal" href="samlComplianceTool.html#samlcompliancetool"><span>run SAML compliance tests</span></a> to check you can send and receive SAML messages successfully.</p>
-<p class="rubric" id="saml-docs">Verify Service Provider</p>
-<p>Refer to the <a class="reference external" href="https://github.com/alphagov/verify-service-provider">documentation on GitHub to find out how to download, configure and use the Verify Service Provider</a>.</p>
-<p>You can use the Verify Service Provider to:</p>
+<p class="rubric">Data accuracy and source</p>
+<p>You should check where the data came from and decide whether it’s suitable for matching. For example, if the data was collected by a third party you don’t recognise and only contains a few hundred records, it may not be good enough for your matching needs. Similarly, if the data was captured from phone calls with your users, you may find the data is less accurate than data that users input themselves.</p>
+<p class="rubric">Data attributes</p>
+<p>You may find some data sources don’t include the attributes you need. The main attributes provided for a verified identity are:</p>
 <ul class="simple">
-<li>generate a SAML (AuthnRequest) request to send to the Verify Hub</li>
-<li>translate the SAML response from the Verify Hub into JSON</li>
+<li>name</li>
+<li>address</li>
+<li>date of birth</li>
 </ul>
-<p>You must host the Verify Service Provider on your own infrastructure. You can connect multiple services to one instance.</p>
-<p>To use the Verify Service Provider, you need to have:</p>
-<ul class="simple">
-<li>Java 8</li>
-<li>a working <a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Matching Service Adapter</span></a></li>
-</ul>
-<p class="rubric">Use or build a different Service Provider</p>
-<p>If you choose to configure an off-the-shelf product or build your own Service Provider, you need to:</p>
-<ul class="simple">
-<li>understand <a class="reference internal" href="samlWorks.html#samlworks"><span>how SAML works with GOV.UK Verify</span></a></li>
-<li>decide how to <a class="reference internal" href="samlIntegration.html#chooseproductframework"><span>add the SAML functionality to your service</span></a></li>
-</ul>
-<p>You must also follow:</p>
-<ul class="simple">
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216; – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub</li>
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts">Identity Assurance Hub Service Profile – Authentication Contexts</a>&#8216; – describes how the level of assurance is specified</li>
-<li>&#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes">Identity Assurance Hub Service Profile – SAML Attributes</a>&#8216; – describes the matching dataset attributes and fraud event assertion attributes</li>
-</ul>
-<p>The SAML profile used by GOV.UK Verify builds on the <a class="reference external" href="https://www.oasis-open.org/standards#samlv2.0">OASIS documentation for the SAML 2.0 standard</a>.</p>
-<div class="toctree-wrapper compound">
-</div>
+<p>Studies have shown that it’s possible to match <a class="reference external" href="https://amstat.tandfonline.com/doi/full/10.1080/2330443X.2017.1389620#.Wp6gZhO0OX">98 percent of identities with government records using these attributes</a>.</p>
+<p>You will find matching difficult, or impossible, without this data. If you do not have these attributes or want to use the data to build a datasource, <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">contact the GOV<span>&#46;</span>UK Verify team to discuss your options</a>.</p>
+<p class="rubric">Duplicate records</p>
+<p>It’s useful to identify any duplicate records or multiple records belonging to the same individual before trying to match as it will be harder to match to a single record. Cleansing your data before you start matching will make the matching process easier.</p>
+<p class="rubric">Data demographics</p>
+<p>You may find different data sources contain data for specific demographics, for example, only individuals above a certain age. Depending on your service requirements, you should use a datasource that covers the full demographic of your service’s users.</p>
 </div>
 
 
@@ -202,10 +193,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="samlWorks.html" class="btn btn-neutral float-right" title="How SAML works with GOV.UK Verify" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="matchingstrategy.html" class="btn btn-neutral float-right" title="Decide your matching strategy" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../steps/steps.html" class="btn btn-neutral" title="Steps to integrate GOV.UK Verify into your service" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="matchingverify.html" class="btn btn-neutral" title="How matching works with GOV.UK Verify" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

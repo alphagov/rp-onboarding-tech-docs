@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Build a local matching service &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  <title>Build a matching service &mdash; GOV.UK Verify Technical Guide  documentation</title>
   
 
   
@@ -31,6 +31,9 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching" href="matching.html"/>
+        <link rel="next" title="Install and configure the Matching Service Adapter" href="matchingserviceadapter.html"/>
+        <link rel="prev" title="Prepare local datasources" href="preparedata.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
@@ -95,12 +98,25 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="matching.html">Matching</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matchingverify.html">How matching works with GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluatedata.html">Evaluate datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingstrategy.html">Decide your matching strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparedata.html">Prepare local datasources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Build a matching service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#matching-service-adapter">Matching Service Adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-matching-service">Local Matching Service</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="matchingserviceadapter.html">Install and configure the Matching Service Adapter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createnewaccounts.html">Create new user accounts (optional)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -134,7 +150,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Build a local matching service</li>
+          <li><a href="matching.html">Matching</a> &raquo;</li>
+      
+    <li>Build a matching service</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -146,79 +164,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="build-a-local-matching-service">
-<span id="msbuild"></span><h1>Build a local matching service<a class="headerlink" href="#build-a-local-matching-service" title="Permalink to this headline">¶</a></h1>
-<div class="admonition caution">
-<p class="first admonition-title">Caution</p>
-<p class="last">This documentation is no longer maintained. <a class="reference internal" href="../matching/buildmatchingservice.html#buildmatchingservice"><span>View the latest documentation for building a matching service.</span></a>.</p>
-</div>
-<p>You must build a local matching service and host it on your own infrastructure.</p>
-<p>Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:</p>
+  <div class="section" id="build-a-matching-service">
+<span id="buildmatchingservice"></span><h1>Build a matching service<a class="headerlink" href="#build-a-matching-service" title="Permalink to this headline">¶</a></h1>
+<p>A matching service is is made up of:</p>
 <ul class="simple">
-<li>creates the <span class="xref std std-ref">hashed persistent identifier</span></li>
-<li>creates and signs the final assertion sent to your service - for more information, see <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>How SAML works with GOV.UK Verify</span></a></li>
-<li>acts as the <span class="xref std std-ref">trust anchor</span> for your service because the final assertion is created in your service&#8217;s security domain</li>
+<li>Matching Service Adapter (MSA) provided by GOV.UK Verify</li>
+<li>Local Matching Service built by you</li>
 </ul>
-<p>As well as following this guidance, you can refer to the <a class="reference external" href="https://github.com/alphagov/verify-local-matching-service-example">example local matching service</a> built by the Verify team. It uses a simplified version of a matching strategy from DWP.</p>
-<p>You can also use a <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">matching service test tool built by Verify</a> to make sure your local matching service can:</p>
+<p>You must host both the MSA and the Local Matching Service on your own infrastructure.</p>
+<div class="figure">
+<img alt="Diagram showing that a matching service is composed of a MSA and a local matching service." src="../../_images/matchingservice.svg" /></div>
+<div class="section" id="matching-service-adapter">
+<h2>Matching Service Adapter<a class="headerlink" href="#matching-service-adapter" title="Permalink to this headline">¶</a></h2>
+<p>The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.</p>
+<p>Follow the <a class="reference internal" href="matchingserviceadapter.html#msause"><span>documentation to install, configure and test the Matching Service Adapter</span></a>.</p>
+</div>
+<div class="section" id="local-matching-service">
+<span id="localmatchingservice"></span><h2>Local Matching Service<a class="headerlink" href="#local-matching-service" title="Permalink to this headline">¶</a></h2>
+<p>A Local Matching Service helps you to find a match between a user’s verified identity and a record in your existing database(s). You must build your own Local Matching Service and host it on your own infrastructure.</p>
+<p>As well as following this guidance, you can refer to the <a class="reference external" href="https://github.com/alphagov/verify-local-matching-service-example">example Local Matching Service built by the GOV.UK Verify team</a>. It uses a <a class="reference external" href="https://github.com/alphagov/verify-local-matching-service-example/blob/master/docs/architecture-decisions/0003-we-will-follow-dwps-proposed-strategy.org">simplified version of a matching strategy from the Department of Work and Pensions (DWP)</a>.</p>
+<p>You can also use a <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">matching service test tool built by the GOV.UK Verify team</a> to make sure your Local Matching Service can:</p>
 <ul class="simple">
 <li>handle matching datasets</li>
 <li>find and match records correctly</li>
 <li>handle matching failures</li>
 </ul>
-<div class="section" id="define-your-matching-strategy">
-<span id="ms-strat"></span><h2>Define your matching strategy<a class="headerlink" href="#define-your-matching-strategy" title="Permalink to this headline">¶</a></h2>
-<p>A matching strategy defines the most efficient and effective way of matching assured identities to your service records. The strategy depends on the quality and completeness of available data sources and the types of evidence users can provide.</p>
-<p>A local matching service carries out a risk-based match to find the local record. Exact matching of identity data is rarely possible for many reasons:</p>
-<ul class="simple">
-<li>transcription errors</li>
-<li>spelling mistakes</li>
-<li>incorrect data in your service&#8217;s data sources, for example, if someone has moved house but not informed the service</li>
-<li>use of shortened names or nicknames which refer to the same person, for example, William Smith, Bill Smith and David William Smith</li>
-</ul>
-<p>Your local matching service must be able to handle these issues. You may decide to:</p>
-<ul class="simple">
-<li>widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, search for last name, date of birth, and postcode, then run further matching on the results and apply a confidence score</li>
-<li>try synonym matching against combinations of first name and last name, possibly transposing them to maximise the chances of finding a match</li>
-</ul>
-</div>
-<div class="section" id="matching-considerations">
-<h2>Matching considerations<a class="headerlink" href="#matching-considerations" title="Permalink to this headline">¶</a></h2>
-<p>When you define your matching strategy you need to:</p>
-<ul class="simple">
-<li>prepare for matching with customer data aggregation and data cleansing</li>
-<li>define the confidence level required for a successful match and how to score the confidence level, for example:<ul>
-<li>100% match confidence means that all elements from the matching dataset fully match the local record</li>
-<li>80% match confidence might mean that the first name, last name, and date of birth match, but the address is showing a mismatch</li>
-</ul>
-</li>
-<li>define the rules for successful matching, which may include what to do with:<ul>
-<li>synonyms for first names, for example, <strong>William</strong> and <strong>Bill</strong></li>
-<li>transpositions of multiple part names, for example, <strong>Anna-Marie</strong>, <strong>Jane</strong> and <strong>Anna, Marie-Jane</strong></li>
-<li>transpositions of errors of day and month in the date of birth, for example, <strong>04/10/78</strong> and <strong>10/04/78</strong></li>
-</ul>
-</li>
-<li>define the level of &#8216;fuzzy matching&#8217; that is acceptable when an exact match is not found – this allows a match that, although not 100%, is above a service-defined threshold</li>
-<li>manage the risk of incorrect matching by defining what happens when:<ul>
-<li>there&#8217;s no match – you can <span class="xref std std-ref">create a new account</span> for the user</li>
-<li>there are multiple matches – you can implement <a class="reference internal" href="msWorks.html#ms-mc3"><span>matching cycle 3</span></a></li>
-</ul>
-</li>
-<li>analyse your data sources in the light of your matching strategy, so you can test and refine your strategy before launching alpha or beta services</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We recommend that you discuss your matching strategy with your engagement lead. They can organise technical support if needed.</p>
-</div>
-</div>
-<div class="section" id="respond-to-json-matching-requests">
-<h2>Respond to JSON matching requests<a class="headerlink" href="#respond-to-json-matching-requests" title="Permalink to this headline">¶</a></h2>
-<p>Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes requests to the URLs specified in the <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>YAML configuration file</span></a>:</p>
+<p class="rubric" id="respondjsonmr">Respond to JSON matching requests</p>
+<p>Your service must respond to JSON matching requests from the Matching Service Adapter (MSA). The MSA makes requests to the URLs specified in the <a class="reference internal" href="matchingserviceadapter.html#yamlfile"><span>YAML configuration file</span></a>:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">localMatchingService:</span></code> <code class="docutils literal"><span class="pre">matchUrl:</span></code></li>
-<li><code class="docutils literal"><span class="pre">localMatchingService:</span></code> <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> (if you&#8217;re <span class="xref std std-ref">creating new user accounts</span> when a match is not found)</li>
+<li><code class="docutils literal"><span class="pre">localMatchingService:</span></code> <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> (if you&#8217;re <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>creating new user accounts</span></a> when a match is not found)</li>
 </ul>
-<p>The MSA sends one matching request for both cycle 0 and cycle 1 to your local matching service. Below is a formatted example:</p>
+<p>The MSA sends one matching request for both Cycle 0 and Cycle 1 to your local matching service. Below is a formatted example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&quot;</span><span class="p">,</span>
     <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
@@ -357,11 +334,9 @@
 </pre></div>
 </div>
 <p>Your local matching service sends either a <code class="docutils literal"><span class="pre">match</span></code> or a <code class="docutils literal"><span class="pre">no-match</span></code> response to the MSA. This response corresponds to step 6 in the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
-<p>If no match is found on cycles 0, 1 and 3, you can <span class="xref std std-ref">create a new account</span> for the user.</p>
-</div>
-<div class="section" id="use-a-json-schema">
-<h2>Use a JSON schema<a class="headerlink" href="#use-a-json-schema" title="Permalink to this headline">¶</a></h2>
-<p>Below is a <a class="reference external" href="http://json-schema.org/">JSON schema</a> for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service.</p>
+<p>If no match is found on cycles 0, 1 and 3, you can <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>create a new account</span></a> for the user.</p>
+<p class="rubric">Use a JSON schema</p>
+<p id="jsonschema">Below is a <a class="reference external" href="http://json-schema.org/">JSON schema</a> for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The elements in <code class="docutils literal"><span class="pre">matchingDataset</span></code> are optional, so the code handling this in your local matching service must be appropriately flexible.</p>
@@ -550,6 +525,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="matchingserviceadapter.html" class="btn btn-neutral float-right" title="Install and configure the Matching Service Adapter" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preparedata.html" class="btn btn-neutral" title="Prepare local datasources" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

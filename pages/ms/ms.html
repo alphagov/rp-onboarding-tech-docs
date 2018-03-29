@@ -31,8 +31,6 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
-        <link rel="next" title="How a matching service works" href="msWorks.html"/>
-        <link rel="prev" title="Generate self-signed certificates" href="../saml/generateSelfSignedCertificates.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
@@ -97,18 +95,12 @@
           
             
             
-                <ul class="current">
+                <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Local Matching Service</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="msWorks.html">How a matching service works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="msBuild.html">Build a local matching service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="msCua.html">Create user accounts</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -156,6 +148,10 @@
             
   <div class="section" id="local-matching-service">
 <span id="ms"></span><h1>Local Matching Service<a class="headerlink" href="#local-matching-service" title="Permalink to this headline">¶</a></h1>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">This documentation is no longer maintained. <a class="reference internal" href="../matching/buildmatchingservice.html#buildmatchingservice"><span>View the latest documentation for building a matching service.</span></a>.</p>
+</div>
 <p>The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.</p>
 <p>Government services host their matching service within their security domain. A matching service is composed of the <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter</span></a> (MSA) and a local matching service.</p>
 <table border="1" class="docutils" id="flow-diagram">
@@ -165,19 +161,20 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><div class="first last figure">
-<img alt="Diagram showing that a matching service is composed of a MSA and a local matching service." src="../../_images/matchingservice.svg" /></div>
+<img alt="Diagram showing that a matching service is composed of a MSA and a local matching service." src="../../_images/matchingservice1.svg" /></div>
 </td>
 <td><p class="first">For more details, see the diagrams:</p>
 <ul class="last simple">
 <li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK architecture</span></a></li>
 <li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
-<li><a class="reference internal" href="msCua.html#ms-cua-diagram"><span>create user accounts</span></a></li>
+<li><a class="reference internal" href="../matching/createnewaccounts.html#ms-cua-diagram"><span>create user accounts</span></a></li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Building a local matching service</p>
+<div class="section" id="building-a-local-matching-service">
+<h2>Building a local matching service<a class="headerlink" href="#building-a-local-matching-service" title="Permalink to this headline">¶</a></h2>
 <p>You must build a local matching service to help you find a match between a user’s verified identity and a record in your existing database(s).</p>
 <p>You must build a local matching service even if your connecting service does not need to match identities to existing records.</p>
 <p>Follow the <a class="reference internal" href="msBuild.html#msbuild"><span>guidance on building a local matching service</span></a> to:</p>
@@ -189,7 +186,6 @@
 </div></blockquote>
 <p>You can also refer to the <a class="reference external" href="https://github.com/alphagov/verify-local-matching-service-example">example local matching service built by the Verify team</a> and use the <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">local matching service test tool</a> to check your local matching service can handle matching effectively.</p>
 <p>The Verify team can help you build and configure your local matching service. Contact <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a> for help.</p>
-<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -197,15 +193,6 @@
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="msWorks.html" class="btn btn-neutral float-right" title="How a matching service works" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../saml/generateSelfSignedCertificates.html" class="btn btn-neutral" title="Generate self-signed certificates" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -237,7 +224,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

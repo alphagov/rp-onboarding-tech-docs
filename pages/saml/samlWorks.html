@@ -109,8 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generateSelfSignedCertificates.html">Generate self-signed certificates</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -163,7 +162,7 @@
 <p>SAML messages take the form of requests and responses. Messages can contain assertions about the user&#8217;s identity. GOV.UK Verify uses the following types of assertion:</p>
 <ul class="simple">
 <li>identity assertions – contain information about the user</li>
-<li>authentication context assertions – contain information related to how authentication was carried out, for example, the <span class="xref std std-ref">level of assurance</span></li>
+<li>authentication context assertions – contain information related to how authentication was carried out, for example, the level of assurance</li>
 <li>fraud event assertions – contain identifiers related to an identified fraud detected by the identity provider</li>
 </ul>
 <p>The SAML profile defines these assertions. See the <a class="reference internal" href="saml.html#saml-docs"><span>list of documents defining the SAML profile</span></a>.</p>
@@ -179,11 +178,11 @@
 <img alt="Diagram showing a SAML message flow in GOV.UK Verify architecture. Communication between government service, the hub, and identity providers is via SAML and passes through the user's browser. Communication between the hub and the Matching Service Adapter is via SAML using SOAP. Communication between the Matching Service Adapter, the local matching service, and the local matching data store is not SAML. The text below the image describes the SAML messages sent between entities in the federation." src="../../_images/samlFlow.svg" /><p class="caption"><span class="caption-text">SAML message flow in the GOV.UK Verify federation</span></p>
 </div>
 </td>
-<td><p class="first">For more details, see the diagrams:</p>
+<td><p class="first">For more details, see:</p>
 <ul class="last simple">
 <li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
-<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
-<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>create user accounts</span></a></li>
+<li><a class="reference internal" href="../matching/matchingstrategy.html#matchingcycles"><span>matching cycles</span></a></li>
+<li><a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>create user accounts</span></a></li>
 </ul>
 </td>
 </tr>
@@ -200,17 +199,17 @@
 <blockquote>
 <div><img alt="Diagram showing a SAML authentication request signed by the hub" src="../../_images/step2.svg" /></div></blockquote>
 <ol class="arabic simple" start="3">
-<li>The chosen identity provider authenticates the user based on the required <span class="xref std std-ref">level of assurance</span>. The identity provider then sends a SAML response to the GOV.UK Verify hub:</li>
+<li>The chosen identity provider authenticates the user based on the required level of assurance. The identity provider then sends a SAML response to the GOV.UK Verify hub:</li>
 </ol>
 <blockquote>
 <div><img alt="Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub." src="../../_images/step3.svg" /><ul class="simple">
 <li>SAML response <a class="reference internal" href="../pki/pkiWorks.html#pki-sign-cert"><span>signed</span></a> by the identity provider</li>
-<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub – this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the <span class="xref std std-ref">level of assurance</span></li>
-<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user&#8217;s <span class="xref std std-ref">matching dataset</span> and the <span class="xref std std-ref">persistent identifier</span></li>
+<li>authentication context assertion signed by the identity provider and <a class="reference internal" href="../pki/pkiWorks.html#pki-encrypt-cert"><span>encrypted</span></a> for the GOV.UK Verify hub – this asserts that the user&#8217;s identity is authenticated; it also contains contextual information, including the level of assurance</li>
+<li>identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user&#8217;s matching dataset and the persistent identifier</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For more information on the contents of the assertions, see the diagrams for <a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a>.</p>
+<p class="last">For more information on the contents of the assertions, see <a class="reference internal" href="../matching/matchingstrategy.html#matchingcycles"><span>matching cycles</span></a> and <a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>user account creation</span></a>.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
@@ -234,7 +233,7 @@
 <blockquote>
 <div><img alt="Diagram showing a SAML attribute query response signed by the Matching Service Adapter. It contains an assertion signed by the Matching Service Adapter and encrypted for the hub." src="../../_images/step7.svg" /><ul class="simple">
 <li>SAML attribute query response signed by the Matching Service Adapter</li>
-<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the <span class="xref std std-ref">hashed persistent identifier</span></li>
+<li>assertion signed by the Matching Service Adapter and encrypted for the GOV.UK Verify hub – this assertion contains the hashed persistent identifier</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="8">
@@ -294,7 +293,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

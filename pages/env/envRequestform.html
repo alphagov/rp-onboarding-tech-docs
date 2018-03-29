@@ -103,8 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Request access to environments</a></li>
@@ -194,7 +193,7 @@
 <li><a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/ms/msWorks.html?highlight=cycle#ms-mc3">Cycle 3 attributes</a>, for example driving licence or passport number</li>
 <li><a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/ms/msWorks.html?highlight=cycle#ms-mc3">‘New User’ account</a> attributes, for example first name, middle name, surname, date of birth, current address</li>
 </ul>
-<p>For Integration environments only, you’ll also need to provide:</p>
+<p>For Integration environments, you’ll also need to provide the following in addition to the above:</p>
 <ul class="simple">
 <li>an IP address for your Matching Service Adapter and test device browser</li>
 <li>a username and 8-character password (to manage the test user data)</li>
@@ -246,7 +245,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

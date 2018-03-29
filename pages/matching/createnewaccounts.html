@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create user accounts &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  <title>Create new user accounts (optional) &mdash; GOV.UK Verify Technical Guide  documentation</title>
   
 
   
@@ -31,6 +31,9 @@
 
   
     <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching" href="matching.html"/>
+        <link rel="next" title="Public Key Infrastructure" href="../pki/pki.html"/>
+        <link rel="prev" title="Install and configure the Matching Service Adapter" href="matchingserviceadapter.html"/>
   <link href="../../_static/style.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
@@ -95,12 +98,21 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="matching.html">Matching</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matchingverify.html">How matching works with GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluatedata.html">Evaluate datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingstrategy.html">Decide your matching strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparedata.html">Prepare local datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buildmatchingservice.html">Build a matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingserviceadapter.html">Install and configure the Matching Service Adapter</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Create new user accounts (optional)</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -134,7 +146,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
-    <li>Create user accounts</li>
+          <li><a href="matching.html">Matching</a> &raquo;</li>
+      
+    <li>Create new user accounts (optional)</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -146,23 +160,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-user-accounts">
-<h1>Create user accounts<a class="headerlink" href="#create-user-accounts" title="Permalink to this headline">¶</a></h1>
-<div class="admonition caution">
-<p class="first admonition-title">Caution</p>
-<p class="last">This documentation is no longer maintained. <a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>View the latest documentation on creating user accounts.</span></a>.</p>
-</div>
+  <div class="section" id="create-new-user-accounts-optional">
+<span id="createnewaccounts"></span><h1>Create new user accounts (optional)<a class="headerlink" href="#create-new-user-accounts-optional" title="Permalink to this headline">¶</a></h1>
 <p>If Verify fails to identify the user, you can enable your service to create a new user account.</p>
 <p>You must obtain explicit user consent before creating a user account.</p>
-<p>Create new user accounts using the &#8216;<span class="xref std std-ref">hashed persistent identifier</span>&#8216; (PID) and a subset of attributes from the &#8216;<span class="xref std std-ref">matching dataset</span>&#8216;, listed below.</p>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Create new user accounts using the hashed persistent identifier (PID) and a subset of attributes from the matching dataset listed below.</p>
+<p class="rubric">Prerequisites</p>
 <ol class="arabic simple">
 <li>Configure your MSA to create user accounts.</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>In the <a class="reference internal" href="../matching/matchingserviceadapter.html#configuremsa"><span>YAML configuration file</span></a>, enter your local matching service &#8216;<cite>accountCreationUrl:</cite>&#8216;</li>
+<li>In the <a class="reference internal" href="matchingserviceadapter.html#configuremsa"><span>YAML configuration file</span></a>, enter your local matching service &#8216;<cite>accountCreationUrl:</cite>&#8216;</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -173,7 +182,9 @@
 <li>Enter the fully qualified URL that will receive your <em>Unknown User Attribute</em> requests from the environment</li>
 <li>Select any of the following user attributes you require for your service</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FIRST_NAME</span>
+</div></blockquote>
+<blockquote id="list-cua-attributes">
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">FIRST_NAME</span>
 <span class="n">FIRST_NAME_VERIFIED</span>
 <span class="n">MIDDLE_NAME</span>
 <span class="n">MIDDLE_NAME_VERIFIED</span>
@@ -192,9 +203,7 @@
 <p class="last">User Accounts can only be created with the user&#8217;s current &#8216;NAME&#8217; and &#8216;Date of Birth&#8217; data.  ADDRESS_HISTORY will return any address known to be associated with the user, within the last three years.</p>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="message-flow">
-<h2>Message flow<a class="headerlink" href="#message-flow" title="Permalink to this headline">¶</a></h2>
+<p class="rubric" id="ms-cua-diagram">Message flow</p>
 <p>This diagram shows the message flow for creating user accounts. In this example, the service has been set up to create user accounts when matching fails.</p>
 <table border="1" class="docutils" id="flow-diagram">
 <colgroup>
@@ -203,14 +212,14 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><div class="first last figure" id="id1">
-<img alt="Diagram showing user account creation. The MSA converts between SAML and JSON. The MSA contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps." src="../../_images/createanaccount1.svg" /><p class="caption"><span class="caption-text">User account creation</span></p>
+<img alt="Diagram showing user account creation. The MSA converts between SAML and JSON. The MSA contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps." src="../../_images/createanaccount.svg" /><p class="caption"><span class="caption-text">User account creation</span></p>
 </div>
 </td>
-<td><p class="first">For more details, see the diagrams:</p>
+<td><p class="first">For more details, see:</p>
 <ul class="last simple">
 <li><a class="reference internal" href="../arch/arch.html#arch"><span>GOV.UK Verify architecture</span></a></li>
-<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
-<li><a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="matchingstrategy.html#matchingcycles"><span>matching cycles</span></a></li>
 </ul>
 </td>
 </tr>
@@ -218,7 +227,7 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In this example, all 3 <a class="reference internal" href="msWorks.html#ms-matchcycles"><span>matching cycles</span></a> previously failed to find a match for the user in the government service records. See the <a class="reference internal" href="msWorks.html#ms-matchcyles-diagram"><span>diagram for matching cycles</span></a>.</p>
+<p class="last">In this example, all 3 <a class="reference internal" href="matchingstrategy.html#matchingcycles"><span>matching cycles</span></a> previously failed to find a match for the user in the government service records.</p>
 </div>
 <ol class="arabic simple">
 <li>Your local matching service sends a <code class="docutils literal"><span class="pre">no-match</span></code> response to the hub via the MSA.</li>
@@ -235,9 +244,9 @@
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><span class="xref std std-ref">matching dataset</span></li>
-<li><span class="xref std std-ref">hashed PID</span></li>
-<li><span class="xref std std-ref">level of assurance</span></li>
+<li>matching dataset</li>
+<li>hashed PID</li>
+<li>level of assurance</li>
 <li>list of attributes to extract from the matching dataset</li>
 </ul>
 </div></blockquote>
@@ -254,7 +263,7 @@
 </div></blockquote>
 <ol class="arabic" start="5">
 <li><p class="first">Optionally, the local matching service stores the hashed PID and level of assurance in the local matching datastore.</p>
-<p>You&#8217;ll need to create a correlation between the user account and the hashed PID, so a returning user can match with <a class="reference internal" href="msWorks.html#ms-mc0"><span>cycle 0</span></a>. You can choose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.</p>
+<p>You&#8217;ll need to create a correlation between the user account and the hashed PID, so a returning user can match with <a class="reference internal" href="matchingstrategy.html#cycle0"><span>cycle 0</span></a>. You can choose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.</p>
 </li>
 <li><p class="first">The local matching service sends a JSON response to the MSA:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span> <span class="p">}</span>
@@ -303,19 +312,21 @@
 </ul>
 </li>
 </ol>
-<blockquote>
-<div><div class="admonition important">
-<p class="first admonition-title">Important</p>
-<p class="last">If you create a user account you must gain consent from the user first.</p>
-</div>
-</div></blockquote>
-</div>
 </div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pki/pki.html" class="btn btn-neutral float-right" title="Public Key Infrastructure" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="matchingserviceadapter.html" class="btn btn-neutral" title="Install and configure the Matching Service Adapter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

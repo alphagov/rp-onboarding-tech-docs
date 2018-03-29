@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Decide your matching strategy &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching" href="matching.html"/>
+        <link rel="next" title="Prepare local datasources" href="preparedata.html"/>
+        <link rel="prev" title="Evaluate datasources" href="evaluatedata.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-54060634-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="matching.html">Matching</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matchingverify.html">How matching works with GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluatedata.html">Evaluate datasources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Decide your matching strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#decide-rules-for-matching-and-confidence-scores">Decide rules for matching and confidence scores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matching-cycles">Matching cycles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#matching-approach">Matching approach</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-search-with-last-name-and-date-of-birth">First search with last name and date of birth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter-candidates-with-postcode">Filter candidates with postcode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-confidence-in-a-single-record">Build confidence in a single record</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#audit-and-testing">Audit and testing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="preparedata.html">Prepare local datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buildmatchingservice.html">Build a matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingserviceadapter.html">Install and configure the Matching Service Adapter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createnewaccounts.html">Create new user accounts (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="matching.html">Matching</a> &raquo;</li>
+      
+    <li>Decide your matching strategy</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="decide-your-matching-strategy">
+<span id="matchingstrategy"></span><h1>Decide your matching strategy<a class="headerlink" href="#decide-your-matching-strategy" title="Permalink to this headline">¶</a></h1>
+<p>Your matching strategy should define your rules for matching and what should happen when:</p>
+<ul class="simple">
+<li>a matching record is found</li>
+<li>multiple records are found that could be a match</li>
+<li>no match is found</li>
+</ul>
+<p>It’s up to each service to decide their own matching strategy, but this guidance provides an overview of things to consider.</p>
+<p><a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">Contact the GOV<span>&#46;</span>UK Verify team</a> for help deciding and implementing your matching strategy.</p>
+<p class="rubric">Common matching difficulties</p>
+<p id="commondifficulties">You need a matching strategy because matching an identity to a record is often affected by problems such as:</p>
+<ul class="simple">
+<li>spelling mistakes</li>
+<li>transcription errors</li>
+<li>twins with very similar information</li>
+<li>incorrect or outdated information in your service’s data sources, for example, if someone has moved house or changed their last name</li>
+<li>inconsistent use of upper and lower case letters in names, for example McDonald, MacDonald, and Macdonald</li>
+<li>variations with special characters, for example the difference between an apostrophe and single quotation mark in O’Reilly</li>
+<li>the use of shortened names or nicknames for the same person, for example, William Smith, Bill Smith and David William Smith</li>
+<li>date transposition for birth date, for example 02/07/1962 and 07/02/1962 or typos such as 1989 and 1998</li>
+<li>phonetic spellings, for example if the data was collected in phone calls</li>
+<li>an individual removing diacritical marks from their data, for example inputting Günther as Gunther</li>
+</ul>
+<p>Matching can also be affected by changes to the data since it was collected. For example, if the schema for the datasource changes.</p>
+<p>Different identity providers will use different data sources to check an individual’s identity. Because of this, the data you receive from one identity provider through the GOV.UK Verify Hub may look different to data from another identity provider. For example, if an individual does not have a middle name, one identity provider might list it as &#8216;null&#8217; when another identity provider might leave the attribute blank.</p>
+<div class="section" id="decide-rules-for-matching-and-confidence-scores">
+<h2>Decide rules for matching and confidence scores<a class="headerlink" href="#decide-rules-for-matching-and-confidence-scores" title="Permalink to this headline">¶</a></h2>
+<p id="matchingrules">You should decide, and clearly document, what rules you will use for matching. For example, whether you will allow synonyms for first names such as William and Bill and how you will deal with <a class="reference internal" href="#commondifficulties"><span>common difficulties</span></a>.</p>
+<p>You should also decide which extra attributes to use to increase confidence in your matches. For example, passport number. You can then design your matching service to prompt the GOV.UK Verify Hub to request additional attributes from the identity provider.</p>
+<p>Your matching rules should aim to reduce the number of false positives and negatives. A false positive is where your matching service returns a match that is wrong. A false negative is where your matching service returns no match, but a record for the individual does exist in the datasource(s).</p>
+<p>You can minimise false positives by <a class="reference internal" href="preparedata.html#preparedata"><span>making sure your datasource(s) are clean and accurate before using them for matching</span></a>.</p>
+<p>You can minimise false negatives by thoroughly testing your matching strategy on your datasource(s), analysing the results, and iterating your matching rules.</p>
+<p class="rubric">Fuzzy matching</p>
+<p id="fuzzymatching">As well as looking for exact matches, you should consider looking for records that are an approximate match. The process for finding approximate matches is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Record_linkage">fuzzy or probabilistic matching</a>.</p>
+<p>Much like finding exact matches, you will need to decide the rules for this matching process. The more relaxed your rules, the more ‘fuzzy’ your matching. You’ll be more likely to receive false positives. The tighter your rules, the less ‘fuzzy’ your matching. You’ll be more likely to receive false negatives.</p>
+<p>However, if the risk of the wrong fuzzy match is low, you may decide to allow a fuzzy match with a low confidence score to access your service.</p>
+<p>Deterministic matching relies on comparing the exact data from the identity provider with an existing record to find a precise match; fuzzy or probabilistic matching instead looks at whether there is enough shared information to be considered a match.</p>
+<p>There are several fuzzy matching techniques you can use to search for matches, including:</p>
+<ul class="simple">
+<li>Levenshtein</li>
+<li>phonetic algorithms</li>
+</ul>
+<p><strong>Levenshtein</strong></p>
+<p id="levenshtein">It can also be useful to assess how much the record and data from the identity provider disagree. You can do this by measuring the number of changes that need to be made to a string for it to match with another. The number of changes is known as the edit or <a class="reference external" href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>.</p>
+<p>The higher the Levenshtein distance, the greater the difference between the 2 strings.</p>
+<p>For example, &#8216;Smith&#8217; and &#8216;Smithy&#8217; only requires one inserted character, <code class="docutils literal"><span class="pre">y</span></code> for it to match so it has a Levenshtein distance of 1. However, ‘Smithy’ and ‘Smithe’ has a Levenshtein distance of 2 as it requires the removal of one character <code class="docutils literal"><span class="pre">y</span></code> and the insertion of character <code class="docutils literal"><span class="pre">e</span></code>.</p>
+<p>If you want to reduce the risk of false positives, you might choose to restrict fuzzy matching to cases with a maximum Levenshtein distance or 2 or 3.</p>
+<p><strong>Phonetic algorithms</strong></p>
+<p id="phonetic">You can use phonetic algorithms such as <a class="reference external" href="https://en.wikipedia.org/wiki/Metaphone">Metaphone</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Soundex">Soundex</a> help to identify words or names that sound similar.</p>
+<p>These algorithms can help encode homophones in the same way so they can be matched by your matching service. For example, Metaphone transforms words with a &#8216;ck&#8217; sound to &#8216;k&#8217;.</p>
+<p>This can be particularly helpful if your data was collected through telephone calls with users. For example, if a user called Philip gave his information to a telephone operator who entered his first name as <code class="docutils literal"><span class="pre">Phillip</span></code>, phonetic algorithms would help you search for records matching <code class="docutils literal"><span class="pre">Philip</span></code> with a single <code class="docutils literal"><span class="pre">l</span></code>.</p>
+<p class="rubric">Confidence scores</p>
+<p id="confidencescores">You should assign a ‘score’ to indicate how confident you are in a match. You should aim to produce a single match with the highest confidence score.</p>
+<p>For example, a high confidence score could suggest first name, last name, date of birth, and address all match to a record in your local datastore(s).</p>
+<p>The risk of a mismatch to your service will affect the level of confidence required. For example, if your service is at high risk of identity fraud and uses LOA2, you will need a higher confidence in your matches than a service with a low risk of identity fraud.</p>
+<p>You should test your matching rules and confidence scores regularly and iterate them based on the results.</p>
+</div>
+<div class="section" id="matching-cycles">
+<h2>Matching cycles<a class="headerlink" href="#matching-cycles" title="Permalink to this headline">¶</a></h2>
+<p>The matching process consists of 3 matching cycles. The matching service should run each cycle in turn to attempt to match the user to the correct record in the local data source. Each matching cycle uses an increasing number of attributes from the identity provider to search for a match.</p>
+<p>If, after 3 cycles, there’s no match, you can decide if you want to create a new account for the user.</p>
+<p>The matching service uses limited information from the GOV.UK Verify Hub to run matching cycles. The limited information includes the persistent identifier (PID) and matching dataset.</p>
+<p class="rubric">PID and matching dataset</p>
+<p id="pidandmd">When an identity provider verifies a user’s identity, they assign a unique persistent identifier (PID) to that user. The PID is a unique identifier that refers to a user and the identity provider that verified the user’s identity. It’s a pseudo-random value that has no resemblance to any real information from a user, for example their email address or name.</p>
+<p>If a user verifies using multiple identity providers, that user will have multiple PIDs.</p>
+<p>The Matching Service Adapter will hash the PID to make it specific to each service (and meaningless to other services) before sending it on to the Local Matching Service.</p>
+<p><strong>Matching dataset</strong></p>
+<p>The matching dataset contains verified information about a user including their:</p>
+<ul class="simple">
+<li>name</li>
+<li>address</li>
+<li>date of birth</li>
+</ul>
+<p>It may also include additional data such as historical addresses and gender.</p>
+<p>You must not use the matching dataset for anything other than matching. If you do, you may be in violation of the <a class="reference external" href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/">General Data Protection Regulation</a>.</p>
+<p><strong>European identities and eIDAS</strong></p>
+<p>The <a class="reference external" href="https://ico.org.uk/for-organisations/guide-to-eidas/what-is-the-eidas-regulation/">eIDAS regulation</a>, coming into force in late 2018, says that European citizens must be able to use their national electronic IDs to access public services provided by another EU member state.</p>
+<p>In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services. The JSON you receive from the GOV.UK Verify Hub will look similar for a European identity, but will include:</p>
+<ul class="simple">
+<li>name</li>
+<li>date of birth</li>
+<li>a personal identifier or equivalent from the EU member state (the equivalent of the PID)</li>
+</ul>
+<p>It will not include any historical attributes.</p>
+<p>The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.</p>
+<p>The JSON will include an additional tag with a Latin equivalent if any names use non-Latin characters.</p>
+<p><strong>Unverified attributes</strong></p>
+<p>The identity provider may offer some unverified attributes to help you disambiguate between similar records. Any unverified attributes will be clearly labelled.</p>
+<p>An unverified attribute does not mean the identity is invalid. For example, it can be difficult to verify current addresses, especially if an individual has not lived at that address for very long. Verifying a previous address can be enough to establish identity.</p>
+<p>An unverified attribute will always be accompanied by a verified attribute of the same type. For example, an unverified current addressed and a verified historical address.</p>
+<p class="rubric" id="cycle0"><span id="matchingcycles"></span>Cycle 0</p>
+<p>Cycle 0 is also known as the PID match. It works when a user has previously verified their identity with the same identity provider.</p>
+<p>Cycle 0 matches the user’s hashed PID to an existing hashed PID in the local matching datastore(s) and returns a match.</p>
+<p class="rubric" id="cycle1">Cycle 1</p>
+<p>Cycle 1 is also known as the ‘matching dataset’ match. It works when Cycle 0 has failed to find a match and uses the matching dataset from the identity provider to check for possible matches.</p>
+<p>Your <a class="reference internal" href="buildmatchingservice.html#localmatchingservice"><span>Local Matching Service</span></a> can use the details in the matching dataset to attempt to find a match between the user and their existing record. Your service’s matching rules should specify which details to use. For example, you should use historical verified data if offered by the identity provider and then use unverified historical data to tell the difference between candidate records.</p>
+<p>If the Local Matching Service finds a single match, it creates a correlation between the hashed PID and the existing record in the local datastore(s).</p>
+<p>The hashed PID is then written to the local matching datastore(s) so the next time the user attempts to use the service with the same identity provider, their record will be found with a Cycle 0 match.</p>
+<p>Stop the matching process if Cycle 1:</p>
+<ul class="simple">
+<li>fails to find a match and no additional attributes are available</li>
+<li>finds multiple matches and no additional attributes are available</li>
+</ul>
+<p>If Cycle 1 finds multiple matches and additional matches are available, continue to the next cycle.</p>
+<p class="rubric" id="cycle2">Cycle 2</p>
+<p>Cycle 2 matching uses additional attributes related to identity from another source such as a credit referencing agency or other government department to help the matching process. For example, an additional attribute could be whether the user qualifies for a Blue Badge.</p>
+<p>GOV.UK Verify does not currently support Cycle 2 matching. No government connecting service has needed Cycle 2 matching so far. If you think your service needs Cycle 2 matching, <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">contact the GOV<span>&#46;</span>UK Verify team</a>.</p>
+<p class="rubric" id="cycle3">Cycle 3</p>
+<p>If Cycle 1 finds more than 1 potential match, Cycle 3 asks the user for some additional information, for example driving licence number. The GOV.UK Verify Hub collects the additional information and sends it to the matching service. The Local Matching Service then uses it to refine the match. When the Local Matching Service finds a match, it saves the hashed PID in the matching datastore(s).</p>
+<p>This cycle is defined in the government service policy and may not be needed for all matches. You should define the information the hub collects and how to use it for matching. For example, you decide how many pieces of additional information to request. If you request 2 pieces of information and the user can only provide 1 of them, your matching rules specify whether to match this user.</p>
+<p>Use this cycle to enhance cycle 1 and not as an alternative to cycle 1.</p>
+<p>Although it might seem more productive to run Cycle 3 straight away with the greatest number of attributes, it’s often less effective. Using Cycle 3 in place of earlier cycles can result in the Local Matching Service retrieving fewer possible matching records and incorrect records if one or more of the input attributes are incorrect.</p>
+</div>
+<div class="section" id="matching-approach">
+<h2>Matching approach<a class="headerlink" href="#matching-approach" title="Permalink to this headline">¶</a></h2>
+<p>One of the most effective matching approaches is to start with a wide search to make sure that any relevant record is found. If no records return, you can:</p>
+<ul class="simple">
+<li>widen the search by using fewer attributes to find candidate records</li>
+<li>do multiple searches with more attributes but smaller query clusters</li>
+</ul>
+<p>To run multiple searches you could break down a query with first name, surname and date of birth and run a series of searches with just 2 of those attributes.</p>
+<p>Once you have a number of possible matching records, run further checks with additional attributes to deduplicate until you are confident in the match.</p>
+<div class="section" id="first-search-with-last-name-and-date-of-birth">
+<h3>First search with last name and date of birth<a class="headerlink" href="#first-search-with-last-name-and-date-of-birth" title="Permalink to this headline">¶</a></h3>
+<p>For example, start with a first search for last name and date of birth. You may find clusters around 1 January and 1 June because children, immigrants and other people without official identity documents are often assigned these dates of birth.</p>
+<p>If a no match is returned, then the search should be run using any verified historical last name attributes if offered by the identity provider.</p>
+<p>You can also try synonym matching against forename and last name combinations such as transposing last name and forename. This can help match users who may use shortened versions of their name, a nickname, or their middle name rather than their legal first name. For example, a David Michael Smith might only use that name on his passport. He might use Michael Smith for other purposes, but refer to himself mostly as Mike Smith.</p>
+</div>
+<div class="section" id="filter-candidates-with-postcode">
+<h3>Filter candidates with postcode<a class="headerlink" href="#filter-candidates-with-postcode" title="Permalink to this headline">¶</a></h3>
+<p>If the search returns multiple possible records, use the postcode to remove false positives. A verified postcode might not be the current postcode of a user, but is more valuable for matching than an unverified current postcode.
+If a matching dataset does not contain any address, it is likely to be from an EU member state.</p>
+<p>If you cannot find a match with the postcode, you can:</p>
+<ul class="simple">
+<li>ignore it, try to get sufficient matches on another attributes and move to Cycle 3 for disambiguation</li>
+<li>ask the user to provided further attributes to be able to use Cycle 3</li>
+</ul>
+<p>If you choose to request other attributes from the user, you should consider how best to capture the information. For example, whether to ask a user to return online and provide more information or if someone from your organisation can collect the information in a telephone call.</p>
+</div>
+<div class="section" id="build-confidence-in-a-single-record">
+<h3>Build confidence in a single record<a class="headerlink" href="#build-confidence-in-a-single-record" title="Permalink to this headline">¶</a></h3>
+<p>Once the matching service returns a single record, you should aim to increase your confidence score in the match.</p>
+<p>You should first check for an exact match with first name, last name, date of birth and postcode.</p>
+<p>If no match, transpose first name and any middle names. You may still need to use additional attributes to increase confidence in the match.</p>
+<p>If no match with transposition, try looking for an exact match with unverified first name(s).</p>
+<p>If no match with unverified first name(s), try using a list of synonyms. These lists will contain common synonyms, for example, William and Bill.</p>
+<p>If no match, you may decide to apply your fuzzy matching rules or ask a member of your organisation to contact the user for more attributes.</p>
+</div>
+<div class="section" id="audit-and-testing">
+<h3>Audit and testing<a class="headerlink" href="#audit-and-testing" title="Permalink to this headline">¶</a></h3>
+<p>You should regularly audit matching requests and their outcome to help your refine your matching strategy and iterate your matching service.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="preparedata.html" class="btn btn-neutral float-right" title="Prepare local datasources" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="evaluatedata.html" class="btn btn-neutral" title="Evaluate datasources" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

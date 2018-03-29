@@ -102,8 +102,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
@@ -163,11 +162,11 @@
 <img alt="Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter (MSA). Communication with the hub is via SAML with PKI. The MSA is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture." src="../../_images/arch_overview.svg" /><p class="caption"><span class="caption-text">GOV.UK Verify architecture</span></p>
 </div>
 </td>
-<td><p class="first">For more details, see the diagrams:</p>
+<td><p class="first">For more details, see:</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../saml/samlWorks.html#samlflow-diagram"><span>SAML message flow</span></a></li>
-<li><a class="reference internal" href="../ms/msWorks.html#ms-matchcyles-diagram"><span>matching cycles</span></a></li>
-<li><a class="reference internal" href="../ms/msCua.html#ms-cua-diagram"><span>user account creation</span></a></li>
+<li><a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a></li>
+<li><a class="reference internal" href="../matching/matchingverify.html#matchingverify"><span>matching</span></a></li>
+<li><a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>user account creation</span></a></li>
 </ul>
 </td>
 </tr>
@@ -179,7 +178,7 @@
 <div><p>The GOV.UK Verify hub is the infrastructure that manages interactions between users, government services, identity providers, and matching services for the purpose of authenticating a user who wants to use a government service.</p>
 <p>The hub is at the centre of the GOV.UK Verify federation, providing a clear divide between identity providers and government services. This means your service has to integrate with the GOV.UK Verify hub only. It doesn&#8217;t have to integrate with several identity providers.</p>
 <p>The hub is stateless, which means that it doesn&#8217;t store any part of the message exchange any longer than a session. Also, it ensures privacy as it doesn&#8217;t hold any identity data.</p>
-<p>The hub ensures that the required <span class="xref std std-ref">level of assurance</span> is observed.</p>
+<p>The hub ensures that the required level of assurance is observed.</p>
 </div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -207,19 +206,19 @@
 </div>
 <p><strong>Matching Service</strong></p>
 <blockquote>
-<div>The function of finding a match between a user’s verified identity and a record in a government service’s data sources. The matching service is composed of the Matching Service Adapter (MSA) and the local matching service.</div></blockquote>
+<div>The function of finding a match between a user’s verified identity and a record in a government service’s data sources. The <a class="reference internal" href="../matching/buildmatchingservice.html#buildmatchingservice"><span>matching service</span></a> is composed of the Matching Service Adapter (MSA) and the local matching service.</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Matching Service Adapter (MSA)</strong></p>
 <blockquote>
-<div>The <a class="reference internal" href="../msa/msa.html#msa"><span>MSA</span></a> is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa.</div></blockquote>
+<div>The <a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Matching Service Adapter</span></a> is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa.</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Local matching service</strong></p>
+<p><strong>Local Matching Service</strong></p>
 <blockquote>
-<div>A local matching service finds a match between a user’s assured identity and a record in the government service&#8217;s data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (for example name, address, date of birth) against the service’s records.</div></blockquote>
+<div>A <a class="reference internal" href="../matching/buildmatchingservice.html#localmatchingservice"><span>Local Matching Service</span></a> finds a match between a user’s assured identity and a record in the government service&#8217;s data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (for example name, address, date of birth) against the service’s records.</div></blockquote>
 <p><strong>Security Assertion Markup Language (SAML)</strong></p>
 <blockquote>
 <div><p><a class="reference internal" href="../saml/saml.html#saml"><span>SAML</span></a> is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON.</p>
@@ -274,7 +273,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

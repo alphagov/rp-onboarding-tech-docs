@@ -103,8 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ms/ms.html">Local Matching Service</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../msa/msa.html">Matching Service Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matching/matching.html">Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="env.html">GOV.UK Verify environments</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="envRequestform.html">Request access to environments</a></li>
@@ -180,8 +179,8 @@
 <img alt="Image showing, on one side, the test government service consisting of the government service, Matching Service Adapter, local matching service and local matching datastore.  On the other side, the integration environment consisting of the GOV.UK Verify hub and test identity providers. The test identity providers contain test users. Step 1: create test users. Step 2: End-to-end testing where you test authentication success and failure, and match or no-match scenarios. Step 3: Tear down where you delete test users." src="../../_images/envEndToEndTests.svg" /><p class="caption"><span class="caption-text">End-to-end testing in the integration environment</span></p>
 </div>
 <div class="section" id="setup-for-end-to-end-testing">
-<h2>Setup for end-to-end testing<a class="headerlink" href="#setup-for-end-to-end-testing" title="Permalink to this headline">¶</a></h2>
-<p>The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during matching. Then, in the user administration application programming interface (API), create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.</p>
+<span id="setupetoe"></span><h2>Setup for end-to-end testing<a class="headerlink" href="#setup-for-end-to-end-testing" title="Permalink to this headline">¶</a></h2>
+<p>The integration environment is not accredited to use real user data, and it has no links to real identity providers. Carry out business analysis to identify user identities that cause potential problem scenarios during <a class="reference internal" href="../matching/matching.html#matching"><span>matching</span></a>. Then, in the user administration application programming interface (API), create test users that will test these scenarios. You must also add the test users to your local matching datastore in the integration environment.</p>
 <p>A test identity provider contains:</p>
 <ul class="simple">
 <li>the user administration API – you should have submitted your credentials when you <a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/env/envRequestform.html">requested access to the environment</a></li>
@@ -333,7 +332,7 @@
 <ul class="simple">
 <li>authentication success and authentication failure</li>
 <li>match and no-match</li>
-<li>all the possible outcomes of your matching service, including <a class="reference internal" href="../ms/msWorks.html#ms-mc3"><span>cycle 3</span></a> and <a class="reference internal" href="../ms/msCua.html#ms-cua"><span>user account creation</span></a>, if implemented</li>
+<li>all the possible outcomes of your matching service, including <a class="reference internal" href="../matching/matchingstrategy.html#cycle3"><span>Cycle 3</span></a> and <a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>user account creation</span></a>, if implemented</li>
 </ul>
 </div>
 <div class="section" id="tear-down">
@@ -387,7 +386,7 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  false
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
