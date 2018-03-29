@@ -84,6 +84,6 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
  * SAML response signed by the GOV.UK Verify Hub
  * assertion signed by the Matching Service Adapter and encrypted for the government service
 
- .. note:: The GOV.UK Verify Hub can be configured so that SAML responses are not signed, but this is not recommended.
+ .. note:: The GOV.UK Verify Hub signs SAML responses by default. If you do not want the Hub to sign responses, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_. for more information. 
 
 9. The government service gets the user's record from the datastore. This allows the government service to interact with the user.
