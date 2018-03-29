@@ -1,78 +1,51 @@
-.. _msBuild:
+.. _buildmatchingservice:
 
-.. rubric:: Build a local matching service
+Build a matching service
+======================================
 
-.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for building a matching service. <buildmatchingservice>`.
+A matching service is is made up of:
 
-You must build a local matching service and host it on your own infrastructure.
+- Matching Service Adapter (MSA) provided by GOV.UK Verify
+- Local Matching Service built by you
 
-Even if your service doesn’t need to perform matching, you must still build a local matching service because it also:
+You must host both the MSA and the Local Matching Service on your own infrastructure.
 
-* creates the :ref:`hashed persistent identifier <gloss_hashpid>`
-* creates and signs the final assertion sent to your service - for more information, see :ref:`samlWorks`
-* acts as the :ref:`trust anchor <gloss_trustanchor>` for your service because the final assertion is created in your service's security domain
-
-As well as following this guidance, you can refer to the `example local matching service <https://github.com/alphagov/verify-local-matching-service-example>`_ built by the Verify team. It uses a simplified version of a matching strategy from DWP.
-
-You can also use a `matching service test tool built by Verify <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ to make sure your local matching service can:
-
-* handle matching datasets
-* find and match records correctly
-* handle matching failures
-
-.. _ms_strat:
-
-.. rubric:: Define your matching strategy
-
-A matching strategy defines the most efficient and effective way of matching assured identities to your service records. The strategy depends on the quality and completeness of available data sources and the types of evidence users can provide.
-
-A local matching service carries out a risk-based match to find the local record. Exact matching of identity data is rarely possible for many reasons:
-
-* transcription errors
-* spelling mistakes
-* incorrect data in your service's data sources, for example, if someone has moved house but not informed the service
-* use of shortened names or nicknames which refer to the same person, for example, William Smith, Bill Smith and David William Smith
-
-Your local matching service must be able to handle these issues. You may decide to:
-
-* widen the initial query to make sure that relevant records are not missed, then narrow the query on the results to make sure false positives are not returned; for example, search for last name, date of birth, and postcode, then run further matching on the results and apply a confidence score
-* try synonym matching against combinations of first name and last name, possibly transposing them to maximise the chances of finding a match
-
-.. rubric:: Matching considerations
-
-When you define your matching strategy you need to:
-
-* prepare for matching with customer data aggregation and data cleansing
-* define the confidence level required for a successful match and how to score the confidence level, for example:
-
-  * 100% match confidence means that all elements from the matching dataset fully match the local record
-  * 80% match confidence might mean that the first name, last name, and date of birth match, but the address is showing a mismatch
+.. figure:: ../ms/matchingservice.svg
+     :alt: Diagram showing that a matching service is composed of a MSA and a local matching service.
 
 
-* define the rules for successful matching, which may include what to do with:
+Matching Service Adapter
+--------------------------------------
 
-  * synonyms for first names, for example, **William** and **Bill**
-  * transpositions of multiple part names, for example, **Anna-Marie**, **Jane** and **Anna, Marie-Jane**
-  * transpositions of errors of day and month in the date of birth, for example, **04/10/78** and **10/04/78**
+The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.
 
-* define the level of 'fuzzy matching' that is acceptable when an exact match is not found – this allows a match that, although not 100%, is above a service-defined threshold
-* manage the risk of incorrect matching by defining what happens when:
+Follow the :ref:`documentation to install, configure and test the Matching Service Adapter <msaUse>`.
 
-  * there's no match – you can :ref:`create a new account <ms_cua>` for the user
-  * there are multiple matches – you can implement :ref:`matching cycle 3 <ms_mc3>`
+.. _localmatchingservice:
 
-* analyse your data sources in the light of your matching strategy, so you can test and refine your strategy before launching alpha or beta services
+Local Matching Service
+--------------------------------------
 
-.. note:: We recommend that you discuss your matching strategy with your engagement lead. They can organise technical support if needed.
+A Local Matching Service helps you to find a match between a user’s verified identity and a record in your existing database(s). You must build your own Local Matching Service and host it on your own infrastructure.
 
- .. rubric:: Respond to JSON matching requests
+As well as following this guidance, you can refer to the `example Local Matching Service built by the GOV.UK Verify team <https://github.com/alphagov/verify-local-matching-service-example>`_. It uses a `simplified version of a matching strategy from the Department of Work and Pensions (DWP) <https://github.com/alphagov/verify-local-matching-service-example/blob/master/docs/architecture-decisions/0003-we-will-follow-dwps-proposed-strategy.org>`_.
 
-Your service must respond to JSON matching requests from the matching service adapter (MSA). The MSA makes requests to the URLs specified in the :ref:`YAML configuration file <yamlfile>`:
+You can also use a `matching service test tool built by the GOV.UK Verify team <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ to make sure your Local Matching Service can:
+
+- handle matching datasets
+- find and match records correctly
+- handle matching failures
+
+.. _RespondJSONmr:
+
+.. rubric:: Respond to JSON matching requests
+
+Your service must respond to JSON matching requests from the Matching Service Adapter (MSA). The MSA makes requests to the URLs specified in the :ref:`YAML configuration file <yamlfile>`:
 
 * ``localMatchingService:`` ``matchUrl:``
-* ``localMatchingService:`` ``accountCreationUrl:`` (if you're :ref:`creating new user accounts <ms_cua>` when a match is not found)
+* ``localMatchingService:`` ``accountCreationUrl:`` (if you're :ref:`creating new user accounts <createnewaccounts>` when a match is not found)
 
-The MSA sends one matching request for both cycle 0 and cycle 1 to your local matching service. Below is a formatted example:
+The MSA sends one matching request for both Cycle 0 and Cycle 1 to your local matching service. Below is a formatted example:
 
 ::
 
@@ -222,10 +195,12 @@ If you're using cycle 3 and your local matching service returned a ``no-match`` 
 
 Your local matching service sends either a ``match`` or a ``no-match`` response to the MSA. This response corresponds to step 6 in the :ref:`SAML message flow <samlWorks>`.
 
-If no match is found on cycles 0, 1 and 3, you can :ref:`create a new account <ms_cua>` for the user.
+If no match is found on cycles 0, 1 and 3, you can :ref:`create a new account<createnewaccounts>` for the user.
 
 
 .. rubric:: Use a JSON schema
+
+.. _JSONschema:
 
 Below is a `JSON schema <http://json-schema.org/>`_ for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service.
 

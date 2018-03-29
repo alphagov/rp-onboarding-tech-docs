@@ -3,7 +3,7 @@
 SAML
 ====
 
-:ref:`Security Assertion Markup Language <glosssaml>` (SAML) is an open standard for securely exchanging information about identities.
+Security Assertion Markup Language (SAML) is an open standard for securely exchanging information about identities.
 
 Your service must use a system to send SAML messages to the Verify Hub and receive SAML responses in return. This system is known as a Service Provider.
 
@@ -13,7 +13,7 @@ You can either:
 - configure an off-the-shelf product to use as a Service Provider
 - build your own Service Provider
 
-Whatever option you choose, you must :ref:`run SAML compliance tests <samlComplianceTool>` to check you can send and receive SAML messages successfully. 
+Whatever option you choose, you must :ref:`run SAML compliance tests <samlComplianceTool>` to check you can send and receive SAML messages successfully.
 
 .. _saml_docs:
 
@@ -31,7 +31,7 @@ You must host the Verify Service Provider on your own infrastructure. You can co
 To use the Verify Service Provider, you need to have:
 
 - Java 8
-- a working :ref:`Matching Service Adapter <msa>`
+- a working :ref:`Matching Service Adapter <msaUse>`
 
 .. rubric:: Use or build a different Service Provider
 

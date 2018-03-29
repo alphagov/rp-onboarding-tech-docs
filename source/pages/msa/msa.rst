@@ -1,11 +1,12 @@
 .. _msa:
 
-Matching Service Adapter
-===========================
+..rubric:: Matching Service Adapter
+
+.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for the Matching Service Adapter. <matchingserviceadapter>`.
 
 The :ref:`Matching Service Adapter <gloss_msa>` (MSA) is a software tool supplied free of charge by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub.
 
-A matching service is composed of the MSA and a :ref:`local matching service <ms>`. Government services host their matching service within their security domain. 
+A matching service is composed of the MSA and a :ref:`local matching service <ms>`. Government services host their matching service within their security domain.
 
  .. csv-table::
    :widths: 50, 50
@@ -42,13 +43,3 @@ To use the MSA, you need to:
 You will then be able to run :ref:`SAML compliance tests between the hub and your matching service <samlCThubMSA>`.
 
 For more information, see :ref:`steps`.
-
-
-.. toctree::
-   :hidden:
-
-   msaUse
-
-
-
-   

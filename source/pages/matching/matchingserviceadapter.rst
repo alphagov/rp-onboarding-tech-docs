@@ -1,6 +1,15 @@
-..rubric:: Install the Matching Service Adapter
+.. _msaUse:
 
-.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for the Matching Service Adapter. <msaUse>`.
+.. _msa_install_msa:
+
+Install and configure the Matching Service Adapter
+==============================================================
+
+The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.
+
+The MSA handles complex matching requirements. We recommend that you use the MSA. If you do not want to use the MSA, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to discuss your alternatives.
+
+You need to host the MSA so the GOV.UK Verify Hub can make requests to it.
 
 **Prerequisites**
 
@@ -12,7 +21,7 @@ To run the Matching Service Adapter (MSA) you need:
 1. `Download the latest release of the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_. It contains:
 
  * a JAR (Java Archive) file
- * :ref:`truststore <gloss_truststore>` files for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_hub.ts`` and ``test_ida_metadata.ts``
+ * truststore files for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_hub.ts`` and ``test_ida_metadata.ts``
  * truststore files for the production environment - ``prod_ida_hub.ts`` and ``prod_ida_metadata.ts``
  * a sample YAML configuration file for non-production environments  - ``test-config.yml``
  * a sample YAML configuration file for the production environment  - ``prod-config.yml``
@@ -29,12 +38,16 @@ To run the Matching Service Adapter (MSA) you need:
  where ``[path to truststore directory...]`` is the location of the truststore – you specify this when you configure the MSA (see the ``trustStore:`` fields in the :ref:`YAML configuration file <yamlfile>`).
 
 
-.. rubric:: Versioning
+Versioning
+-----------
 
 Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
 
 
-.. rubric::  Obtain certificates for your Matching Service Adapter
+.. _msa_certs:
+
+Obtain certificates for your Matching Service Adapter
+---------------------------------------------------------------------------------
 
 Your MSA needs a signing certificate and an encryption certificate. You must use different certificates for each environment.
 
@@ -44,9 +57,13 @@ To obtain certificates:
 * :ref:`request certificates <pkiRequestCert>` from the IDAP certificate authority for the integration and production environments
 
 
-.. rubric:: Configure the Matching Service Adapter
+.. _ConfigureMSA:
 
-.. rubric:: Create a YAML configuration file
+Configure the Matching Service Adapter
+---------------------------------------------------------------------------------
+
+Create a YAML configuration file
+---------------------------------------------------------------------------------
 
 When you :ref:`start the MSA <msa_test_msa>`, you need to supply a YAML configuration file.
 
@@ -60,6 +77,8 @@ The MSA zip file contains two sample YAML configuration files:
 
 
 Below is the ``test-config.yml`` file:
+
+.. _yamlfile:
 
 .. code-block:: yaml
 
@@ -158,31 +177,38 @@ Below is the ``test-config.yml`` file:
     #      logFormat: '%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx'
 
 
-.. rubric:: Adapt the YAML configuration file
+.. _msa_adapt_YAML:
+
+Adapt the YAML configuration file
+------------------------------------
 
 Make the following changes to the YAML configuration file according to the environment where you want to use the MSA. Variations are indicated for the SAML compliance tool and integration and production environments.
 
-.. rubric:: In the field ``server:``
+In the field ``server:``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Enter port numbers for the server application (``applicationConnectors``) and admin ports (``adminConnectors``).
 
  .. note:: If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don't trust the network between the SSL termination endpoint and the MSA, then specify ``https`` rather than ``http`` for the type of connection. For more information, see the guidance in the `DropWizard configuration manual <http://dropwizard.github.io/dropwizard/1.0.5/docs/manual/configuration.html#https>`_.
 
-.. rubric:: In the field ``matchingServiceAdapter:``
+In the field ``matchingServiceAdapter:``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2. Enter the :ref:`entityID <gloss_entityID>` for the MSA in ``entityId``. This should reflect the name of your service, for example ``https://<service name>/MSA``
+2. Enter the entityID for the MSA in ``entityId``. This should reflect the name of your service, for example ``https://<service name>/MSA``
 
   .. note:: It's good practice to use the MSA's URI (where the hub will send matching requests) as its entityID, but this isn't mandatory.
 
 3. Enter the URI for your MSA in ``externalUrl:``
 
-.. rubric:: In the field ``localMatchingService:``
+In the field ``localMatchingService:``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 4. Enter the URI for your local matching service in ``matchUrl:``
 
-5. If you're creating new user accounts when a match isn't found (see :ref:`ms_cua`), enter the user account creation URI in ``accountCreationUrl:``
+5. If you're creating new user accounts when a match isn't found (see :ref:`create new user accounts <createnewaccounts>`), enter the user account creation URI in ``accountCreationUrl:``
 
-.. rubric:: In the field ``signingKeys:``
+In the field ``signingKeys:``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 6. Enter the paths of the primary SAML signing keys and certificates for your MSA in ``primary:``
 
@@ -193,11 +219,13 @@ Make the following changes to the YAML configuration file according to the envir
  .. note:: To convert a private key to PKCS#8 DER format, run the following command: ``openssl pkcs8 -topk8 -nocrypt -in server.key -out server.pk8 -outform DER``
 
 
-.. rubric:: In the field ``encryptionKeys:``
+In the field ``encryptionKeys:``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 7. Enter the paths and names of the encryption keys and certificates for your MSA in ``encryptionKeys``.  The names are used to identify the certificates in the metadata so should be meaningful and unique, for example, ``signing_1`` and ``encryption_1``.
 
-.. rubric:: In the field ``hub:``
+In the field ``hub:``
+^^^^^^^^^^^^^^^^^^^^^
 
 8. In ``trustStore:`` ``path:`` , specify the path to your hub truststore file for the appropriate environment:
 
@@ -205,7 +233,8 @@ Make the following changes to the YAML configuration file according to the envir
 
   * for the production environment, use the provided ``prod_ida_hub.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
-.. rubric:: In the field ``metadata:``
+In the field ``metadata:``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 9. Edit the ``url:`` value and specify the location where the MSA accesses the SAML metadata:
 
@@ -221,7 +250,11 @@ Make the following changes to the YAML configuration file according to the envir
 
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
-.. rubric::  Start the Matching Service Adapter
+
+.. _msa_test_msa:
+
+Start the Matching Service Adapter
+---------------------------------------------------------------------------------
 
 To start using the MSA, run the following command, supplying the path to your configuration file:
 
@@ -229,7 +262,7 @@ To start using the MSA, run the following command, supplying the path to your co
 
  java -jar [filename].jar server [path to configuration file].yml
 
-You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <msBuild>`, you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MSA posts to your service.
+You can now run :ref:`SAML compliance tests between the hub and your MSA <samlCThubMSA>`. To help :ref:`build your local matching service <buildmatchingservice>`, you can use the :ref:`example of the JSON request <RespondJSONmr>` that the MSA posts to your service.
 
 **Signature verification failed**
 
@@ -239,7 +272,8 @@ The Verify hub metadata contains multiple signing certificates, but only one pri
 
 The MSA checks each of the certificates in turn. The MSA will return ‘Signature verification failed’ if it checks an unused certificate. It will then continue to check each certificate until it finds a valid certificate.
 
-.. rubric::  Monitoring
+Monitoring
+---------------------------------------------------------------------------------
 
 When the MSA is installed in your :ref:`integration or production environment <env>`, health checks run every 60 seconds to ensure that the MSA is functioning correctly. They test:
 
@@ -248,16 +282,19 @@ When the MSA is installed in your :ref:`integration or production environment <e
 * that the hub accepts the MSA signature
 
 
-.. rubric::  Configure HTTPS Proxies
+Configure HTTPS Proxies
+---------------------------------------------------------------------------------
 
 The MSA supports HTTP and HTTPS proxies configured by Java properties.
 
-For information on configuring HTTPS proxies, see `http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html <http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html>`_.
+For information on configuring HTTPS proxies, refer to the `Java documentation <http://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html>`_.
 
 
-.. rubric::  Secure your Matching Service Adapter
+Secure your Matching Service Adapter
+---------------------------------------------------------------------------------
 
-.. rubric:: Matching Service Adapter TLS certificates
+Matching Service Adapter TLS certificates
+-------------------------------------------
 
 The table below shows the root certificate authorities that GOV.UK Verify trusts for HTTPS connections to your matching service in the :ref:`integration and production environments <env>`.
 
@@ -278,7 +315,8 @@ If you want to use a root certificate authority for your matching service that i
 When you raise a ticket, indicate the chain of trust with your SSL/TLS certificate. You'll also need the chain of trust when you configure your server.
 
 
-.. rubric:: Connect your Matching Service Adapter to the internet securely
+Connect your Matching Service Adapter to the internet securely
+-----------------------------------------------------------------
 
 Your MSA must only respond to matching requests from the GOV.UK Verify hub, otherwise there’s a risk of user data being compromised.
 
