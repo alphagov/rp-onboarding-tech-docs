@@ -46,9 +46,6 @@ If applicable to your service, you’ll need to provide:
 - `Cycle 3 attributes <http://alphagov.github.io/rp-onboarding-tech-docs/pages/ms/msWorks.html?highlight=cycle#ms-mc3>`_, for example driving licence or passport number
 - `‘New User’ account <http://alphagov.github.io/rp-onboarding-tech-docs/pages/ms/msWorks.html?highlight=cycle#ms-mc3>`_ attributes, for example first name, middle name, surname, date of birth, current address
 
-For Integration environments, you’ll also need to provide the following in addition to the above:
-
-- an IP address for your Matching Service Adapter and test device browser
-- a username and 8-character password (to manage the test user data)
+For Integration environments, you’ll also need to provide a username and password to manage the test user data.
 
 `Submit form to request an environment. <https://verify-environment-access.cloudapps.digital/>`_
