@@ -42,6 +42,10 @@ For open use
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 | verify-hub_                           | A system of microservices to manage interactions between users, government services, identity providers, and matching services |
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-stub-idp_                      | A stub Identity Provider and stub EU Country used for testing GOV.UK Verify and eIDAS integration.                             |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-test-rp_                       | A stub Relying Party used when testing the GOV.UK Verify Hub.                                                                  |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 .. _passport-verify-stub-relying-party: https://github.com/alphagov/passport-verify-stub-relying-party
 .. _passport-verify: https://github.com/alphagov/passport-verify
@@ -50,25 +54,30 @@ For open use
 .. _verify-service-provider: https://github.com/alphagov/verify-service-provider
 .. _verify-stub-matching-service: https://github.com/alphagov/verify-stub-matching-service
 .. _verify-hub: https://github.com/alphagov/verify-hub
+.. _verify-stub-idp: https://github.com/alphagov/verify-stub-idp
+.. _verify-test-rp: https://github.com/alphagov/verify-test-rp
 
 **Libraries**
 
-+--------------------------+----------------------------------------------------------------------------------------+
-| Component                | Description                                                                            |
-+==========================+========================================================================================+
-| dropwizard-logstash_     | Dropwizard extension that supports logstash format with various appenders              |
-+--------------------------+----------------------------------------------------------------------------------------+
-| dropwizard-jade_         | Dropwizard extension to use Jade templating engine in Views used by Verify code        |
-+--------------------------+----------------------------------------------------------------------------------------+
-| dropwizard-infinispan_   | Dropwizard bundle and configuration for Infinispan                                     |
-+--------------------------+----------------------------------------------------------------------------------------+
-| eager-dropwizard-guice_  | Dropwizard-guice library                                                               |
-+--------------------------+----------------------------------------------------------------------------------------+
++----------------------------+----------------------------------------------------------------------------------------------------------------+
+| Component                  | Description                                                                                                    |
++============================+================================================================================================================+
+| dropwizard-logstash_       | Dropwizard extension that supports logstash format with various appenders                                      |
++----------------------------+----------------------------------------------------------------------------------------------------------------+
+| dropwizard-jade_           | Dropwizard extension to use Jade templating engine in Views used by Verify code                                |
++----------------------------+----------------------------------------------------------------------------------------------------------------+
+| dropwizard-infinispan_     | Dropwizard bundle and configuration for Infinispan                                                             |
++----------------------------+----------------------------------------------------------------------------------------------------------------+
+| eager-dropwizard-guice_    | Dropwizard-guice library                                                                                       |
++----------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-metadata-generator_ | Produces unsigned SAML metadata that can be used to describe the entities within the GOV.UK Verify federation. |
++----------------------------+----------------------------------------------------------------------------------------------------------------+
 
 .. _dropwizard-logstash: https://github.com/alphagov/dropwizard-logstash
 .. _dropwizard-jade: https://github.com/alphagov/dropwizard-jade
 .. _dropwizard-infinispan: https://github.com/alphagov/dropwizard-infinispan
 .. _eager-dropwizard-guice: https://github.com/alphagov/eager-dropwizard-guice
+.. _verify-metadata-generator: https://github.com/alphagov/verify-metadata-generator
 
 For information only
 =====================
