@@ -70,14 +70,11 @@ For open use
 +----------------------------+----------------------------------------------------------------------------------------------------------------+
 | eager-dropwizard-guice_    | Dropwizard-guice library                                                                                       |
 +----------------------------+----------------------------------------------------------------------------------------------------------------+
-| verify-metadata-generator_ | Produces unsigned SAML metadata that can be used to describe the entities within the GOV.UK Verify federation. |
-+----------------------------+----------------------------------------------------------------------------------------------------------------+
 
 .. _dropwizard-logstash: https://github.com/alphagov/dropwizard-logstash
 .. _dropwizard-jade: https://github.com/alphagov/dropwizard-jade
 .. _dropwizard-infinispan: https://github.com/alphagov/dropwizard-infinispan
 .. _eager-dropwizard-guice: https://github.com/alphagov/eager-dropwizard-guice
-.. _verify-metadata-generator: https://github.com/alphagov/verify-metadata-generator
 
 For information only
 =====================
@@ -127,21 +124,23 @@ The code listed below is provided for informational purposes only and not yet in
 
 **Libraries**
 
-+--------------------------------+-------------------------------------------------------------------------------------+
-| Component                      | Description                                                                         |
-+================================+=====================================================================================+
-| verify-test-utils_             | Libraries to help write Java Unit and Integration tests                             |
-+--------------------------------+-------------------------------------------------------------------------------------+
-| verify-utils-libs_             | Libraries used for REST, security and common utilities                              |
-+--------------------------------+-------------------------------------------------------------------------------------+
-| verify-dev-pki_                | Contains keys and certificates for Verify integration tests                         |
-+--------------------------------+-------------------------------------------------------------------------------------+
-| verify-stub-idp-saml_          | SAML library for a dummy Identity Provider IDP                                      |
-+--------------------------------+-------------------------------------------------------------------------------------+
-| verify-shibboleth-sp-example_  | An example configuration for a Shibboleth SP instance that works with Verify        |
-+--------------------------------+-------------------------------------------------------------------------------------+
-| verify-dropwizard-saml_        | Library for providing a SAML configuration object                                   |
-+--------------------------------+-------------------------------------------------------------------------------------+
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| Component                      | Description                                                                                                    |
++================================+================================================================================================================+
+| verify-test-utils_             | Libraries to help write Java Unit and Integration tests                                                        |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-utils-libs_             | Libraries used for REST, security and common utilities                                                         |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-dev-pki_                | Contains keys and certificates for Verify integration tests                                                    |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-stub-idp-saml_          | SAML library for a dummy Identity Provider IDP                                                                 |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-shibboleth-sp-example_  | An example configuration for a Shibboleth SP instance that works with Verify                                   |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-dropwizard-saml_        | Library for providing a SAML configuration object                                                              |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
+| verify-metadata-generator_     | Produces unsigned SAML metadata that can be used to describe the entities within the GOV.UK Verify federation. |
++--------------------------------+----------------------------------------------------------------------------------------------------------------+
 
 .. _verify-test-utils: https://github.com/alphagov/verify-test-utils
 .. _verify-utils-libs: https://github.com/alphagov/verify-utils-libs
@@ -149,3 +148,4 @@ The code listed below is provided for informational purposes only and not yet in
 .. _verify-stub-idp-saml: https://github.com/alphagov/verify-stub-idp-saml
 .. _verify-shibboleth-sp-example: https://github.com/alphagov/verify-shibboleth-sp-example
 .. _verify-dropwizard-saml: https://github.com/alphagov/verify-dropwizard-saml
+.. _verify-metadata-generator: https://github.com/alphagov/verify-metadata-generator
