@@ -1,25 +1,32 @@
 .. _index:
 
-About this guide
-=============================================
+GOV.UK Verify technical documentation
+========================================
 
-This guide is for technical teams in government who are building secure digital services. It contains information to help teams integrate GOV.UK Verify into their service.
+This documentation is for teams in government who want to connect a service to `GOV.UK Verify <https://govuk-verify.cloudapps.digital/>`_.
 
-Use it together with the `GOV.UK Verify Onboarding Guide <http://alphagov.github.io/identity-assurance-documentation/#>`_. 
+The guide explains:
 
-Check the :ref:`version history <vershis>` for the latest changes to the guide. 
+- how Verify works and its architecture
+- the technical work required to connect to Verify
+- the components available to help you connect
+
+For a general overview of the connection process, refer to the `GOV.UK Verify Onboarding Guide <http://alphagov.github.io/identity-assurance-documentation/>`_.
+
+**Contact and support**
+
+If you have any feedback on this guidance or questions about the connection process, contact idasupport+onboarding@digital.cabinet-office.gov.uk.
 
 
 .. toctree::
+   :maxdepth:2
    :hidden:
 
    self
    pages/arch/arch
    pages/steps/steps
    pages/saml/saml
-   pages/ms/ms
-   pages/msa/msa
+   pages/matching/matching
    pages/pki/pki
    pages/env/env
-   shared/glossary
-   pages/vershis/vershis
+   pages/open/opencomponents

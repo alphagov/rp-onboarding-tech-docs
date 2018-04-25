@@ -3,37 +3,50 @@
 SAML
 ====
 
-:ref:`Security Assertion Markup Language <glosssaml>` (SAML) is an XML-based, open-standard data format for securely exchanging information about identities.  
+Security Assertion Markup Language (SAML) is an open standard for securely exchanging information about identities.
 
+Your service must use a system to send SAML messages to the Verify Hub and receive SAML responses in return. This system is known as a Service Provider.
 
-SAML can be used as the basis of a system of federated identity. This allows entities within a federation to refer to a user's electronic identity, even if it is managed differently by each entity. 
+You can either:
 
-.. rubric:: Why does GOV.UK Verify use SAML?
+- use a Service Provider built by Verify, known as the `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`_ (recommended)
+- configure an off-the-shelf product to use as a Service Provider
+- build your own Service Provider
 
-GOV.UK Verify uses SAML to securely exchange information within a federated system of identity.
-
-SAML is a mature standard and is widely used by industry.  SAML libraries and components are available for most programming languages and platforms.  
- 
-
-.. rubric:: What do you need to do?
-
-
-You must :ref:`build a government service <SAMLintegration>` that sends SAML authentication requests to, and receives SAML responses from, the GOV.UK Verify hub. To do this, you need to understand :ref:`how SAML works with GOV.UK Verify <samlWorks>` and :ref:`decide how to add the SAML funcionality to your service <ChooseProductFramework>`.
-
-When you build your service, you must :ref:`run SAML compliance tests <samlComplianceTool>`.
-
-For more information, see :ref:`steps`.
+Whatever option you choose, you must :ref:`run SAML compliance tests <samlComplianceTool>` to check you can send and receive SAML messages successfully.
 
 .. _saml_docs:
 
-You must adhere to the following specifications and guidance:
+.. rubric:: Verify Service Provider
+
+Refer to the `documentation on GitHub to find out how to download, configure and use the Verify Service Provider <https://github.com/alphagov/verify-service-provider>`_.
+
+You can use the Verify Service Provider to:
+
+- generate a SAML (AuthnRequest) request to send to the Verify Hub
+- translate the SAML response from the Verify Hub into JSON
+
+You must host the Verify Service Provider on your own infrastructure. You can connect multiple services to one instance.
+
+To use the Verify Service Provider, you need to have:
+
+- Java 8
+- a working :ref:`Matching Service Adapter <msaUse>`
+
+.. rubric:: Use or build a different Service Provider
+
+If you choose to configure an off-the-shelf product or build your own Service Provider, you need to:
+
+- understand :ref:`how SAML works with GOV.UK Verify <samlWorks>`
+- decide how to :ref:`add the SAML functionality to your service <ChooseProductFramework>`
+
+You must also follow:
 
 * '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_' – describes the SAML specifications you must respect to connect to the GOV.UK Verify hub
 * '`Identity Assurance Hub Service Profile – Authentication Contexts <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-authentication-contexts>`_' – describes how the level of assurance is specified
 * '`Identity Assurance Hub Service Profile – SAML Attributes <https://www.gov.uk/government/publications/identity-assurance-hub-service-profile-saml-attributes>`_' – describes the matching dataset attributes and fraud event assertion attributes
-* '`GOV.UK Verify guidance <https://www.gov.uk/service-manual/identity-assurance/index.html>`_'
 
-The SAML profile used by GOV.UK Verify builds on the `OASIS documentation for the SAML 2.0 standard <https://www.oasis-open.org/standards#samlv2.0>`_. 
+The SAML profile used by GOV.UK Verify builds on the `OASIS documentation for the SAML 2.0 standard <https://www.oasis-open.org/standards#samlv2.0>`_.
 
 
 .. toctree::
@@ -43,4 +56,3 @@ The SAML profile used by GOV.UK Verify builds on the `OASIS documentation for th
    samlIntegration
    samlComplianceTool
    generateSelfSignedCertificates
-   
