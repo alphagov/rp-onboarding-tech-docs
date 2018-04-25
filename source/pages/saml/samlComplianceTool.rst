@@ -1,27 +1,27 @@
 .. _samlComplianceTool:
 
-Run SAML compliance tests 
+Run SAML compliance tests
 ===========================
 
 The purpose of SAML compliance tests is to ensure that the service you're building is compliant with the `SAML profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_. This guarantees that:
 
-* your service will work with GOV.UK Verify 
+* your service will work with GOV.UK Verify
 * user data will remain secure within the GOV.UK Verify federation
 
-Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages. 
+Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.
 
 
-The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility. 
+The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.
 
 Before running SAML compliance tests, :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your MSA.
 
 
-Use the SAML compliance test to: 
+Use the SAML compliance test to:
 
-* :ref:`test your service <samlCTservicehub>` 
-* :ref:`test your matching service <samlCThubMSA>` 
+* :ref:`test your service <samlCTservicehub>`
+* :ref:`test your matching service <samlCThubMSA>`
 
-After running SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.  
+After running SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.
 
 
 
@@ -59,27 +59,27 @@ To use the compliance tool:
   * ``matchingServiceSigningPrivateKey``: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA.
 
     This key must be a Base-64 encoded version of your PKCS#8 signing key. To convert a key named ``test_primary_signing.pk8``, run:
-  
+
     ::
 
      base64 test_primary_signing.pk8
-      
 
-  * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
+
+  * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <createnewaccounts>` – select from the full :ref:`list of attributes <list_cua_attributes>`
 
   * ``useSimpleProfile``: set this to true only if you use Shibboleth-SP (Service Provider). By default this is set to false.
-  
-The compliance tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests. 
+
+The compliance tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests.
 
 3. You receive an empty response with ``200 OK`` status.
 
 4. Make sure that your MSA is pointing at the URLs for the compliance tool (``metadata:`` ``url``) and and hub (``hub:`` ``ssoUrl``). These are the defaults in the ``test-config.yml`` file for non-production environments.
 
-5. Generate a SAML authentication request and POST it to the compliance tool's SSO URI. Follow the redirect in the response to retrieve the result. 
+5. Generate a SAML authentication request and POST it to the compliance tool's SSO URI. Follow the redirect in the response to retrieve the result.
 
    .. note:: The SAML authentication requests signed by the government service must use RSA-SHA256 for the `signature method algorithm <https://www.w3.org/TR/xmldsig-core/#sec-SignatureMethod>`_ and SHA256 for the `digest method algorithm <https://www.w3.org/TR/xmldsig-core/#sec-DigestMethod>`_ . These are required to comply with the '`Identity Assurance Hub Service SAML 2.0 Profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_'.
 
-   Below is an example of a SAML authentication request:    
+   Below is an example of a SAML authentication request:
 
   .. code-block:: yaml
      :emphasize-lines: 7, 13
@@ -127,7 +127,7 @@ The compliance tool is deployed regularly and does not hold historical configura
 
 .. _samlCThubMSA:
 
-Test your matching service with the SAML compliance tool 
+Test your matching service with the SAML compliance tool
 --------------------------------------------------------------------
 
 1. To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run>`_):
@@ -145,7 +145,7 @@ Test your matching service with the SAML compliance tool
      "userAccountCreationEndpoint": "[optionally the matching service adapter's user account creation encpoint]"
      }
 
-If your service :ref:`creates new user accounts <ms_cua>` then you will need to provide a value for ``"userAccountCreationEndpoint"``.
+If your service :ref:`creates new user accounts <createnewaccounts>` then you will need to provide a value for ``"userAccountCreationEndpoint"``.
 
 2. You receive a response similar to the following::
 
@@ -153,7 +153,7 @@ If your service :ref:`creates new user accounts <ms_cua>` then you will need to 
      Location: .../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
 
 
-3. POST your test :ref:`matching dataset <gloss_mds>` (see example below) to the ``Location`` field in the above response (``.../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19`` in the above example). 
+3. POST your test matching dataset (see example below) to the ``Location`` field in the above response (``.../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19`` in the above example).
 
    ::
 
@@ -228,7 +228,7 @@ If your service :ref:`creates new user accounts <ms_cua>` then you will need to 
   If you provide a value for ``"userAccountCreationAttributes"`` the compliance tool will make a user account creation request to the ``"userAccountCreationEndpoint"`` configured in the POST request to /matching-service-test-run.
   If you do not provide a value, the compliance tool will make a matching request to your ``"matchingServiceEndpoint"``.
 
-  You only need to test the user account creation requests if your service :ref:`creates new user accounts <ms_cua>`.
+  You only need to test the user account creation requests if your service :ref:`creates new user accounts <createnewaccounts>`.
 
   where:
 
@@ -239,10 +239,9 @@ If your service :ref:`creates new user accounts <ms_cua>` then you will need to 
   * the ``addresses`` field that holds the current address contains a ``fromDate`` attribute for the date from which the address is valid; past addresses also contain the ``toDate`` attribute
   * the ``cycle3Dataset`` field is only present for a cycle 3 matching attempt
   * the ``uprn`` (Unique Property Reference Number) is a unique reference for each property in Great Britain, ensuring accuracy of address data. This is an optional attribute that can contain up to 12 characters and should not have any leading zeros
-  * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <ms_cua>` – select from the full :ref:`list of attributes <list_cua_attributes>`
+  * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <createnewaccounts>` – select from the full :ref:`list of attributes <list_cua_attributes>`
 
 
-4. When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`. 
+4. When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`.
 
-5. Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the :ref:`SAML message flow <samlWorks>`.  
-
+5. Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the :ref:`SAML message flow <samlWorks>`.

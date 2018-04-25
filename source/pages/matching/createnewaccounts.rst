@@ -1,20 +1,16 @@
+.. _createnewaccounts:
 
-Create user accounts
-====================
-
-.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation on creating user accounts. <createnewaccounts>`.
+Create new user accounts (optional)
+==============================================
 
 If Verify fails to identify the user, you can enable your service to create a new user account.
 
 You must obtain explicit user consent before creating a user account.
 
-Create new user accounts using the ':ref:`hashed persistent identifier <gloss_hashpid>`' (PID) and a subset of attributes from the ':ref:`matching dataset <gloss_mds>`', listed below.
+Create new user accounts using the hashed persistent identifier (PID) and a subset of attributes from the matching dataset listed below.
 
 
-
-
-Prerequisites
--------------
+.. rubric:: Prerequisites
 
 1.	Configure your MSA to create user accounts.
 
@@ -25,6 +21,8 @@ Prerequisites
   - Enter the fully qualified URL that will receive your *Unknown User Attribute* requests from the environment
 
   - Select any of the following user attributes you require for your service
+
+.. _list_cua_attributes:
 
 
   ::
@@ -44,8 +42,9 @@ Prerequisites
 
   .. note:: User Accounts can only be created with the user's current 'NAME' and 'Date of Birth' data.  ADDRESS_HISTORY will return any address known to be associated with the user, within the last three years.
 
-Message flow
-------------
+.. _ms_cua_diagram:
+
+.. rubric:: Message flow
 
 This diagram shows the message flow for creating user accounts. In this example, the service has been set up to create user accounts when matching fails.
 
@@ -53,16 +52,16 @@ This diagram shows the message flow for creating user accounts. In this example,
    :widths: 80, 15
    :name: flow-diagram
 
-   ".. figure:: createanaccount.svg
+   ".. figure:: ../ms/createanaccount.svg
      :alt: Diagram showing user account creation. The MSA converts between SAML and JSON. The MSA contains a fully qualified URL to which the hub makes unknown user attribute query requests. The text below the image describes the steps.
 
-     User account creation","For more details, see the diagrams:
+     User account creation","For more details, see:
 
    * :ref:`GOV.UK Verify architecture <arch>`
-   * :ref:`SAML message flow <samlflow_diagram>`
-   * :ref:`matching cycles <ms_matchcyles_diagram>`"
+   * :ref:`SAML message flow <samlWorks>`
+   * :ref:`matching cycles <matchingcycles>`"
 
-.. note:: In this example, all 3 :ref:`matching cycles <ms_matchcycles>` previously failed to find a match for the user in the government service records. See the :ref:`diagram for matching cycles <ms_matchcyles_diagram>`.
+.. note:: In this example, all 3 :ref:`matching cycles <matchingcycles>` previously failed to find a match for the user in the government service records.
 
 1.	Your local matching service sends a ``no-match`` response to the hub via the MSA.
 2.	The GOV.UK Verify hub:
@@ -72,9 +71,9 @@ This diagram shows the message flow for creating user accounts. In this example,
 
 3. If your service supports the creation of user accounts, the hub sends a query to the MSA. It contains the:
 
-  * :ref:`matching dataset <gloss_mds>`
-  * :ref:`hashed PID <gloss_hashpid>`
-  * :ref:`level of assurance <gloss_loa>`
+  * matching dataset
+  * hashed PID
+  * level of assurance
   * list of attributes to extract from the matching dataset
 
 4. The MSA POSTs the following JSON to the local matching service's account creation URI endpoint:
@@ -88,7 +87,7 @@ This diagram shows the message flow for creating user accounts. In this example,
 
 5. Optionally, the local matching service stores the hashed PID and level of assurance in the local matching datastore.
 
-   You'll need to create a correlation between the user account and the hashed PID, so a returning user can match with :ref:`cycle 0 <ms_mc0>`. You can choose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.
+   You'll need to create a correlation between the user account and the hashed PID, so a returning user can match with :ref:`cycle 0 <cycle0>`. You can choose to store the hashed PID at this point and create a correlation between the user account and the hashed PID at step 9. Alternatively, you can create the user account, store the hashed PID and set up the correlation at step 9.
 
 6. The local matching service sends a JSON response to the MSA:
 
@@ -127,5 +126,3 @@ This diagram shows the message flow for creating user accounts. In this example,
 
    * creates a user account using the attributes extracted from the matching dataset
    * sets up a correlation between the user account and the user's hashed PID
-
-  .. important:: If you create a user account you must gain consent from the user first.
