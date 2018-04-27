@@ -112,18 +112,7 @@ The compliance tool is deployed regularly and does not hold historical configura
 
 
 6. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
-7. Access the ``executeUri`` for each test scenario you want to execute. The following test scenarios are provided:
-
-  * Basic successful match
-  * Basic no match
-  * No authentication context (this is when the user cancels the process)
-  * Authentication failed
-  * Requester error (this is when the request is invalid)
-  * Account creation
-  * Fraudulent match response with assertions signed by hub
-
-  The above scenarios are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
-
+7. Access the ``executeUri`` for each test scenario you want to execute. :ref:`The compliance tool test scenarios <samlComplianceToolScenarios>` are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
 
 .. _samlCThubMSA:
 
