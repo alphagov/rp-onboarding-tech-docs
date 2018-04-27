@@ -179,10 +179,18 @@
 <li>a working <a class="reference internal" href="../matching/matchingserviceadapter.html#msause"><span>Matching Service Adapter</span></a></li>
 </ul>
 <p class="rubric">Use or build a different Service Provider</p>
-<p>If you choose to configure an off-the-shelf product or build your own Service Provider, you need to:</p>
+<p>If you choose to configure an off-the-shelf product or build your own Service Provider, you should <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">contact Verify</a> before starting any development work.</p>
+<p>You must:</p>
 <ul class="simple">
 <li>understand <a class="reference internal" href="samlWorks.html#samlworks"><span>how SAML works with GOV.UK Verify</span></a></li>
 <li>decide how to <a class="reference internal" href="samlIntegration.html#chooseproductframework"><span>add the SAML functionality to your service</span></a></li>
+<li>implement certain functionality to ensure smooth interoperability with Verify</li>
+</ul>
+<p>This means you must:</p>
+<ul class="simple">
+<li>consume Verify Hub signing certificates directly from the Verify Hub metadata</li>
+<li>consume MSA signing certificates metadata from your <a class="reference internal" href="../msa/msa.html#msa"><span>Matching Service Adapter (MSA)</span></a> metadata, or support multiple MSA signing certificates directly in your service</li>
+<li>support multiple encryption keys for your service</li>
 </ul>
 <p>You must also follow:</p>
 <ul class="simple">
