@@ -10,7 +10,9 @@ You can test your matching service with 2 tools provided by GOV.UK Verify:
 
 .. rubric:: Using the Matching Service Test Tool
 
-The `Matching Service Test Tool <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ makes sure your Local Matching Service can:
+The `Matching Service Test Tool <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ is a lightweight tool you can add to your existing testing workflow. 
+
+The tool makes sure your Local Matching Service can:
 
 * handle matching datasets
 * find and match records correctly
