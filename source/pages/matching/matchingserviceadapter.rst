@@ -9,6 +9,8 @@ The Matching Service Adapter (MSA) is a software tool supplied free of charge by
 
 The MSA handles complex matching requirements. We recommend that you use the MSA. If you do not want to use the MSA, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to discuss your alternatives.
 
+Please note that if you are using an older version of the MSA you will need to update to use the latest version as soon as possible.
+
 You need to host the MSA so the GOV.UK Verify Hub can make requests to it.
 
 **Prerequisites**
@@ -20,23 +22,22 @@ To run the Matching Service Adapter (MSA) you need:
 
 1. `Download the latest release of the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_. It contains:
 
- * a JAR (Java Archive) file
- * truststore files for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_hub.ts`` and ``test_ida_metadata.ts``
- * truststore files for the production environment - ``prod_ida_hub.ts`` and ``prod_ida_metadata.ts``
- * a sample YAML configuration file for non-production environments  - ``test-config.yml``
- * a sample YAML configuration file for the production environment  - ``prod-config.yml``
+  * a JAR (Java Archive) file
+
+    * The JAR contains:
+      * ``prod_ida_idp_metadata.ts``
+      * ``prod_ida_hub_metadata.ts``
+      * ``test_ida_idp_metadata.ts``
+      * ``test_ida_hub_metadata.ts``
+
+  * a truststore metadata file for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_metadata.ts``
+  * a truststore metadata file for the production environment - ``prod_ida_metadata.ts``
+  * a sample YAML configuration file for non-production environments  - ``test-config.yml``
+  * a sample YAML configuration file for the production environment  - ``prod-config.yml``
 
 2. To extract the files, run the following command::
 
     unzip verify-matching-service-adapter-[build number].zip
-
-3. Optionally, move the truststore files to the environment where you want to use the MSA::
-
-    mv prod_ida_hub.ts prod_ida_metadata.ts [path to truststore directory in the production environment]
-    mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the integration environment]
-
- where ``[path to truststore directory...]`` is the location of the truststore – you specify this when you configure the MSA (see the ``trustStore:`` fields in the :ref:`YAML configuration file <yamlfile>`).
-
 
 Versioning
 -----------
@@ -152,16 +153,21 @@ Below is the ``test-config.yml`` file:
     # if necessary.
     hub:
       ssoUrl: https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/SAML2/SSO
-      trustStore:
-        path: test_ida_hub.ts
-        password: puppet
 
     # Settings for obtaining Verify's metadata can be configured here.
     metadata:
+      environment: INTEGRATION
       url: https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/SAML2/metadata/federation
       trustStore:
         path: test_ida_metadata.ts
         password: puppet
+    # To override trustStore for testing purposes you can un-comment the below:
+      # hubTrustStore:
+        # path: test_hub.ts
+        # password: puppet
+      # idpTrustStore:
+        # path: test_idp.ts
+        # password: puppet
 
     ## Options to add additional logging. By default, logs will be output to console.
     ## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging
@@ -224,19 +230,10 @@ In the field ``encryptionKeys:``
 
 7. Enter the paths and names of the encryption keys and certificates for your MSA in ``encryptionKeys``.  The names are used to identify the certificates in the metadata so should be meaningful and unique, for example, ``signing_1`` and ``encryption_1``.
 
-In the field ``hub:``
-^^^^^^^^^^^^^^^^^^^^^
-
-8. In ``trustStore:`` ``path:`` , specify the path to your hub truststore file for the appropriate environment:
-
-  * for the SAML compliance tool and the integration environment, use the provided ``test_ida_hub.ts`` file (this is the default setting in the ``test-config.yml`` file)
-
-  * for the production environment, use the provided ``prod_ida_hub.ts`` file (this is the default setting in the ``prod-config.yml`` file)
-
 In the field ``metadata:``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-9. Edit the ``url:`` value and specify the location where the MSA accesses the SAML metadata:
+8. Edit the ``url:`` value and specify the location where the MSA accesses the SAML metadata:
 
   * for the SAML compliance tool, use the default setting in the ``test-config.yml`` file
 
@@ -244,12 +241,13 @@ In the field ``metadata:``
 
   * for the production environment, use the default setting in the ``prod-config.yml`` file
 
-10. In ``trustStore:`` ``path:``, specify the path to your metadata truststore file for the appropriate environment:
+9. In ``trustStore:`` ``path:``, specify the path to your metadata truststore file for the appropriate environment:
 
   * for the SAML compliance tool and the integration environment, use the provided ``test_ida_metadata.ts`` file (this is the default setting in the ``test-config.yml`` file)
 
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
+10. (optional) Should you wish to override the hub and idp truststore path for testing in integration, uncomment the relevant lines in test-config.yml
 
 .. _msa_test_msa:
 
