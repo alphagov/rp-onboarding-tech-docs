@@ -7,11 +7,11 @@ Install and configure the Matching Service Adapter
 
 The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.
 
-The MSA handles complex matching requirements. We recommend that you use the MSA. If you do not want to use the MSA, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to discuss your alternatives.
-
-Please note that if you are using an older version of the MSA you will need to update to use the latest version as soon as possible.
+The MSA handles complex matching requirements. We recommend that you use the MSA and always make sure you have the latest version. 
 
 You need to host the MSA so the GOV.UK Verify Hub can make requests to it.
+
+If you do not want to use the MSA, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to discuss your alternatives.
 
 **Prerequisites**
 
@@ -22,14 +22,7 @@ To run the Matching Service Adapter (MSA) you need:
 
 1. `Download the latest release of the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_. It contains:
 
-  * a JAR (Java Archive) file
-
-    * The JAR contains:
-      * ``prod_ida_idp_metadata.ts``
-      * ``prod_ida_hub_metadata.ts``
-      * ``test_ida_idp_metadata.ts``
-      * ``test_ida_hub_metadata.ts``
-
+  * a JAR (Java Archive) file containing ``prod_ida_idp_metadata.ts``, ``prod_ida_hub_metadata.ts``, ``test_ida_idp_metadata.ts``, and ``test_ida_hub_metadata.ts``
   * a truststore metadata file for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_metadata.ts``
   * a truststore metadata file for the production environment - ``prod_ida_metadata.ts``
   * a sample YAML configuration file for non-production environments  - ``test-config.yml``
