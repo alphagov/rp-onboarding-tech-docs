@@ -8,13 +8,15 @@ The purpose of SAML compliance tests is to ensure that the service you're buildi
 * your service will work with GOV.UK Verify
 * user data will remain secure within the GOV.UK Verify federation
 
-Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.
+The SAML Compliance Tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages for the scenarios your service needs to be able to handle.
 
+**Please provide CT proof before connecting to Integration
+Email their engagement lead**
 
-The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.
+The Compliance Tool provides clear error messages to help with iterative development of your service. We advise you to use the Compliance Tool as part of your continuous integration pipeline to ensure that any changes maintain backwards compatibility.
+
 
 Before running SAML compliance tests, :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your MSA.
-
 
 Use the SAML compliance test to:
 
@@ -22,6 +24,105 @@ Use the SAML compliance test to:
 * :ref:`test your matching service <samlCThubMSA>`
 
 After running SAML compliance tests, you can run :ref:`end-to-end testing <envEndToEndTests>` in the integration environment.
+
+.. _samlComplianceToolScenarios:
+
+Compliance Tool scenarios
+-----------------------------------------------
+
+Your service and matching service need to be able to consume and produce SAML messages in a variety of different scenarios:
+
+* :ref:`Basic Successful Match Response <CTscenarioMatch>`
+* :ref:`Basic No Match Response <CTscenarioNoMatch>`
+* :ref:`No Authentication Context Response <CTscenarioNoAuthnContext>`
+* :ref:`Authentication Failed Response <CTscenarioAuthnFailed>`
+* :ref:`Account Creation Response <CTscenarioAccountCreation>`
+* :ref:`Fraudulent match response with assertions signed by hub <CTscenarioFraud>`
+
+.. _CTscenarioMatch:
+
+Basic Successful Match Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The user has been verified successfully at the required level of assurance (LoA). Users with higher LoA identity accounts should be allowed to access services requiring lower LoA, but not the other way around.
+
+In this case, you should make sure that the user arrives to a page useful to them, for example the service home page.
+
+.. _CTscenarioNoMatch:
+
+Basic No Match Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A match was not found by the :ref:`Local Matching Service <localmatchingservice>`. Depending on your service, you could:
+
+* :ref:`Tell the user about alternatives <CTscenarioMatchAlternatives>`
+* :ref:`Take the user to their new account page <CTscenarioMatchAccount>`
+
+.. _CTscenarioMatchAlternatives:
+
+Tell the user about alternatives
+````````````````````````````````
+Because there was no match in the service database, the user cannot access the service.
+
+In this case, let the user know what their alternatives are, for example, "We could not match your identity with an entry from our database. You can still apply for a vehicle operator licence by post."
+
+.. _CTscenarioMatchAccount:
+
+Take the user to their new account page
+```````````````````````````````````````
+Some services choose to create a new account if they found no match in their database. If account creation is implemented, the Verify Team need to see that the user arrives to a page that is useful to them, for example the service home page.
+
+.. _CTscenarioNoAuthnContext:
+
+No Authentication Context Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This response can happen for a number of reasons, but the most common cases  are:
+
+* :ref:`Session timeout <CTscenarioNoAuthnContextTimeout>`
+* :ref:`Cancellation by the user <CTscenarioNoAuthnContextCancel>`
+* :ref:`Failure to authenticate at an appropriate LoA <CTscenarioNoAuthnContextLoA>`
+
+.. _CTscenarioNoAuthnContextTimeout:
+
+Session timeout
+````````````````````````````````
+Before completing the verification process with the identity provider, the user became inactive. In this case the user has to restart the verification process.
+
+.. _CTscenarioNoAuthnContextCancel:
+
+Cancellation by the user
+````````````````````````````````
+During the identification process with the identity provider, the user selected **Cancel**. In this case, send the user back to the page where they start answering questions to help them choose the identity provider.
+
+.. _CTscenarioNoAuthnContextLoA:
+
+Failure to authenticate at an appropriate LoA
+`````````````````````````````````````````````````````````````
+This happens when there is an attempt to authenticate with a lower LoA than required by your service. This would be a fraudulent attempt rather than a real user.
+
+In this case, show a generic error saying something went wrong and suggest alternatives, for example "Something went wrong. We’re working on fixing this problem so please try again later. You can also apply for a vehicle operator licence by post."
+
+.. _CTscenarioAuthnFailed:
+
+Authentication Failed Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The user was not authenticated successfully when trying to sign into their account with the identity provider. The identity provider should help the user continue their journey.
+
+.. _CTscenarioAccountCreation:
+
+Account Creation Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This is only relevant if your service creates new user accounts.
+
+The response contains a hashed persistent identifier (PID) and attributes of the user that can be used to identify or create an account.
+
+In this case, the user successfully created an account with your government service and you should make sure they arrive at a page useful to them, for example a personal account.
+
+.. _CTscenarioFraud:
+
+Fraudulent match response with assertions signed by hub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Your service should only trust assertions signed by your matching service adapter, but in case of a fraudulent match, the response has an assertion signed with the Verify Hub's private key.
+
+In this case, the user should see a generic error saying something went wrong, for example "Something went wrong. We’re working on fixing this problem so please try again later or apply for a vehicle operator licence by post".
 
 
 
@@ -112,14 +213,14 @@ The compliance tool is deployed regularly and does not hold historical configura
 
 
 6. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
-7. Access the ``executeUri`` for each test scenario you want to execute. :ref:`The compliance tool test scenarios <samlComplianceToolScenarios>` are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
+7. Access the ``executeUri`` for each test scenario you want to execute. :ref:`The Compliance Tool test scenarios <samlComplianceToolScenarios>` are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
 
 .. _samlCThubMSA:
 
-Test your matching service with the SAML compliance tool
+Test your matching service with the SAML Compliance Tool
 --------------------------------------------------------------------
 
-1. To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run>`_):
+1. To set up the SAML Compliance Tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML Compliance Tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run>`_):
 
   ::
 
@@ -214,8 +315,8 @@ If your service :ref:`creates new user accounts <createnewaccounts>` then you wi
           "userAccountCreationAttributes": ["optional", "list", "of", "attributes", "the", "government", "service", "requires", "for", "new", "user", "account", "creation", "see", "below"]
       }
 
-  If you provide a value for ``"userAccountCreationAttributes"`` the compliance tool will make a user account creation request to the ``"userAccountCreationEndpoint"`` configured in the POST request to /matching-service-test-run.
-  If you do not provide a value, the compliance tool will make a matching request to your ``"matchingServiceEndpoint"``.
+  If you provide a value for ``"userAccountCreationAttributes"`` the Compliance Tool will make a user account creation request to the ``"userAccountCreationEndpoint"`` configured in the POST request to /matching-service-test-run.
+  If you do not provide a value, the Compliance Tool will make a matching request to your ``"matchingServiceEndpoint"``.
 
   You only need to test the user account creation requests if your service :ref:`creates new user accounts <createnewaccounts>`.
 
@@ -231,6 +332,6 @@ If your service :ref:`creates new user accounts <createnewaccounts>` then you wi
   * ``userAccountCreationAttributes``: provide this only if you want to test :ref:`new user account creation <createnewaccounts>` – select from the full :ref:`list of attributes <list_cua_attributes>`
 
 
-4. When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`.
+4. When the SAML Compliance Tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the :ref:`SAML message flow <samlWorks>`.
 
 5. Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the :ref:`SAML message flow <samlWorks>`.
