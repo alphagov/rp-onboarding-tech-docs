@@ -120,7 +120,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-localmatchingservice">In the field <code class="docutils literal"><span class="pre">localMatchingService:</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-signingkeys">In the field <code class="docutils literal"><span class="pre">signingKeys:</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-encryptionkeys">In the field <code class="docutils literal"><span class="pre">encryptionKeys:</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#in-the-field-hub">In the field <code class="docutils literal"><span class="pre">hub:</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-metadata">In the field <code class="docutils literal"><span class="pre">metadata:</span></code></a></li>
 </ul>
 </li>
@@ -185,8 +184,9 @@
   <div class="section" id="install-and-configure-the-matching-service-adapter">
 <span id="msa-install-msa"></span><span id="msause"></span><h1>Install and configure the Matching Service Adapter<a class="headerlink" href="#install-and-configure-the-matching-service-adapter" title="Permalink to this headline">¶</a></h1>
 <p>The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.</p>
-<p>The MSA handles complex matching requirements. We recommend that you use the MSA. If you do not want to use the MSA, <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">contact the GOV<span>&#46;</span>UK Verify team</a> to discuss your alternatives.</p>
+<p>The MSA handles complex matching requirements. We recommend that you use the MSA and always make sure you have the latest version.</p>
 <p>You need to host the MSA so the GOV.UK Verify Hub can make requests to it.</p>
+<p>If you do not want to use the MSA, <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">contact the GOV<span>&#46;</span>UK Verify team</a> to discuss your alternatives.</p>
 <p><strong>Prerequisites</strong></p>
 <p>To run the Matching Service Adapter (MSA) you need:</p>
 <ul class="simple">
@@ -198,9 +198,9 @@
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li>a JAR (Java Archive) file</li>
-<li>truststore files for non-production environments (the SAML compliance tool and the integration environment) - <code class="docutils literal"><span class="pre">test_ida_hub.ts</span></code> and <code class="docutils literal"><span class="pre">test_ida_metadata.ts</span></code></li>
-<li>truststore files for the production environment - <code class="docutils literal"><span class="pre">prod_ida_hub.ts</span></code> and <code class="docutils literal"><span class="pre">prod_ida_metadata.ts</span></code></li>
+<li>a JAR (Java Archive) file containing the MSA implementation, as well as the trust stores <code class="docutils literal"><span class="pre">prod_ida_idp_metadata.ts</span></code>, <code class="docutils literal"><span class="pre">prod_ida_hub_metadata.ts</span></code>, <code class="docutils literal"><span class="pre">test_ida_idp_metadata.ts</span></code>, and <code class="docutils literal"><span class="pre">test_ida_hub_metadata.ts</span></code></li>
+<li>a truststore metadata file for non-production environments (the SAML compliance tool and the integration environment) - <code class="docutils literal"><span class="pre">test_ida_metadata.ts</span></code></li>
+<li>a truststore metadata file for the production environment - <code class="docutils literal"><span class="pre">prod_ida_metadata.ts</span></code></li>
 <li>a sample YAML configuration file for non-production environments  - <code class="docutils literal"><span class="pre">test-config.yml</span></code></li>
 <li>a sample YAML configuration file for the production environment  - <code class="docutils literal"><span class="pre">prod-config.yml</span></code></li>
 </ul>
@@ -211,15 +211,7 @@
 </pre></div>
 </div>
 </li>
-<li><p class="first">Optionally, move the truststore files to the environment where you want to use the MSA:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>mv prod_ida_hub.ts prod_ida_metadata.ts [path to truststore directory in the production environment]
-mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the integration environment]
-</pre></div>
-</div>
-</li>
 </ol>
-<blockquote>
-<div>where <code class="docutils literal"><span class="pre">[path</span> <span class="pre">to</span> <span class="pre">truststore</span> <span class="pre">directory...]</span></code> is the location of the truststore – you specify this when you configure the MSA (see the <code class="docutils literal"><span class="pre">trustStore:</span></code> fields in the <a class="reference internal" href="#yamlfile"><span>YAML configuration file</span></a>).</div></blockquote>
 <div class="section" id="versioning">
 <h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h2>
 <p>Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">GOV<span>&#46;</span>UK Verify support team</a> to ensure you are on the MSA email distribution list.</p>
@@ -316,16 +308,22 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 <span class="c1"># if necessary.</span>
 <span class="l l-Scalar l-Scalar-Plain">hub</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">ssoUrl</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/SAML2/SSO</span>
-  <span class="l l-Scalar l-Scalar-Plain">trustStore</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test_ida_hub.ts</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">puppet</span>
 
 <span class="c1"># Settings for obtaining Verify&#39;s metadata can be configured here.</span>
 <span class="l l-Scalar l-Scalar-Plain">metadata</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">INTEGRATION</span>
   <span class="l l-Scalar l-Scalar-Plain">url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/SAML2/metadata/federation</span>
   <span class="l l-Scalar l-Scalar-Plain">trustStore</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test_ida_metadata.ts</span>
     <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">puppet</span>
+<span class="c1"># To override the `hub` and `idp` trust stores, i.e. for testing or manual modifications,</span>
+<span class="c1"># you can extract them from the MSA JAR file to a local disk, modify them, and then un-comment the following section:</span>
+  <span class="c1"># hubTrustStore:</span>
+    <span class="c1"># path: test_hub.ts</span>
+    <span class="c1"># password: puppet</span>
+  <span class="c1"># idpTrustStore:</span>
+    <span class="c1"># path: test_idp.ts</span>
+    <span class="c1"># password: puppet</span>
 
 <span class="c1">## Options to add additional logging. By default, logs will be output to console.</span>
 <span class="c1">## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging</span>
@@ -401,21 +399,9 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 <li>Enter the paths and names of the encryption keys and certificates for your MSA in <code class="docutils literal"><span class="pre">encryptionKeys</span></code>.  The names are used to identify the certificates in the metadata so should be meaningful and unique, for example, <code class="docutils literal"><span class="pre">signing_1</span></code> and <code class="docutils literal"><span class="pre">encryption_1</span></code>.</li>
 </ol>
 </div>
-<div class="section" id="in-the-field-hub">
-<h3>In the field <code class="docutils literal"><span class="pre">hub:</span></code><a class="headerlink" href="#in-the-field-hub" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple" start="8">
-<li>In <code class="docutils literal"><span class="pre">trustStore:</span></code> <code class="docutils literal"><span class="pre">path:</span></code> , specify the path to your hub truststore file for the appropriate environment:</li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>for the SAML compliance tool and the integration environment, use the provided <code class="docutils literal"><span class="pre">test_ida_hub.ts</span></code> file (this is the default setting in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file)</li>
-<li>for the production environment, use the provided <code class="docutils literal"><span class="pre">prod_ida_hub.ts</span></code> file (this is the default setting in the <code class="docutils literal"><span class="pre">prod-config.yml</span></code> file)</li>
-</ul>
-</div></blockquote>
-</div>
 <div class="section" id="in-the-field-metadata">
 <h3>In the field <code class="docutils literal"><span class="pre">metadata:</span></code><a class="headerlink" href="#in-the-field-metadata" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple" start="9">
+<ol class="arabic simple" start="8">
 <li>Edit the <code class="docutils literal"><span class="pre">url:</span></code> value and specify the location where the MSA accesses the SAML metadata:</li>
 </ol>
 <blockquote>
@@ -425,7 +411,7 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 <li>for the production environment, use the default setting in the <code class="docutils literal"><span class="pre">prod-config.yml</span></code> file</li>
 </ul>
 </div></blockquote>
-<ol class="arabic simple" start="10">
+<ol class="arabic simple" start="9">
 <li>In <code class="docutils literal"><span class="pre">trustStore:</span></code> <code class="docutils literal"><span class="pre">path:</span></code>, specify the path to your metadata truststore file for the appropriate environment:</li>
 </ol>
 <blockquote>
@@ -434,6 +420,9 @@ mv test_ida_hub.ts test_ida_metadata.ts [path to truststore directory in the int
 <li>for the production environment, use the provided <code class="docutils literal"><span class="pre">prod_ida_metadata.ts</span></code> file (this is the default setting in the <code class="docutils literal"><span class="pre">prod-config.yml</span></code> file)</li>
 </ul>
 </div></blockquote>
+<ol class="arabic simple" start="10">
+<li>(optional) If you need to override the <code class="docutils literal"><span class="pre">hub</span></code> and <code class="docutils literal"><span class="pre">idp</span></code> truststore path for testing in Integration, uncomment the <code class="docutils literal"><span class="pre">hubTrustStore</span></code> and <code class="docutils literal"><span class="pre">idpTrustStore</span></code> sections in test-config.yml.</li>
+</ol>
 </div>
 </div>
 <div class="section" id="start-the-matching-service-adapter">
