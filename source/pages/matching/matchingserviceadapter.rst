@@ -22,7 +22,7 @@ To run the Matching Service Adapter (MSA) you need:
 
 1. `Download the latest release of the MSA <https://github.com/alphagov/verify-matching-service-adapter/releases/latest>`_. It contains:
 
-  * a JAR (Java Archive) file containing ``prod_ida_idp_metadata.ts``, ``prod_ida_hub_metadata.ts``, ``test_ida_idp_metadata.ts``, and ``test_ida_hub_metadata.ts``
+  * a JAR (Java Archive) file containing the MSA implementation, as well as the trust stores ``prod_ida_idp_metadata.ts``, ``prod_ida_hub_metadata.ts``, ``test_ida_idp_metadata.ts``, and ``test_ida_hub_metadata.ts``
   * a truststore metadata file for non-production environments (the SAML compliance tool and the integration environment) - ``test_ida_metadata.ts``
   * a truststore metadata file for the production environment - ``prod_ida_metadata.ts``
   * a sample YAML configuration file for non-production environments  - ``test-config.yml``
@@ -154,7 +154,8 @@ Below is the ``test-config.yml`` file:
       trustStore:
         path: test_ida_metadata.ts
         password: puppet
-    # To override trustStore for testing purposes you can un-comment the below:
+    # To override the `hub` and `idp` trust stores, i.e. for testing or manual modifications,
+    # you can extract them from the MSA JAR file to a local disk, modify them, and then un-comment the following section:
       # hubTrustStore:
         # path: test_hub.ts
         # password: puppet
@@ -240,7 +241,8 @@ In the field ``metadata:``
 
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
-10. (optional) Should you wish to override the hub and idp truststore path for testing in integration, uncomment the relevant lines in test-config.yml
+10. (optional) If you need to override the ``hub`` and ``idp`` truststore path for testing in Integration, uncomment the ``hubTrustStore`` and ``idpTrustStore`` sections in test-config.yml.
+
 
 .. _msa_test_msa:
 
