@@ -24,6 +24,8 @@ You can also add or amend test scenarios to the tool. Refer to the `Matching Ser
 
 The SAML Compliance Tool helps you test your Local Matching Service and Matching Service Adapter (MSA) together. It also helps you to test and configure your MSA before entering the :ref:`Integration environment <env>`.
 
+The Compliance Tool will make requestes through the internet to your MSA, so you need to make sure you MSA is accessible from the internet. 
+
 1. To set up the SAML Compliance Tool for matching service tests, POST the following JSON (via cURL or Postman, for example) to the SAML compliance tool URL (`https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run <https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run>`_):
 
   ::
