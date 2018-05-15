@@ -212,8 +212,7 @@ The compliance tool is deployed regularly and does not hold historical configura
 
 6. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
 7. Access the ``executeUri`` for each test scenario you want to execute. :ref:`The Compliance Tool test scenarios <samlComplianceToolScenarios>` are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
-8. Send proof that your service can handle all the applicable scenarios to `the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_. You can send the proof  
-as a series of screenshots or a recording of the screen as the tests were performed.
+8. Send proof that your service can handle all the applicable scenarios to `the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_. You can send the proof as a series of screenshots or a recording of the screen as the tests were performed.
 
 .. _samlCThubMSA:
 
