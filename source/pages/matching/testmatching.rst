@@ -38,7 +38,7 @@ The Compliance Tool is hosted by GOV.UK Verify. To test the matching service usi
      "matchingServiceEndpoint": "[the matching service's endpoint]",
      "matchingServiceSigningCertificate": "[signing certificate to verify the response]",
      "matchingServiceEncryptionCertificate": "[encryption certificate to encrypt the assertions]",
-     "userAccountCreationEndpoint": "[optionally the matching service adapter's user account creation encpoint]"
+     "userAccountCreationEndpoint": "[optionally the matching service adapter's user account creation endpoint]"
      }
 
 If your service :ref:`creates new user accounts <createnewaccounts>` then you will need to provide a value for ``"userAccountCreationEndpoint"``.
