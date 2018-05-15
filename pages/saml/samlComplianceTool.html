@@ -106,8 +106,8 @@
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works with GOV.UK Verify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Run SAML compliance tests</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#test-your-service-with-the-saml-compliance-tool">Test your service with the SAML compliance tool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#test-your-matching-service-with-the-saml-compliance-tool">Test your matching service with the SAML compliance tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-your-service-with-the-saml-compliance-tool">Test your service with the SAML Compliance Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-your-matching-service-with-the-saml-compliance-tool">Test your matching service with the SAML Compliance Tool</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="generateSelfSignedCertificates.html">Generate self-signed certificates</a></li>
@@ -168,8 +168,8 @@
 <li>your service will work with GOV.UK Verify</li>
 <li>user data will remain secure within the GOV.UK Verify federation</li>
 </ul>
-<p>Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML compliance tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.</p>
-<p>The compliance tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the compliance tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
+<p>Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML Compliance Tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.</p>
+<p>The Compliance Tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the Compliance Tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
 <p>Before running SAML compliance tests, <a class="reference internal" href="../matching/matchingserviceadapter.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../matching/matchingserviceadapter.html#configuremsa"><span>configure</span></a> your MSA.</p>
 <p>Use the SAML compliance test to:</p>
 <ul class="simple">
@@ -178,12 +178,12 @@
 </ul>
 <p>After running SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
 <div class="section" id="test-your-service-with-the-saml-compliance-tool">
-<span id="samlctservicehub"></span><h2>Test your service with the SAML compliance tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
-<p>To use the compliance tool:</p>
+<span id="samlctservicehub"></span><h2>Test your service with the SAML Compliance Tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
+<p>To use the Compliance Tool:</p>
 <ol class="arabic" id="samlctselfsigncert">
-<li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the compliance tool only.</p>
+<li><p class="first"><a class="reference internal" href="generateSelfSignedCertificates.html#generateselfsignedcertificates"><span>Generate self-signed certificates</span></a> for use with the Compliance Tool only.</p>
 </li>
-<li><p class="first">POST the following JSON to the SAML compliance tool URL before every test run (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data</a>):</p>
+<li><p class="first">POST the following JSON to the SAML Compliance Tool URL before every test run (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/service-test-data</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
 {
     &quot;serviceEntityId&quot;:&quot;[entityID for your service - you can use the same URL as the assertionConsumerServiceUrl]&quot;,
@@ -204,7 +204,7 @@
 <ul>
 <li><p class="first">the keys and certificates in the configuration data must be single-line strings of Base64-encoded data without the header and footer <code class="docutils literal"><span class="pre">BEGIN</span> <span class="pre">CERTIFICATE</span></code> and <code class="docutils literal"><span class="pre">END</span> <span class="pre">CERTIFICATE</span></code></p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateKey</span></code>: this is required because the compliance tool sends a response to your service which contains an assertion signed by the MSA.</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">matchingServiceSigningPrivateKey</span></code>: this is required because the Compliance Tool sends a response to your service which contains an assertion signed by the MSA.</p>
 <p>This key must be a Base-64 encoded version of your PKCS#8 signing key. To convert a key named <code class="docutils literal"><span class="pre">test_primary_signing.pk8</span></code>, run:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>openssl base64 -A -in test_primary_signing.pk8
 </pre></div>
@@ -216,13 +216,13 @@
 </li>
 </ul>
 </div></blockquote>
-<p>The compliance tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests.</p>
+<p>The Compliance Tool is deployed regularly and does not hold historical configuration data. You should POST the configuration data before every test run so the tool has the information it needs to run compliance tests.</p>
 <ol class="arabic" start="3">
 <li><p class="first">You receive an empty response with <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code> status.</p>
 </li>
-<li><p class="first">Make sure that your MSA is pointing at the URLs for the compliance tool (<code class="docutils literal"><span class="pre">metadata:</span></code> <code class="docutils literal"><span class="pre">url</span></code>) and and hub (<code class="docutils literal"><span class="pre">hub:</span></code> <code class="docutils literal"><span class="pre">ssoUrl</span></code>). These are the defaults in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file for non-production environments.</p>
+<li><p class="first">Make sure that your MSA is pointing at the URLs for the Compliance Tool (<code class="docutils literal"><span class="pre">metadata:</span></code> <code class="docutils literal"><span class="pre">url</span></code>) and and hub (<code class="docutils literal"><span class="pre">hub:</span></code> <code class="docutils literal"><span class="pre">ssoUrl</span></code>). These are the defaults in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file for non-production environments.</p>
 </li>
-<li><p class="first">Generate a SAML authentication request and POST it to the compliance tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</p>
+<li><p class="first">Generate a SAML authentication request and POST it to the Compliance Tool&#8217;s SSO URI. Follow the redirect in the response to retrieve the result.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The SAML authentication requests signed by the government service must use RSA-SHA256 for the <a class="reference external" href="https://www.w3.org/TR/xmldsig-core/#sec-SignatureMethod">signature method algorithm</a> and SHA256 for the <a class="reference external" href="https://www.w3.org/TR/xmldsig-core/#sec-DigestMethod">digest method algorithm</a> . These are required to comply with the &#8216;<a class="reference external" href="https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile">Identity Assurance Hub Service SAML 2.0 Profile</a>&#8216;.</p>
@@ -277,123 +277,8 @@
 </div></blockquote>
 </div>
 <div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
-<span id="samlcthubmsa"></span><h2>Test your matching service with the SAML compliance tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>To set up the SAML compliance tool for matching service tests, POST the following JSON (via curl or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run</a>):</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
- {
- &quot;matchingServiceEntityId&quot;: &quot;[entityID of the matching service]&quot;,
- &quot;serviceEntityId&quot;: &quot;[entityID of the transaction (service)]&quot;,
- &quot;matchingServiceEndpoint&quot;: &quot;[the matching service&#39;s endpoint]&quot;,
- &quot;matchingServiceSigningCertificate&quot;: &quot;[signing certificate to verify the response]&quot;,
- &quot;matchingServiceEncryptionCertificate&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;,
- &quot;userAccountCreationEndpoint&quot;: &quot;[optionally the matching service adapter&#39;s user account creation encpoint]&quot;
- }
-</pre></div>
-</div>
-</div></blockquote>
-<p>If your service <a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>creates new user accounts</span></a> then you will need to provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code>.</p>
-<ol class="arabic" start="2">
-<li><p class="first">You receive a response similar to the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>Status 201 Created
-Location: .../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
-</pre></div>
-</div>
-</li>
-<li><p class="first">POST your test matching dataset (see example below) to the <code class="docutils literal"><span class="pre">Location</span></code> field in the above response (<code class="docutils literal"><span class="pre">.../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19</span></code> in the above example).</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;persistentId&quot;</span><span class="p">:</span> <span class="s2">&quot;93E5910B-F4C2-4561-AEC5-C878AFEF25A3&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;middleNames&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob Rob&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Dou&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;123 George Street&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;7D68E096-5510-B3844C0BA3FD&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;toDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;fromDate&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;10 George Street&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;833F1187-9F33-A7E27B3F211E&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;toDate&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-            <span class="s2">&quot;fromDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;drivers_licence&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;userAccountCreationAttributes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;optional&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="s2">&quot;government&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">,</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> <span class="s2">&quot;creation&quot;</span><span class="p">,</span> <span class="s2">&quot;see&quot;</span><span class="p">,</span> <span class="s2">&quot;below&quot;</span><span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<blockquote>
-<div><p>If you provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationAttributes&quot;</span></code> the compliance tool will make a user account creation request to the <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code> configured in the POST request to /matching-service-test-run.
-If you do not provide a value, the compliance tool will make a matching request to your <code class="docutils literal"><span class="pre">&quot;matchingServiceEndpoint&quot;</span></code>.</p>
-<p>You only need to test the user account creation requests if your service <a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>creates new user accounts</span></a>.</p>
-<p>where:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">persistentId</span></code> is mandatory</li>
-<li>you must supply at least one other value in addition to <code class="docutils literal"><span class="pre">persistentId</span></code></li>
-<li>the values of <code class="docutils literal"><span class="pre">addresses</span></code> and <code class="docutils literal"><span class="pre">surnames</span></code> are arrays</li>
-<li>fields have optional <code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">to</span></code> attributes in which you can capture historical values – for example, if the user has changed their surname, there&#8217;s an additional entry for the old surname with the <code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">to</span></code> values defining the period for which the name was valid; the new surname only has the <code class="docutils literal"><span class="pre">from</span></code> attribute, containing the date from which it was valid</li>
-<li>the <code class="docutils literal"><span class="pre">addresses</span></code> field that holds the current address contains a <code class="docutils literal"><span class="pre">fromDate</span></code> attribute for the date from which the address is valid; past addresses also contain the <code class="docutils literal"><span class="pre">toDate</span></code> attribute</li>
-<li>the <code class="docutils literal"><span class="pre">cycle3Dataset</span></code> field is only present for a cycle 3 matching attempt</li>
-<li>the <code class="docutils literal"><span class="pre">uprn</span></code> (Unique Property Reference Number) is a unique reference for each property in Great Britain, ensuring accuracy of address data. This is an optional attribute that can contain up to 12 characters and should not have any leading zeros</li>
-<li><code class="docutils literal"><span class="pre">userAccountCreationAttributes</span></code>: provide this only if you want to test <a class="reference internal" href="../matching/createnewaccounts.html#createnewaccounts"><span>new user account creation</span></a> – select from the full <a class="reference internal" href="../matching/createnewaccounts.html#list-cua-attributes"><span>list of attributes</span></a></li>
-</ul>
-</div></blockquote>
-<ol class="arabic simple" start="4">
-<li>When the SAML compliance tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
-<li>Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
-</ol>
+<span id="samlcthubmsa"></span><h2>Test your matching service with the SAML Compliance Tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
+<p>You can also use the Compliance Tool to test your Local Matching Service and Matching Service Adapter. The exact test scenarios will depend on your matching strategy. For more information, refer to the guidance on <a class="reference internal" href="../matching/testmatching.html#testmatching"><span>testing your matching service</span></a>.</p>
 </div>
 </div>
 

@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Test your matching service &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GOV.UK Verify Technical Guide  documentation" href="../../index.html"/>
+        <link rel="up" title="Matching" href="matching.html"/>
+        <link rel="next" title="Create new user accounts (optional)" href="createnewaccounts.html"/>
+        <link rel="prev" title="Install and configure the Matching Service Adapter" href="matchingserviceadapter.html"/>
+  <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-54060634-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script type="text/javascript" src="../../_static/CookieBanner.js"></script>
+  <script>
+    $(function() {new CookieBanner("seen_cookie_message", 28, "ida-cookie-message").launch();});
+  </script>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> GOV.UK Verify Technical Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">GOV.UK Verify technical documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../arch/arch.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/steps.html">Steps to integrate GOV.UK Verify into your service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saml/saml.html">SAML</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="matching.html">Matching</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matchingverify.html">How matching works with GOV.UK Verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluatedata.html">Evaluate datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingstrategy.html">Decide your matching strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preparedata.html">Prepare local datasources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buildmatchingservice.html">Build a matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matchingserviceadapter.html">Install and configure the Matching Service Adapter</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Test your matching service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="createnewaccounts.html">Create new user accounts (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pki/pki.html">Public Key Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../env/env.html">GOV.UK Verify environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../open/opencomponents.html">Open components and contribution</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">GOV.UK Verify Technical Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="matching.html">Matching</a> &raquo;</li>
+      
+    <li>Test your matching service</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="test-your-matching-service">
+<span id="testmatching"></span><h1>Test your matching service<a class="headerlink" href="#test-your-matching-service" title="Permalink to this headline">¶</a></h1>
+<p>You can test your matching service with 2 tools provided by GOV.UK Verify:</p>
+<ul class="simple">
+<li>Matching Service Test Tool</li>
+<li>Compliance Tool</li>
+</ul>
+<p class="rubric">Using the Matching Service Test Tool</p>
+<p>The <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">Matching Service Test Tool</a> is a lightweight tool you can add to your existing testing workflow.</p>
+<p>The tool makes sure your Local Matching Service can:</p>
+<ul class="simple">
+<li>handle matching datasets</li>
+<li>find and match records correctly</li>
+<li>handle matching failures</li>
+</ul>
+<p>You can also add or amend test scenarios to the tool. Refer to the <a class="reference external" href="https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool">Matching Service Test Tool documentation on GitHub</a> to install and configure the tool.</p>
+<p class="rubric">Using the Compliance Tool</p>
+<p>The SAML Compliance Tool helps you test your Local Matching Service and Matching Service Adapter (MSA) together. It also helps you to test and configure your MSA before entering the <a class="reference internal" href="../env/env.html#env"><span>Integration environment</span></a>.</p>
+<p>The Compliance Tool is hosted by GOV.UK Verify. To test the matching service using the Compliance Tool, you will need to make sure your MSA is accessible through the internet.</p>
+<ol class="arabic simple">
+<li>To set up the SAML Compliance Tool for matching service tests, POST the following JSON (via cURL or Postman, for example) to the SAML compliance tool URL (<a class="reference external" href="https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run">https://compliance-tool-reference.ida.digital.cabinet-office.gov.uk/matching-service-test-run</a>):</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span>Content-Type: application/json
+ {
+ &quot;matchingServiceEntityId&quot;: &quot;[entityID of the matching service]&quot;,
+ &quot;serviceEntityId&quot;: &quot;[entityID of the transaction (service)]&quot;,
+ &quot;matchingServiceEndpoint&quot;: &quot;[the matching service&#39;s endpoint]&quot;,
+ &quot;matchingServiceSigningCertificate&quot;: &quot;[signing certificate to verify the response]&quot;,
+ &quot;matchingServiceEncryptionCertificate&quot;: &quot;[encryption certificate to encrypt the assertions]&quot;,
+ &quot;userAccountCreationEndpoint&quot;: &quot;[optionally the matching service adapter&#39;s user account creation encpoint]&quot;
+ }
+</pre></div>
+</div>
+</div></blockquote>
+<p>If your service <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>creates new user accounts</span></a> then you will need to provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code>.</p>
+<ol class="arabic" start="2">
+<li><p class="first">You receive a response similar to the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>Status 201 Created
+Location: .../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19
+</pre></div>
+</div>
+</li>
+<li><p class="first">POST your test matching dataset (see example below) to the <code class="docutils literal"><span class="pre">Location</span></code> field in the above response (<code class="docutils literal"><span class="pre">.../matching-service-test-run/8fd7782f-efac-48b2-8171-3e4da9553d19</span></code> in the above example).</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;persistentId&quot;</span><span class="p">:</span> <span class="s2">&quot;93E5910B-F4C2-4561-AEC5-C878AFEF25A3&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;middleNames&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob Rob&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Dou&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;123 George Street&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;7D68E096-5510-B3844C0BA3FD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;fromDate&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;10 George Street&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;833F1187-9F33-A7E27B3F211E&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;toDate&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;fromDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;drivers_licence&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;userAccountCreationAttributes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;optional&quot;</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;attributes&quot;</span><span class="p">,</span> <span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="s2">&quot;government&quot;</span><span class="p">,</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span> <span class="s2">&quot;requires&quot;</span><span class="p">,</span> <span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> <span class="s2">&quot;creation&quot;</span><span class="p">,</span> <span class="s2">&quot;see&quot;</span><span class="p">,</span> <span class="s2">&quot;below&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>If you provide a value for <code class="docutils literal"><span class="pre">&quot;userAccountCreationAttributes&quot;</span></code> the Compliance Tool will make a user account creation request to the <code class="docutils literal"><span class="pre">&quot;userAccountCreationEndpoint&quot;</span></code> configured in the POST request to /matching-service-test-run.
+If you do not provide a value, the compliance tool will make a matching request to your <code class="docutils literal"><span class="pre">&quot;matchingServiceEndpoint&quot;</span></code>.</p>
+<p>You only need to test the user account creation requests if your service <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>creates new user accounts</span></a>.</p>
+<p>where:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">persistentId</span></code> is mandatory</li>
+<li>you must supply at least one other value in addition to <code class="docutils literal"><span class="pre">persistentId</span></code></li>
+<li>the values of <code class="docutils literal"><span class="pre">addresses</span></code> and <code class="docutils literal"><span class="pre">surnames</span></code> are arrays</li>
+<li>fields have optional <code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">to</span></code> attributes in which you can capture historical values – for example, if the user has changed their surname, there&#8217;s an additional entry for the old surname with the <code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">to</span></code> values defining the period for which the name was valid; the new surname only has the <code class="docutils literal"><span class="pre">from</span></code> attribute, containing the date from which it was valid</li>
+<li>the <code class="docutils literal"><span class="pre">addresses</span></code> field that holds the current address contains a <code class="docutils literal"><span class="pre">fromDate</span></code> attribute for the date from which the address is valid; past addresses also contain the <code class="docutils literal"><span class="pre">toDate</span></code> attribute</li>
+<li>the <code class="docutils literal"><span class="pre">cycle3Dataset</span></code> field is only present for a cycle 3 matching attempt</li>
+<li>the <code class="docutils literal"><span class="pre">uprn</span></code> (Unique Property Reference Number) is a unique reference for each property in Great Britain, ensuring accuracy of address data. This is an optional attribute that can contain up to 12 characters and should not have any leading zeros</li>
+<li><code class="docutils literal"><span class="pre">userAccountCreationAttributes</span></code>: provide this only if you want to test <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>new user account creation</span></a> – select from the full <a class="reference internal" href="createnewaccounts.html#list-cua-attributes"><span>list of attributes</span></a></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>When the SAML Compliance Tool receives your test matching dataset, it will POST an attribute query to your MSA. This corresponds to step 4 in the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
+<li>Your MSA validates the query and sends a POST with a JSON request containing your test matching dataset to your local matching service. This corresponds to step 5 in the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="createnewaccounts.html" class="btn btn-neutral float-right" title="Create new user accounts (optional)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="matchingserviceadapter.html" class="btn btn-neutral" title="Install and configure the Matching Service Adapter" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+<div>Is there anything wrong with this page? Contact <a title="Contact Verify support" href="mailto:idasupport+onboarding@digital.cabinet-office.gov.uk">idasupport+onboarding@digital.cabinet-office.gov.uk</a> if you have any feedback.</div>
+
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
