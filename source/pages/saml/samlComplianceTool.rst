@@ -8,13 +8,11 @@ The purpose of SAML compliance tests is to ensure that the service you're buildi
 * your service will work with GOV.UK Verify
 * user data will remain secure within the GOV.UK Verify federation
 
-The SAML Compliance Tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages for the scenarios your service needs to be able to handle.
+The SAML Compliance Tool allows you to test and prove that your service can respond appropriately to all of the scenarios your service needs to be able to handle. 
 
-**Please provide CT proof before connecting to Integration
-Email their engagement lead**
+After successfully testing all the scenarios applicable to you, send `the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ proof of this in the form of a series of screenshots or a recording screen as the tests were performed.
 
-The Compliance Tool provides clear error messages to help with iterative development of your service. We advise you to use the Compliance Tool as part of your continuous integration pipeline to ensure that any changes maintain backwards compatibility.
-
+The Compliance Tool provides clear error messages to help with the iterative development of your service. We advise you to use the Compliance Tool as part of your continuous integration pipeline to ensure that any changes maintain backwards compatibility.
 
 Before running SAML compliance tests, :ref:`install <msa_install_msa>` and :ref:`configure  <ConfigureMSA>` your MSA.
 
@@ -131,7 +129,7 @@ In this case, the user should see a generic error saying something went wrong, f
 Test your service with the SAML compliance tool
 -----------------------------------------------------------------
 
-To use the compliance tool:
+To use the Compliance Tool:
 
 
 .. _samlCTselfsigncert:
@@ -214,6 +212,8 @@ The compliance tool is deployed regularly and does not hold historical configura
 
 6. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
 7. Access the ``executeUri`` for each test scenario you want to execute. :ref:`The Compliance Tool test scenarios <samlComplianceToolScenarios>` are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
+8. Send proof that your service can handle all the applicable scenarios to `the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_. You can send the proof  
+as a series of screenshots or a recording of the screen as the tests were performed.
 
 .. _samlCThubMSA:
 
