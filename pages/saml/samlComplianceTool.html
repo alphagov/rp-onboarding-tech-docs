@@ -106,6 +106,15 @@
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works with GOV.UK Verify</a></li>
 <li class="toctree-l2"><a class="reference internal" href="samlIntegration.html">Build your service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Run SAML compliance tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compliance-tool-scenarios">Compliance Tool scenarios</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-successful-match-response">Basic Successful Match Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-no-match-response">Basic No Match Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#no-authentication-context-response">No Authentication Context Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-failed-response">Authentication Failed Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#account-creation-response">Account Creation Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fraudulent-match-response-with-assertions-signed-by-hub">Fraudulent match response with assertions signed by hub</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-service-with-the-saml-compliance-tool">Test your service with the SAML Compliance Tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#test-your-matching-service-with-the-saml-compliance-tool">Test your matching service with the SAML Compliance Tool</a></li>
 </ul>
@@ -168,8 +177,9 @@
 <li>your service will work with GOV.UK Verify</li>
 <li>user data will remain secure within the GOV.UK Verify federation</li>
 </ul>
-<p>Your service and matching service need to consume and produce SAML messages in a variety of different scenarios. The SAML Compliance Tool allows you to test and prove that your service and matching service can consume and produce all required SAML messages.</p>
-<p>The Compliance Tool provides clear error messages. These will help with iterative development of your service.  We advise you to use the Compliance Tool as part of your continuous integration pipeline. This ensures that any changes maintain backwards compatibility.</p>
+<p>The SAML Compliance Tool allows you to test and prove that your service can respond appropriately to all of the scenarios your service needs to be able to handle.</p>
+<p>After successfully testing all the scenarios applicable to you, send <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">the GOV<span>&#46;</span>UK Verify team</a> proof of this in the form of a series of screenshots or a recording screen as the tests were performed.</p>
+<p>The Compliance Tool provides clear error messages to help with the iterative development of your service. We advise you to use the Compliance Tool as part of your continuous integration pipeline to ensure that any changes maintain backwards compatibility.</p>
 <p>Before running SAML compliance tests, <a class="reference internal" href="../matching/matchingserviceadapter.html#msa-install-msa"><span>install</span></a> and <a class="reference internal" href="../matching/matchingserviceadapter.html#configuremsa"><span>configure</span></a> your MSA.</p>
 <p>Use the SAML compliance test to:</p>
 <ul class="simple">
@@ -177,6 +187,77 @@
 <li><a class="reference internal" href="#samlcthubmsa"><span>test your matching service</span></a></li>
 </ul>
 <p>After running SAML compliance tests, you can run <a class="reference internal" href="../env/envEndToEndTests.html#envendtoendtests"><span>end-to-end testing</span></a> in the integration environment.</p>
+<div class="section" id="compliance-tool-scenarios">
+<span id="samlcompliancetoolscenarios"></span><h2>Compliance Tool scenarios<a class="headerlink" href="#compliance-tool-scenarios" title="Permalink to this headline">¶</a></h2>
+<p>Your service and matching service need to be able to consume and produce SAML messages in a variety of different scenarios:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#ctscenariomatch"><span>Basic Successful Match Response</span></a></li>
+<li><a class="reference internal" href="#ctscenarionomatch"><span>Basic No Match Response</span></a></li>
+<li><a class="reference internal" href="#ctscenarionoauthncontext"><span>No Authentication Context Response</span></a></li>
+<li><a class="reference internal" href="#ctscenarioauthnfailed"><span>Authentication Failed Response</span></a></li>
+<li><a class="reference internal" href="#ctscenarioaccountcreation"><span>Account Creation Response</span></a></li>
+<li><a class="reference internal" href="#ctscenariofraud"><span>Fraudulent match response with assertions signed by hub</span></a></li>
+</ul>
+<div class="section" id="basic-successful-match-response">
+<span id="ctscenariomatch"></span><h3>Basic Successful Match Response<a class="headerlink" href="#basic-successful-match-response" title="Permalink to this headline">¶</a></h3>
+<p>The user has been verified successfully at the required level of assurance (LoA). Users with higher LoA identity accounts should be allowed to access services requiring lower LoA, but not the other way around.</p>
+<p>In this case, you should make sure that the user arrives to a page useful to them, for example the service home page.</p>
+</div>
+<div class="section" id="basic-no-match-response">
+<span id="ctscenarionomatch"></span><h3>Basic No Match Response<a class="headerlink" href="#basic-no-match-response" title="Permalink to this headline">¶</a></h3>
+<p>A match was not found by the <a class="reference internal" href="../matching/buildmatchingservice.html#localmatchingservice"><span>Local Matching Service</span></a>. Depending on your service, you could:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#ctscenariomatchalternatives"><span>Tell the user about alternatives</span></a></li>
+<li><a class="reference internal" href="#ctscenariomatchaccount"><span>Take the user to their new account page</span></a></li>
+</ul>
+<div class="section" id="tell-the-user-about-alternatives">
+<span id="ctscenariomatchalternatives"></span><h4>Tell the user about alternatives<a class="headerlink" href="#tell-the-user-about-alternatives" title="Permalink to this headline">¶</a></h4>
+<p>Because there was no match in the service database, the user cannot access the service.</p>
+<p>In this case, let the user know what their alternatives are, for example, &#8220;We could not match your identity with an entry from our database. You can still apply for a vehicle operator licence by post.&#8221;</p>
+</div>
+<div class="section" id="take-the-user-to-their-new-account-page">
+<span id="ctscenariomatchaccount"></span><h4>Take the user to their new account page<a class="headerlink" href="#take-the-user-to-their-new-account-page" title="Permalink to this headline">¶</a></h4>
+<p>Some services choose to create a new account if they found no match in their database. If account creation is implemented, the Verify Team need to see that the user arrives to a page that is useful to them, for example the service home page.</p>
+</div>
+</div>
+<div class="section" id="no-authentication-context-response">
+<span id="ctscenarionoauthncontext"></span><h3>No Authentication Context Response<a class="headerlink" href="#no-authentication-context-response" title="Permalink to this headline">¶</a></h3>
+<p>This response can happen for a number of reasons, but the most common cases  are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#ctscenarionoauthncontexttimeout"><span>Session timeout</span></a></li>
+<li><a class="reference internal" href="#ctscenarionoauthncontextcancel"><span>Cancellation by the user</span></a></li>
+<li><a class="reference internal" href="#ctscenarionoauthncontextloa"><span>Failure to authenticate at an appropriate LoA</span></a></li>
+</ul>
+<div class="section" id="session-timeout">
+<span id="ctscenarionoauthncontexttimeout"></span><h4>Session timeout<a class="headerlink" href="#session-timeout" title="Permalink to this headline">¶</a></h4>
+<p>Before completing the verification process with the identity provider, the user became inactive. In this case the user has to restart the verification process.</p>
+</div>
+<div class="section" id="cancellation-by-the-user">
+<span id="ctscenarionoauthncontextcancel"></span><h4>Cancellation by the user<a class="headerlink" href="#cancellation-by-the-user" title="Permalink to this headline">¶</a></h4>
+<p>During the identification process with the identity provider, the user selected <strong>Cancel</strong>. In this case, send the user back to the page where they start answering questions to help them choose the identity provider.</p>
+</div>
+<div class="section" id="failure-to-authenticate-at-an-appropriate-loa">
+<span id="ctscenarionoauthncontextloa"></span><h4>Failure to authenticate at an appropriate LoA<a class="headerlink" href="#failure-to-authenticate-at-an-appropriate-loa" title="Permalink to this headline">¶</a></h4>
+<p>This happens when there is an attempt to authenticate with a lower LoA than required by your service. This would be a fraudulent attempt rather than a real user.</p>
+<p>In this case, show a generic error saying something went wrong and suggest alternatives, for example &#8220;Something went wrong. We’re working on fixing this problem so please try again later. You can also apply for a vehicle operator licence by post.&#8221;</p>
+</div>
+</div>
+<div class="section" id="authentication-failed-response">
+<span id="ctscenarioauthnfailed"></span><h3>Authentication Failed Response<a class="headerlink" href="#authentication-failed-response" title="Permalink to this headline">¶</a></h3>
+<p>The user was not authenticated successfully when trying to sign into their account with the identity provider. The identity provider should help the user continue their journey.</p>
+</div>
+<div class="section" id="account-creation-response">
+<span id="ctscenarioaccountcreation"></span><h3>Account Creation Response<a class="headerlink" href="#account-creation-response" title="Permalink to this headline">¶</a></h3>
+<p>This is only relevant if your service creates new user accounts.</p>
+<p>The response contains a hashed persistent identifier (PID) and attributes of the user that can be used to identify or create an account.</p>
+<p>In this case, the user successfully created an account with your government service and you should make sure they arrive at a page useful to them, for example a personal account.</p>
+</div>
+<div class="section" id="fraudulent-match-response-with-assertions-signed-by-hub">
+<span id="ctscenariofraud"></span><h3>Fraudulent match response with assertions signed by hub<a class="headerlink" href="#fraudulent-match-response-with-assertions-signed-by-hub" title="Permalink to this headline">¶</a></h3>
+<p>Your service should only trust assertions signed by your matching service adapter, but in case of a fraudulent match, the response has an assertion signed with the Verify Hub&#8217;s private key.</p>
+<p>In this case, the user should see a generic error saying something went wrong, for example &#8220;Something went wrong. We’re working on fixing this problem so please try again later or apply for a vehicle operator licence by post&#8221;.</p>
+</div>
+</div>
 <div class="section" id="test-your-service-with-the-saml-compliance-tool">
 <span id="samlctservicehub"></span><h2>Test your service with the SAML Compliance Tool<a class="headerlink" href="#test-your-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
 <p>To use the Compliance Tool:</p>
@@ -261,20 +342,9 @@
 </div></blockquote>
 <ol class="arabic simple" start="6">
 <li>If the result contains <code class="docutils literal"><span class="pre">PASSED</span></code>, access the URI provided in <code class="docutils literal"><span class="pre">responseGeneratorLocation</span></code>. A list of test scenarios is displayed.</li>
-<li>Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. The following test scenarios are provided:</li>
+<li>Access the <code class="docutils literal"><span class="pre">executeUri</span></code> for each test scenario you want to execute. <a class="reference internal" href="#samlcompliancetoolscenarios"><span>The Compliance Tool test scenarios</span></a> are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</li>
+<li>Send proof that your service can handle all the applicable scenarios to <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">the GOV<span>&#46;</span>UK Verify team</a>. You can send the proof as a series of screenshots or a recording of the screen as the tests were performed.</li>
 </ol>
-<blockquote>
-<div><ul class="simple">
-<li>Basic successful match</li>
-<li>Basic no match</li>
-<li>No authentication context (this is when the user cancels the process)</li>
-<li>Authentication failed</li>
-<li>Requester error (this is when the request is invalid)</li>
-<li>Account creation</li>
-<li>Fraudulent match response with assertions signed by hub</li>
-</ul>
-<p>The above scenarios are the possible responses for step 8 in the <a class="reference internal" href="samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
-</div></blockquote>
 </div>
 <div class="section" id="test-your-matching-service-with-the-saml-compliance-tool">
 <span id="samlcthubmsa"></span><h2>Test your matching service with the SAML Compliance Tool<a class="headerlink" href="#test-your-matching-service-with-the-saml-compliance-tool" title="Permalink to this headline">¶</a></h2>
