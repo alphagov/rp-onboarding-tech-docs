@@ -163,6 +163,19 @@ Below is the ``test-config.yml`` file:
         path: test_ida_metadata.ts
         password: puppet
 
+    # This is a required section, even if your service doesn't need to consume European identities. See below how to configure this section, according to the needs of your service.
+    europeanIdentity:
+      enabled: ${EUROPEAN_IDENTITY_ENABLED} # true or false
+      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector # replace with the URL for the production environment when your service goes live
+
+      # Details about eIDAS metadata can be configured here
+      aggregatedMetadata:
+        trustAnchorUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/trust-anchor
+        metadataSourceUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/aggregator
+        trustStore:
+          path: test_ida_metadata.ts
+          password: puppet
+
     ## Options to add additional logging. By default, logs will be output to console.
     ## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging
     ## for more information.
@@ -249,6 +262,15 @@ In the field ``metadata:``
   * for the SAML compliance tool and the integration environment, use the provided ``test_ida_metadata.ts`` file (this is the default setting in the ``test-config.yml`` file)
 
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
+
+In the field ``europeanIdentity``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+11. Configure according to the needs of your service:
+
+  If your service does not need to consume European identities,you only need to set ``enabled: false`` in this section. This setting also implies your service will be using the legacy JSON matching schema [link].
+
+  If your service needs to consume European identities, set ``enabled: true``. You also need to configure the URLs for the environments you're tatgetting, for example integration or production. Enabling your service to consume European identities also implies that it will be using the universal JSON matching schema [link].
 
 
 .. _msa_test_msa:
