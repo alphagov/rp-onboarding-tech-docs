@@ -137,17 +137,29 @@ You must not use the matching dataset for anything other than matching. If you d
 
 The `eIDAS regulation <https://ico.org.uk/for-organisations/guide-to-eidas/what-is-the-eidas-regulation/>`_, coming into force in late 2018, says that European citizens must be able to use their national electronic IDs to access public services provided by another EU member state.
 
-In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services. The data you receive from the GOV.UK Verify Hub will look similar for a European identity, but will include:
+In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services.
 
-- name
+If your service needs to be able to process EU identities, you need to configure your MSA [ref] to do this.
+
+European identities you receive from the GOV.UK Verify Hub will be in the format of the universal JSON matching schema [ref], and will only include:
+
+The data you receive from the GOV.UK Verify Hub will look similar for a European identity, but will only include:
+
+- first name
+- surname
 - date of birth
 - a personal identifier or equivalent from the EU member state (the equivalent of the PID)
 
-It will not include any historical attributes.
+These are all verified attributes. The data from European citizens will not include any historical attributes or unverified attributes.
+
+For names using non-Latin characters, both the non-Latin as well as a Latin equivalent will appear in the JSON received by your mathcing service.
 
 The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.
 
-The data will include an additional tag with a Latin equivalent if any names use non-Latin characters.
+Keep in mind that EU identities don't include addresses. If your service needs to be able to process EU identities, make sure your matching strategy is not based on addresses.
+
+
+
 
 **Unverified attributes**
 

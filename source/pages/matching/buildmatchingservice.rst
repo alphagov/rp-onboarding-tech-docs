@@ -198,7 +198,7 @@ Your local matching service sends either a ``match`` or a ``no-match`` response 
 If no match is found on cycles 0, 1 and 3, you can :ref:`create a new account<createnewaccounts>` for the user.
 
 
-.. rubric:: Use the univeral JSON matching schema
+.. rubric:: Use the universal JSON matching schema
 
 .. _JSONschema:
 
