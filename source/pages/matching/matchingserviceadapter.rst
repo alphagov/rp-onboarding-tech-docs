@@ -63,7 +63,7 @@ Configure the Matching Service Adapter
 ---------------------------------------------------------------------------------
 
 Create a YAML configuration file
----------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 When you :ref:`start the MSA <msa_test_msa>`, you need to supply a YAML configuration file.
 
@@ -268,9 +268,9 @@ In the field ``europeanIdentity``
 
 11. Configure according to the needs of your service:
 
-  If your service does not need to consume European identities,you only need to set ``enabled: false`` in this section. This setting also implies your service will be using the legacy JSON matching schema [link].
+  If your service does not need to consume European identities, you only need to set ``enabled: false`` in this section. This setting also implies your service will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
 
-  If your service needs to consume European identities, set ``enabled: true``. You also need to configure the URLs for the environments you're tatgetting, for example integration or production. Enabling your service to consume European identities also implies that it will be using the universal JSON matching schema [link].
+  If your service needs to consume European identities, set ``enabled: true``. You also need to configure the URLs for the environments you're tatgetting, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`.
 
 
 .. _msa_test_msa:

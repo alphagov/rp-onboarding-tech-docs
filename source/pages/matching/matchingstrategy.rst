@@ -139,11 +139,9 @@ The `eIDAS regulation <https://ico.org.uk/for-organisations/guide-to-eidas/what-
 
 In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services.
 
-If your service needs to be able to process EU identities, you need to configure your MSA [ref] to do this.
+If your service needs to be able to process EU identities, you need to :ref:`configure your MSA<msa_adapt_YAML>` to do this.
 
-European identities you receive from the GOV.UK Verify Hub will be in the format of the universal JSON matching schema [ref], and will only include:
-
-The data you receive from the GOV.UK Verify Hub will look similar for a European identity, but will only include:
+European identities you receive from the GOV.UK Verify Hub will be in the format of the :ref:`universal JSON matching schema<JSONschema>`, and will only include:
 
 - first name
 - surname

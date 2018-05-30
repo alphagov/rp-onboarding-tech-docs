@@ -1,6 +1,7 @@
 
 The legacy JSON matching schema
 -------------------------------
+.. _legacyJSONschema:
 
 Write about:
   * When it's used.
