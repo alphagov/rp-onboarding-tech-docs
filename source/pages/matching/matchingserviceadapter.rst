@@ -190,6 +190,11 @@ Below is the ``test-config.yml`` file:
     #      logFormat: '%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx'
     #    - type: console
     #      logFormat: '%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx'
+    #
+    #
+    ## By default the MSA signs messages using SHA-256.
+    ## Switch the flag below to `true` if you need to revert to SHA-1 signing:
+    #shouldSignWithSHA1: false
 
 
 .. _msa_adapt_YAML:
