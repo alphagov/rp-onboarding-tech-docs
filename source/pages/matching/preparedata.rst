@@ -13,7 +13,7 @@ Although specific normalisation processes will differ between data sources, you 
 
 You should also consider transliterating letters with diacritical marks to equivalents without marks, for example transliterating ``ö`` to ``o``. The International Civil Aviation Organisation provides recommended transliterations on the `most commonly used characters in Latin, Cyrillic and Arabic languages <https://www.icao.int/publications/Documents/9303_p3_cons_en.pdf>`_ you may find useful.
 
-After the introduction of eIDAS in September 2018, identity providers from other countries will provide a Latin equivalent for non-Latin letters. Belgium and Greece will transliterate any Cyrillic and Greek into a Latin alphabet for you. You will get the transliteration in the JSON received by your matching service.
+After the introduction of eIDAS in September 2018, identity providers from other countries will provide a Latin equivalent for non-Latin letters. For example, any Cyrillic and Greek names will have a Latin transliteration. You will get the transliteration in the JSON received by your matching service.
 
 .. rubric:: Normalise data received from the GOV.UK Verify Hub
 
