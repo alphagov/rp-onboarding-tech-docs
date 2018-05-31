@@ -141,22 +141,20 @@ In practice, this means European citizens will be able to use their national onl
 
 If your service needs to be able to process EU identities, you need to :ref:`configure your MSA<msa_adapt_YAML>` to do this.
 
-European identities you receive from the GOV.UK Verify Hub will be in the format of the :ref:`universal JSON matching schema<JSONschema>`, and will only include:
+European identities you receive from the GOV.UK Verify Hub will always be in the format of the :ref:`universal JSON matching schema<JSONschema>`, and will only include:
 
-- first name
-- surname
-- date of birth
-- a personal identifier or equivalent from the EU member state (the equivalent of the PID)
+- first name, ``firstName``
+- surname, ``surnames``
+- date of birth, ``dateOfBirth``
+- a personal identifier or equivalent from the EU member state (the equivalent of the PID),
 
 These are all verified attributes. The data from European citizens will not include any historical attributes or unverified attributes.
 
-For names using non-Latin characters, both the non-Latin as well as a Latin equivalent will appear in the JSON received by your mathcing service.
+For names using non-Latin characters, both the non-Latin as well as a Latin equivalent will appear in the JSON received by your matching service. Because European identities will not contain middle names, only ``firstName`` and ``surnames`` may contain a ``nonLatinScriptValue`` property, where applicable
 
 The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.
 
 Keep in mind that EU identities don't include addresses. If your service needs to be able to process EU identities, make sure your matching strategy is not based on addresses.
-
-
 
 
 **Unverified attributes**

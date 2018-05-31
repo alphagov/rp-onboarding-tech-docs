@@ -163,10 +163,12 @@ Below is the ``test-config.yml`` file:
         path: test_ida_metadata.ts
         password: puppet
 
-    # This is a required section, even if your service doesn't need to consume European identities. See below how to configure this section, according to the needs of your service.
+    # This is a required section, even if your service doesn't need to consume European identities.
+    # See below how to configure this section, according to the needs of your service.
     europeanIdentity:
       enabled: ${EUROPEAN_IDENTITY_ENABLED} # true or false
-      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector # replace with the URL for the production environment when your service goes live
+      # Use the URL for the integration or production environment, as appropriate.
+      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector
 
       # Details about eIDAS metadata can be configured here
       aggregatedMetadata:
@@ -263,14 +265,16 @@ In the field ``metadata:``
 
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
+.. _msaeidas:
+
 In the field ``europeanIdentity``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 11. Configure according to the needs of your service:
 
-  If your service does not need to consume European identities, you only need to set ``enabled: false`` in this section. This setting also implies your service will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
-
   If your service needs to consume European identities, set ``enabled: true``. You also need to configure the URLs for the environments you're tatgetting, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`.
+
+  If your service does not need to consume European identities, you only need to set ``enabled: false`` in this section. This setting also implies your service will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
 
 
 .. _msa_test_msa:

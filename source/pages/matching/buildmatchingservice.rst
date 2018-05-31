@@ -197,191 +197,194 @@ Your local matching service sends either a ``match`` or a ``no-match`` response 
 
 If no match is found on cycles 0, 1 and 3, you can :ref:`create a new account<createnewaccounts>` for the user.
 
+.. _JSONschema:
 
 .. rubric:: Use the universal JSON matching schema
 
-.. _JSONschema:
-
 Below is the universal `JSON schema <http://json-schema.org/>`_ for a matching request. You can use this schema to validate incoming matching requests and as a reference when developing your local matching service.
 
-
-
-.. note:: The elements in ``matchingDataset`` are optional, so the code handling this in your local matching service must be appropriately flexible.
+The universal JSON matching schema will be used to represent both Verify  identities and European identities. This schema only applies if your :ref:`MSA is configured to use European identities<msaeidas>`. Otherwise your MSA will use the :ref:`legacy JSON matching schema<legacyJSONschema>`.
 
 ::
 
-  {
-    "properties": {
-      "cycle3Dataset": {
-        "properties": {
-          "attributes": {
-            "additionalProperties": {
-              "type": "string"
-            },
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
-      "hashedPid": {
-        "type": "string"
-      },
-      "levelOfAssurance": {
-        "enum": [
-          "LEVEL_1",
-          "LEVEL_2",
-          "LEVEL_3",
-          "LEVEL_4"
-        ],
-        "type": "string"
-      },
-      "matchId": {
-        "type": "string"
-      },
-      "matchingDataset": {
-        "properties": {
-          "addresses": {
-            "items": {
-              "properties": {
-                "from": {
-                  "format": "DATE_TIME",
-                  "type": "string"
-                },
-                "internationalPostCode": {
-                  "type": "string"
-                },
-                "lines": {
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array"
-                },
-                "postCode": {
-                  "type": "string"
-                },
-                "to": {
-                  "format": "DATE_TIME",
-                  "type": "string"
-                },
-                "uprn": {
-                  "type": "string"
-                },
-                "verified": {
-                  "type": "boolean"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "dateOfBirth": {
-            "properties": {
-              "from": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "to": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "value": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              }
-            },
-            "type": "object"
-          },
-          "firstName": {
-            "properties": {
-              "from": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "to": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              }
-            },
-            "type": "object"
-          },
-          "gender": {
-            "properties": {
-              "from": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "to": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "value": {
-                "enum": [
-                  "FEMALE",
-                  "MALE",
-                  "NOT_SPECIFIED"
-                ],
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              }
-            },
-            "type": "object"
-          },
-          "middleNames": {
-            "properties": {
-              "from": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "to": {
-                "format": "DATE_TIME",
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              },
-              "verified": {
-                "type": "boolean"
-              }
-            },
-            "type": "object"
-          },
-          "surnames": {
-            "items": {
-              "properties": {
-                "from": {
-                  "format": "DATE_TIME",
-                  "type": "string"
-                },
-                "to": {
-                  "format": "DATE_TIME",
-                  "type": "string"
-                },
-                "value": {
-                  "type": "string"
-                },
-                "verified": {
-                  "type": "boolean"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "required": [ "matchId", "levelOfAssurance", "hashedPid", "matchingDataset" ]
-  }
+ {
+ "properties": {
+   "cycle3Dataset": {
+     "properties": {
+       "attributes": {
+         "additionalProperties": {
+           "type": "string"
+         },
+         "type": "object"
+       }
+     },
+     "type": "object"
+   },
+   "hashedPid": {
+     "type": "string"
+   },
+   "levelOfAssurance": {
+     "enum": [
+       "LEVEL_1",
+       "LEVEL_2",
+       "LEVEL_3",
+       "LEVEL_4"
+     ],
+     "type": "string"
+   },
+   "matchId": {
+     "type": "string"
+   },
+   "matchingDataset": {
+     "properties": {
+       "addresses": {
+         "items": {
+           "properties": {
+             "from": {
+               "format": "DATE_TIME",
+               "type": "string"
+             },
+             "internationalPostCode": {
+               "type": "string"
+             },
+             "lines": {
+               "items": {
+                 "type": "string"
+               },
+               "type": "array"
+             },
+             "postCode": {
+               "type": "string"
+             },
+             "to": {
+               "format": "DATE_TIME",
+               "type": "string"
+             },
+             "uprn": {
+               "type": "string"
+             },
+             "verified": {
+               "type": "boolean"
+             }
+           },
+           "type": "object"
+         },
+         "type": "array"
+       },
+       "dateOfBirth": {
+         "properties": {
+           "from": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "to": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "value": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "verified": {
+             "type": "boolean"
+           }
+         },
+         "type": "object"
+       },
+       "firstName": {
+         "properties": {
+           "from": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "to": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "value": {
+             "type": "string"
+           },
+           "nonLatinScriptValue": {
+             "type": "string"
+           },
+           "verified": {
+             "type": "boolean"
+           }
+         },
+         "type": "object"
+       },
+       "gender": {
+         "properties": {
+           "from": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "to": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "value": {
+             "enum": [
+               "FEMALE",
+               "MALE",
+               "NOT_SPECIFIED"
+             ],
+             "type": "string"
+           },
+           "verified": {
+             "type": "boolean"
+           }
+         },
+         "type": "object"
+       },
+       "middleNames": {
+         "properties": {
+           "from": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "to": {
+             "format": "DATE_TIME",
+             "type": "string"
+           },
+           "value": {
+             "type": "string"
+           },
+           "verified": {
+             "type": "boolean"
+           }
+         },
+         "type": "object"
+       },
+       "surnames": {
+         "items": {
+           "properties": {
+             "from": {
+               "format": "DATE_TIME",
+               "type": "string"
+             },
+             "to": {
+               "format": "DATE_TIME",
+               "type": "string"
+             },
+             "value": {
+               "type": "string"
+             },
+             "nonLatinScriptValue": {
+               "type": "string"
+             },
+             "verified": {
+               "type": "boolean"
+             }
+           },
+           "type": "object"
+         },
+         "type": "array"
+       }
+     },
+     "type": "object"
+   }
+ },
+ "type": "object",
+ "required": [ "matchId", "levelOfAssurance", "hashedPid", "matchingDataset" ]
+ }

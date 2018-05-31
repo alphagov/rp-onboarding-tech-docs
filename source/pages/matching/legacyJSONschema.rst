@@ -1,13 +1,10 @@
 
-The legacy JSON matching schema
--------------------------------
 .. _legacyJSONschema:
 
-Write about:
-  * When it's used.
-  * Differences from the universal schema.
+The legacy JSON matching schema
+-------------------------------
 
-
+If you :ref:`configured your MSA<msaeidas>` to not consume EU identities, the matching datasets you receive from the GOV.UK Verify Hub will be formatted according to the legacy JSON matching schema:
 
 ::
 
