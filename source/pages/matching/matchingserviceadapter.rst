@@ -83,11 +83,11 @@ Below is the ``test-config.yml`` file:
 .. code-block:: yaml
 
     # Configure the matching service adapter's server settings here.
-    # See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#servers
+    # See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#servers
     # for more information.
     server:
       # Ports on which to listen for normal connections.
-      # See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#connectors
+      # See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#connectors
       # for information on HTTPS and TLS connections.
       applicationConnectors:
         - type: http
@@ -179,7 +179,7 @@ Below is the ``test-config.yml`` file:
           password: puppet
 
     ## Options to add additional logging. By default, logs will be output to console.
-    ## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging
+    ## See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#logging
     ## for more information.
     #logging:
     #  level: INFO
@@ -204,7 +204,7 @@ In the field ``server:``
 
 1. Enter port numbers for the server application (``applicationConnectors``) and admin ports (``adminConnectors``).
 
- .. note:: If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don't trust the network between the SSL termination endpoint and the MSA, then specify ``https`` rather than ``http`` for the type of connection. For more information, see the guidance in the `DropWizard configuration manual <http://dropwizard.github.io/dropwizard/1.0.5/docs/manual/configuration.html#https>`_.
+ .. note:: If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don't trust the network between the SSL termination endpoint and the MSA, then specify ``https`` rather than ``http`` for the type of connection. For more information, see the guidance in the `DropWizard configuration manual <http://dropwizard.github.io/dropwizard/1.3.2/docs/manual/configuration.html#https>`_.
 
 In the field ``matchingServiceAdapter:``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
