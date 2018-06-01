@@ -207,61 +207,77 @@ The universal JSON matching schema will be used to represent both Verify  identi
 
 ::
 
- {
- "properties": {
-   "cycle3Dataset": {
-     "properties": {
-       "attributes": {
-         "additionalProperties": {
-           "type": "string"
-         },
-         "type": "object"
-       }
+  {
+   "properties": {
+     "cycle3Dataset": {
+       "properties": {
+         "attributes": {
+           "additionalProperties": {
+             "type": "string"
+           },
+           "type": "object"
+         }
+       },
+       "type": "object"
      },
-     "type": "object"
-   },
-   "hashedPid": {
-     "type": "string"
-   },
-   "levelOfAssurance": {
-     "enum": [
-       "LEVEL_1",
-       "LEVEL_2",
-       "LEVEL_3",
-       "LEVEL_4"
-     ],
-     "type": "string"
-   },
-   "matchId": {
-     "type": "string"
-   },
-   "matchingDataset": {
-     "properties": {
-       "addresses": {
-         "items": {
-           "properties": {
-             "from": {
-               "format": "DATE_TIME",
-               "type": "string"
-             },
-             "internationalPostCode": {
-               "type": "string"
-             },
-             "lines": {
-               "items": {
+     "hashedPid": {
+       "type": "string"
+     },
+     "levelOfAssurance": {
+       "enum": [
+         "LEVEL_1",
+         "LEVEL_2",
+         "LEVEL_3",
+         "LEVEL_4"
+       ]
+     },
+     "matchId": {
+       "type": "string"
+     },
+     "matchingDataset": {
+       "properties": {
+         "addresses": {
+           "items": {
+             "properties": {
+               "from": {
+                 "format": "date-time"
+               },
+               "internationalPostCode": {
                  "type": "string"
                },
-               "type": "array"
+               "lines": {
+                 "items": {
+                   "type": "string"
+                 },
+                 "type": "array"
+               },
+               "postCode": {
+                 "type": "string"
+               },
+               "to": {
+                 "format": "date-time"
+               },
+               "uprn": {
+                 "type": "string"
+               },
+               "verified": {
+                 "type": "boolean"
+               }
              },
-             "postCode": {
-               "type": "string"
+             "type": "object"
+           },
+           "type": "array"
+         },
+         "dateOfBirth": {
+           "properties": {
+             "from": {
+               "format": "date-time"
              },
              "to": {
-               "format": "DATE_TIME",
-               "type": "string"
+               "format": "date-time"
              },
-             "uprn": {
-               "type": "string"
+             "value": {
+               "format": "date"
              },
              "verified": {
                "type": "boolean"
@@ -269,103 +285,13 @@ The universal JSON matching schema will be used to represent both Verify  identi
            },
            "type": "object"
          },
-         "type": "array"
-       },
-       "dateOfBirth": {
-         "properties": {
-           "from": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "to": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "value": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "verified": {
-             "type": "boolean"
-           }
-         },
-         "type": "object"
-       },
-       "firstName": {
-         "properties": {
-           "from": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "to": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "value": {
-             "type": "string"
-           },
-           "nonLatinScriptValue": {
-             "type": "string"
-           },
-           "verified": {
-             "type": "boolean"
-           }
-         },
-         "type": "object"
-       },
-       "gender": {
-         "properties": {
-           "from": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "to": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "value": {
-             "enum": [
-               "FEMALE",
-               "MALE",
-               "NOT_SPECIFIED"
-             ],
-             "type": "string"
-           },
-           "verified": {
-             "type": "boolean"
-           }
-         },
-         "type": "object"
-       },
-       "middleNames": {
-         "properties": {
-           "from": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "to": {
-             "format": "DATE_TIME",
-             "type": "string"
-           },
-           "value": {
-             "type": "string"
-           },
-           "verified": {
-             "type": "boolean"
-           }
-         },
-         "type": "object"
-       },
-       "surnames": {
-         "items": {
+         "firstName": {
            "properties": {
              "from": {
-               "format": "DATE_TIME",
-               "type": "string"
+               "format": "date-time"
              },
              "to": {
-               "format": "DATE_TIME",
-               "type": "string"
+               "format": "date-time"
              },
              "value": {
                "type": "string"
@@ -379,12 +305,72 @@ The universal JSON matching schema will be used to represent both Verify  identi
            },
            "type": "object"
          },
-         "type": "array"
-       }
-     },
-     "type": "object"
-   }
- },
- "type": "object",
- "required": [ "matchId", "levelOfAssurance", "hashedPid", "matchingDataset" ]
- }
+         "gender": {
+           "properties": {
+             "from": {
+               "format": "date-time"
+             },
+             "to": {
+               "format": "date-time"
+             },
+             "value": {
+               "enum": [
+                 "FEMALE",
+                 "MALE",
+                 "NOT_SPECIFIED"
+               ]
+             },
+             "verified": {
+               "type": "boolean"
+             }
+           },
+           "type": "object"
+         },
+         "middleNames": {
+           "properties": {
+             "from": {
+               "format": "date-time"
+             },
+             "to": {
+               "format": "date-time"
+             },
+             "value": {
+               "type": "string"
+             },
+             "verified": {
+               "type": "boolean"
+             }
+           },
+           "type": "object"
+         },
+         "surnames": {
+           "items": {
+             "properties": {
+               "from": {
+                 "format": "date-time"
+               },
+               "to": {
+                 "format": "date-time"
+               },
+               "value": {
+                 "type": "string"
+               },
+               "nonLatinScriptValue": {
+                 "type": "string"
+               },
+               "verified": {
+                 "type": "boolean"
+               }
+             },
+             "type": "object"
+           },
+           "type": "array"
+         }
+       },
+       "type": "object",
+       "required": ["dateOfBirth", "firstName", "surnames"]
+     }
+   },
+   "type": "object",
+   "required": [ "matchId", "levelOfAssurance", "hashedPid", "matchingDataset" ]
+  }
