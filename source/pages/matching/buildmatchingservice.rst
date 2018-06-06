@@ -45,69 +45,99 @@ Your service must respond to JSON matching requests from the Matching Service Ad
 * ``localMatchingService:`` ``matchUrl:``
 * ``localMatchingService:`` ``accountCreationUrl:`` (if you're :ref:`creating new user accounts <createnewaccounts>` when a match is not found)
 
-The MSA sends one matching request for both Cycle 0 and Cycle 1 to your local matching service. Below is a formatted example:
+The MSA sends one matching request for both Cycle 0 and Cycle 1 to your local matching service. Below is a formatted example for a GOV.UK Verify identity using :ref:`the universal JSON schema<JSONschema>`.
 
 ::
+    {
+        "hashedPid": "8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04",
+        "levelOfAssurance": "LEVEL_2",
+        "matchId": "default-request-id",
+        "matchingDataset": {
+            "addresses": [
+                {
+                    "from": "1980-05-24T00:00:00.000Z",
+                    "internationalPostCode": "GB1 2PP",
+                    "lines": [
+                        "123 George Street"
+                    ],
+                    "postCode": "GB1 2PP",
+                    "to": "2005-05-14T00:00:00.000Z",
+                    "uprn": "7D68E096-5510-B3844C0BA3FD",
+                    "verified": true
+                },
+                {
+                    "from": "2005-05-14T00:00:00.000Z",
+                    "internationalPostCode": "GB1 2PF",
+                    "lines": [
+                        "10 George Street"
+                    ],
+                    "postCode": "GB1 2PF",
+                    "uprn": "833F1187-9F33-A7E27B3F211E",
+                    "verified": true
+                }
+            ],
+            "dateOfBirth": {
+                "value": "1980-05-24",
+                "verified": true
+            },
+            "firstName": {
+                "value": "Joe",
+                "nonLatinScriptValue": "",
+                "verified": true
+            },
+            "gender": {
+                "value": "MALE",
+                "verified": true
+            },
+            "middleNames": {
+                "value": "Bob Rob",
+                "verified": true
+            },
+            "surnames": [
+                {
+                    "from": "1980-05-24T00:00:00.000Z",
+                    "to": "2010-01-20T00:00:00.000Z",
+                    "value": "Fred",
+                    "nonLatinScriptValue": "",
+                    "verified": true
+                },
+                {
+                    "from": "2010-01-20T00:00:00.000Z",
+                    "value": "Dou",
+                    "verified": true
+                }
+            ]
+        }
+    }
 
+
+The matching request for a :ref:`European identity<eIDASintro>`, will be formatted as shown below. If you haven't enabled European identities in your MSA configuration, the matching request will be formatted using :ref:`the legacy JSON schema<legacyJSONcycle01>`.
+
+::
   {
       "hashedPid": "8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04",
       "levelOfAssurance": "LEVEL_2",
       "matchId": "default-request-id",
       "matchingDataset": {
-          "addresses": [
-              {
-                  "fromDate": "1980-05-24T00:00:00.000Z",
-                  "internationalPostCode": "GB1 2PP",
-                  "lines": [
-                      "123 George Street"
-                  ],
-                  "postCode": "GB1 2PP",
-                  "toDate": "2005-05-14T00:00:00.000Z",
-                  "uprn": "7D68E096-5510-B3844C0BA3FD",
-                  "verified": true
-              },
-              {
-                  "fromDate": "2005-05-14T00:00:00.000Z",
-                  "internationalPostCode": "GB1 2PF",
-                  "lines": [
-                      "10 George Street"
-                  ],
-                  "postCode": "GB1 2PF",
-                  "uprn": "833F1187-9F33-A7E27B3F211E",
-                  "verified": true
-              }
-          ],
           "dateOfBirth": {
               "value": "1980-05-24",
               "verified": true
           },
           "firstName": {
-              "value": "Joe",
-              "verified": true
-          },
-          "gender": {
-              "value": "MALE",
-              "verified": true
-          },
-          "middleNames": {
-              "value": "Bob Rob",
+              "value": "Alexander",
+              "nonLatinScriptValue": "Αλέξανδρος",
               "verified": true
           },
           "surnames": [
               {
-                  "from": "1980-05-24T00:00:00.000Z",
-                  "to": "2010-01-20T00:00:00.000Z",
-                  "value": "Fred",
-                  "verified": true
-              },
-              {
-                  "from": "2010-01-20T00:00:00.000Z",
-                  "value": "Dou",
+                  "value": "Eliopoulos",
+                  "nonLatinScriptValue": "Ελιόπουλος",
                   "verified": true
               }
           ]
       }
   }
+
 
 Your local matching service first runs cycle 0. If no match is found, it runs cycle 1. It then sends either a ``match`` or a ``no-match`` response to the MSA. This response corresponds to step 6 in the :ref:`SAML message flow <samlWorks>`.
 
@@ -124,74 +154,107 @@ Below is a ``no-match`` response (it should have the status code ``200 OK``):
   {"result":"no-match"}
 
 
-If you're using cycle 3 and your local matching service returned a ``no-match`` response to the MSA, the MSA sends a cycle 3 matching request.  Below is a formatted example:
+If you're using cycle 3 and your local matching service returned a ``no-match`` response to the MSA, the MSA sends a cycle 3 matching request.  Below is a formatted example for a GOV.UK Verify identity using :ref:`the universal JSON schema<JSONschema>`.
 
 ::
+    {
+        "cycle3Dataset": {
+            "attributes": {
+                "drivers_licence": "4C22DA90A18A4B88BE460E0A3D975F68"
+            }
+        },
+        "hashedPid": "8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04",
+        "levelOfAssurance": "LEVEL_2",
+        "matchId": "default-request-id",
+        "matchingDataset": {
+            "addresses": [
+                {
+                    "from": "1980-05-24T00:00:00.000Z",
+                    "internationalPostCode": "GB1 2PP",
+                    "lines": [
+                        "123 George Street"
+                    ],
+                    "postCode": "GB1 2PP",
+                    "to": "2005-05-14T00:00:00.000Z",
+                    "uprn": "7D68E096-5510-B3844C0BA3FD",
+                    "verified": true
+                },
+                {
+                    "from": "2005-05-14T00:00:00.000Z",
+                    "internationalPostCode": "GB1 2PF",
+                    "lines": [
+                        "10 George Street"
+                    ],
+                    "postCode": "GB1 2PF",
+                    "uprn": "833F1187-9F33-A7E27B3F211E",
+                    "verified": true
+                }
+            ],
+            "dateOfBirth": {
+                "value": "1980-05-24",
+                "verified": true
+            },
+            "firstName": {
+                "value": "Joe",
+                "nonLatinScriptValue": "",
+                "verified": true
+            },
+            "gender": {
+                "value": "MALE",
+                "verified": true
+            },
+            "middleNames": {
+                "value": "Bob Rob",
+                "verified": true
+            },
+            "surnames": [
+                {
+                    "from": "1980-05-24T00:00:00.000Z",
+                    "to": "2010-01-20T00:00:00.000Z",
+                    "value": "Fred",
+                    "nonLatinScriptValue": "",
+                    "verified": true
+                },
+                {
+                    "from": "2010-01-20T00:00:00.000Z",
+                    "value": "Dou",
+                    "verified": true
+                }
+            ]
+        }
+    }
 
+A cycle 3 matching request for a :ref:`European identity<eIDASintro>`, will be formatted as shown below. If you haven't enabled European identities in your MSA configuration, the matching request will be formatted using :ref:`the legacy JSON schema<legacyJSONcycle01>`
+
+::
   {
-      "cycle3Dataset": {
-          "attributes": {
-              "drivers_licence": "4C22DA90A18A4B88BE460E0A3D975F68"
-          }
-      },
-      "hashedPid": "8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04",
-      "levelOfAssurance": "LEVEL_2",
-      "matchId": "default-request-id",
-      "matchingDataset": {
-          "addresses": [
-              {
-                  "fromDate": "1980-05-24T00:00:00.000Z",
-                  "internationalPostCode": "GB1 2PP",
-                  "lines": [
-                      "123 George Street"
-                  ],
-                  "postCode": "GB1 2PP",
-                  "toDate": "2005-05-14T00:00:00.000Z",
-                  "uprn": "7D68E096-5510-B3844C0BA3FD",
-                  "verified": true
-              },
-              {
-                  "fromDate": "2005-05-14T00:00:00.000Z",
-                  "internationalPostCode": "GB1 2PF",
-                  "lines": [
-                      "10 George Street"
-                  ],
-                  "postCode": "GB1 2PF",
-                  "uprn": "833F1187-9F33-A7E27B3F211E",
-                  "verified": true
-              }
-          ],
-          "dateOfBirth": {
-              "value": "1980-05-24",
-              "verified": true
-          },
-          "firstName": {
-              "value": "Joe",
-              "verified": true
-          },
-          "gender": {
-              "value": "MALE",
-              "verified": true
-          },
-          "middleNames": {
-              "value": "Bob Rob",
-              "verified": true
-          },
-          "surnames": [
-              {
-                  "from": "1980-05-24T00:00:00.000Z",
-                  "to": "2010-01-20T00:00:00.000Z",
-                  "value": "Fred",
-                  "verified": true
-              },
-              {
-                  "from": "2010-01-20T00:00:00.000Z",
-                  "value": "Dou",
-                  "verified": true
-              }
-          ]
-      }
-  }
+    "cycle3Dataset": {
+        "attributes": {
+            "drivers_licence": "4C22DA90A18A4B88BE460E0A3D975F68"
+        }
+    },
+    "hashedPid": "8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04",
+    "levelOfAssurance": "LEVEL_2",
+    "matchId": "default-request-id",
+    "matchingDataset": {
+        "dateOfBirth": {
+            "value": "1980-05-24",
+            "verified": true
+        },
+        "firstName": {
+            "value": "Alexander",
+            "nonLatinScriptValue": "Αλέξανδρος",
+            "verified": true
+        },
+        "surnames": [
+            {
+                "value": "Eliopoulos",
+                "nonLatinScriptValue": "Ελιόπουλος",
+                "verified": true
+            }
+        ]
+    }
+ }
 
 Your local matching service sends either a ``match`` or a ``no-match`` response to the MSA. This response corresponds to step 6 in the :ref:`SAML message flow <samlWorks>`.
 

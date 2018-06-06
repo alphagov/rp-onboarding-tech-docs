@@ -133,6 +133,8 @@ It may also include additional data such as historical addresses and gender.
 
 You must not use the matching dataset for anything other than matching. If you do, you may be in violation of the `General Data Protection Regulation <https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/>`_.
 
+.. _eIDASintro:
+
 **European identities and eIDAS**
 
 The `eIDAS regulation <https://ico.org.uk/for-organisations/guide-to-eidas/what-is-the-eidas-regulation/>`_, coming into force in late 2018, says that European citizens must be able to use their national electronic IDs to access public services provided by another EU member state.

@@ -163,18 +163,15 @@ Below is the ``test-config.yml`` file:
         path: test_ida_metadata.ts
         password: puppet
 
-    # This is a required section, even if your service doesn't need to consume European identities.
-    # See below how to configure this section, according to the needs of your service.
+    # This is a required section if your service needs to consume European identities.
     europeanIdentity:
       enabled: ${EUROPEAN_IDENTITY_ENABLED} # true or false
-      # Use the URL for the integration or production environment, as appropriate.
-      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector
-
-      # Details about eIDAS metadata can be configured here
+      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector # The URL of the metadata for the node that requests and receives identities from European countries.
+      # Configure metadata for European countries.
       aggregatedMetadata:
-        trustAnchorUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/trust-anchor
-        metadataSourceUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/aggregator
-        trustStore:
+        trustAnchorUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/trust-anchor # The location of the trust anchor used to validate country metadata
+        metadataSourceUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/aggregator # The location of the aggregated country metadata
+        trustStore: # The location and password for the truststore
           path: test_ida_metadata.ts
           password: puppet
 
@@ -272,9 +269,10 @@ In the field ``europeanIdentity``
 
 11. Configure according to the needs of your service:
 
-  If your service needs to consume European identities, set ``enabled: true``. You also need to configure the URLs for the environments you're tatgetting, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`.
+  If your service needs to consume European identities, set ``enabled: true``.
+  You also need to configure the URLs for the environments want to use, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`. The schema will apply to datasets from both European countries, as well as GOV.UK Verify identity providers.
 
-  If your service does not need to consume European identities, you only need to set ``enabled: false`` in this section. This setting also implies your service will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
+  If if you need to disable European identities, set ``enabled: false`` in this section. This setting also implies your MSA will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
 
 
 .. _msa_test_msa:
