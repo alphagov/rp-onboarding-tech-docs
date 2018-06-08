@@ -248,17 +248,21 @@
 </ul>
 <p>It may also include additional data such as historical addresses and gender.</p>
 <p>You must not use the matching dataset for anything other than matching. If you do, you may be in violation of the <a class="reference external" href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/">General Data Protection Regulation</a>.</p>
-<p><strong>European identities and eIDAS</strong></p>
+<p id="eidasintro"><strong>European identities and eIDAS</strong></p>
 <p>The <a class="reference external" href="https://ico.org.uk/for-organisations/guide-to-eidas/what-is-the-eidas-regulation/">eIDAS regulation</a>, coming into force in late 2018, says that European citizens must be able to use their national electronic IDs to access public services provided by another EU member state.</p>
-<p>In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services. The data you receive from the GOV.UK Verify Hub will look similar for a European identity, but will include:</p>
+<p>In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services.</p>
+<p>If your service needs to be able to process EU identities, you need to <a class="reference internal" href="matchingserviceadapter.html#msa-adapt-yaml"><span>configure your MSA</span></a> to do this.</p>
+<p>European identities you receive from the GOV.UK Verify Hub will always be in the format of the <a class="reference internal" href="buildmatchingservice.html#jsonschema"><span>universal JSON matching schema</span></a>, and will only include:</p>
 <ul class="simple">
-<li>name</li>
-<li>date of birth</li>
-<li>a personal identifier or equivalent from the EU member state (the equivalent of the PID)</li>
+<li>first name, <code class="docutils literal"><span class="pre">firstName</span></code></li>
+<li>surname, <code class="docutils literal"><span class="pre">surnames</span></code></li>
+<li>date of birth, <code class="docutils literal"><span class="pre">dateOfBirth</span></code></li>
+<li>a personal identifier or equivalent from the EU member state (the equivalent of the PID),</li>
 </ul>
-<p>It will not include any historical attributes.</p>
+<p>These are all verified attributes. The data from European citizens will not include any historical attributes or unverified attributes.</p>
+<p>For names using non-Latin characters, both the non-Latin as well as a Latin equivalent will appear in the JSON received by your matching service. Because European identities will not contain middle names, only <code class="docutils literal"><span class="pre">firstName</span></code> and <code class="docutils literal"><span class="pre">surnames</span></code> may contain a <code class="docutils literal"><span class="pre">nonLatinScriptValue</span></code> property, where applicable</p>
 <p>The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.</p>
-<p>The data will include an additional tag with a Latin equivalent if any names use non-Latin characters.</p>
+<p>Keep in mind that EU identities don&#8217;t include addresses. If your service needs to be able to process EU identities, make sure your matching strategy is not based on addresses.</p>
 <p><strong>Unverified attributes</strong></p>
 <p>The identity provider may offer some unverified attributes to help you disambiguate between similar records. Any unverified attributes will be clearly labelled.</p>
 <p>An unverified attribute does not mean the identity is invalid. For example, it can be difficult to verify current addresses, especially if an individual has not lived at that address for very long. Verifying a previous address can be enough to establish identity.</p>

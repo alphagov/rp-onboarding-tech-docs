@@ -121,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-signingkeys">In the field <code class="docutils literal"><span class="pre">signingKeys:</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-encryptionkeys">In the field <code class="docutils literal"><span class="pre">encryptionKeys:</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#in-the-field-metadata">In the field <code class="docutils literal"><span class="pre">metadata:</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#in-the-field-europeanidentity">In the field <code class="docutils literal"><span class="pre">europeanIdentity</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#start-the-matching-service-adapter">Start the Matching Service Adapter</a></li>
@@ -326,6 +327,18 @@
     <span class="c1"># path: test_idp.ts</span>
     <span class="c1"># password: puppet</span>
 
+<span class="c1"># This is a required section if your service needs to consume European identities.</span>
+<span class="l l-Scalar l-Scalar-Plain">europeanIdentity</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">${EUROPEAN_IDENTITY_ENABLED}</span> <span class="c1"># true or false</span>
+  <span class="l l-Scalar l-Scalar-Plain">hubConnectorEntityId</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.integration.signin.service.gov.uk/SAML2/metadata/connector</span> <span class="c1"># The URL of the metadata for the node that requests and receives identities from European countries.</span>
+  <span class="c1"># Configure metadata for European countries.</span>
+  <span class="l l-Scalar l-Scalar-Plain">aggregatedMetadata</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">trustAnchorUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.integration.signin.service.gov.uk/SAML2/metadata/trust-anchor</span> <span class="c1"># The location of the trust anchor used to validate country metadata</span>
+    <span class="l l-Scalar l-Scalar-Plain">metadataSourceUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://www.integration.signin.service.gov.uk/SAML2/metadata/aggregator</span> <span class="c1"># The location of the aggregated country metadata</span>
+    <span class="l l-Scalar l-Scalar-Plain">trustStore</span><span class="p p-Indicator">:</span> <span class="c1"># The location and password for the truststore</span>
+      <span class="l l-Scalar l-Scalar-Plain">path</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test_ida_metadata.ts</span>
+      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">puppet</span>
+
 <span class="c1">## Options to add additional logging. By default, logs will be output to console.</span>
 <span class="c1">## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging</span>
 <span class="c1">## for more information.</span>
@@ -424,6 +437,17 @@
 <ol class="arabic simple" start="10">
 <li>(optional) If you need to override the <code class="docutils literal"><span class="pre">hub</span></code> and <code class="docutils literal"><span class="pre">idp</span></code> truststore path for testing in Integration, uncomment the <code class="docutils literal"><span class="pre">hubTrustStore</span></code> and <code class="docutils literal"><span class="pre">idpTrustStore</span></code> sections in test-config.yml.</li>
 </ol>
+</div>
+<div class="section" id="in-the-field-europeanidentity">
+<span id="msaeidas"></span><h3>In the field <code class="docutils literal"><span class="pre">europeanIdentity</span></code><a class="headerlink" href="#in-the-field-europeanidentity" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple" start="11">
+<li>Configure according to the needs of your service:</li>
+</ol>
+<blockquote>
+<div><p>If your service needs to consume European identities, set <code class="docutils literal"><span class="pre">enabled:</span> <span class="pre">true</span></code>.
+You also need to configure the URLs for the environments want to use, for example integration or production. Enabling your service to consume European identities also implies that it will be using <a class="reference internal" href="buildmatchingservice.html#jsonschema"><span>the universal JSON matching schema</span></a>. The schema will apply to datasets from both European countries, as well as GOV.UK Verify identity providers.</p>
+<p>If if you need to disable European identities, set <code class="docutils literal"><span class="pre">enabled:</span> <span class="pre">false</span></code> in this section. This setting also implies your MSA will be using <a class="reference internal" href="legacyJSONschema.html#legacyjsonschema"><span>the legacy JSON matching schema</span></a>.</p>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="start-the-matching-service-adapter">
