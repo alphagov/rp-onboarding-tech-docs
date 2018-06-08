@@ -34,4 +34,5 @@ Remember you must clearly explain to end users why you are collecting the data a
       preparedata
       buildmatchingservice
       matchingserviceadapter
+      testmatching
       createnewaccounts
