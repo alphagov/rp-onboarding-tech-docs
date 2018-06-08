@@ -133,21 +133,31 @@ It may also include additional data such as historical addresses and gender.
 
 You must not use the matching dataset for anything other than matching. If you do, you may be in violation of the `General Data Protection Regulation <https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/>`_.
 
+.. _eIDASintro:
+
 **European identities and eIDAS**
 
 The `eIDAS regulation <https://ico.org.uk/for-organisations/guide-to-eidas/what-is-the-eidas-regulation/>`_, coming into force in late 2018, says that European citizens must be able to use their national electronic IDs to access public services provided by another EU member state.
 
-In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services. The data you receive from the GOV.UK Verify Hub will look similar for a European identity, but will include:
+In practice, this means European citizens will be able to use their national online identity schemes to confirm their identity and access UK government services.
 
-- name
-- date of birth
-- a personal identifier or equivalent from the EU member state (the equivalent of the PID)
+If your service needs to be able to process EU identities, you need to :ref:`configure your MSA<msa_adapt_YAML>` to do this.
 
-It will not include any historical attributes.
+European identities you receive from the GOV.UK Verify Hub will always be in the format of the :ref:`universal JSON matching schema<JSONschema>`, and will only include:
+
+- first name, ``firstName``
+- surname, ``surnames``
+- date of birth, ``dateOfBirth``
+- a personal identifier or equivalent from the EU member state (the equivalent of the PID),
+
+These are all verified attributes. The data from European citizens will not include any historical attributes or unverified attributes.
+
+For names using non-Latin characters, both the non-Latin as well as a Latin equivalent will appear in the JSON received by your matching service. Because European identities will not contain middle names, only ``firstName`` and ``surnames`` may contain a ``nonLatinScriptValue`` property, where applicable
 
 The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.
 
-The data will include an additional tag with a Latin equivalent if any names use non-Latin characters.
+Keep in mind that EU identities don't include addresses. If your service needs to be able to process EU identities, make sure your matching strategy is not based on addresses.
+
 
 **Unverified attributes**
 

@@ -57,7 +57,7 @@ Configure the Matching Service Adapter
 ---------------------------------------------------------------------------------
 
 Create a YAML configuration file
----------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 
 When you :ref:`start the MSA <msa_test_msa>`, you need to supply a YAML configuration file.
 
@@ -163,6 +163,18 @@ Below is the ``test-config.yml`` file:
         # path: test_idp.ts
         # password: puppet
 
+    # This is a required section if your service needs to consume European identities.
+    europeanIdentity:
+      enabled: ${EUROPEAN_IDENTITY_ENABLED} # true or false
+      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector # The URL of the metadata for the node that requests and receives identities from European countries.
+      # Configure metadata for European countries.
+      aggregatedMetadata:
+        trustAnchorUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/trust-anchor # The location of the trust anchor used to validate country metadata
+        metadataSourceUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/aggregator # The location of the aggregated country metadata
+        trustStore: # The location and password for the truststore
+          path: test_ida_metadata.ts
+          password: puppet
+
     ## Options to add additional logging. By default, logs will be output to console.
     ## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging
     ## for more information.
@@ -242,6 +254,19 @@ In the field ``metadata:``
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
 10. (optional) If you need to override the ``hub`` and ``idp`` truststore path for testing in Integration, uncomment the ``hubTrustStore`` and ``idpTrustStore`` sections in test-config.yml.
+
+.. _msaeidas:
+
+In the field ``europeanIdentity``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+11. Configure according to the needs of your service:
+
+  If your service needs to consume European identities, set ``enabled: true``.
+  You also need to configure the URLs for the environments want to use, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`. The schema will apply to datasets from both European countries, as well as GOV.UK Verify identity providers.
+
+  If if you need to disable European identities, set ``enabled: false`` in this section. This setting also implies your MSA will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
+
 
 
 .. _msa_test_msa:
