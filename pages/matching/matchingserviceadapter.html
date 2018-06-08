@@ -241,11 +241,11 @@
 <p><a class="reference internal" href="#msa-adapt-yaml"><span>Adapt the YAML configuration file</span></a> where required.</p>
 <p>Below is the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file:</p>
 <div class="highlight-yaml" id="yamlfile"><div class="highlight"><pre><span></span><span class="c1"># Configure the matching service adapter&#39;s server settings here.</span>
-<span class="c1"># See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#servers</span>
+<span class="c1"># See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#servers</span>
 <span class="c1"># for more information.</span>
 <span class="l l-Scalar l-Scalar-Plain">server</span><span class="p p-Indicator">:</span>
   <span class="c1"># Ports on which to listen for normal connections.</span>
-  <span class="c1"># See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#connectors</span>
+  <span class="c1"># See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#connectors</span>
   <span class="c1"># for information on HTTPS and TLS connections.</span>
   <span class="l l-Scalar l-Scalar-Plain">applicationConnectors</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http</span>
@@ -340,7 +340,7 @@
       <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">puppet</span>
 
 <span class="c1">## Options to add additional logging. By default, logs will be output to console.</span>
-<span class="c1">## See http://www.dropwizard.io/1.0.5/docs/manual/configuration.html#logging</span>
+<span class="c1">## See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#logging</span>
 <span class="c1">## for more information.</span>
 <span class="c1">#logging:</span>
 <span class="c1">#  level: INFO</span>
@@ -351,6 +351,11 @@
 <span class="c1">#      logFormat: &#39;%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx&#39;</span>
 <span class="c1">#    - type: console</span>
 <span class="c1">#      logFormat: &#39;%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx&#39;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">## By default the MSA signs messages using SHA-256.</span>
+<span class="c1">## Switch the flag below to `true` if you need to revert to SHA-1 signing:</span>
+<span class="c1">#shouldSignWithSHA1: false</span>
 </pre></div>
 </div>
 </div>
@@ -365,7 +370,7 @@
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don&#8217;t trust the network between the SSL termination endpoint and the MSA, then specify <code class="docutils literal"><span class="pre">https</span></code> rather than <code class="docutils literal"><span class="pre">http</span></code> for the type of connection. For more information, see the guidance in the <a class="reference external" href="http://dropwizard.github.io/dropwizard/1.0.5/docs/manual/configuration.html#https">DropWizard configuration manual</a>.</p>
+<p class="last">If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don&#8217;t trust the network between the SSL termination endpoint and the MSA, then specify <code class="docutils literal"><span class="pre">https</span></code> rather than <code class="docutils literal"><span class="pre">http</span></code> for the type of connection. For more information, see the guidance in the <a class="reference external" href="http://dropwizard.github.io/dropwizard/1.3.2/docs/manual/configuration.html#https">DropWizard configuration manual</a>.</p>
 </div>
 </div></blockquote>
 </div>
