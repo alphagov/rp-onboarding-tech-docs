@@ -197,135 +197,95 @@
 <li><code class="docutils literal"><span class="pre">localMatchingService:</span></code> <code class="docutils literal"><span class="pre">accountCreationUrl:</span></code> (if you&#8217;re <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>creating new user accounts</span></a> when a match is not found)</li>
 </ul>
 <p>The MSA sends one matching request for both Cycle 0 and Cycle 1 to your local matching service. Below is a formatted example for a GOV.UK Verify identity using <a class="reference internal" href="#jsonschema"><span>the universal JSON schema</span></a>.</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><p class="first">&#8220;hashedPid&#8221;: &#8220;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&#8221;,
-&#8220;levelOfAssurance&#8221;: &#8220;LEVEL_2&#8221;,
-&#8220;matchId&#8221;: &#8220;default-request-id&#8221;,
-&#8220;matchingDataset&#8221;: {</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&#8220;addresses&#8221;: [</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><p class="first">&#8220;from&#8221;: &#8220;1980-05-24T00:00:00.000Z&#8221;,
-&#8220;internationalPostCode&#8221;: &#8220;GB1 2PP&#8221;,
-&#8220;lines&#8221;: [</p>
-<blockquote>
-<div>&#8220;123 George Street&#8221;</div></blockquote>
-<p class="last">],
-&#8220;postCode&#8221;: &#8220;GB1 2PP&#8221;,
-&#8220;to&#8221;: &#8220;2005-05-14T00:00:00.000Z&#8221;,
-&#8220;uprn&#8221;: &#8220;7D68E096-5510-B3844C0BA3FD&#8221;,
-&#8220;verified&#8221;: true</p>
-</dd>
-</dl>
-<p>},
-{</p>
-<blockquote>
-<div><p>&#8220;from&#8221;: &#8220;2005-05-14T00:00:00.000Z&#8221;,
-&#8220;internationalPostCode&#8221;: &#8220;GB1 2PF&#8221;,
-&#8220;lines&#8221;: [</p>
-<blockquote>
-<div>&#8220;10 George Street&#8221;</div></blockquote>
-<p>],
-&#8220;postCode&#8221;: &#8220;GB1 2PF&#8221;,
-&#8220;uprn&#8221;: &#8220;833F1187-9F33-A7E27B3F211E&#8221;,
-&#8220;verified&#8221;: true</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>],
-&#8220;dateOfBirth&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;1980-05-24&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;firstName&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;Joe&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;gender&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;MALE&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;middleNames&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;Bob Rob&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;surnames&#8221;: [</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>{</dt>
-<dd>&#8220;from&#8221;: &#8220;1980-05-24T00:00:00.000Z&#8221;,
-&#8220;to&#8221;: &#8220;2010-01-20T00:00:00.000Z&#8221;,
-&#8220;value&#8221;: &#8220;Fred&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;&#8221;,
-&#8220;verified&#8221;: true</dd>
-</dl>
-<p>},
-{</p>
-<blockquote>
-<div>&#8220;from&#8221;: &#8220;2010-01-20T00:00:00.000Z&#8221;,
-&#8220;value&#8221;: &#8220;Dou&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matchId&quot;</span><span class="p">:</span> <span class="s2">&quot;default-request-id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matchingDataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;123 George Street&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;7D68E096-5510-B3844C0BA3FD&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;10 George Street&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;833F1187-9F33-A7E27B3F211E&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nonLatinScriptValue&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;middleNames&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob Rob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;nonLatinScriptValue&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Dou&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The matching request for a <a class="reference internal" href="matchingstrategy.html#eidasintro"><span>European identity</span></a>, will be formatted as shown below. If you haven&#8217;t enabled European identities in your MSA configuration, the matching request will be formatted using <span class="xref std std-ref">the legacy JSON schema</span>.</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><p class="first">&#8220;hashedPid&#8221;: &#8220;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&#8221;,
-&#8220;levelOfAssurance&#8221;: &#8220;LEVEL_2&#8221;,
-&#8220;matchId&#8221;: &#8220;default-request-id&#8221;,
-&#8220;matchingDataset&#8221;: {</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&#8220;dateOfBirth&#8221;: {</dt>
-<dd>&#8220;value&#8221;: &#8220;1980-05-24&#8221;,
-&#8220;verified&#8221;: true</dd>
-</dl>
-<p>},
-&#8220;firstName&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;Alexander&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;Αλέξανδρος&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;surnames&#8221;: [</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>{</dt>
-<dd>&#8220;value&#8221;: &#8220;Eliopoulos&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;Ελιόπουλος&#8221;,
-&#8220;verified&#8221;: true</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matchId&quot;</span><span class="p">:</span> <span class="s2">&quot;default-request-id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matchingDataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Alexander&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nonLatinScriptValue&quot;</span><span class="p">:</span> <span class="s2">&quot;Αλέξανδρος&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Eliopoulos&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;nonLatinScriptValue&quot;</span><span class="p">:</span> <span class="s2">&quot;Ελιόπουλος&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Your local matching service first runs cycle 0. If no match is found, it runs cycle 1. It then sends either a <code class="docutils literal"><span class="pre">match</span></code> or a <code class="docutils literal"><span class="pre">no-match</span></code> response to the MSA. This response corresponds to step 6 in the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 <p>Below is a <code class="docutils literal"><span class="pre">match</span></code> response (it should have the status code <code class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></code>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;result&quot;</span><span class="p">:</span><span class="s2">&quot;match&quot;</span><span class="p">}</span>
@@ -336,157 +296,105 @@
 </pre></div>
 </div>
 <p>If you&#8217;re using cycle 3 and your local matching service returned a <code class="docutils literal"><span class="pre">no-match</span></code> response to the MSA, the MSA sends a cycle 3 matching request.  Below is a formatted example for a GOV.UK Verify identity using <a class="reference internal" href="#jsonschema"><span>the universal JSON schema</span></a>.</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><dl class="first docutils">
-<dt>&#8220;cycle3Dataset&#8221;: {</dt>
-<dd><dl class="first docutils">
-<dt>&#8220;attributes&#8221;: {</dt>
-<dd>&#8220;drivers_licence&#8221;: &#8220;4C22DA90A18A4B88BE460E0A3D975F68&#8221;</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>},
-&#8220;hashedPid&#8221;: &#8220;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&#8221;,
-&#8220;levelOfAssurance&#8221;: &#8220;LEVEL_2&#8221;,
-&#8220;matchId&#8221;: &#8220;default-request-id&#8221;,
-&#8220;matchingDataset&#8221;: {</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&#8220;addresses&#8221;: [</dt>
-<dd><dl class="first docutils">
-<dt>{</dt>
-<dd><p class="first">&#8220;from&#8221;: &#8220;1980-05-24T00:00:00.000Z&#8221;,
-&#8220;internationalPostCode&#8221;: &#8220;GB1 2PP&#8221;,
-&#8220;lines&#8221;: [</p>
-<blockquote>
-<div>&#8220;123 George Street&#8221;</div></blockquote>
-<p class="last">],
-&#8220;postCode&#8221;: &#8220;GB1 2PP&#8221;,
-&#8220;to&#8221;: &#8220;2005-05-14T00:00:00.000Z&#8221;,
-&#8220;uprn&#8221;: &#8220;7D68E096-5510-B3844C0BA3FD&#8221;,
-&#8220;verified&#8221;: true</p>
-</dd>
-</dl>
-<p>},
-{</p>
-<blockquote>
-<div><p>&#8220;from&#8221;: &#8220;2005-05-14T00:00:00.000Z&#8221;,
-&#8220;internationalPostCode&#8221;: &#8220;GB1 2PF&#8221;,
-&#8220;lines&#8221;: [</p>
-<blockquote>
-<div>&#8220;10 George Street&#8221;</div></blockquote>
-<p>],
-&#8220;postCode&#8221;: &#8220;GB1 2PF&#8221;,
-&#8220;uprn&#8221;: &#8220;833F1187-9F33-A7E27B3F211E&#8221;,
-&#8220;verified&#8221;: true</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>],
-&#8220;dateOfBirth&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;1980-05-24&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;firstName&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;Joe&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;gender&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;MALE&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;middleNames&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;Bob Rob&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;surnames&#8221;: [</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>{</dt>
-<dd>&#8220;from&#8221;: &#8220;1980-05-24T00:00:00.000Z&#8221;,
-&#8220;to&#8221;: &#8220;2010-01-20T00:00:00.000Z&#8221;,
-&#8220;value&#8221;: &#8220;Fred&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;&#8221;,
-&#8220;verified&#8221;: true</dd>
-</dl>
-<p>},
-{</p>
-<blockquote>
-<div>&#8220;from&#8221;: &#8220;2010-01-20T00:00:00.000Z&#8221;,
-&#8220;value&#8221;: &#8220;Dou&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;cycle3Dataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;drivers_licence&quot;</span><span class="p">:</span> <span class="s2">&quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;hashedPid&quot;</span><span class="p">:</span> <span class="s2">&quot;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;levelOfAssurance&quot;</span><span class="p">:</span> <span class="s2">&quot;LEVEL_2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matchId&quot;</span><span class="p">:</span> <span class="s2">&quot;default-request-id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matchingDataset&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;123 George Street&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PP&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;7D68E096-5510-B3844C0BA3FD&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2005-05-14T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;internationalPostCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;lines&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;10 George Street&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;postCode&quot;</span><span class="p">:</span> <span class="s2">&quot;GB1 2PF&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;uprn&quot;</span><span class="p">:</span> <span class="s2">&quot;833F1187-9F33-A7E27B3F211E&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;dateOfBirth&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Joe&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;nonLatinScriptValue&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;MALE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;middleNames&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob Rob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;surnames&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1980-05-24T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Fred&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;nonLatinScriptValue&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-20T00:00:00.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Dou&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;verified&quot;</span><span class="p">:</span> <span class="n">true</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>A cycle 3 matching request for a <a class="reference internal" href="matchingstrategy.html#eidasintro"><span>European identity</span></a>, will be formatted as shown below. If you haven&#8217;t enabled European identities in your MSA configuration, the matching request will be formatted using <span class="xref std std-ref">the legacy JSON schema</span></p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><blockquote class="first">
-<div><dl class="docutils">
-<dt>{</dt>
-<dd><dl class="first docutils">
-<dt>&#8220;cycle3Dataset&#8221;: {</dt>
-<dd><dl class="first docutils">
-<dt>&#8220;attributes&#8221;: {</dt>
-<dd>&#8220;drivers_licence&#8221;: &#8220;4C22DA90A18A4B88BE460E0A3D975F68&#8221;</dd>
-</dl>
-<p class="last">}</p>
-</dd>
-</dl>
-<p>},
-&#8220;hashedPid&#8221;: &#8220;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&#8221;,
-&#8220;levelOfAssurance&#8221;: &#8220;LEVEL_2&#8221;,
-&#8220;matchId&#8221;: &#8220;default-request-id&#8221;,
-&#8220;matchingDataset&#8221;: {</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&#8220;dateOfBirth&#8221;: {</dt>
-<dd>&#8220;value&#8221;: &#8220;1980-05-24&#8221;,
-&#8220;verified&#8221;: true</dd>
-</dl>
-<p>},
-&#8220;firstName&#8221;: {</p>
-<blockquote>
-<div>&#8220;value&#8221;: &#8220;Alexander&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;Αλέξανδρος&#8221;,
-&#8220;verified&#8221;: true</div></blockquote>
-<p>},
-&#8220;surnames&#8221;: [</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>{</dt>
-<dd>&#8220;value&#8221;: &#8220;Eliopoulos&#8221;,
-&#8220;nonLatinScriptValue&#8221;: &#8220;Ελιόπουλος&#8221;,
-&#8220;verified&#8221;: true</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-<p>]</p>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
-</div></blockquote>
-<p class="last">}</p>
-</dd>
-</dl>
+<div class="highlight-python"><div class="highlight"><pre><span></span> {
+   &quot;cycle3Dataset&quot;: {
+       &quot;attributes&quot;: {
+           &quot;drivers_licence&quot;: &quot;4C22DA90A18A4B88BE460E0A3D975F68&quot;
+       }
+   },
+   &quot;hashedPid&quot;: &quot;8a5db0ad424efe4e09622cc4a876cc4c338558384752b483ff69dda4dca1ef04&quot;,
+   &quot;levelOfAssurance&quot;: &quot;LEVEL_2&quot;,
+   &quot;matchId&quot;: &quot;default-request-id&quot;,
+   &quot;matchingDataset&quot;: {
+       &quot;dateOfBirth&quot;: {
+           &quot;value&quot;: &quot;1980-05-24&quot;,
+           &quot;verified&quot;: true
+       },
+       &quot;firstName&quot;: {
+           &quot;value&quot;: &quot;Alexander&quot;,
+           &quot;nonLatinScriptValue&quot;: &quot;Αλέξανδρος&quot;,
+           &quot;verified&quot;: true
+       },
+       &quot;surnames&quot;: [
+           {
+               &quot;value&quot;: &quot;Eliopoulos&quot;,
+               &quot;nonLatinScriptValue&quot;: &quot;Ελιόπουλος&quot;,
+               &quot;verified&quot;: true
+           }
+       ]
+   }
+}
+</pre></div>
+</div>
 <p>Your local matching service sends either a <code class="docutils literal"><span class="pre">match</span></code> or a <code class="docutils literal"><span class="pre">no-match</span></code> response to the MSA. This response corresponds to step 6 in the <a class="reference internal" href="../saml/samlWorks.html#samlworks"><span>SAML message flow</span></a>.</p>
 <p>If no match is found on cycles 0, 1 and 3, you can <a class="reference internal" href="createnewaccounts.html#createnewaccounts"><span>create a new account</span></a> for the user.</p>
 <p class="rubric" id="jsonschema">Use the universal JSON matching schema</p>
