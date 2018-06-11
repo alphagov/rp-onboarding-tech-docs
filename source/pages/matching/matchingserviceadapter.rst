@@ -270,7 +270,7 @@ In the field ``europeanIdentity``
 11. Configure according to the needs of your service:
 
   If your service needs to consume European identities, set ``enabled: true``.
-  You also need to configure the URLs for the environments want to use, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`. The schema will apply to datasets from both European countries, as well as GOV.UK Verify identity providers.
+  You also need to configure the URLs for the environments you want to use, for example integration or production. Enabling your service to consume European identities also implies that it will be using :ref:`the universal JSON matching schema<JSONschema>`. The schema will apply to datasets from both European countries, as well as GOV.UK Verify identity providers.
 
   If if you need to disable European identities, set ``enabled: false`` in this section. This setting also implies your MSA will be using :ref:`the legacy JSON matching schema<legacyJSONschema>`.
 
