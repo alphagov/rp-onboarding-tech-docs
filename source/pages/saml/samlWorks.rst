@@ -22,9 +22,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
    :name: flow-diagram
 
    ".. figure:: samlFlow.png
-     :alt: Diagram showing a SAML message flow in GOV.UK Verify architecture. Communication between government service, the hub, and identity providers is via SAML and passes through the user's browser. Communication between the hub and the Matching Service Adapter is via SAML using SOAP. Communication between the Matching Service Adapter, the local matching service, and the local matching data store is not SAML. The text below the image describes the SAML messages sent between entities in the federation.
-
-     SAML message flow in the GOV.UK Verify federation","For more details, see:
+     :alt: Diagram showing a SAML message flow in GOV.UK Verify architecture. Communication between government service, the hub, and identity providers is via SAML and passes through the user's browser. Communication between the hub and the Matching Service Adapter is via SAML using SOAP. Communication between the Matching Service Adapter, the local matching service, and the local matching data store is not SAML. The text below the image describes the SAML messages sent between entities in the federation.","For more details, see:
 
    * :ref:`GOV.UK Verify architecture <arch>`
    * :ref:`matching cycles <matchingcycles>`
@@ -52,7 +50,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
       :alt: Diagram showing a SAML response signed by the identity provider. It contains an authentication context assertion signed by the identity provider and encrypted for the hub. It also contains an identity assertion signed by the identity provider and encrypted for the hub.
 
  * SAML response :ref:`signed <pki_sign_cert>` by the identity provider
- * authentication context assertion signed by the identity provider and :ref:`encrypted <pki_encrypt_cert>` for the GOV.UK Verify hub – this asserts that the user's identity is authenticated; it also contains contextual information, including the :ref:`level of assurance <gloss_loa>`
+ * authentication context assertion signed by the identity provider and :ref:`encrypted <pki_encrypt_cert>` for the GOV.UK Verify hub – this validates that the user's identity is authenticated; it also contains contextual information, including the :ref:`level of assurance <gloss_loa>`
  * identity assertion signed by the identity provider and encrypted for the GOV.UK Verify hub – this contains the user's :ref:`matching dataset <gloss_mds>` and the :ref:`persistent identifier <gloss_persid>`
 
  .. note:: For more information on the contents of the assertions, see :ref:`matching cycles <matchingcycles>` and :ref:`user account creation <createnewaccounts>`.
