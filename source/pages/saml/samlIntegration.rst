@@ -10,19 +10,22 @@ Build your service
 Use extended validation certificates
 -------------------------------------
 
-You should use extended validation (EV) certificates for all public interactions with your service. This will protect your users from fraudulent sites imitating your service. 
+You should use extended validation (EV) certificates for all public interactions with your service. This will protect your users from fraudulent sites imitating your service.
 
 You should also follow recommendations from the National Cyber Security Centre (NCSC) to keep your service secure, including  `using TLS to protect data <https://www.ncsc.gov.uk/guidance/tls-external-facing-services>`_.
 
 
 .. _ChooseProductFramework:
 
-Choose a product and framework
+Use the Verify Service Provider
 --------------------------------------
 
-Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub. 
+Your service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.
 
-By far the best way to achieve this is to integrate the `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`_ into your system.
+The :ref:`Verify Service Provider<https://github.com/alphagov/verify-service-provider>` handles the SAML communications between your service and GOV.UK Verify Hub
+
+This means that if you're using the Verify Service Provider, you don't need to be familiar with SAML to use GOV.UK Verify in your service. Your team only needs to manage JSON files.
+
 Using Verify Service Provider will make it easier to:
 
 * connect multiple services with GOV.UK Verify - you only need one instance of Verify Service Provider
@@ -31,9 +34,7 @@ Using Verify Service Provider will make it easier to:
 
 You will need to host Verify Service Provider on your own infrastructure.
 
-If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use one of a range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.
-
-GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See `Choosing technology <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ in the Government Service Design Manual.
+If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use an off-the-shelf product or framework to integrate your service with GOV.UK Verify. Have a look at the :ref:`Government Service Design Manual <https://www.gov.uk/service-manual/making-software/choosing-technology.html>` and use the most appropriate products and frameworks for your team.
 
 Contact your engagement lead if you need further information.
 
@@ -46,12 +47,12 @@ Contact your engagement lead if you need further information.
 Connect your service to the Matching Service Adapter metadata
 ----------------------------------------------------------------
 
-To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter (MSA) metadata. 
+To integrate GOV.UK Verify into your service, you need to connect your service to the Matching Service Adapter (MSA) metadata.
 
 
 The MSA metadata:
 
-* indicates the URL where your service will send users with their authentication requests - this is the GOV.UK Verify hub 
+* indicates the URL where your service will send users with their authentication requests - this is the GOV.UK Verify hub
 
 * lists one or more MSA signing certificates, so your service can validate messages that are sent by your MSA
 
@@ -62,7 +63,7 @@ The MSA metadata:
 
 The MSA metadata is located in your MSA at /matching-service/SAML2/metadata
 
-Your service must poll the MSA metadata every 10 minutes. 
+Your service must poll the MSA metadata every 10 minutes.
 
 
 
@@ -111,16 +112,11 @@ Handle SAML responses using SAML metadata
 ----------------------------------------------------------------
 
 To consume SAML responses that are issued by the GOV.UK Verify hub:
- 
+
 1. Decrypt the assertion.
 
-2. Validate the signature on the assertion contained in the response. This assertion is generated and signed by your MSA. 
+2. Validate the signature on the assertion contained in the response. This assertion is generated and signed by your MSA.
 
    You can use the X509 signing certificate contained in the MSA metadata to validate this signature.
 
 .. caution:: Use this procedure with care. You must trust assertions signed by the MSA only. The GOV.UK Verify hub never issues assertions for consumption by the service endpoint, so make sure that it’s *not* possible to trust the hub to issue assertions.
-
-
-
-
-

@@ -21,7 +21,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
    :widths: 80, 15
    :name: flow-diagram
 
-   ".. figure:: samlFlow.png
+   ".. figure:: samlFlow.svg
      :alt: Diagram showing a SAML message flow in GOV.UK Verify architecture. Communication between government service, the hub, and identity providers is via SAML and passes through the user's browser. Communication between the hub and the Matching Service Adapter is via SAML using SOAP. Communication between the Matching Service Adapter, the local matching service, and the local matching data store is not SAML. The text below the image describes the SAML messages sent between entities in the federation.","For more details, see:
 
    * :ref:`GOV.UK Verify architecture <arch>`
@@ -58,7 +58,7 @@ This diagram shows the SAML message flow within the GOV.UK Verify federation. Th
       :alt: Diagram showing a SAML attribute query signed by the hub. It contains an identity assertion signed by the identity provider and encrypted for the Matching Service Adapter.
 
 
-7. The Matching Service Adapter anonymises the identity provider, translates the SAML attribute query into a JSON matching request, and forwards it to the service’s Local Matching Service. The Local Matching Service tries to match the user with a record in the government service’s database.
+7. The Matching Service Adapter anonymises the identity provider, translates the SAML attribute query into a JSON matching request, and forwards it to the service’s Local Matching Service. The Local Matching Service tries to :ref:`match<matching>` the user with a record in the government service’s database.
 
 
 8. The Local Matching Service returns a ``match`` or ``no-match`` JSON response to the Matching Service Adapter.
