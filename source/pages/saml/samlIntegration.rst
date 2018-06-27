@@ -22,7 +22,7 @@ Use the Verify Service Provider
 
 Your service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.
 
-The :ref:`Verify Service Provider<https://github.com/alphagov/verify-service-provider>` handles the SAML communications between your service and GOV.UK Verify Hub
+The `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`_ handles the SAML communications between your service and GOV.UK Verify Hub.
 
 This means that if you're using the Verify Service Provider, you don't need to be familiar with SAML to use GOV.UK Verify in your service. Your team only needs to manage JSON files.
 
@@ -34,7 +34,7 @@ Using Verify Service Provider will make it easier to:
 
 You will need to host Verify Service Provider on your own infrastructure.
 
-If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use an off-the-shelf product or framework to integrate your service with GOV.UK Verify. Have a look at the :ref:`Government Service Design Manual <https://www.gov.uk/service-manual/making-software/choosing-technology.html>` and use the most appropriate products and frameworks for your team.
+If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use an off-the-shelf product or framework to integrate your service with GOV.UK Verify. Have a look at the `Government Service Design Manual <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ and use the most appropriate products and frameworks for your team.
 
 Contact your engagement lead if you need further information.
 
