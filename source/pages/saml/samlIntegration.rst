@@ -24,7 +24,7 @@ Your service must be able to send SAML authentication requests to, and receive S
 
 The `Verify Service Provider <https://github.com/alphagov/verify-service-provider>`_ handles the SAML communications between your service and GOV.UK Verify Hub.
 
-This means that if you're using the Verify Service Provider, you don't need to be familiar with SAML to use GOV.UK Verify in your service. Your team only needs to manage JSON files.
+This means that if you're using the Verify Service Provider, you don't need to be familiar with SAML to use GOV.UK Verify in your service. Your team only needs to manage JSON.
 
 Using Verify Service Provider will make it easier to:
 
