@@ -34,7 +34,7 @@ Using Verify Service Provider will make it easier to:
 
 You will need to host Verify Service Provider on your own infrastructure.
 
-If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use an off-the-shelf product or framework to integrate your service with GOV.UK Verify. Have a look at the `Government Service Design Manual <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ and use the most appropriate products and frameworks for your team.
+If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use an off-the-shelf product or to build your own custom interface to integrate your service with GOV.UK Verify. Have a look at the `Government Service Design Manual <https://www.gov.uk/service-manual/making-software/choosing-technology.html>`_ and use the most appropriate products and frameworks for your team.
 
 Contact your engagement lead if you need further information.
 
