@@ -106,7 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="samlWorks.html">How SAML works with GOV.UK Verify</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Build your service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#use-extended-validation-certificates">Use extended validation certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#choose-a-product-and-framework">Choose a product and framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-verify-service-provider">Use the Verify Service Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connect-your-service-to-the-matching-service-adapter-metadata">Connect your service to the Matching Service Adapter metadata</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#send-a-saml-authentication-request-to-the-gov-uk-verify-hub">Send a SAML authentication request to the GOV.UK Verify hub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#handle-saml-responses-using-saml-metadata">Handle SAML responses using SAML metadata</a></li>
@@ -171,11 +171,18 @@
 <p>You should use extended validation (EV) certificates for all public interactions with your service. This will protect your users from fraudulent sites imitating your service.</p>
 <p>You should also follow recommendations from the National Cyber Security Centre (NCSC) to keep your service secure, including  <a class="reference external" href="https://www.ncsc.gov.uk/guidance/tls-external-facing-services">using TLS to protect data</a>.</p>
 </div>
-<div class="section" id="choose-a-product-and-framework">
-<span id="chooseproductframework"></span><h2>Choose a product and framework<a class="headerlink" href="#choose-a-product-and-framework" title="Permalink to this headline">¶</a></h2>
-<p>Your government service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
-<p>You can choose from a wide range of off-the-shelf products and frameworks to integrate your service with GOV.UK Verify.</p>
-<p>GOV.UK Verify has experience integrating and supporting services using Shibboleth-SP (Service Provider) and OpenSAML libraries. This has worked well for teams using Java. However, please use the most appropriate products and frameworks for your team.  See <a class="reference external" href="https://www.gov.uk/service-manual/making-software/choosing-technology.html">Choosing technology</a> in the Government Service Design Manual.</p>
+<div class="section" id="use-the-verify-service-provider">
+<span id="chooseproductframework"></span><h2>Use the Verify Service Provider<a class="headerlink" href="#use-the-verify-service-provider" title="Permalink to this headline">¶</a></h2>
+<p>Your service must be able to send SAML authentication requests to, and receive SAML responses from, the GOV.UK Verify hub.</p>
+<p>The <a class="reference external" href="https://github.com/alphagov/verify-service-provider">Verify Service Provider</a> handles the SAML communications between your service and GOV.UK Verify Hub.</p>
+<p>This means that if you&#8217;re using the Verify Service Provider, you don&#8217;t need to be familiar with SAML to use GOV.UK Verify in your service. Your team only needs to manage JSON.</p>
+<p>Using Verify Service Provider will make it easier to:</p>
+<ul class="simple">
+<li>connect multiple services with GOV.UK Verify - you only need one instance of Verify Service Provider</li>
+<li>handle certificate rotations - you can host multiple certificates at a time</li>
+</ul>
+<p>You will need to host Verify Service Provider on your own infrastructure.</p>
+<p>If you are unable to use the Verify Service Provider, it is still possible, although not recommended, to use an off-the-shelf product or to build your own custom interface to integrate your service with GOV.UK Verify. Have a look at the <a class="reference external" href="https://www.gov.uk/service-manual/making-software/choosing-technology.html">Government Service Design Manual</a> and use the most appropriate products and frameworks for your team.</p>
 <p>Contact your engagement lead if you need further information.</p>
 </div>
 <div class="section" id="connect-your-service-to-the-matching-service-adapter-metadata">
