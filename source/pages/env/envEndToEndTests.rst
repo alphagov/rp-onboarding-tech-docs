@@ -108,7 +108,7 @@ View test users
 
 To view existing test users, GET the users resource from the relevant test identity provider. For example::
 
-    curl https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+    curl --user '{username}:{password}' https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
 
 where ``idp-name`` is the name of the test identity provider.
 
@@ -123,7 +123,7 @@ To delete test users from the test identity provider, POST a JSON document to th
 
 ::
 
-    curl --data '{"username": "user1"}'  --user '{username}:{password}' -H 'Content-Type: application/json'  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
+    curl --user '{username}:{password}' --data '{"username": "user1"}' -H 'Content-Type: application/json'  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
 
 where:
 
