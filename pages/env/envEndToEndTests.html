@@ -306,7 +306,7 @@
 <div class="section" id="view-test-users">
 <span id="id1"></span><h3>View test users<a class="headerlink" href="#view-test-users" title="Permalink to this headline">¶</a></h3>
 <p>To view existing test users, GET the users resource from the relevant test identity provider. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>curl https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
+<div class="highlight-python"><div class="highlight"><pre><span></span>curl --user &#39;{username}:{password}&#39; https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users
 </pre></div>
 </div>
 <p>where <code class="docutils literal"><span class="pre">idp-name</span></code> is the name of the test identity provider.</p>
@@ -315,7 +315,7 @@
 <div class="section" id="delete-test-users">
 <span id="delete-users"></span><h3>Delete test users<a class="headerlink" href="#delete-test-users" title="Permalink to this headline">¶</a></h3>
 <p>To delete test users from the test identity provider, POST a JSON document to the user administration API containing the usernames you want to delete. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>curl --data &#39;{&quot;username&quot;: &quot;user1&quot;}&#39;  --user &#39;{username}:{password}&#39; -H &#39;Content-Type: application/json&#39;  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
+<div class="highlight-python"><div class="highlight"><pre><span></span>curl --user &#39;{username}:{password}&#39; --data &#39;{&quot;username&quot;: &quot;user1&quot;}&#39; -H &#39;Content-Type: application/json&#39;  https://idp-stub-integration.ida.digital.cabinet-office.gov.uk/{idp-name}/users/delete
 </pre></div>
 </div>
 <p>where:</p>
