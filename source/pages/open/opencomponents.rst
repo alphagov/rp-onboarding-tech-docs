@@ -46,6 +46,8 @@ For open use
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 | verify-test-rp_                       | A stub Relying Party used when testing the GOV.UK Verify Hub.                                                                  |
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-eidas-metadata-aggregator_     | An application that first retrieves and validates metadata from EU Countrires then copies the valid metadata to AWS S3 bucket  |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 .. _passport-verify-stub-relying-party: https://github.com/alphagov/passport-verify-stub-relying-party
 .. _passport-verify: https://github.com/alphagov/passport-verify
@@ -56,6 +58,7 @@ For open use
 .. _verify-hub: https://github.com/alphagov/verify-hub
 .. _verify-stub-idp: https://github.com/alphagov/verify-stub-idp
 .. _verify-test-rp: https://github.com/alphagov/verify-test-rp
+.. _verify-eidas-metadata-aggregator: https://github.com/alphagov/verify-eidas-metadata-aggregator
 
 **Libraries**
 
