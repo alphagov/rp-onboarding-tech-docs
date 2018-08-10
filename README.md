@@ -124,7 +124,7 @@ This is done by issuing a **pull request**, which alerts subscribers to the repo
 
 ## Publishing the documentation
 
-Once accepted and merged into the master branch, your document(s) will be automatically placed in the [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/). You, or someone with access to the build pipeline, will then need to trigger the build. 
+Once your changes are accepted and merged into the master branch, they are placed in the Jenkins [build pipeline](https://build.ida.digital.cabinet-office.gov.uk/view/rp-onboarding-tech-docs-pipeline/). This triggers a build job which runs automatically and publishes your changes in the live documentation.
 
 Once built, your changes will be visible in the [published documentation](http://alphagov.github.io/rp-onboarding-tech-docs/). 
 
