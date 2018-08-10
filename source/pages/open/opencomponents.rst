@@ -42,9 +42,11 @@ For open use
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 | verify-hub_                           | A system of microservices to manage interactions between users, government services, identity providers, and matching services |
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| verify-stub-idp_                      | A stub Identity Provider and stub EU Country used for testing GOV.UK Verify and eIDAS integration.                             |
+| verify-stub-idp_                      | A stub Identity Provider and stub EU country used for testing GOV.UK Verify and eIDAS integration                             |
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| verify-test-rp_                       | A stub Relying Party used when testing the GOV.UK Verify Hub.                                                                  |
+| verify-test-rp_                       | A stub Relying Party used when testing the GOV.UK Verify Hub                                                                 |
++---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
+| verify-eidas-metadata-aggregator_     | An application that retrieves and validates metadata from EU countries and then copies the valid metadata to an AWS S3 bucket |
 +---------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 
 .. _passport-verify-stub-relying-party: https://github.com/alphagov/passport-verify-stub-relying-party
@@ -56,6 +58,7 @@ For open use
 .. _verify-hub: https://github.com/alphagov/verify-hub
 .. _verify-stub-idp: https://github.com/alphagov/verify-stub-idp
 .. _verify-test-rp: https://github.com/alphagov/verify-test-rp
+.. _verify-eidas-metadata-aggregator: https://github.com/alphagov/verify-eidas-metadata-aggregator
 
 **Libraries**
 
