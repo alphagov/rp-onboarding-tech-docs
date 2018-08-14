@@ -4,64 +4,34 @@
 Rotate your keys
 ==================
 
-When the certificates containing your public keys are due to expire, run the key rotation process to replace the keys and certificates with new ones. Rotating keys allows you to introduce a new set of keys and certificates with no service interruption.
+Rotate your keys when the certificates containing your public keys are due to expire. Key rotation allows you to introduce a new set of keys and certificates with no service interruption
 
-As a government service you are responsible for maintaining the encryption and signing keys for your Verify Service Provider (VSP) and Matching Service Adapter (MSA):
+As a government service you are responsible for maintaining the encryption and signing keys for your Matching Service Adapter (MSA) and your service provider:
 
-* :ref:`VSP encryption key<rotateVSP_encKey>`
-* :ref:`VSP signing key<rotateVSP_signKey>`
 * :ref:`MSA encryption key<rotateMSA_encKey>`
 * :ref:`MSA signing key<rotateMSA_signKey>`
-
-If you are not using the VSP, you are responsible for maintaining the encryption and signing keys for the service provider you chose. The instructions for service provider key rotation in this documentation refer to the VSP.
-
-**needs rephrasing** You first ask the IDAP certificate authority to issue certificates when connecting to the Integration or Production environments. The certificates will then expire at the same time so you will need to renew them at the same time.
-
-The MSA generates its own metadata using information from its config file and publishes it at runtime. So the MSA certificates are publsihed in its metadata **which ones? both? YES**.
-
-The VSP reads the MSA's metadata because it needs to trust assertions signed by the MSA. Because of this relationship, you also need to rotate the signing keys between your VSP and MSA.
+* :ref:`VSP encryption key<rotateVSP_encKey>` or :ref:`service provider encryption key<rotateSP_encKey>`
+* :ref:`VSP signing key<rotateVSP_signKey>` or :ref:`service provider signing key<rotateSP_signKey>`
 
 
 Get your signed certificates
 ----------------------------------
 
-Before you start rotatig keys for your VSP and MSA, you need to get new signed certificates from the IDAP certificate authority.
+Before you start rotating keys, you must get new signed certificates from the `IDAP certificate authority <http://alphagov.github.io/rp-onboarding-tech-docs/pages/pki/pkiWorks.html#keys-and-certificates-in-the-gov-uk-verify-federation>`_.
 
-#. :ref:`Generate new signing and encryption keys<pki_gen_private_key>` for both the VSP and MSA. This is 4 keys in total.
+#. :ref:`Generate new signing and encryption private keys<pki_gen_private_key>` for both the VSP and MSA. This is 4 keys in total.
 #. :ref:`Generate a certificate signing request<pki_gen_csr>` for each of the the keys you generated in step 1.
-#. :ref:`Submit the certificate signing requests<pki_submit_csr>` from step 2 to the IDAP certificate authority. The IDAP certificate authority will issue you a signed certificate for your MSA and VSP encryption and signing keys.
+#. :ref:`Submit the certificate signing requests<pki_submit_csr>` from step 2 to the IDAP certificate authority.
 
-
-.. _rotateVSP_encKey:
-
-Rotate your VSP encryption key
------------------------------------
-
-#. Add the new VSP encryption key you've generated to the ``samlSecondaryEncryptionKey`` field in your VSP configuration. Your service can now use both the new and old keys to decrypt SAML mesasges. [this is the privat key i]
-#. Send the new certificate signed by the IDAP certificate authority to the GOV.UK Verify team and wait for deploy confirmation.
-#. After deploy confirmation from GOV.UK Verify team, replace the key in ``samlPrimaryEncryptionKey`` with the key from ``samlSecondaryEncryptionKey``. Leave ``samlSecondaryEncryptionKey`` empty for the next key rotation.
-
-Your service now uses the new VSP encryption key to decrypt SAML messages.
-
-
-.. _rotateVSP_signKey:
-
-Rotate your VSP signing key
-----------------------------------
-
-#. Send the new signing certificate to the GOV.UK Verify team and wait for deployment confirmation.
-#. Replace the old signing key under ``samlSigningKey`` in your VSP configuration with the new key. Your VSP now signs SAML messages with the new key only.
-#. Inform the GOV.UK Verify operations team that new key is live. The GOV.UK Verify team removes the old certificate from the GOV.UK Verify hub.
-
-The GOV.UK Verify hub now trusts SAML messages signed with your new VSP signing key only.
+The IDAP certificate authority will issue you a signed certificate for your MSA and VSP encryption and signing public keys.
 
 
 .. _rotateMSA_encKey:
 
-Rotate your Matching Service Adapter encryption key
+Rotate your MSA encryption key
 -----------------------------------------------------
 
-#. Install the new encryption certificate (.crt) and private encryption key (.pk8) on the MSA. To do this, add a second list item under ``encryptionKeys`` in your :ref:`MSA configuration <yamlfile>`. The list element you're adding contains the details for your new public and private key, for example:
+1. Install the new encryption certificate (.crt) and private encryption key (.pk8) on the MSA. To do this, add a second list item under ``encryptionKeys`` in your :ref:`MSA configuration <yamlfile>`. The list element you're adding contains the details for your new (2017) public and private key, for example:
 
   .. code-block:: yaml
 
@@ -81,20 +51,21 @@ Rotate your Matching Service Adapter encryption key
 
   .. note:: While both keys are in use, you may see error messages in the logs with the description 'Unwrapping failed'. These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.
 
-#. Send the new certificate to the GOV.UK Verify operations team and wait for deployment confirmation
-#. The GOV.UK Verify operations team replaces the old certificate with the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.
-#. After GOV.UK Verify have confirmed deployment of the new (2017) public encryption key, delete the old (2016) private encryption key.
+2. Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.
+3. After GOV.UK Verify have confirmed deployment of the new (2017) public encryption key, delete the old (2016) private encryption key.
 
+The MSA now uses the new encryption key to decrypt SAML messages and the GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.
 
 .. _rotateMSA_signKey:
 
-Rotate your Matching Service Adapter signing key
+Rotate your MSA signing key
 --------------------------------------------------
 
 .. _pki_config_msa_2signkeys_SAMLmetadata:
 
+The MSA publishes its certificates containing the public keys in its own metadata at runtime. The VSP needs to read this metadata and use the MSA's signing certificate to trust assertions signed by the MSA. Because of this relationship, you need to run the MSA once you've changed the certificates in the configuration file (step 2) and wait for the VSP to read the new metadata (step 3).
 
-#. Send the new signing certificate to the GOV.UK Verify team and add it to the :ref:`MSA configuration <yamlfile>` under ``signingKeys.secondary``:
+1. Send the new signing certificate to the GOV.UK Verify team and add it to the :ref:`MSA configuration <yamlfile>` under ``signingKeys.secondary``:
 
   .. code-block:: yaml
 
@@ -112,32 +83,64 @@ Rotate your Matching Service Adapter signing key
         privateKey:
           keyFile: msa_signing_2017.pk8
 
-#. Load the MSA metadata. Your service now trusts assertions signed with the new (2017) MSA signing key.
+2. Run the MSA to publish the new signing certificate (2017) to its metadata.
 
-#. Delete the ``signingKeys.primary`` section and rename ``signingKeys.secondary`` to ``signingKeys.primary``. The MSA now signs the assertions with the new (2017) key.
+3. Wait for the VSP to load the MSA metadata. The VSP periodically refreshes its metadata and will log when it has done it. Once it loads the new metadata, your VSP trusts assertions signed with the new (2017) MSA signing key.
 
-#. Inform the GOV.UK Verify operations team that the new key is live.
+4. Delete the ``signingKeys.primary`` section and rename ``signingKeys.secondary`` to ``signingKeys.primary``. The MSA now signs the assertions with the new (2017) key.
 
-
-Q&A with Andy
-
-Does the MSA only publish the signing certs in its metadata or does it also publish the encryption certs?
-
-both. doesn't need to. but it does. both.
+5. Inform the GOV.UK Verify Team that the new key is live.
 
 
-Is there any particular order they should rotate the keys?
+.. _rotateVSP_encKey:
 
-Recommend
-MSA and VSP are independent
-get MSA certs
-dual run (when you have bith certs in there) the MSA signing certs so they're both in the metadata -- you want to do this because
-rotate MSA signing key
+Rotate your VSP encryption key
+-----------------------------------
+
+These instructions apply to you if you're using the Verify Service Provider.
+
+#. Add the new VSP private encryption key you've generated to the ``samlSecondaryEncryptionKey`` field in your VSP configuration. Your VSP can now use both the new and old keys to decrypt SAML mesasges.
+#. Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.
+#. After receiving confirmation from GOV.UK Verify team, replace the key in ``samlPrimaryEncryptionKey`` with the key from ``samlSecondaryEncryptionKey``. Leave ``samlSecondaryEncryptionKey`` empty for the next key rotation.
+
+Your service now uses the new VSP encryption key to decrypt SAML messages.
 
 
-"After your service has loaded the MSA metadata your service now trusts assertions signed with the new MSA signing key." ==> what do they need to do to load the MSA metadata? I need a call to action... (rotate MSA signing keys)
+.. _rotateVSP_signKey:
 
-Run the MSA to publish certs to metadata
-Metadata refreshes
-And then wait for the VSP to load the MSA Metadata. Periodically refreshes metadata. IT will log when it has done this.
-The VSP now trusts assertions signed with the new MSA signing key.
+Rotate your VSP signing key
+----------------------------------
+
+These instructions apply to you if you're using the Verify Service Provider.
+
+#. Send your new signing certificate to the GOV.UK Verify team and wait for deployment confirmation.
+#. Replace the old signing key under ``samlSigningKey`` in your VSP configuration with the new key. Your VSP now signs SAML messages with the new key.
+#. Inform the GOV.UK Verify Team that new key is live. The GOV.UK Verify team removes the old certificate from the GOV.UK Verify hub.
+
+The GOV.UK Verify hub now trusts SAML messages signed with your new VSP signing key.
+
+
+.. _rotateSP_encKey:
+Rotate your service provider encryption key
+--------------------------------------------
+
+These instructions apply to you if you're using an alternative to the Verify Service Provider.
+
+#. Add your new service provider private encryption key to your service endpoint. Your service can now use both the new and old keys to decrypt SAML mesasges.
+#. Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.
+#. After receiving confirmation from GOV.UK Verify team, remove the old encryption key from your service endpoint.
+
+Your service provider now uses the new encryption key to decrypt SAML messages.
+
+
+.. _rotateSP_signKey:
+Rotate your service provider signing key
+-----------------------------------------
+
+These instructions apply to you if you're using an alternative to the Verify Service Provider.
+
+#. Send your new signing certificate to the GOV.UK Verify team and wait for deployment confirmation.
+#. Replace the old private signing key with the new key on your service endpoint. Your service provider now signs SAML messages with the new key.
+#. Inform the GOV.UK Verify Team that the new key is live. The GOV.UK Verify team removes the old certificate from the GOV.UK Verify hub.
+
+The GOV.UK Verify hub now trusts SAML messages signed with your new service provider signing key.
