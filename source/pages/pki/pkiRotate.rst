@@ -105,6 +105,7 @@ These instructions apply to you if you're using the Verify Service Provider.
 
 Your service now uses the new VSP encryption key to decrypt SAML messages.
 
+.. _rotateMSA_signKey:
 
 .. _rotateVSP_signKey:
 
