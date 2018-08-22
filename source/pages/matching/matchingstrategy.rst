@@ -158,7 +158,7 @@ For names using non-Latin characters, both the non-Latin as well as a Latin equi
 
 The UK uses addresses as an extra attribute to establish identity and help with matching. Other countries can use a personal identification number or similar. Both approaches meet identity assurance standards.
 
-If you :ref:`cofigure your MSA to accept EU identities<msaeidas>`, make sure your matching strategy does not rely on receiving an ``addresses`` attribute for all identities. EU identities won't have an ``addresses`` attribute. GOV.UK Verify identities will have at least one verified ``addresses`` attribute that you can use in your matching strategy.
+If you :ref:`configure your MSA to accept EU identities<msaeidas>`, make sure your matching strategy does not rely on receiving an ``addresses`` attribute for all identities. EU identities won't have an ``addresses`` attribute. GOV.UK Verify identities will have at least one verified ``addresses`` attribute that you can use in your matching strategy.
 
 
 **Unverified attributes**
