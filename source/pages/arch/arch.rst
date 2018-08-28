@@ -56,7 +56,7 @@ The main elements in GOV.UK Verify architecture are:
 
 **Verify Service Provider (VSP)**
 
-   `The VSP<https://github.com/alphagov/verify-service-provider#verify-service-provider>`_ is a software tool provided by GOV.UK Verify. It handles communication and authentication between your service and the Verify Hub, converting the Hub's Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa, and managing much of the security.
+   `The VSP <https://github.com/alphagov/verify-service-provider#verify-service-provider>`_ is a software tool provided by GOV.UK Verify. It handles communication and authentication between your service and the Verify Hub, converting the Hub's Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa, and managing much of the security.
 
 |
 **Matching Service**
