@@ -56,7 +56,7 @@ The main elements in GOV.UK Verify architecture are:
 
 **Verify Service Provider (VSP)**
 
-   The :ref:`VSP <vsp>` is a software tool provided by GOV.UK Verify. It handles communication and authentication between your service and the Verify Hub, converting the Hub's Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa, and managing much of the security.
+   The :ref:`VSP <vsp>` is a software tool provided by GOV.UK Verify. It handles communication and authentication between your service and the Verify Hub, converting the Hub's :ref:`SAML <saml>` into JSON and vice versa, and managing much of the security.
 
 |
 **Matching Service**
@@ -67,7 +67,7 @@ The main elements in GOV.UK Verify architecture are:
 
 **Matching Service Adapter (MSA)**
 
-    The :ref:`Matching Service Adapter <msaUse>` is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa.
+    The :ref:`Matching Service Adapter <msaUse>` is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts :ref:`SAML <saml>` into JSON and vice versa.
 
 |
 
@@ -75,7 +75,7 @@ The main elements in GOV.UK Verify architecture are:
 
      A :ref:`Local Matching Service <localmatchingservice>` finds a match between a user’s assured identity and a record in the government service's data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (for example name, address, date of birth) against the service’s records.
 
-**Security Assertion Markup Language (SAML)**
+**SAML**
 
  :ref:`SAML <saml>` is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON.
 

@@ -14,7 +14,7 @@ Encryption and signing are provided by public-key cryptography. A PKI supports p
 
 The  Identity Assurance Programme (IDAP) runs a PKI to enable secure communication between the entities in the GOV.UK Verify federation, for example, between government services and the GOV.UK Verify hub. For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
 
-The entities in the GOV.UK Verify federation communicate with each other using :ref:`Security Assertion Markup Language <saml>` (SAML). Public-key cryptography secures the integrity and privacy of SAML messages sent between the different entities. 
+The entities in the GOV.UK Verify federation communicate with each other using :ref:`SAML <saml>`. Public-key cryptography secures the integrity and privacy of SAML messages sent between the different entities. 
 
 .. rubric:: **What do you need to do?**
 
