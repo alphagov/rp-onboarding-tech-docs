@@ -56,7 +56,7 @@ The main elements in GOV.UK Verify architecture are:
 
 **Verify Service Provider (VSP)**
 
-   The :ref:`VSP <vsp>` is a software tool provided by GOV.UK Verify. It handles communication and authentication between your service and the Verify Hub, converting the Hub's Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa, and managing much of the security.
+   The :ref:`VSP <vsp>` is a software tool provided by GOV.UK Verify. It handles communication and authentication between your service and the Verify Hub, converting the Hub's :ref:`SAML <saml>` into JSON and vice versa, and managing much of the security.
 
 |
 **Matching Service**
@@ -67,7 +67,7 @@ The main elements in GOV.UK Verify architecture are:
 
 **Matching Service Adapter (MSA)**
 
-    The :ref:`Matching Service Adapter <msaUse>` is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts Security Assertion Markup Language (SAML) into JSON (JavaScript Object Notation) and vice versa.
+    The :ref:`Matching Service Adapter <msaUse>` is a software tool provided by GOV.UK Verify. It simplifies communication between your local matching service and the GOV.UK Verify hub. The MSA converts SAML into JSON and vice versa.
 
 |
 
