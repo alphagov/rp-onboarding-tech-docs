@@ -75,7 +75,7 @@ The main elements in GOV.UK Verify architecture are:
 
      A :ref:`Local Matching Service <localmatchingservice>` finds a match between a user’s assured identity and a record in the government service's data sources, to allow the user to access the service. Because there’s no unique identifier for UK citizens, locating the record involves matching user information (for example name, address, date of birth) against the service’s records.
 
-**Security Assertion Markup Language (SAML)**
+**SAML**
 
  :ref:`SAML <saml>` is a data format for exchanging information securely. All exchanges between the entities in the GOV.UK Verify federation use SAML but the local matching service managed by the government service usually uses JSON.
 
