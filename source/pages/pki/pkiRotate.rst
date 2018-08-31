@@ -22,11 +22,11 @@ Then, as part of the key rotation process, you must rotate your:
 Get new signed certificates
 ----------------------------------
 
-1. :ref:`Generate new signing and encryption private keys<pki_gen_private_key>` for both your MSA and your service provider. This is 4 keys in total.
+1. :ref:`Generate new signing and encryption private keys<pki_gen_private_key>` for both the MSA and your service provider. This is 4 keys in total.
 2. :ref:`Generate a certificate signing request<pki_gen_csr>` for each of the the keys you generated in step 1.
 3. :ref:`Submit the certificate signing requests<pki_submit_csr>` from step 2 to the IDAP certificate authority.
 
-The IDAP certificate authority will issue you signed certificates for your MSA and your service provider encryption and signing public keys.
+The IDAP certificate authority will issue you signed certificates for the MSA and your service provider encryption and signing public keys.
 
 .. _rotateMSA_encKey:
 
@@ -66,7 +66,7 @@ Rotate your MSA signing key
 
 .. _pki_config_msa_2signkeys_SAMLmetadata:
 
-The MSA publishes its certificates containing the public keys in its own metadata at run time. The service provider you’re using reads this metadata and uses the MSA's signing certificate to trust assertions signed by the MSA. Therefore you must run the MSA once you've changed the certificates in the configuration file (step 2) and make sure your service provider has read the new metadata (step 3).
+The MSA publishes its certificates containing the public keys in its own metadata at run time. The service provider you’re using reads this metadata and uses the MSA's signing certificate to trust assertions signed by the MSA. Therefore you must restart the MSA once you've changed the certificates in the configuration file (step 2) and make sure your service provider has read the new metadata (step 3).
 
 1. Send the new signing certificate to the GOV.UK Verify team and add it to the :ref:`MSA configuration <yamlfile>` under ``signingKeys.secondary``:
 
@@ -86,9 +86,9 @@ The MSA publishes its certificates containing the public keys in its own metadat
         privateKey:
           keyFile: msa_signing_2017.pk8
 
-2. Run the MSA to publish the new (2017) signing certificate to its metadata.
+2. Restart the MSA to publish the new (2017) signing certificate to its metadata.
 
-3. Make sure your service provider has read the new metadata. If you are using the VSP, wait for it to load the MSA metadata. The VSP periodically refreshes its metadata and will log when it has finished. Once it loads the new metadata, your VSP trusts assertions signed with the new (2017) MSA signing key.
+3. Make sure your service provider has read the new metadata. If you are using the VSP, wait for it to load the MSA metadata. The VSP periodically refreshes its metadata and will log when it has finished. Once it loads the new metadata, the VSP trusts assertions signed with the new (2017) MSA signing key.
 
 4. Delete the ``signingKeys.primary`` section and rename ``signingKeys.secondary`` to ``signingKeys.primary``. The MSA now signs the assertions with the new (2017) key.
 
@@ -104,11 +104,11 @@ Rotate your VSP encryption key
 
 These instructions apply to you if you're using the Verify Service Provider.
 
-1. Add the new VSP private encryption key you've generated to the ``samlSecondaryEncryptionKey`` field in your VSP configuration.
-2. Restart the VSP to implement the configuration changes. Your VSP can now use both the new and old keys to decrypt SAML mesasges.
+1. Add the new VSP private encryption key you've generated to the ``samlSecondaryEncryptionKey`` field in the VSP configuration.
+2. Restart the VSP to implement the configuration changes. The VSP can now use both the new and old keys to decrypt SAML mesasges.
 3. Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.
 4. After receiving confirmation from the GOV.UK Verify team, replace the key in ``samlPrimaryEncryptionKey`` with the key from ``samlSecondaryEncryptionKey``. Leave ``samlSecondaryEncryptionKey`` empty for the next key rotation.
-5. Restart your VSP to implement the configuration changes.
+5. Restart the VSP to implement the configuration changes.
 
 Your service now uses the new VSP encryption key to decrypt SAML messages.
 
@@ -120,8 +120,8 @@ Rotate your VSP signing key
 These instructions apply to you if you're using the Verify Service Provider.
 
 1. Send your new signing certificate to the GOV.UK Verify team and wait for deployment confirmation.
-2. Replace the old signing key under ``samlSigningKey`` in your VSP configuration with the new key.
-3. Restart your VSP to implement the configuration changes. Your VSP now signs SAML messages with the new key.
+2. Replace the old signing key under ``samlSigningKey`` in the VSP configuration with the new key.
+3. Restart the VSP to implement the configuration changes. The VSP now signs SAML messages with the new key.
 4. Inform the GOV.UK Verify team that new key is live. The GOV.UK Verify team will remove the old certificate from the GOV.UK Verify hub.
 
 The GOV.UK Verify hub now trusts SAML messages signed with your new VSP signing key.
