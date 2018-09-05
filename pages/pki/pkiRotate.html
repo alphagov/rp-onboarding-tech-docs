@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Rotate your keys &mdash; GOV.UK Verify Technical Guide  documentation</title>
+  <title>Rotate your encryption and signing keys &mdash; GOV.UK Verify Technical Guide  documentation</title>
   
 
   
@@ -107,12 +107,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="pki.html">Public Key Infrastructure</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="pkiWorks.html">How a PKI works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pkiRequestCert.html">Request certificates</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Rotate your keys</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#initial-steps-for-all-keys">Initial steps for all keys</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-encryption-key">Rotate your service encryption key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-signing-key">Rotate your service signing key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-encryption-key">Rotate your Matching Service Adapter encryption key</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#rotate-your-matching-service-adapter-signing-key">Rotate your Matching Service Adapter signing key</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Rotate your encryption and signing keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-new-signed-certificates">Get new signed certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-msa-encryption-key">Rotate your MSA encryption key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-msa-signing-key">Rotate your MSA signing key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-vsp-encryption-key">Rotate your VSP encryption key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-vsp-signing-key">Rotate your VSP signing key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-provider-encryption-key">Rotate your service provider encryption key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rotate-your-service-provider-signing-key">Rotate your service provider signing key</a></li>
 </ul>
 </li>
 </ul>
@@ -151,7 +153,7 @@
       
           <li><a href="pki.html">Public Key Infrastructure</a> &raquo;</li>
       
-    <li>Rotate your keys</li>
+    <li>Rotate your encryption and signing keys</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -163,132 +165,141 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="rotate-your-keys">
-<span id="pkirotate"></span><h1>Rotate your keys<a class="headerlink" href="#rotate-your-keys" title="Permalink to this headline">¶</a></h1>
-<p>When the certificates containing your public keys are due to expire, run the key rotation process to replace the keys and certificates. This allows you to introduce a new set of keys and certificates with no service interruption.</p>
-<p>As a government service you are responsible for maintaining the following keys:</p>
+  <div class="section" id="rotate-your-encryption-and-signing-keys">
+<span id="pkirotate"></span><h1>Rotate your encryption and signing keys<a class="headerlink" href="#rotate-your-encryption-and-signing-keys" title="Permalink to this headline">¶</a></h1>
+<p>When the certificates containing your public keys are due to expire, you must rotate your keys. This allows you to introduce a new set of keys and certificates with no service interruption.</p>
+<p>As a government service you are responsible for maintaining the encryption and signing keys for your Matching Service Adapter (MSA) and your service provider. Your service provider could be the <a class="reference external" href="https://github.com/alphagov/verify-service-provider">Verify Service Provider (VSP)</a> or another service provider.</p>
+<p>Before you start rotating keys, you must <a class="reference internal" href="#pki-get-new-certs"><span>get new signed certificates</span></a> for your public keys from the <a class="reference external" href="http://alphagov.github.io/rp-onboarding-tech-docs/pages/pki/pkiWorks.html#keys-and-certificates-in-the-gov-uk-verify-federation">IDAP certificate authority</a>.</p>
+<p>Then, as part of the key rotation process, you must rotate your:</p>
 <ul class="simple">
-<li>government service encryption key</li>
-<li>government service signing key</li>
-<li>Matching Service Adapter (MSA) encryption key</li>
-<li>MSA signing key</li>
+<li><a class="reference internal" href="#rotatemsa-enckey"><span>MSA encryption key</span></a></li>
+<li><a class="reference internal" href="#rotatemsa-signkey"><span>MSA signing key</span></a></li>
+<li><a class="reference internal" href="#rotatevsp-enckey"><span>VSP encryption key</span></a> or <a class="reference internal" href="#rotatesp-enckey"><span>service provider encryption key</span></a></li>
+<li><a class="reference internal" href="#rotatevsp-signkey"><span>VSP signing key</span></a> or <a class="reference internal" href="#rotatesp-signkey"><span>service provider signing key</span></a></li>
 </ul>
-<p>The certificates for these keys are usually issued at the same time. You&#8217;ll probably need to renew them all together.</p>
-<div class="section" id="initial-steps-for-all-keys">
-<h2>Initial steps for all keys<a class="headerlink" href="#initial-steps-for-all-keys" title="Permalink to this headline">¶</a></h2>
+<p>To communicate with the GOV.UK Verify team during a key rotation process, send an email to <a class="reference external" href="mailto:idasupport+onboarding&#37;&#52;&#48;digital&#46;cabinet-office&#46;gov&#46;uk">idasupport+onboarding<span>&#64;</span>digital<span>&#46;</span>cabinet-office<span>&#46;</span>gov<span>&#46;</span>uk</a>. This will begin an email thread that you can use for any queries you have during this key-rotation process.</p>
+<div class="section" id="get-new-signed-certificates">
+<span id="pki-get-new-certs"></span><h2>Get new signed certificates<a class="headerlink" href="#get-new-signed-certificates" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Generate a <a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span>new private key</span></a>.</li>
-<li>Generate a <a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span>certificate signing request</span></a> and <a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span>submit it</span></a> to the IDAP certificate authority.</li>
-<li>The IDAP certificate authority issues the new certificate to the government service.</li>
+<li><a class="reference internal" href="pkiRequestCert.html#pki-gen-private-key"><span>Generate new signing and encryption private keys</span></a> for both the MSA and your service provider - this is 4 keys in total.</li>
+<li><a class="reference internal" href="pkiRequestCert.html#pki-gen-csr"><span>Generate a certificate signing request</span></a> for each of the the keys you generated in step 1.</li>
+<li><a class="reference internal" href="pkiRequestCert.html#pki-submit-csr"><span>Submit the certificate signing requests</span></a> from step 2 to the IDAP certificate authority.</li>
 </ol>
+<p>The IDAP certificate authority will issue you signed certificates for the MSA and your service provider encryption and signing public keys.</p>
 </div>
-<div class="section" id="rotate-your-service-encryption-key">
-<h2>Rotate your service encryption key<a class="headerlink" href="#rotate-your-service-encryption-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rotate-your-msa-encryption-key">
+<span id="rotatemsa-enckey"></span><h2>Rotate your MSA encryption key<a class="headerlink" href="#rotate-your-msa-encryption-key" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Add the new private encryption key to your service endpoint. Your service can now use the new and old private keys to decrypt SAML messages.</li>
-<li>Send the new certificate to the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team installs the new certificate on the hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.</li>
-<li>Remove the old encryption key from your service endpoint.</li>
-</ol>
-</div>
-<div class="section" id="rotate-your-service-signing-key">
-<h2>Rotate your service signing key<a class="headerlink" href="#rotate-your-service-signing-key" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Send the new signing certificate to the the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team installs the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now trusts SAML messages signed with the new and old keys.</li>
-<li>Replace the old private signing key with the new key on your service endpoint. Your service now signs SAML messages with the new key only.</li>
-<li>Inform the GOV.UK Verify operations team that new key is live.</li>
-<li>The GOV.UK Verify operations team removes the old certificate from the GOV.UK Verify hub. The GOV.UK Verify hub now trusts SAML messages signed with the new key only.</li>
-</ol>
-</div>
-<div class="section" id="rotate-your-matching-service-adapter-encryption-key">
-<h2>Rotate your Matching Service Adapter encryption key<a class="headerlink" href="#rotate-your-matching-service-adapter-encryption-key" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Install the new private encryption key and encryption certificate on the MSA. To do this, add the fields <code class="docutils literal"><span class="pre">privateSecondaryEncryptionKeyConfiguration</span></code> and <code class="docutils literal"><span class="pre">publicSecondaryEncryptionKeyConfiguration</span></code> to the  <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>YAML configuration file</span></a> as indicated in the highlighted sections below:</li>
+<li>Add a second list item containing the details for your new public and private key under <code class="docutils literal"><span class="pre">encryptionKeys</span></code> in your <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>MSA configuration</span></a>, for example:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.pk8</span>
-
-<span class="hll"><span class="l l-Scalar l-Scalar-Plain">privateSecondaryEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.pk8</span>
-</span>
-<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_old.crt</span>
- <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
-
-<span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSecondaryEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.crt</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
-</span></pre></div>
-</div>
-<p>The MSA can now use both the new and old keys to decrypt SAML messages.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">While both keys are in use, you may see error messages in the logs with the description &#8216;Unwrapping failed&#8217;. These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.</p>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">encryptionKeys</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">publicKey</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">certFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_encryption_2016.crt</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MSA Encryption 2016</span>
+  <span class="l l-Scalar l-Scalar-Plain">privateKey</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">keyFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_encryption_2016.pk8</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">publicKey</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">certFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_encryption_2017.crt</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MSA Encryption 2017</span>
+  <span class="l l-Scalar l-Scalar-Plain">privateKey</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">keyFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_encryption_2017.pk8</span>
+</pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Send the new certificate to the GOV.UK Verify operations team.</li>
-<li>The GOV.UK Verify operations team replaces the old certificate with the new certificate on the GOV.UK Verify hub. The GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.</li>
-<li>Promote the secondary private encryption key and encryption certificate to the primary position.</li>
-<li>Remove the old private encryption key and encryption certificate:</li>
+<li>Restart the MSA to implement the configuration changes -  the MSA can now use both the new and old keys to decrypt SAML messages.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.pk8</span>
-
-<span class="l l-Scalar l-Scalar-Plain">publicEncryptionKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_encryption_new.crt</span>
- <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="6">
-<li>Restart the MSA. The MSA can no longer use the old key to decrypt SAML messages.</li>
-</ol>
-</div>
-<div class="section" id="rotate-your-matching-service-adapter-signing-key">
-<h2>Rotate your Matching Service Adapter signing key<a class="headerlink" href="#rotate-your-matching-service-adapter-signing-key" title="Permalink to this headline">¶</a></h2>
-<p id="pki-config-msa-2signkeys-samlmetadata">This procedure involves publishing 2 SAML signing certificates in the MSA SAML metadata.</p>
-<ol class="arabic simple">
-<li>Send the new signing certificate to the GOV.UK Verify operations team.</li>
-<li>Install the new signing certificate on the MSA. To do this, add the field <code class="docutils literal"><span class="pre">publicSecondarySigningKeyConfiguration</span></code> to the <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>YAML configuration file</span></a>, as indicated in the highlighted section below:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.pk8</span>
-
-<span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing.crt</span>
- <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
-
-<span class="hll"><span class="l l-Scalar l-Scalar-Plain">publicSecondarySigningKeyConfiguration</span><span class="p p-Indicator">:</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new_cert.crt</span>
-</span><span class="hll"> <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD/Secondary</span>
-</span></pre></div>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While both keys are in use, you may see error messages in the logs with the description <code class="docutils literal"><span class="pre">Unwrapping</span> <span class="pre">failed</span></code>. These messages appear because the MSA attempts to decrypt the SAML message using each key in turn. You can safely ignore these messages. However, do not ignore any other error messages related to SAML decryption.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>Check that your service endpoint has loaded the newly generated MSA metadata from: /matching-service/SAML2/metadata. The service endpoint now trusts assertions signed with the new key.</li>
-<li>Update the field <code class="docutils literal"><span class="pre">privateSigningKeyConfiguration</span></code> with the new private signing key.</li>
-<li>Promote the secondary signing certificate to the primary position.</li>
-<li>Remove the old signing certificate:</li>
+<li>Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.</li>
+<li>After the GOV.UK Verify team confirm they have deployed the new public encryption key, delete the old private encryption key and certificate.</li>
+<li>Restart the MSA to implement the configuration changes.</li>
+</ol>
+<p>The MSA now uses the new encryption key to decrypt SAML messages, and the GOV.UK Verify hub now uses the new key to encrypt SAML messages for your service.</p>
+</div>
+<div class="section" id="rotate-your-msa-signing-key">
+<span id="rotatemsa-signkey"></span><h2>Rotate your MSA signing key<a class="headerlink" href="#rotate-your-msa-signing-key" title="Permalink to this headline">¶</a></h2>
+<p id="pki-config-msa-2signkeys-samlmetadata">The MSA publishes its certificates containing the public keys in its own metadata at run time. The service provider you’re using reads this metadata and uses the MSA&#8217;s signing certificate to trust assertions signed by the MSA. Therefore you must restart the MSA once you&#8217;ve changed the certificates in the configuration file (step 2) and make sure your service provider has read the new metadata (step 3).</p>
+<ol class="arabic simple">
+<li>Send the new signing certificate to the GOV.UK Verify team and add it to the <a class="reference internal" href="../matching/matchingserviceadapter.html#yamlfile"><span>MSA configuration</span></a> under <code class="docutils literal"><span class="pre">signingKeys.secondary</span></code>, for example:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">privateSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new.pk8</span>
-
-<span class="l l-Scalar l-Scalar-Plain">publicSigningKeyConfiguration</span><span class="p p-Indicator">:</span>
- <span class="l l-Scalar l-Scalar-Plain">keyUri</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy/keys/test_rp_msa_signing_new.crt</span>
- <span class="l l-Scalar l-Scalar-Plain">keyName</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.test-rp-ms.gov.uk/SAML2/MD</span>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">signingKeys</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">publicKey</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">certFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_signing_2016.crt</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2016 MSA Signing Key</span>
+    <span class="l l-Scalar l-Scalar-Plain">privateKey</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">keyFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_signing_2016.pk8</span>
+  <span class="l l-Scalar l-Scalar-Plain">secondary</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">publicKey</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">certFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_signing_2017.crt</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2017 MSA Signing Key</span>
+    <span class="l l-Scalar l-Scalar-Plain">privateKey</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">keyFile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msa_signing_2017.pk8</span>
 </pre></div>
 </div>
 </div></blockquote>
-<ol class="arabic simple" start="7">
-<li>Restart the MSA. SAML messages are now signed with the new key.</li>
-<li>Inform the GOV.UK Verify operations team that the new key is live.</li>
+<ol class="arabic simple" start="2">
+<li>Restart the MSA to publish the new signing certificate to its metadata.</li>
+<li>Make sure your service provider has read the new metadata.</li>
 </ol>
+<p>If you’re using the VSP, wait for it to load the MSA metadata. The VSP periodically refreshes its metadata and will log when it has finished. Once it loads the new metadata, the VSP trusts assertions signed with the new MSA signing key.</p>
+<ol class="arabic simple" start="4">
+<li>Delete the <code class="docutils literal"><span class="pre">signingKeys.primary</span></code> section and rename <code class="docutils literal"><span class="pre">signingKeys.secondary</span></code> to <code class="docutils literal"><span class="pre">signingKeys.primary</span></code> - the MSA now signs the assertions with the new  key.</li>
+<li>Restart the MSA to update its metadata to contain only the new signing certificate.</li>
+<li>Inform the GOV.UK Verify team that the new key is live.</li>
+</ol>
+<p>Your service provider now trusts assertions signed with your new MSA signing key.</p>
+</div>
+<div class="section" id="rotate-your-vsp-encryption-key">
+<span id="rotatevsp-enckey"></span><h2>Rotate your VSP encryption key<a class="headerlink" href="#rotate-your-vsp-encryption-key" title="Permalink to this headline">¶</a></h2>
+<p>These instructions apply to you if you&#8217;re using the Verify Service Provider (VSP).</p>
+<ol class="arabic simple">
+<li>Add the new VSP private encryption key you&#8217;ve generated to the <code class="docutils literal"><span class="pre">samlSecondaryEncryptionKey</span></code> field in the VSP configuration.</li>
+<li>Restart the VSP to implement the configuration changes - the VSP can now use both the new and old keys to decrypt SAML messages.</li>
+<li>Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.</li>
+<li>After receiving confirmation from the GOV.UK Verify team, replace the key in <code class="docutils literal"><span class="pre">samlPrimaryEncryptionKey</span></code> with the key from <code class="docutils literal"><span class="pre">samlSecondaryEncryptionKey</span></code> and leave <code class="docutils literal"><span class="pre">samlSecondaryEncryptionKey</span></code> empty for the next key rotation.</li>
+<li>Restart the VSP to implement the configuration changes.</li>
+</ol>
+<p>Your service now uses the new VSP encryption key to decrypt SAML messages.</p>
+</div>
+<div class="section" id="rotate-your-vsp-signing-key">
+<span id="rotatevsp-signkey"></span><h2>Rotate your VSP signing key<a class="headerlink" href="#rotate-your-vsp-signing-key" title="Permalink to this headline">¶</a></h2>
+<p>These instructions apply to you if you&#8217;re using the Verify Service Provider.</p>
+<ol class="arabic simple">
+<li>Send your new signing certificate to the GOV.UK Verify team and wait for deployment confirmation.</li>
+<li>Replace the old signing key under <code class="docutils literal"><span class="pre">samlSigningKey</span></code> in the VSP configuration with the new key.</li>
+<li>Restart the VSP to implement the configuration changes - the VSP now signs SAML messages with the new key.</li>
+<li>Inform the GOV.UK Verify team that new key is live - the GOV.UK Verify team will remove the old certificate from the GOV.UK Verify hub.</li>
+</ol>
+<p>The GOV.UK Verify hub now trusts SAML messages signed with your new VSP signing key.</p>
+</div>
+<div class="section" id="rotate-your-service-provider-encryption-key">
+<h2>Rotate your service provider encryption key<a class="headerlink" href="#rotate-your-service-provider-encryption-key" title="Permalink to this headline">¶</a></h2>
+<p>These instructions apply to you if you&#8217;re using an alternative to the Verify Service Provider.</p>
+<ol class="arabic simple">
+<li>Add your new service provider private encryption key to your service endpoint - your service can now use both the new and old keys to decrypt SAML messages.</li>
+<li>Send the new certificate to the GOV.UK Verify team and wait for the team to confirm deployment.</li>
+<li>After receiving confirmation from GOV.UK Verify team, remove the old encryption key from your service endpoint.</li>
+</ol>
+<p>Your service provider now uses the new encryption key to decrypt SAML messages.</p>
+</div>
+<div class="section" id="rotate-your-service-provider-signing-key">
+<h2>Rotate your service provider signing key<a class="headerlink" href="#rotate-your-service-provider-signing-key" title="Permalink to this headline">¶</a></h2>
+<p>These instructions apply to you if you&#8217;re using an alternative to the Verify Service Provider.</p>
+<ol class="arabic simple">
+<li>Send your new signing certificate to the GOV.UK Verify team and wait for deployment confirmation.</li>
+<li>Replace the old private signing key with the new key on your service endpoint - your service provider now signs SAML messages with the new key.</li>
+<li>Inform the GOV.UK Verify team that the new key is live - the GOV.UK Verify team removes the old certificate from the GOV.UK Verify hub.</li>
+</ol>
+<p>The GOV.UK Verify hub now trusts SAML messages signed with your new service provider signing key.</p>
 </div>
 </div>
 
