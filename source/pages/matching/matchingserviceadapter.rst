@@ -7,7 +7,7 @@ Install and configure the Matching Service Adapter
 
 The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.
 
-The MSA handles complex matching requirements. We recommend that you use the MSA and always make sure you have the latest version. 
+The MSA handles complex matching requirements. We recommend that you use the MSA and always make sure you have the latest version.
 
 You need to host the MSA so the GOV.UK Verify Hub can make requests to it.
 
@@ -77,12 +77,9 @@ Below is the ``test-config.yml`` file:
 .. code-block:: yaml
 
     # Configure the matching service adapter's server settings here.
-    # See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#servers
-    # for more information.
     server:
       # Ports on which to listen for normal connections.
-      # See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#connectors
-      # for information on HTTPS and TLS connections.
+      # See http://www.dropwizard.io for information on HTTPS and TLS connections.
       applicationConnectors:
         - type: http
           port: 8080
@@ -176,8 +173,7 @@ Below is the ``test-config.yml`` file:
           password: puppet
 
     ## Options to add additional logging. By default, logs will be output to console.
-    ## See http://www.dropwizard.io/1.3.2/docs/manual/configuration.html#logging
-    ## for more information.
+    ## See http://www.dropwizard.io for more information.
     #logging:
     #  level: INFO
     #  appenders:
@@ -206,7 +202,7 @@ In the field ``server:``
 
 1. Enter port numbers for the server application (``applicationConnectors``) and admin ports (``adminConnectors``).
 
- .. note:: If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don't trust the network between the SSL termination endpoint and the MSA, then specify ``https`` rather than ``http`` for the type of connection. For more information, see the guidance in the `DropWizard configuration manual <http://dropwizard.github.io/dropwizard/1.3.2/docs/manual/configuration.html#https>`_.
+ .. note:: If the MSA will be handling SSL termination (typically this will be handled by a proxy or load balancer like HAProxy), or if you don't trust the network between the SSL termination endpoint and the MSA, then specify ``https`` rather than ``http`` for the type of connection. For more information, see the guidance in the `DropWizard configuration manual <http://dropwizard.github.io/>`_.
 
 In the field ``matchingServiceAdapter:``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
