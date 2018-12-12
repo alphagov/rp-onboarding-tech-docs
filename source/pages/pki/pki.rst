@@ -3,6 +3,8 @@
 Public Key Infrastructure
 ==========================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 The purpose of a public key infrastructure (PKI) is to implement secure electronic transactions over insecure networks such as the internet. A PKI is used to authenticate identities for the purposes of data encryption and signing:
 
 * encryption – scrambles the data in a way that makes it unreadable except to intended recipients
@@ -14,11 +16,11 @@ Encryption and signing are provided by public-key cryptography. A PKI supports p
 
 The  Identity Assurance Programme (IDAP) runs a PKI to enable secure communication between the entities in the GOV.UK Verify federation, for example, between government services and the GOV.UK Verify hub. For an outline of the technical steps in the onboarding process, see `Stage 4: Build and integration testing <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html>`_ in the onboarding guide.
 
-The entities in the GOV.UK Verify federation communicate with each other using :ref:`SAML <saml>`. Public-key cryptography secures the integrity and privacy of SAML messages sent between the different entities. 
+The entities in the GOV.UK Verify federation communicate with each other using :ref:`SAML <saml>`. Public-key cryptography secures the integrity and privacy of SAML messages sent between the different entities.
 
 .. rubric:: **What do you need to do?**
 
-As part of the GOV.UK Verify federation you need to :ref:`request certificates <pkiRequestCert>` from the IDAP PKI certificate authority. When your certificates are due to expire you need to run the :ref:`key rotation process <pkiRotate>` to update the keys in your certificates. 
+As part of the GOV.UK Verify federation you need to :ref:`request certificates <pkiRequestCert>` from the IDAP PKI certificate authority. When your certificates are due to expire you need to run the :ref:`key rotation process <pkiRotate>` to update the keys in your certificates.
 
 For more information, see :ref:`steps`.
 
@@ -26,7 +28,7 @@ You are responsible for ensuring that the terms of the IDAP PKI Certification Po
 
 * **Certification Practice Statement for the Interim PKI for the IDAP Ecosystem** – sets out the practices governing cryptographic services for the IDAP federation
 * **IDAP PKI Subscriber Agreement** – sets out the terms of use of PKI for those using certificates received from the IDAP PKI
-* **IDAP PKI Relying Party Agreement** – sets out the terms for those who do not necessarily hold a certificate, but who, during the course of a transaction, may be a recipient of a certificate and place reliance on a certificate and/or digital signatures created using that certificate 
+* **IDAP PKI Relying Party Agreement** – sets out the terms for those who do not necessarily hold a certificate, but who, during the course of a transaction, may be a recipient of a certificate and place reliance on a certificate and/or digital signatures created using that certificate
 * **GOV.UK Verify Certification Process for (Relying Party) Subscribers** – indicates the URLs where you can submit certificate requests to the IDAP certificate authority
 
 
@@ -36,7 +38,3 @@ You are responsible for ensuring that the terms of the IDAP PKI Certification Po
    pkiWorks
    pkiRequestCert
    pkiRotate
-
-
-   
-

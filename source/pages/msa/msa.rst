@@ -33,7 +33,7 @@ It can be difficult and expensive to implement a SAML matching service interface
 What do you need to do?
 -----------------------
 
-We recommend that you use the MSA.  If you do not want to, please contact the `GOV.UK Verify support team <idasupport+onboarding@digital.cabinet-office.gov.uk>`_  to discuss your alternatives.
+We recommend that you use the MSA.  If you do not want to, please contact the `GOV.UK Verify support team <idasupport@digital.cabinet-office.gov.uk>`_  to discuss your alternatives.
 
 You need to host the MSA so the GOV.UK Verify hub can make requests to it.
 

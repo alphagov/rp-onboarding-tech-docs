@@ -3,6 +3,8 @@
 How matching works with GOV.UK Verify
 =================================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 .. figure:: ../arch/arch_overview.svg
      :alt: Diagram showing GOV.UK Verify architecture. The hub is at the centre. It is connected to the government service, identity providers, and the Matching Service Adapter (MSA). Communication with the hub is via SAML with PKI. The MSA is connected to a local matching service, which is connected to a local matching datastore. Communication between these elements is not via SAML. The text below the image describes all elements in the architecture.
 

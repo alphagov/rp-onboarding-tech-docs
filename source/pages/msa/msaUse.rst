@@ -33,7 +33,7 @@ To run the Matching Service Adapter (MSA) you need:
 Versioning
 ----------
 
-Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
+Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
 
 
 Obtain certificates for your Matching Service Adapter
@@ -291,7 +291,7 @@ The table below shows the root certificate authorities that GOV.UK Verify trusts
 
 .. note:: For the SAML compliance tool, use :ref:`self-signed certificates <generateSelfSignedCertificates>`.
 
-If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport+onboarding@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
+If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
 
 When you raise a ticket, indicate the chain of trust with your SSL/TLS certificate. You'll also need the chain of trust when you configure your server.
 

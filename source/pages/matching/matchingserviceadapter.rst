@@ -5,13 +5,15 @@
 Install and configure the Matching Service Adapter
 ==============================================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 The Matching Service Adapter (MSA) is a software tool supplied free of charge by the GOV.UK Verify team. It simplifies communication between your Local Matching Service and the GOV.UK Verify Hub.
 
 The MSA handles complex matching requirements. We recommend that you use the MSA and always make sure you have the latest version.
 
 You need to host the MSA so the GOV.UK Verify Hub can make requests to it.
 
-If you do not want to use the MSA, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to discuss your alternatives.
+If you do not want to use the MSA, `contact the GOV.UK Verify team <mailto:idasupport@digital.cabinet-office.gov.uk>`_ to discuss your alternatives.
 
 **Prerequisites**
 
@@ -35,7 +37,7 @@ To run the Matching Service Adapter (MSA) you need:
 Versioning
 -----------
 
-Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
+Typically, GOV.UK Verify releases a new version of the MSA every 2 or 3 months. Some releases are essential updates and we may remove support for older versions. To keep updated, contact the `GOV.UK Verify support team <mailto:idasupport@digital.cabinet-office.gov.uk>`_ to ensure you are on the MSA email distribution list.
 
 
 .. _msa_certs:
@@ -329,7 +331,7 @@ The table below shows the root certificate authorities that GOV.UK Verify trusts
 
 .. note:: For the SAML compliance tool, use :ref:`self-signed certificates <generateSelfSignedCertificates>`.
 
-If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport+onboarding@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
+If you want to use a root certificate authority for your matching service that isn’t in the above table, raise a ticket with us by sending an email to idasupport@digital.cabinet-office.gov.uk. We’ll review your chosen root certificate authority before adding it to this list.
 
 When you raise a ticket, indicate the chain of trust with your SSL/TLS certificate. You'll also need the chain of trust when you configure your server.
 

@@ -4,6 +4,8 @@
 Build your service
 =======================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 .. _samlIntegrationtool:
 
 

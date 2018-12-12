@@ -3,6 +3,8 @@
 How SAML works with GOV.UK Verify
 ----------------------------------
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 SAML messages take the form of requests and responses. Messages can contain assertions about the user's identity. GOV.UK Verify uses the following types of assertion:
 
 * identity assertions – contain information about the user

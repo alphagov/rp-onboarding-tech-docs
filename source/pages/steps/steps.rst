@@ -3,6 +3,8 @@
 Steps to integrate GOV.UK Verify into your service
 ===================================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 Development
 ~~~~~~~~~~~~~~
 

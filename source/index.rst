@@ -3,6 +3,8 @@
 GOV.UK Verify technical documentation
 ========================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 This documentation is for teams in government who want to connect a service to `GOV.UK Verify <https://govuk-verify.cloudapps.digital/>`_.
 
 The guide explains:
@@ -15,7 +17,7 @@ For a general overview of the connection process, refer to the `GOV.UK Verify On
 
 **Contact and support**
 
-If you have any feedback on this guidance or questions about the connection process, contact idasupport+onboarding@digital.cabinet-office.gov.uk.
+If you have any feedback on this guidance or questions about the connection process, contact idasupport@digital.cabinet-office.gov.uk.
 
 
 .. toctree::

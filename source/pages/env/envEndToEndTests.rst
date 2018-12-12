@@ -4,6 +4,8 @@
 Run end-to-end testing
 =======================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 The integration environment accurately reflects hub behaviour in the production environment. You can use the integration environment to test complete user journeys, both success and failure scenarios.
 
 We  advise you to do end-to-end testing in the integration environment as part of your continuous integration pipeline. For more information, see `Testing code <https://www.gov.uk/service-manual/making-software/code-testing>`_ in the Government Service Design Manual.
@@ -11,7 +13,7 @@ We  advise you to do end-to-end testing in the integration environment as part o
 You must provide a full demonstration of all user journeys as part of your `Stage 4 <http://alphagov.github.io/identity-assurance-documentation/stage4/Stage4.html#stage-4>`_ gate review.
 
 
-.. important:: If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first contact GOV.UK Verify support at idasupport+onboarding@digital.cabinet-office.gov.uk.
+.. important:: If you carry out penetration testing (pen testing) on your end-to-end system, you must not extend this to the hub domain. You must only run penetration tests on your own system. If you think you have a valid reason for running penetration tests in the hub domain, you must first contact GOV.UK Verify support at idasupport@digital.cabinet-office.gov.uk.
 
 This diagram shows the end-to-end testing flow. See below for explanations.
 

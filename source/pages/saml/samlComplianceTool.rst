@@ -3,14 +3,16 @@
 Run SAML compliance tests
 ===========================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 The purpose of SAML compliance tests is to ensure that the service you're building is compliant with the `SAML profile <https://www.gov.uk/government/publications/identity-assurance-hub-service-saml-20-profile>`_. This guarantees that:
 
 * your service will work with GOV.UK Verify
 * user data will remain secure within the GOV.UK Verify federation
 
-The SAML Compliance Tool allows you to test and prove that your service can respond appropriately to all of the scenarios your service needs to be able to handle. 
+The SAML Compliance Tool allows you to test and prove that your service can respond appropriately to all of the scenarios your service needs to be able to handle.
 
-After successfully testing all the scenarios applicable to you, send `the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ proof of this in the form of a series of screenshots or a recording screen as the tests were performed.
+After successfully testing all the scenarios applicable to you, send `the GOV.UK Verify team <mailto:idasupport@digital.cabinet-office.gov.uk>`_ proof of this in the form of a series of screenshots or a recording screen as the tests were performed.
 
 The Compliance Tool provides clear error messages to help with the iterative development of your service. We advise you to use the Compliance Tool as part of your continuous integration pipeline to ensure that any changes maintain backwards compatibility.
 
@@ -211,7 +213,7 @@ The Compliance Tool is deployed regularly and does not hold historical configura
 
 6. If the result contains ``PASSED``, access the URI provided in ``responseGeneratorLocation``. A list of test scenarios is displayed.
 7. Access the ``executeUri`` for each test scenario you want to execute. :ref:`The Compliance Tool test scenarios <samlComplianceToolScenarios>` are the possible responses for step 8 in the :ref:`SAML message flow <samlWorks>`.
-8. Send proof that your service can handle all the applicable scenarios to `the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_. You can send the proof as a series of screenshots or a recording of the screen as the tests were performed.
+8. Send proof that your service can handle all the applicable scenarios to `the GOV.UK Verify team <mailto:idasupport@digital.cabinet-office.gov.uk>`_. You can send the proof as a series of screenshots or a recording of the screen as the tests were performed.
 
 .. _samlCThubMSA:
 
@@ -219,4 +221,3 @@ Test your matching service with the SAML Compliance Tool
 --------------------------------------------------------------------
 
 You can also use the Compliance Tool to test your Local Matching Service and Matching Service Adapter. The exact test scenarios will depend on your matching strategy. For more information, refer to the guidance on :ref:`testing your matching service <testmatching>`.
-

@@ -4,6 +4,8 @@
 Rotate your encryption and signing keys
 ======================================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 When the certificates containing your public keys are due to expire, you must rotate your keys. This allows you to introduce a new set of keys and certificates with no service interruption.
 
 As a government service you are responsible for maintaining the encryption and signing keys for your Matching Service Adapter (MSA) and your service provider. Your service provider could be the `Verify Service Provider (VSP) <https://github.com/alphagov/verify-service-provider>`_ or another service provider.
@@ -17,7 +19,7 @@ Then, as part of the key rotation process, you must rotate your:
 * :ref:`VSP encryption key<rotateVSP_encKey>` or :ref:`service provider encryption key<rotateSP_encKey>`
 * :ref:`VSP signing key<rotateVSP_signKey>` or :ref:`service provider signing key<rotateSP_signKey>`
 
-To communicate with the GOV.UK Verify team during a key rotation process, send an email to idasupport+onboarding@digital.cabinet-office.gov.uk. This will begin an email thread that you can use for any queries you have during this key-rotation process.
+To communicate with the GOV.UK Verify team during a key rotation process, send an email to idasupport@digital.cabinet-office.gov.uk. This will begin an email thread that you can use for any queries you have during this key-rotation process.
 
 .. _pki_get_new_certs:
 

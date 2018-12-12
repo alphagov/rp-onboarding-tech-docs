@@ -3,6 +3,8 @@
 Test your matching service
 =========================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 You can test your matching service with 2 tools provided by GOV.UK Verify:
 
 * Matching Service Test Tool
@@ -10,7 +12,7 @@ You can test your matching service with 2 tools provided by GOV.UK Verify:
 
 .. rubric:: Using the Matching Service Test Tool
 
-The `Matching Service Test Tool <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ is a lightweight tool you can add to your existing testing workflow. 
+The `Matching Service Test Tool <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ is a lightweight tool you can add to your existing testing workflow.
 
 The tool makes sure your Local Matching Service can:
 

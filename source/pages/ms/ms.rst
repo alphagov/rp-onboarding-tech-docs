@@ -3,7 +3,7 @@
 Local Matching Service
 ======================
 
-.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for building a matching service. <buildmatchingservice>`.
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
 
 The purpose of a matching service is to find a match between a user’s verified identity and a record in a government service’s data sources. It allows the government service to be sure that the Jane Smith trying to access the service is the same Jane Smith already held on file.
 
@@ -35,4 +35,4 @@ Follow the :ref:`guidance on building a local matching service <msBuild>` to:
 
 You can also refer to the `example local matching service built by the Verify team <https://github.com/alphagov/verify-local-matching-service-example>`_ and use the `local matching service test tool <https://github.com/alphagov/verify-matching-service-adapter/tree/master/verify-matching-service-test-tool>`_ to check your local matching service can handle matching effectively.
 
-The Verify team can help you build and configure your local matching service. Contact idasupport+onboarding@digital.cabinet-office.gov.uk for help.
+The Verify team can help you build and configure your local matching service. Contact idasupport@digital.cabinet-office.gov.uk for help.

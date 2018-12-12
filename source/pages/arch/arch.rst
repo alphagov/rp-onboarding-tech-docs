@@ -3,6 +3,8 @@
 Architecture
 ============
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 GOV.UK Verify lets users prove their identity online so they can access government services. When a user wants to access a government service, a trusted identity provider performs the checks needed to prove the user’s identity.
 
 

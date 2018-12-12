@@ -3,6 +3,8 @@
 Decide your matching strategy
 =====================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 Your matching strategy should define your rules for matching and what should happen when:
 
 - a matching record is found
@@ -11,7 +13,7 @@ Your matching strategy should define your rules for matching and what should hap
 
 It’s up to each service to decide their own matching strategy, but this guidance provides an overview of things to consider.
 
-`Contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ for help deciding and implementing your matching strategy.
+`Contact the GOV.UK Verify team <mailto:idasupport@digital.cabinet-office.gov.uk>`_ for help deciding and implementing your matching strategy.
 
 .. rubric:: Common matching difficulties
 
@@ -204,7 +206,7 @@ If Cycle 1 finds multiple matches and additional matches are available, continue
 
 Cycle 2 matching uses additional attributes related to identity from another source such as a credit referencing agency or other government department to help the matching process. For example, an additional attribute could be whether the user qualifies for a Blue Badge.
 
-GOV.UK Verify does not currently support Cycle 2 matching. No government connecting service has needed Cycle 2 matching so far. If you think your service needs Cycle 2 matching, `contact the GOV.UK Verify team <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_.
+GOV.UK Verify does not currently support Cycle 2 matching. No government connecting service has needed Cycle 2 matching so far. If you think your service needs Cycle 2 matching, `contact the GOV.UK Verify team <mailto:idasupport@digital.cabinet-office.gov.uk>`_.
 
 .. _cycle3:
 

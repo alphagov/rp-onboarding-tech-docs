@@ -3,6 +3,8 @@
 Request access to environments
 ===============
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 GOV.UK Verify provides 2 identical, secure environments:
 
 - Integration

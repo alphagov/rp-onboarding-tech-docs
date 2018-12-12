@@ -3,6 +3,8 @@
 Evaluate datasources
 ===========================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 .. _datacriteria:
 
 The accuracy and cleanliness of your datasource(s) will affect your ability to match effectively. Before deciding your matching strategy, you should check:
@@ -26,7 +28,7 @@ You may find some data sources don’t include the attributes you need. The main
 
 Studies have shown that it’s possible to match `98 percent of identities with government records using these attributes <https://amstat.tandfonline.com/doi/full/10.1080/2330443X.2017.1389620#.Wp6gZhO0OX>`_.
 
-You will find matching difficult, or impossible, without this data. If you do not have these attributes or want to use the data to build a datasource, `contact the GOV.UK Verify team to discuss your options <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_.
+You will find matching difficult, or impossible, without this data. If you do not have these attributes or want to use the data to build a datasource, `contact the GOV.UK Verify team to discuss your options <mailto:idasupport@digital.cabinet-office.gov.uk>`_.
 
 .. rubric:: Duplicate records
 

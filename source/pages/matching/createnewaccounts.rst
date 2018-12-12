@@ -3,6 +3,8 @@
 Create new user accounts (optional)
 ==============================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 If Verify fails to identify the user, you can enable your service to create a new user account.
 
 You must obtain explicit user consent before creating a user account.

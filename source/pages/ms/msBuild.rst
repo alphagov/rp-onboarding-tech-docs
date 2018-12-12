@@ -3,7 +3,7 @@
 Build a local matching service
 ==============================
 
-.. caution:: This documentation is no longer maintained. :ref:`View the latest documentation for building a matching service. <buildmatchingservice>`.
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
 
 You must build a local matching service and host it on your own infrastructure.
 

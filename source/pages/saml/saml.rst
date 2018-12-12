@@ -3,6 +3,8 @@
 SAML
 ====
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 Security Assertion Markup Language (SAML) is an open standard for securely exchanging information about identities.
 
 Your service must use a system to send SAML messages to the Verify Hub and receive SAML responses in return. This system is known as a Service Provider.
@@ -35,7 +37,7 @@ To use the Verify Service Provider, you need to have:
 
 .. rubric:: Use or build a different Service Provider
 
-If you choose to configure an off-the-shelf product or build your own Service Provider, you should `contact Verify <mailto:idasupport+onboarding@digital.cabinet-office.gov.uk>`_ before starting any development work.
+If you choose to configure an off-the-shelf product or build your own Service Provider, you should `contact Verify <mailto:idasupport@digital.cabinet-office.gov.uk>`_ before starting any development work.
 
 You must:
 

@@ -3,6 +3,8 @@
 Prepare local datasources
 =============================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 The ability to match successfully and correctly will depend on the quality of the data in the local datastore(s). You should normalise the data as much as possible to increase the likelihood of successful matching.
 
 Although specific normalisation processes will differ between data sources, you can try processes such as:

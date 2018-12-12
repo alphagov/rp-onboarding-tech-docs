@@ -3,6 +3,8 @@
 Build a matching service
 ======================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 A matching service is is made up of:
 
 - Matching Service Adapter (MSA) provided by GOV.UK Verify

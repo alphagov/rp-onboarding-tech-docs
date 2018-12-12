@@ -3,6 +3,8 @@
 Generate self-signed certificates
 =================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 To communicate with GOV.UK Verify you need to use keys and certificates. If you're communicating with the GOV.UK Verify hub, your certificates
 must be :ref:`issued by the IDAP certificate authority <pkiRequestCert>`. If you're communicating with the compliance tool, generate self-signed certificates as described here.
 
@@ -11,7 +13,7 @@ Generate self-signed certificates with OpenSSL
 
 You can generate keys and self-signed certificates in whatever way is most convenient and familiar for you. There are many different formats of keys and certificates. The Matching Service Adapter (MSA) uses PKCS#8 formatted keys (.pk8) and PEM encoded X509 certificates (.crt).
 
-The GOV.UK Verify team generally use the OpenSSL tool to do this using the guidance from the `Heroku Dev Center <https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites>`_. 
+The GOV.UK Verify team generally use the OpenSSL tool to do this using the guidance from the `Heroku Dev Center <https://devcenter.heroku.com/articles/ssl-certificate-self#prerequisites>`_.
 
 
 Install OpenSSL if it isn't already installed:
@@ -22,7 +24,7 @@ Install OpenSSL if it isn't already installed:
 
 Run the following commands in order, replacing:
 
-* ``$name`` with the filename of the key or certificate you're generating - see :ref:`Keys and certificates for your MSA<KeysandCertsforMSA>` and :ref:`Keys and certificates for your service<KeysandCertsforService>` 
+* ``$name`` with the filename of the key or certificate you're generating - see :ref:`Keys and certificates for your MSA<KeysandCertsforMSA>` and :ref:`Keys and certificates for your service<KeysandCertsforService>`
 * ``$commonName`` with a description of how the certificate will be used - for example 'My Service MSA Signing Primary'
 
 ::
@@ -69,5 +71,3 @@ Your service must sign SAML messages and decrypt assertions, so at a minimum you
 for each of these roles. Your service should support multiple encryption keys :ref:`to allow for key rotations <pkiRotate>`.
 
 Depending on how your service is built you may need to provide keys and certificates in a different format, for example .jks or .pem.
-
-

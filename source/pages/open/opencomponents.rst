@@ -2,9 +2,11 @@
 Open components and contribution
 ===================================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 The majority of GOV.UK Verify's code is public and freely available under an MIT Licence. Wherever possible, the GOV.UK Verify team codes in the open on GitHub under the `alphagov organisation <https://github.com/alphagov/>`_.
 
-We welcome contributions from outside the GOV.UK Verify team. You can raise a pull request or submit an issue against any open repository. To discuss more detailed feature requests or feedback, contact the GOV.UK Verify team at idasupport+onboarding@digital.cabinet-office.gov.uk.
+We welcome contributions from outside the GOV.UK Verify team. You can raise a pull request or submit an issue against any open repository. To discuss more detailed feature requests or feedback, contact the GOV.UK Verify team at idasupport@digital.cabinet-office.gov.uk.
 
 **Responsible disclosure of security issues**
 

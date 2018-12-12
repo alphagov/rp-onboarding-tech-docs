@@ -4,6 +4,8 @@
 The legacy JSON matching schema
 -------------------------------
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 If you :ref:`configured your MSA<msaeidas>` to not consume EU identities, the matching datasets you receive from the GOV.UK Verify Hub will be formatted according to the legacy JSON matching schema:
 
 ::

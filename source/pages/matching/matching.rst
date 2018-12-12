@@ -3,6 +3,8 @@
 Matching
 ===========================
 
+.. warning:: This documentation is out of date. We have published `new technical documentation <https://www.docs.verify.service.gov.uk>`_.
+
 When a verified user needs to access your service, you will trust the user’s identity, but may need to check if the user’s identity can be linked to information held by your service. This process, known as ‘matching’, helps you to be sure that the John Smith trying to use your service is the same John Smith you already have on file.
 
 Your service must be able to handle matching from GOV.UK Verify even if you don’t want to match identities against existing datasource(s) at that time. For example, you might want to :ref:`collect the data now <createnewaccounts>` and use it for matching later or store the information for auditing purposes.
