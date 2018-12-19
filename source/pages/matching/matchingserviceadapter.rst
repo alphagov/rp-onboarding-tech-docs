@@ -254,7 +254,7 @@ In the field ``metadata:``
 
   * for the production environment, use the provided ``prod_ida_metadata.ts`` file (this is the default setting in the ``prod-config.yml`` file)
 
-10. (optional) If you need to override the ``hub`` and ``idp`` truststore path for testing in Integration, uncomment the ``hubTrustStore`` and ``idpTrustStore`` sections in test-config.yml.
+ 10. Set ``environment`` to either ``PRODUCTION`` or ``INTEGRATION``. This ensures that the MSA uses the correct ``hub`` and ``idp`` truststores for each release. If you need to override the default truststores during testing, add ``hubTrustStore`` and ``idpTrustStore`` to the ``metadata`` section.
 
 .. _msaeidas:
 
