@@ -430,14 +430,16 @@
 <li>In <code class="docutils literal"><span class="pre">trustStore:</span></code> <code class="docutils literal"><span class="pre">path:</span></code>, specify the path to your metadata truststore file for the appropriate environment:</li>
 </ol>
 <blockquote>
+<div><blockquote>
 <div><ul class="simple">
 <li>for the SAML compliance tool and the integration environment, use the provided <code class="docutils literal"><span class="pre">test_ida_metadata.ts</span></code> file (this is the default setting in the <code class="docutils literal"><span class="pre">test-config.yml</span></code> file)</li>
 <li>for the production environment, use the provided <code class="docutils literal"><span class="pre">prod_ida_metadata.ts</span></code> file (this is the default setting in the <code class="docutils literal"><span class="pre">prod-config.yml</span></code> file)</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="10">
-<li>(optional) If you need to override the <code class="docutils literal"><span class="pre">hub</span></code> and <code class="docutils literal"><span class="pre">idp</span></code> truststore path for testing in Integration, uncomment the <code class="docutils literal"><span class="pre">hubTrustStore</span></code> and <code class="docutils literal"><span class="pre">idpTrustStore</span></code> sections in test-config.yml.</li>
+<li>Set <code class="docutils literal"><span class="pre">environment</span></code> to either <code class="docutils literal"><span class="pre">PRODUCTION</span></code> or <code class="docutils literal"><span class="pre">INTEGRATION</span></code>. This ensures that the MSA uses the correct <code class="docutils literal"><span class="pre">hub</span></code> and <code class="docutils literal"><span class="pre">idp</span></code> truststores for each release. If you need to override the default truststores during testing, add <code class="docutils literal"><span class="pre">hubTrustStore</span></code> and <code class="docutils literal"><span class="pre">idpTrustStore</span></code> to the <code class="docutils literal"><span class="pre">metadata</span></code> section.</li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="in-the-field-europeanidentity">
 <span id="msaeidas"></span><h3>In the field <code class="docutils literal"><span class="pre">europeanIdentity</span></code><a class="headerlink" href="#in-the-field-europeanidentity" title="Permalink to this headline">¶</a></h3>
