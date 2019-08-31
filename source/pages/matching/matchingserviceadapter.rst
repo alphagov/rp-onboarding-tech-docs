@@ -163,7 +163,7 @@ Below is the ``test-config.yml`` file:
     # This is a required section if your service needs to consume European identities.
     europeanIdentity:
       enabled: ${EUROPEAN_IDENTITY_ENABLED} # true or false
-      hubConnectorEntityId: https://www.integration.signin.service.gov.uk/SAML2/metadata/connector # The URL of the metadata for the node that requests and receives identities from European countries.
+      hubConnectorEntityId: https://connector-node-integration.london.verify.govsvc.uk/ConnectorMetadata # The URL of the metadata for the node that requests and receives identities from European countries.
       # Configure metadata for European countries.
       aggregatedMetadata:
         trustAnchorUri: https://www.integration.signin.service.gov.uk/SAML2/metadata/trust-anchor # The location of the trust anchor used to validate country metadata
