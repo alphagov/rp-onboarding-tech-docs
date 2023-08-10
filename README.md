@@ -1,5 +1,9 @@
 # Verify technical documentation for connecting services
 
+>**GOV.UK Verify has closed**
+>
+>This repository is out of date and has been archived
+
 This is the technical documentation for government services connecting to GOV.UK Verify. It's [open to the public and published using GitHub pages](http://alphagov.github.io/rp-onboarding-tech-docs/).
 
 A general overview of how a government service can connect to Verify is detailed in the the [Onboarding Guide](http://alphagov.github.io/identity-assurance-documentation/#) which is [published and managed separately](https://github.com/alphagov/identity-assurance-documentation).
